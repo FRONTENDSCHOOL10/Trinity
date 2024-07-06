@@ -1,16 +1,29 @@
 {
-  "name": "vite-scss",
+  "name": "trinity",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "pocketbase": "cross-env NODE_ENV=development node run-pocketbase.cjs",
+    "start": "run-p scss-watch dev",
+    "scss": "sass src/styles/scss:src/styles/css",
+    "scss-no-map": "npm run scss -- --no-source-map",
+    "scss-watch": "npm run scss-no-map -- --watch",
+    "compressed": "npm run sass --style compressed",
+    "clean": "rm -rf src/styles/css"
   },
   "devDependencies": {
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.4.5",
     "sass": "^1.69.5",
     "vite": "^5.0.8",
     "vite-plugin-style-import": "^2.0.0"
+  },
+  "dependencies": {
+    "eslint": "^9.6.0",
+    "prettier": "^3.3.2"
   }
 }
