@@ -1,1 +1,69 @@
-<!-- 시작 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>header</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="module" src="./main.js"></script>
+
+</head>
+<body>
+    
+    <header class="header">
+        
+        <h1 class="sr-only">TAING</h1>
+    
+        <h2 class="header__logo">
+            <a href="/" class="logo__link">
+                <span class="sr-only">로고</span>
+                <div class="logo__img"></div>
+            </a>
+        </h2>
+
+        <nav class="header__nav">
+            <h2 class="sr-only">메인 메뉴</h2>
+
+            <ul class="nav__program" role="group" >
+                <li class="program__live" role="none">
+                    <a href="/">
+                        <span class="sr-only">라이브</span>
+                        <div class="live__img"></div>
+                        실시간
+                    </a>
+                </li>
+                <li class="program__tv" role="none">
+                    <a href="/">
+                        TV프로그램
+                    </a>
+                </li>
+                <li class="program__movie" role="none">
+                    <a href="/">
+                        영화
+                    </a>
+                </li>
+                <li class="program__paramount" role="none">
+                    <a href="/">
+                        <span class="sr-only">파라마운트</span>
+                        <div class="paramount__img"></div>
+                    </a>
+                </li>
+            </ul>
+
+            <aside class="header__aside">
+                <button type="button" aria-label="검색창 열기" class="aside__button aside__button--search">
+                        <!-- <img src="/public/mobile_search_default.png" alt="검색어 아이콘 기본"/> -->
+                </button>
+                <button type="button" aria-label="프로필 메뉴 열기" class="aside__button aside__button--profile">
+                        <!-- <img src="../../assets/mobile_profile.png" alt="프로필"/> -->
+                </button>
+              </aside>
+
+        </nav>
+
+    </header>
+
+
+    
+</body>
+</html>
