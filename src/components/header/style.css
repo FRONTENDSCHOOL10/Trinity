@@ -7,7 +7,6 @@ a {
 
 body {
     background-color: antiquewhite;
-    font-size: 12px;
 }
 
 /* 숨김 콘텐츠 */
@@ -29,7 +28,7 @@ body {
 
 .header{
     background: linear-gradient(to bottom, rgba(0,0,0,0.7) 0%,rgba(0,0,0,0) 100%);
-    padding: 12px 24px;
+    padding: .7188rem 1rem;
     
     display: flex;
     align-items: center;
@@ -64,6 +63,7 @@ body {
 .nav__program > li a {
     display: flex;
     align-items: center;
+    font-size: 0.75rem;
 }
 
 .program__live .live__img {
@@ -72,7 +72,8 @@ body {
     margin-right: 0.25rem;
     background-image: url("/public/desktop_live_default.png");
     background-repeat: no-repeat;
-    background-size: contain;
+    background-position: center;
+    background-size: cover;
 }
 
 .program__paramount .paramount__img {
@@ -80,7 +81,8 @@ body {
     height: 1.25rem;
     background-image: url("/public/desktop_paramount_default.png");
     background-repeat: no-repeat;
-    background-size: contain;
+    background-position: center;
+    background-size: cover;
 }
 
 .header__aside {
@@ -114,11 +116,16 @@ body {
 }
 
 @media (min-width:768px) and (max-width:1919px){
+    .header {
+        padding: 1rem 2.5rem;
+        font-size: 1.3331rem;
+    }
+
     .header__logo {
         width: 2.875rem;
         height: .9375rem;
         margin-right: 1.75rem;
-        background-image: url("/public/desktop_logo.png");
+        background-image: url("/public/tablet_logo.png");
         background-repeat: no-repeat;
         background-size: contain;
     }
@@ -131,22 +138,71 @@ body {
     }
 
     .header__aside {
-        gap: 1.5rem;
+        gap: 1.75rem;
     }
 
     .aside__button--search {
-        width: 1.125rem;
-        height: 1.125rem;
-        background-image: url("/public/desktop_search_default.png");
-        background-repeat: no-repeat;
-        background-size: contain;
+        width: 1.5rem;
+        height: 1.5rem;
+        background-image: url("/public/tablet_search_default.png");
     }
     
     .aside__button--profile {
-        width: 1.125rem;
-        height: 1.125rem;
-        background-image: url("../../assets/desktop_profile.png");
+        width: 1.5rem;
+        height: 1.5rem;
+        background-image: url("../../assets/tablet_profile.png");
+    }
+}
+
+@media (min-width: 1920px){
+    .header {
+        padding: 1.8125rem 4.375rem;
+    }
+
+    .header__logo {
+        width: 8.25rem;
+        height: 2.625rem;
+        margin-right: 3.25rem;
+        background-image: url("/public/desktop_logo.png");
         background-repeat: no-repeat;
         background-size: contain;
+    }
+
+    .nav__program {
+        display: flex;
+        gap: 3.25rem;
+    }
+
+    .nav__program > li a {
+        font-size: 1.3331rem;
+    }
+
+    .program__live .live__img {
+        width: 2.125rem;
+        height: 2.125rem;
+        margin-right: .625rem;
+        background-image: url("/public/desktop_live_default.png");
+    }
+    
+    .program__paramount .paramount__img {
+        width: 6.875rem;
+        height: 1.5938rem;
+        background-image: url("/public/desktop_paramount_default.png");
+    }
+
+    .header__aside {
+        gap: 3.25rem;
+    }
+
+    .aside__button--search {
+        width: 2.5rem;
+        height: 2.5rem;
+        background-image: url("/public/desktop_search_default.png");
+    }
+    
+    .aside__button--profile {
+        width: 2.5rem;
+        height: 2.5rem;
+        background-image: url("../../assets/desktop_profile.png");
     }
 }
