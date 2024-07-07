@@ -4,7 +4,7 @@ import { defineConfig } from 'vite';
 export default defineConfig({
   resolve: {
     alias: {
-      '@': resolve(__dirname, 'Trinity/src'),
+      '@': resolve(__dirname, 'src'),
     },
   },
 
