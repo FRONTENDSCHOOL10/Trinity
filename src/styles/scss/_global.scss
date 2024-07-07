@@ -1,0 +1,7 @@
+@import './_font.scss';
+@import './style.scss';
+
+body {
+  font-family: 'Pretendard Variable', Pretendard, sans-serif;
+  font-size: $--base-font-size;
+}
