@@ -187,7 +187,7 @@ body {
   z-index: 9999;
 }
 .header__logo {
-  background-image: url("/assets/header/mobile_logo.png");
+  background-image: url("/assets/header/TAING_logo.svg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -219,23 +219,38 @@ body {
   color: rgb(196, 196, 196);
   font-size: 0.75rem;
 }
+.header__nav__program__item a:hover {
+  color: rgb(255, 255, 255);
+}
 .header__nav__program__item--live__img {
   width: 1.25rem;
   inline-size: 1.25rem;
   height: 1.25rem;
   block-size: 1.25rem;
-  background-image: url("/assets/header/desktop_live_default.png");
+  background-image: url("/assets/header/live_default.svg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
   margin-right: 0.25rem;
+}
+.header__nav__program__item--live__img:hover {
+  background-image: url("/assets/header/live_hover.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 .header__nav__program__item--paramount__img {
   width: 4.0625rem;
   inline-size: 4.0625rem;
   height: 1.25rem;
   block-size: 1.25rem;
-  background-image: url("/assets/header/desktop_paramount_default.png");
+  background-image: url("/assets/header/paramount_default.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.header__nav__program__item--paramount__img:hover {
+  background-image: url("/assets/header/paramount_hover.svg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -258,10 +273,17 @@ body {
   inline-size: 1.125rem;
   height: 1.125rem;
   block-size: 1.125rem;
-  background-image: url("/assets/header/mobile_search_default.png");
+  background-image: url("/assets/header/search_default.svg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+}
+.header__aside__button--search:hover {
+  background-image: url("/assets/header/search_hover.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  cursor: pointer;
 }
 .header__aside__button--profile {
   width: 1.125rem;
@@ -272,6 +294,7 @@ body {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  cursor: pointer;
 }
 
 @media (min-width: 768px) and (max-width: 1919px) {
@@ -280,10 +303,6 @@ body {
     font-size: 1.3125rem;
   }
   .header__logo {
-    background-image: url("/assets/header/tablet_logo.png");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
     min-width: 4.8125rem;
     min-height: 1.5rem;
     margin-right: 1.75rem;
@@ -304,10 +323,6 @@ body {
     inline-size: 1.5rem;
     height: 1.5rem;
     block-size: 1.5rem;
-    background-image: url("/assets/header/tablet_search_default.png");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
   }
   .header__aside__button--profile {
     width: 1.5rem;
@@ -325,10 +340,6 @@ body {
     padding: 1.8125rem 4.375rem;
   }
   .header__logo {
-    background-image: url("/assets/header/desktop_logo.png");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
     min-width: 8.25rem;
     min-height: 2.625rem;
     margin-right: 3.25rem;
@@ -347,10 +358,6 @@ body {
     inline-size: 2.125rem;
     height: 2.125rem;
     block-size: 2.125rem;
-    background-image: url("/assets/header/desktop_live_default.png");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
     margin-right: 0.625rem;
   }
   .header__nav__program__item--paramount__img {
@@ -358,10 +365,6 @@ body {
     inline-size: 6.9056rem;
     height: 1.5938rem;
     block-size: 1.5938rem;
-    background-image: url("/assets/header/desktop_paramount_default.png");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
   }
   .header__aside {
     gap: 3.25rem;
@@ -371,19 +374,11 @@ body {
     inline-size: 2.5rem;
     height: 2.5rem;
     block-size: 2.5rem;
-    background-image: url("/assets/header/desktop_search_default.png");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
   }
   .header__aside__button--profile {
     width: 2.5rem;
     inline-size: 2.5rem;
     height: 2.5rem;
     block-size: 2.5rem;
-    background-image: url("/assets/header/desktop_profile.png");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
   }
 }
