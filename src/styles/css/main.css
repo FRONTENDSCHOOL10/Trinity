@@ -206,13 +206,17 @@ body {
 .header__nav__program {
   display: none;
 }
+.header__nav__program__item {
+  align-items: center;
+  line-height: 1.5;
+}
 .header__nav__program__item a {
-  text-decoration: none;
-  color: rgb(196, 196, 196);
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   align-items: center;
+  text-decoration: none;
+  color: rgb(196, 196, 196);
   font-size: 0.75rem;
 }
 .header__nav__program__item--live__img {

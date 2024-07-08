@@ -21,7 +21,7 @@ $--desktop-icon-size: 2.5rem;
   @mixin size($width, $height:null){
     @include inline-size($width);
     @if $height != null {
-      @include block-size($height);   
+      @include block-size($height);
     }
   }
 
@@ -107,17 +107,17 @@ $--desktop-icon-size: 2.5rem;
     &__nav {
         width: 100%;
         @include flexbox(row, nowrap, space-between , center, null );
-
         
         &__program {
             display: none;
             
             &__item {
+                align-items: center;
+                line-height: 1.5;
                 & a {
+                    @include flexbox(row, nowrap, null , center, null );
                     text-decoration: none;
                     color: $--gray-200;
-                    @include flexbox(row, nowrap, null , center, null );
-
                     font-size: $--label-small;
                 }
                 
