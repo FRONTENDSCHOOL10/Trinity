@@ -1,0 +1,251 @@
+@import '/src/styles/scss/utils/reset';
+@import '/src/styles/scss/utils/global';
+@import '/src/styles/scss/utils/font';
+@import '/src/styles/scss/utils/style';
+
+body,
+h2,
+ul,
+li,
+p,
+a,
+div,
+button {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: $background-color;
+  color: $font-color;
+  font-family: $font-family;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+a {
+  color: $font-color;
+  text-decoration: none;
+}
+
+.footer__area {
+  padding: 1.25rem;
+  background-color: $background-color;
+}
+
+.hidden {
+  display: none;
+}
+
+.a11yHidden {
+  position: absolute;
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+}
+
+.footer__wrapper {
+  margin-bottom: 1.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.footer__noticeLink {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.footer__notice {
+  margin-right: 0.625rem;
+  color: $font-color;
+}
+
+.footer__information {
+  color: $font-color;
+}
+
+.footer__shortcut {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  list-style: none;
+}
+
+.shortcut {
+  position: relative;
+  margin-right: 1rem;
+}
+
+.shortcut__btn {
+  background: none;
+  border: none;
+  color: $font-color;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.shortcut__plus {
+  margin-left: 0.3125rem;
+}
+
+.shortcut__group {
+  display: none;
+  position: absolute;
+  background: #333;
+  padding: 0.625rem;
+  list-style: none;
+  margin-top: 0.625rem;
+}
+
+.shortcut__btn:focus + .shortcut__group,
+.shortcut__btn:hover + .shortcut__group {
+  display: block;
+}
+
+.shortcut__group li {
+  margin-bottom: 0.625rem;
+}
+
+.shortcut__group li a {
+  color: $font-color;
+}
+
+.footer__hrContainer {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+}
+
+.footer__hrList {
+  margin-right: 1.25rem;
+  color: $font-color;
+}
+
+.footer__ownerinfoContainer {
+  margin-bottom: 1.25rem;
+}
+
+.hr__lineHeight {
+  margin-bottom: 0.625rem;
+  line-height: 1.4;
+}
+
+.hr__divLine {
+  margin: 0 0.3125rem;
+  color: #555;
+}
+
+.footer__sprite {
+  display: flex;
+  list-style: none;
+  margin-bottom: 1.25rem;
+}
+
+.sprite {
+  margin-right: 0.625rem;
+}
+
+.sprite__youtube,
+.sprite__instagram,
+.sprite__twitter,
+.sprite__facebook {
+  width: 1.5rem;
+  height: 1.5rem;
+  background-size: cover;
+}
+
+.sprite__youtube {
+  background-image: url('/footer/youtube-icon.png');
+}
+
+.sprite__instagram {
+  background-image: url('/footer/instagram-icon.png');
+}
+
+.sprite__twitter {
+  background-image: url('/footer/twitter-icon.png');
+}
+
+.sprite__facebook {
+  background-image: url('/footer/facebook-icon.png');
+}
+
+.footer__copyright {
+  font-size: 0.75rem;
+  color: #555;
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+  body {
+    font-size: 0.875rem;
+  }
+
+  .footer__wrapper {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .footer__noticeLink {
+    margin-bottom: 1rem;
+  }
+
+  .footer__hrContainer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .footer__hrList {
+    margin-bottom: 0.625rem;
+  }
+
+  .footer__ownerinfoContainer {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1919px) {
+  body {
+    font-size: 1rem;
+  }
+
+  .footer__wrapper {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .footer__noticeLink {
+    margin-bottom: 0;
+  }
+
+  .footer__hrContainer {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .footer__hrList {
+    margin-bottom: 0;
+  }
+
+  .footer__ownerinfoContainer {
+    display: block;
+  }
+}
+
+@media (min-width: 1920px) {
+  body {
+    font-size: 1.125rem;
+  }
+
+  .footer__ownerinfoContainer {
+    display: block;
+  }
+}
