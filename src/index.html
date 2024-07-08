@@ -1,16 +1,51 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ko-KR">
-  <head>
-    <title>Vite Scss</title>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script type="module" src="/main.js"></script>
-  </head>
-  <body>
-    <div id="app">
-      hello scss !
-    </div>
-    
-    </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>main banner slide</title>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <link rel="stylesheet" href="./styles/css/main.css">
+    <script src="./components/main_banner_slide/main.js"></script>
+</head>
+<body>
+    <section>
+        <div class="main-banner-container swiper-container">
+            <div class="swiper-wrapper">
+                <div class="main-banner-slide swiper-slide">
+                    <img src="/components/main_banner_slide/img/banner1_img.png" alt="인생 2회차를 사는 판타지 드라마" aria-label="드라마 재벌집 막내아들">
+                    <div class="banner-overlay"></div>
+                </div>
+                <div class="main-banner-slide swiper-slide">
+                    <img src="/components/main_banner_slide/img/banner2_img.png" alt="세기의 결혼... 세기의 전쟁?" aria-label="드라마 눈물의 여왕">
+                    <div class="banner-overlay"></div>
+                </div>
+                <div class="main-banner-slide swiper-slide">
+                    <img src="/components/main_banner_slide/img/banner3_img.png" alt="앞으로 내가 옆에 딱 붙어서 지켜줄게!" aria-label="드라마 선재 업고 튀어">
+                    <div class="banner-overlay"></div>
+                </div>
+                <div class="main-banner-slide swiper-slide">
+                    <img src="/components/main_banner_slide/img/banner4_img.png" alt="짱구 재밌겠다.." aria-label="애니메이션 짱구는 못말려 20기">
+                    <div class="banner-overlay"></div>
+                </div>
+            </div>
+            <button class="swiper-button-prev-custom swiper-button-prev">
+                <img src="/components/main_banner_slide/img/prev_mobile.svg" alt="이전">
+            </button>
+            <button class="swiper-button-next-custom swiper-button-next">
+                <img src="/components/main_banner_slide/img/next_mobile.svg" alt="다음">
+            </button>
+            <div class="main-banner-info">
+                <p class="main-banner-subtext"></p>
+                <button class="main-banner-toggle-btn">
+                    <img id="toggleIcon" src="/components/main_banner_slide/img/pause.svg" alt="Play">
+                </button>
+                <div class="main-banner-pagination swiper-pagination"></div>
+                <a href="/" class="main-banner-more">자세히보기</a>
+            </div>
+            </div>
+    </section>
+
+</body>
 </html>

@@ -1,81 +1,368 @@
-/* reset.scss */
-/* Box sizing rules */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
+@charset "UTF-8";
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap");
+/* Color styles */
+/* Text-size styles */
+/* Effect styles */
+/* screen size */
+/* for personal use*/
+/* 하단에 채워주세용 */
+body {
+  font-family: "Pretendard Variable", Pretendard, sans-serif;
+  font-size: 16px;
 }
 
-/* Remove default padding */
-ul[class],
-ol[class] {
-  padding: 0;
-}
-
-/* Remove default margin */
+/* http://meyerweb.com/eric/tools/css/reset/
+   v5.0.2 | 20191019
+   License: none (public domain)
+*/
+html,
 body,
+div,
+span,
+applet,
+object,
+iframe,
 h1,
 h2,
 h3,
 h4,
+h5,
+h6,
 p,
-ul[class],
-ol[class],
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
 li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
 figure,
 figcaption,
-blockquote,
-dl,
-dd {
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
   margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
 }
 
-/* Set core body defaults */
-body {
-  min-height: 100vh;
-  scroll-behavior: smooth;
-  text-rendering: optimizeSpeed;
-  line-height: 1.5;
-}
-
-/* Remove list styles on ul, ol elements with a class attribute */
-ul[class],
-ol[class] {
-  list-style: none;
-}
-
-/* A elements that don't have a class get default styles */
-a:not([class]) {
-  text-decoration-skip-ink: auto;
-}
-
-/* Make images easier to work with */
-img {
-  max-width: 100%;
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section {
   display: block;
 }
 
-/* Natural flow and rhythm in articles by default */
-article > * + * {
-  margin-top: 1em;
+/* HTML5 hidden-attribute fix for newer browsers */
+*[hidden] {
+  display: none;
 }
 
-/* Inherit fonts for inputs and buttons */
-input,
-button,
-textarea,
-select {
-  font: inherit;
+body {
+  line-height: 1;
 }
 
-/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
+menu,
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.main-banner-container {
+  font-family: "Pretendard variable";
+  width: 100%;
+  height: 8.9rem;
+  position: relative;
+}
+
+.swiper-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  color: rgb(255, 255, 255);
+}
+
+.swiper-button-prev-custom,
+.swiper-button-next-custom {
+  position: absolute;
+  top: 50%;
+  width: 0;
+  cursor: pointer;
+  color: transparent;
+  font-size: 0;
+  background-color: transparent;
+  border: none;
+}
+.swiper-button-prev-custom::after,
+.swiper-button-next-custom::after {
+  display: none;
+}
+
+.swiper-button-prev-custom {
+  left: 0;
+}
+
+.swiper-button-next-custom {
+  right: 0;
+}
+
+.main-banner-info {
+  display: flex;
+  align-items: flex-end;
+  position: absolute;
+  bottom: 0.4rem;
+  width: 100%;
+  justify-content: space-between;
+  color: rgb(255, 255, 255);
+  z-index: 1;
+}
+.main-banner-info .left-section {
+  display: flex;
+  align-items: flex-end;
+}
+.main-banner-info .main-banner-toggle-btn {
+  position: relative;
+  order: -1;
+  margin-right: 10px;
+  background-color: transparent;
+  color: rgb(255, 255, 255);
+  border: none;
+  cursor: pointer;
+  top: -4px;
+  left: 0.75rem;
+  padding: 0;
+  z-index: 1;
+}
+.main-banner-info .main-banner-toggle-btn img {
+  width: 8px;
+  height: 8px;
+}
+.main-banner-info .main-banner-pagination {
+  display: flex;
+  align-items: flex-end;
+  position: absolute;
+  margin-left: 30px;
+}
+.main-banner-info .main-banner-pagination .swiper-pagination-bullet {
+  background-color: rgb(255, 255, 255);
+}
+.main-banner-info .main-banner-pagination .swiper-pagination-bullet-active {
+  background-color: rgb(255, 255, 255);
+}
+.main-banner-info .main-banner-more {
+  position: relative;
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  border-radius: 0.25rem;
+  border: 1px solid rgb(166, 166, 166);
+  padding: 6px;
+  right: 0.75rem;
+  bottom: 0.25rem;
+}
+
+.swiper-slide {
+  position: relative;
+}
+
+.main-banner-subtext {
+  position: absolute;
+  left: 0.75rem;
+  font-size: 0.75rem;
+  padding-bottom: 1.5rem;
+  color: rgb(255, 255, 255);
+}
+
+.main-banner-slide {
+  position: relative;
+}
+
+.slide-content {
+  position: relative;
+}
+
+.banner-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgb(0, 0, 0) 100%);
+}
+
+@media screen and (min-width: 768px) {
+  .main-banner-container {
+    height: 21.375rem;
+  }
+  .main-banner-more {
+    padding: 1.25rem;
+    font-size: 0.75rem;
+  }
+  .swiper-button-prev-custom {
+    left: 1rem;
+  }
+  .swiper-button-next-custom {
+    right: 1rem;
+  }
+  .main-banner-info {
+    height: 7.75rem;
+    bottom: 4.2rem;
+  }
+  .main-banner-info .main-banner-more {
+    width: 8rem;
+    text-align: center;
+    padding: 1rem 0rem;
+    right: 2.5rem;
+    bottom: 0.25rem;
+  }
+  .main-banner-info .main-banner-toggle-btn {
+    left: 2.5rem;
+  }
+  .main-banner-info .main-banner-toggle-btn img {
+    width: 10px;
+    height: 10px;
+  }
+  .main-banner-subtext {
+    font-size: 1rem;
+    left: 2.5rem;
+  }
+  .main-banner-info .main-banner-pagination {
+    margin-left: 3.63rem;
+  }
+  .banner-overlay {
+    height: 10rem;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgb(0, 0, 0) 100%);
   }
 }
-
-/*# sourceMappingURL=main.css.map */
+@media screen and (min-width: 1440px) {
+  .main-banner-container {
+    height: 53.4375rem;
+  }
+  .main-banner-more {
+    padding: 1.25rem;
+    font-size: 0.75rem;
+  }
+  .swiper-button-prev-custom {
+    left: 2rem;
+  }
+  .swiper-button-next-custom {
+    right: 2rem;
+  }
+  .main-banner-info {
+    height: 5.19rem;
+    bottom: 10.75rem;
+  }
+  .main-banner-info .main-banner-more {
+    width: 13rem;
+    font-size: 1.3rem;
+    text-align: center;
+    padding: 1.5rem 0rem;
+    right: 4.38rem;
+    bottom: 0.25rem;
+  }
+  .main-banner-info .main-banner-toggle-btn {
+    left: 4.38rem;
+  }
+  .main-banner-info .main-banner-toggle-btn img {
+    width: 12px;
+    height: 12px;
+  }
+  .main-banner-subtext {
+    font-size: 1.77rem;
+    left: 4.38rem;
+    bottom: 1rem;
+  }
+  .main-banner-info .main-banner-pagination {
+    margin-left: 5.5rem;
+  }
+  .banner-overlay {
+    height: 20rem;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgb(0, 0, 0) 100%);
+  }
+}
