@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+
+    <script type="module" src="/components/contentSlider/quick/quick.js"></script>
+    <link rel="stylesheet" href="/styles/css/main.css" />
+    <title>Document</title>
+  </head>
+  <body>
+  
+    <div id="app">
+      <section class="quick-lists">
+        <h3>Quick VOD</h3>
+        <div class="quick-lists__slider">
+          <div class="swiper slider-horizontal">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <a href="">
+                  <picture>
+                    <source src="/assets/poster/뉴스룸.png" media="(max-width:768px)">
+                    <source srcset="/assets/poster/뉴스룸@2x.png" media="(max-width:1920px)">
+                    <img src="/assets/poster/뉴스룸@3x.png" alt="JTBC 뉴스룸 포스터">
+                  </picture>
+                  <p class="title">JTBC 뉴스룸</p>
+                  <p class="info">0화</p>
+                  <span class="quick-vod"></span>
+                </a>
+              </div>
+              <div class="swiper-slide">
+                <a href="">
+                  <picture>
+                    <source srcset="/assets/poster/나는살기로했다.png" media="(max-width:768px)">
+                    <source srcset="/assets/poster/나는살기로했다@2x.png" media="(max-width:1920px)">
+                    <img src="/assets/poster/나는살기로했다@3x.png" alt="휴먼다큐 나는 살기로 했다 포스터">
+                  </picture>
+                  <p class="title">휴먼다큐 &lt;나는 살기로 했다&gt;</p>
+                  <p class="info">10화</p>
+                  <span class="quick-vod"></span>
+                </a>
+              </div>
+              <div class="swiper-slide">
+                <a href="">
+                  <picture>
+                    <source srcset="/assets/poster/건강면세점.png" media="(max-width:768px)">
+                    <source srcset="/assets/poster/건강면세점@2x.png" media="(max-width:1920px)">
+                    <img src="/assets/poster/건강면세점@3x.png" alt="건강면세점 포스터">
+                  </picture>
+                  <p class="title">건강면세점</p>
+                  <p class="info">130화</p>
+                  <span class="quick-vod"></span>
+                </a>
+              </div>
+              <div class="swiper-slide">
+                <a href="">
+                  <picture>
+                    <source srcset="/assets/poster/차이나는클라스.png" media="(max-width:768px)">
+                    <source srcset="/assets/poster/차이나는클라스@2x.png" media="(max-width:1920px)">
+                    <img src="/assets/poster/차이나는클라스@3x.png" alt="차이나는 클라스 포스터">
+                  </picture>
+                  <p class="title">차이나는 클라스 </p>
+                  <p class="info">254화</p>
+                  <span class="quick-vod"></span>
+                </a>
+              </div>
+              <div class="swiper-slide">
+                <a href="">
+                  <picture>
+                    <source srcset="/assets/poster/알맹이.png" media="(max-width:768px)">
+                    <source srcset="/assets/poster/알맹이@2x.png" media="(max-width:1920px)">
+                    <img src="/assets/poster/알맹이@3x.png" alt="알맹이 포스터">
+                  </picture>
+                  <p class="title">알맹이</p>
+                  <p class="info">208화</p>
+                  <span class="quick-vod"></span>
+                </a>
+              </div>
+              <div class="swiper-slide">
+                <a href="">
+                  <picture>
+                    <source srcset="/assets/poster/엄마의봄날.png" media="(max-width:768px)">
+                    <source srcset="/assets/poster/엄마의봄날@2x.png" media="(max-width:1920px)">
+                    <img src="/assets/poster/엄마의봄날@3x.png" alt="엄마의 봄날 포스터">
+                  </picture>
+                  <p class="title">엄마의 봄날</p>
+                  <p class="info">380화</p>
+                  <span class="quick-vod"></span>
+                </a>
+              </div>
+            </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+  </body>
+</html>
