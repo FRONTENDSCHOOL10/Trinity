@@ -29,9 +29,9 @@ export default defineConfig({
     preprocessorOptions: {
       scss: {
         // SCSS 변수 파일을 모든 SCSS 파일에 자동으로 포함
-        additionalData: `
-          @import "@/styles/scss/main.scss";
-        `,
+        // additionalData: `
+        //   @import "@/styles/scss/main.scss";
+        // `,
       },
       modules: {
         scopeBehaviour: 'local', // CSS Modules를 사용하여 CSS의 범위를 모듈 단위로 제한
