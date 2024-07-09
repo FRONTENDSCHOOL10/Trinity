@@ -320,7 +320,7 @@ table {
     background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgb(0, 0, 0) 100%);
   }
 }
-@media screen and (min-width: 1440px) {
+@media screen and (min-width: 1920px) {
   .main-banner-container {
     height: 53.4375rem;
   }

@@ -1,0 +1,274 @@
+body {
+    background-color: $--gray-500;
+}
+
+// Box Size
+$--mobile-icon-size: 1.125rem;
+$--tablet-icon-size: 1.5rem;
+$--desktop-icon-size: 2.5rem;
+
+
+// Size (width, inline-size, height, block-size)
+@mixin inline-size($value){
+    width: $value;
+    inline-size: $value;
+}
+
+@mixin block-size($value){
+height: $value;
+block-size: $value;
+}
+
+@mixin size($width, $height:null){
+    @include inline-size($width);
+    @if $height != null {
+        @include block-size($height);
+    }
+}
+
+// Background
+@mixin background-image($url:url(""),$repeat:no-repeat ,$position:center ,$size:cover ){
+    background-image: $url;
+    background-repeat: $repeat;
+    background-position: $position;
+    background-size: $size;
+}
+
+
+// Flex Box
+@mixin flexbox($direction:row, $wrap:nowrap, $justify:null, $items:null, $gap:null){
+    display: flex;
+    flex-direction: $direction;
+    flex-wrap: $wrap;
+    justify-content: $justify;
+    align-items: $items;
+    gap: $gap;
+}
+
+// Position
+@mixin position($position, $offsets: 0) {
+position: $position;
+@if length($offsets) == 1 {
+    top: nth($offsets, 1);
+    right: nth($offsets, 1);
+    bottom: nth($offsets, 1);
+    left: nth($offsets, 1);
+} @else if length($offsets) == 2 {
+    top: nth($offsets, 1);
+    right: nth($offsets, 2);
+    bottom: nth($offsets, 1);
+    left: nth($offsets, 2);
+} @else if length($offsets) == 3 {
+    top: nth($offsets, 1);
+    right: nth($offsets, 2);
+    bottom: nth($offsets, 3);
+    left: nth($offsets, 2);
+} @else if length($offsets) >= 4 {
+    top: nth($offsets, 1);
+    right: nth($offsets, 2);
+    bottom: nth($offsets, 3);
+    left: nth($offsets, 4);
+}
+}
+
+
+
+// 숨김 콘텐츠
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    clip: rect(0,0,0,0);
+    clip-path: polygon(0 0, 0 0, 0 0);
+    overflow: hidden;
+    padding: 0;
+    white-space: nowrap;
+    border-width: 0;
+}
+
+// header 레이아웃
+
+.header{
+    background: linear-gradient(to bottom, rgba(0,0,0,0.7) 0%,rgba(0,0,0,0) 100%);
+    padding: .5rem 1rem;
+    
+    @include flexbox(row, nowrap, null , center, null );
+    @include position(fixed, 0 0 auto 0);
+    z-index: 9999;
+    
+    &__logo {
+        @include background-image(url("/assets/header/TAING_logo.svg"));
+        min-width: 2.875rem;
+        min-height: .9375rem;
+        margin-right: 1.75rem;
+    }
+    
+    &__nav {
+        width: 100%;
+        @include flexbox(row, nowrap, space-between , center, null );
+        
+        &__program {
+            display: none;
+            
+            &__item {
+                align-items: center;
+                line-height: 1.5;
+                & a {
+                    @include flexbox(row, nowrap, null , center, null );
+                    text-decoration: none;
+                    color: $--gray-200;
+                    font-size: $--label-small;
+
+                    &:hover {
+                        color: $--white;
+                    }
+                }
+
+                &--live {
+                    
+                    &__img {
+                        @include size(1.25rem, 1.25rem);
+                        @include background-image(url("/assets/header/live_default.svg"));
+                        margin-right: 0.25rem;
+
+                        &:hover {
+                            @include background-image(url("/assets/header/live_hover.svg"));
+                        }
+                    }
+
+                    
+                }
+            
+                &--paramount {
+                    &__img {
+                        @include size(4.0625rem, 1.25rem);
+                        @include background-image(url("/assets/header/paramount_default.svg"));
+
+                        &:hover {
+                            @include background-image(url("/assets/header/paramount_hover.svg"));
+                        }
+                    }
+
+                }
+            }
+        } 
+    }
+
+    &__aside {
+        @include flexbox($gap:1rem);
+        margin-left: auto;
+        
+        &__button {
+            background: none;
+            border: none;
+            padding: 0;
+            margin: 0;
+
+            &--search {
+                @include size($--mobile-icon-size, $--mobile-icon-size);
+                @include background-image(url("/assets/header/search_default.svg"));
+
+                &:hover {
+                    @include background-image(url("/assets/header/search_hover.svg"));
+                    cursor: pointer;
+                }
+            }
+
+            &--profile {
+                @include size(1.125rem, 1.125rem);
+                @include background-image(url("/assets/header/mobile_profile.png"));
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+
+@media (min-width:$--tablet) and (max-width:($--desktop - 1)){
+    .header {
+        padding: 1rem 2.5rem;
+        font-size: $--heading-large;
+
+        &__logo {
+            min-width: 4.8125rem;
+            min-height: 1.5rem;
+            margin-right: 1.75rem;
+        }
+
+        &__nav {
+            &__program {
+                @include flexbox($gap:1.75rem);
+                justify-content: left;
+                align-items: center;
+            }
+        }
+
+        &__aside {
+            gap: 1.5rem;
+
+            &__button {
+                &--search {
+                    @include size($--tablet-icon-size, $--tablet-icon-size);
+                }
+
+                &--profile {
+                    @include size($--tablet-icon-size, $--tablet-icon-size);
+                    @include background-image(url("/assets/header/tablet_profile.png"));
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: $--desktop){
+    .header {
+        padding: 1.8125rem 4.375rem;
+
+        &__logo {
+            min-width: 8.25rem;
+            min-height: 2.625rem;
+            margin-right: 3.25rem;
+        }
+
+        &__nav{
+            &__program {
+                @include flexbox($gap:3.25rem);
+                
+                &__item {
+                    & a {
+                        font-size: $--label-large;
+                    }
+
+                    &--live {
+                        &__img {
+                            @include size(2.125rem, 2.125rem);
+                            margin-right: .625rem;
+                        }
+                    }
+
+                    &--paramount {
+                        &__img {
+                            @include size(6.9056rem, 1.5938rem);
+                        }
+                    }
+                }
+            }
+        }
+
+        &__aside {
+            gap: 3.25rem;
+
+            &__button {
+                &--search {
+                    @include size($--desktop-icon-size, $--desktop-icon-size);
+                }
+
+                &--profile {
+                    @include size($--desktop-icon-size, $--desktop-icon-size);
+                }
+            }
+        }
+    }
+}
