@@ -1,4 +1,4 @@
-var live_swiper = new Swiper('.slider-horizontal', {
+var event_swiper = new Swiper('.slider-horizontal', {
   slidesPerView: 2,
   slidesPerGroup: 2,
   centeredSlides: false,
