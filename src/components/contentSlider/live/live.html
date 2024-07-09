@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+
+    <script type="module" src="/components/contentSlider/live/live.js"></script>
+    <link rel="stylesheet" href="/styles/css/main.css" />
+    <title>Document</title>
+  </head>
+  <body>
+  
+    <div id="app">
+      <section class="live-lists">
+        <h3>인기 LIVE 채널</h3>
+        <div class="live-lists__slider">
+          <div class="swiper slider-horizontal">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <a href="">
+                  <picture>
+                    <source src="/assets/poster/JTBC.png" media="(max-width:768px)">
+                    <source srcset="/assets/poster/JTBC@2x.png" media="(max-width:1920px)">
+                    <img src="/assets/poster/JTBC@3x.png" alt="JTBC 방송화면">
+                  </picture>
+                  <span class="rank">1</span>
+                  <p class="title">JTBC</p>
+                  <p class="info">뉴스룸</p>
+                  <p class="sub-info">27.9%</p>
+                </a>
+              </div>
+              <div class="swiper-slide">
+                <a href="">
+                  <picture>
+                    <source srcset="/assets/poster/tvN.png" media="(max-width:768px)">
+                    <source srcset="/assets/poster/tvN@2x.png" media="(max-width:1920px)">
+                    <img src="/assets/poster/tvN@3x.png" alt="tvN 방송화면">
+                  </picture>
+                  <span class="rank">2</span>
+                  <p class="title">tvN</p>
+                  <p class="info">줄 서는 식당 43회</p>
+                  <p class="sub-info">26.3%</p>
+                </a>
+              </div>
+              <div class="swiper-slide">
+                <a href="">
+                  <picture>
+                    <source srcset="/assets/poster/YTN.png" media="(max-width:768px)">
+                    <source srcset="/assets/poster/YTN@2x.png" media="(max-width:1920px)">
+                    <img src="/assets/poster/YTN@3x.png" alt="YTN 방송화면">
+                  </picture>
+                  <span class="rank">3</span>
+                  <p class="title">YTN</p>
+                  <p class="info">뉴스가 있는 저녁</p>
+                  <p class="sub-info">9%</p>
+                </a>
+              </div>
+              <div class="swiper-slide">
+                <a href="">
+                  <picture>
+                    <source srcset="/assets/poster/JTBC2.png" media="(max-width:768px)">
+                    <source srcset="/assets/poster/JTBC2@2x.png" media="(max-width:1920px)">
+                    <img src="/assets/poster/JTBC2@3x.png" alt="JTBC2 방송화면">
+                  </picture>
+                  <span class="rank">4</span>
+                  <p class="title">JTBC2 </p>
+                  <p class="info">재벌집 막내아들 5화</p>
+                  <p class="sub-info">6.2%</p>
+                </a>
+              </div>
+              <div class="swiper-slide">
+                <a href="">
+                  <picture>
+                    <source srcset="/assets/poster/연합뉴스TV.png" media="(max-width:768px)">
+                    <source srcset="/assets/poster/연합뉴스TV@2x.png" media="(max-width:1920px)">
+                    <img src="/assets/poster/연합뉴스TV@3x.png" alt="연합뉴스 TV 방송화면">
+                  </picture>
+                  <span class="rank">5</span>
+                  <p class="title">연합뉴스 TV</p>
+                  <p class="info">뉴스프라임</p>
+                  <p class="sub-info">4.6%</p>
+                </a>
+              </div>
+              <div class="swiper-slide">
+                <a href="">
+                  <picture>
+                    <source srcset="/assets/poster/ANIMAX.png" media="(max-width:768px)">
+                    <source srcset="/assets/poster/ANIMAX@2x.png" media="(max-width:1920px)">
+                    <img src="/assets/poster/ANIMAX@3x.png" alt="애니맥스 방송화면">
+                  </picture>
+                  <span class="rank">6</span>
+                  <p class="title">애니맥스</p>
+                  <p class="info">명탐정코난9(자막) 33화</p>
+                  <p class="sub-info">4.3%</p>
+                </a>
+              </div>
+            </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+  </body>
+</html>

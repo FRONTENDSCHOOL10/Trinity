@@ -1,3 +1,4 @@
-@import './utils/global';
 @import './utils/reset';
-@import './layout/main_banner_slide'
+@import './utils/global';
+@import './modules/contentSlider.scss';
+@import './layout/header.scss';

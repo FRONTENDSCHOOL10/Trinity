@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "eslint": "^9.6.0",
+    "kind-tiger": "^1.0.1",
     "prettier": "^3.3.2"
   }
 }
