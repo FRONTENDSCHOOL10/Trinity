@@ -1,0 +1,30 @@
+
+$--space-xs: 0.5rem;
+$--space-m: 1rem;
+$--space-lg: 1.75rem;
+$--space-xl: 2.25rem;
+$--space-xxl: 2.5rem;
+$--space-xxxl: 4.375rem;
+$--poster-border-radius: 0.25rem;
+
+@mixin bannerSize($sideMargin) {
+  width: calc(100% - 2* $sideMargin);
+}
+
+.ad-banner {
+  img {
+    border-radius: $--poster-border-radius;
+    margin: $--space-m $--space-xs;
+    @include bannerSize($--space-xs);
+
+    @media (min-width: $--tablet) and (max-width: ($--desktop - 1)) {
+      margin: $--space-lg $--space-xxl;
+      @include bannerSize($--space-xxl);
+    }
+  
+    @media (min-width: $--desktop) {
+      margin: $--space-xl $--space-xxxl;
+      @include bannerSize($--space-xxxl);
+    }
+  }
+}

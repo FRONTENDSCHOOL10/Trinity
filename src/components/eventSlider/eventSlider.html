@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+
+    <script type="module" src="/components/eventSlider/eventSlider.js"></script>
+    <link rel="stylesheet" href="/styles/scss/main.scss" />
+    <title>Document</title>
+  </head>
+  <body>
+  
+    <div id="app">
+      <section class="event-lists">
+        <h3>이벤트</h3>
+        <div class="event-lists__slider">
+          <div class="swiper slider-horizontal">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <a href="">
+                  <picture>
+                    <source srcset="/assets/event/신비아파트.png" media="(max-width:768px)">
+                    <source srcset="/assets/event/신비아파트@2x.png" media="(max-width:1920px)">
+                    <img src="/assets/event/신비아파트@3x.png" alt="신비아파트 이벤트 배너">
+                  </picture>
+                </a>
+              </div>
+              <div class="swiper-slide">
+                <a href="">
+                  <picture>
+                    <source srcset="/assets/event/재벌집막내아들.png" media="(max-width:768px)">
+                    <source srcset="/assets/event/재벌집막내아들@2x.png" media="(max-width:1920px)">
+                    <img src="/assets/event/재벌집막내아들@3x.png" alt="재벌집 막내아들 이벤트 배너">
+                  </picture>
+                </a>
+              </div>
+              <div class="swiper-slide">
+                <a href="">
+                  <picture>
+                    <source srcset="/assets/event/환승연애.png" media="(max-width:768px)">
+                    <source srcset="/assets/event/환승연애@2x.png" media="(max-width:1920px)">
+                    <img src="/assets/event/환승연애@3x.png" alt="환승연애 이벤트 배너">
+                  </picture>
+                </a>
+              </div>
+              <div class="swiper-slide">
+                <a href="">
+                  <picture>
+                    <source srcset="/assets/event/슈룹.png" media="(max-width:768px)">
+                    <source srcset="/assets/event/슈룹@2x.png" media="(max-width:1920px)">
+                    <img src="/assets/event/슈룹@3x.png" alt="슈룹 이벤트 배너">
+                  </picture>
+                </a>
+              </div>
+              <div class="swiper-slide">
+                <a href="">
+                  <picture>
+                    <source srcset="/assets/event/디저트메이커.png" media="(max-width:768px)">
+                    <source srcset="/assets/event/디저트메이커@2x.png" media="(max-width:1920px)">
+                    <img src="/assets/event/디저트메이커@3x.png" alt="디저트 메이커 이벤트 배너">
+                  </picture>
+                </a>
+              </div>
+              <div class="swiper-slide">
+                <a href="">
+                  <picture>
+                    <source srcset="/assets/event/렛미인.png" media="(max-width:768px)">
+                    <source srcset="/assets/event/렛미인@2x.png" media="(max-width:1920px)">
+                    <img src="/assets/event/렛미인@3x.png" alt="렛미인 이벤트 배너">
+                  </picture>
+                </a>
+              </div>
+            </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+  </body>
+</html>
