@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+  </head>
+  <body>
+
+    <form action="#" method="post" class="login-form">
+      <!-- 아이디 입력 란 -->
+      <div class="form-group">
+        <label for="user-id" class="hidden">아이디(이메일)</label>
+        <input
+          type="email"
+          id="user-id"
+          name="user-id"
+          required
+          placeholder="아이디(이메일)"
+        />
+      </div>
+      <!-- 비밀번호 입력 란 -->
+      <div class="form-group">
+        <label for="password" class="hidden">비밀번호</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          required
+          placeholder="비밀번호"
+        />
+      </div>
+      <!-- 로그인 버튼 -->
+      <div class="login-button">
+        <label for="login-button" class="hidden">로그인 버튼</label>
+        <button type="submit" id="login-button">로그인</button>
+      </div>
+
+      <!-- 옵션 블록 -->
+      <div class="options">
+        <!-- 로그인 상태 체크박스 -->
+        <div class="form-checkbox">
+          <label for="keep-logged-in" class="checkbox-content">
+            <input
+              type="checkbox"
+              id="keep-logged-in"
+              name="keep-logged-in"
+              tabindex="0"
+            />
+            <span class="custom-checkbox"></span>
+            로그인 상태 유지
+          </label>
+        </div>
+
+        <!-- ip보안 토글 -->
+        <!-- 피드백 후 수정된 코드 -->
+          <div class="ip-security">
+            <label for="ip-toggle-checkbox" class="checkbox-content">
+              <a href="/naver/ip_security.html" target="_blank" class="ip-security">IP 보안</a>
+              <input type="checkbox" id="ip-toggle-checkbox" name="ip-toggle-checkbox" class="sr-only" aria-label="IP보안 토글" role="switch" tabindex="0" />
+              <span class="ip-toggle"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </form>
+  </body>
+</html>
+
+
