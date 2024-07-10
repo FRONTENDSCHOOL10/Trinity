@@ -68,7 +68,7 @@
           height: 16%;
           left: 2%;
           top: 2%;
-          background-image:url('/assets/poster/quickVod.svg');
+          background-image:url('/src/assets/icon/quickVod.svg');
           background-repeat: no-repeat;
           background-position: center center;
           background-size: contain;
@@ -171,12 +171,12 @@
   
         .swiper-button-prev {
           left: -($--space-xxl);
-          @include swiperPrevButtonBackground('/assets/icon_slide_left.svg');
+          @include swiperPrevButtonBackground('/src/assets/icon/slidePrev.svg');
         }
   
         .swiper-button-next {
           right: -($--space-xxl);
-          @include swiperNextButtonBackground('/assets/icon_slide_right.svg');
+          @include swiperNextButtonBackground('/src/assets/icon/slideNext.svg');
         }
   
         .swiper-button-disabled {
@@ -247,12 +247,12 @@
     
         .swiper-button-prev {
           left: -($--space-xxxl);
-          @include swiperPrevButtonBackground('/assets/icon_slide_left.svg');
+          @include swiperPrevButtonBackground('/src/assets/icon/slidePrev.svg');
         }
     
         .swiper-button-next {
           right: -($--space-xxxl);
-          @include swiperNextButtonBackground('/assets/icon_slide_right.svg');
+          @include swiperNextButtonBackground('/src/assets/icon/slideNext.svg');
         }
     
         .swiper-button-disabled {
