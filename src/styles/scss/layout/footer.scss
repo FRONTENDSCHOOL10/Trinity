@@ -1,0 +1,444 @@
+// 숨김 콘텐츠
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  clip: rect(0, 0, 0, 0);
+  clip-path: polygon(0 0, 0 0, 0 0);
+  overflow: hidden;
+  padding: 0;
+  white-space: nowrap;
+  border-width: 0;
+}
+
+// media-query.scss
+$--mobile: 320px;
+$--tablet: 768px;
+$--desktop: 1920px;
+
+// Mixins
+
+@mixin mobileW {
+  // @media (min-width: $--mobile) and (max-width: ($--tablet - 1)) {
+  @media (max-width: ($--tablet - 1)) {
+    @content;
+  }
+}
+
+@mixin tabletW {
+  @media (min-width: $--tablet) and (max-width: ($--desktop)) {
+    @content;
+  }
+}
+
+@mixin desktopW {
+  @media (min-width: $--desktop) {
+    @content;
+  }
+}
+
+@mixin inline-size($value) {
+  width: $value;
+  inline-size: $value;
+}
+
+@mixin block-size($value) {
+  height: $value;
+  block-size: $value;
+}
+
+@mixin size($width, $height: null) {
+  @include inline-size($width);
+  @if $height != null {
+    @include block-size($height);
+  }
+}
+
+@mixin background-image($url: url(''), $repeat: no-repeat, $position: center, $size: cover) {
+  background-image: $url;
+  background-repeat: $repeat;
+  background-position: $position;
+  background-size: $size;
+}
+
+@mixin flexbox($direction: row, $wrap: nowrap, $justify: null, $items: null, $gap: null) {
+  display: flex;
+  flex-direction: $direction;
+  flex-wrap: $wrap;
+  justify-content: $justify;
+  align-items: $items;
+  gap: $gap;
+}
+
+@mixin position($position, $offsets: 0) {
+  position: $position;
+  @if length($offsets) == 1 {
+    top: nth($offsets, 1);
+    right: nth($offsets, 1);
+    bottom: nth($offsets, 1);
+    left: nth($offsets, 1);
+  } @else if length($offsets) == 2 {
+    top: nth($offsets, 1);
+    right: nth($offsets, 2);
+    bottom: nth($offsets, 1);
+    left: nth($offsets, 2);
+  } @else if length($offsets) == 3 {
+    top: nth($offsets, 1);
+    right: nth($offsets, 2);
+    bottom: nth($offsets, 3);
+    left: nth($offsets, 2);
+  } @else if length($offsets) >= 4 {
+    top: nth($offsets, 1);
+    right: nth($offsets, 2);
+    bottom: nth($offsets, 3);
+    left: nth($offsets, 4);
+  }
+}
+
+html,
+body,
+.shortcut__btn {
+  @include mobileW {
+    font-size: $--paragraph-small;
+  }
+
+  @include tabletW() {
+    font-size: $--paragraph-small;
+  }
+
+  @include desktopW {
+    font-size: $--paragraph-large;
+  }
+}
+
+// footer
+
+// 1. 모바일 환경 기준
+
+.footer {
+  background: $--black;
+  color: $--white;
+  padding: 1rem;
+  min-width: $--mobile;
+  margin-bottom: 5.12rem;
+
+  &__wrapper {
+    @include mobileW {
+      font: $--paragraph-small;
+    }
+
+    @include tabletW {
+      font: $--paragraph-small;
+    }
+
+    @include desktopW {
+      font: $--paragraph-large;
+    }
+    max-width: 100vh;
+    margin: 0 auto;
+
+    &__upper {
+      @include flexbox(row, nowrap, space-between, center, null);
+
+      padding: 10px 0;
+
+      color: $--gray-200;
+
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid $--gray-800;
+
+      .footer__noticeLink {
+        @include flexbox(row, nowrap, null, stretch, null);
+
+        a {
+          color: $--gray-500;
+          margin-right: 0.25rem;
+          text-decoration: none;
+          // margin-bottom: 0.25rem;
+        }
+
+        .footer__information {
+          color: $--gray-200;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+
+  // 바로가기 모음
+  &__shortcut {
+    @include mobileW {
+      display: none;
+      font-size: $--paragraph-small;
+    }
+
+    @include tabletW {
+      @include flexbox(row, nowrap, null, center, null);
+      font-size: $--paragraph-small;
+    }
+    @include desktopW {
+      @include flexbox(row, nowrap, null, center, null);
+      font-size: $--paragraph-large;
+    }
+
+    .shortcut {
+      white-space: nowrap;
+      position: relative;
+
+      &__btn {
+        background: none;
+        border: none;
+        color: $--gray-200;
+        cursor: pointer;
+        margin-left: 0.5rem;
+      }
+
+      &__bar {
+        font-size: 120%;
+      }
+
+      &__plus {
+        margin-left: 0.5rem;
+        margin-right: 0.3rem;
+      }
+
+      &__group {
+        display: none;
+        position: absolute;
+        top: -160px;
+        left: 7px;
+
+        height: 100%;
+        background-color: $--gray-800;
+        list-style: none;
+        border: 1px solid $--gray-600;
+        border-radius: 0.125rem;
+
+        li {
+          padding: 0.5rem 0.625rem;
+
+          a {
+            color: $--gray-200;
+            text-decoration: none;
+          }
+        }
+
+        li:hover {
+          background-color: $--gray-700;
+
+          a {
+            color: $--white;
+          }
+        }
+
+        // 클릭 시 나타나는 바로가기 항목들
+        &.is--active {
+          display: flex;
+          flex-direction: column;
+          height: 150px;
+          overflow-y: auto;
+          z-index: 1000;
+
+          // 스크롤바 꾸미기
+          &::-webkit-scrollbar {
+            width: 0.5rem; /* 스크롤바 너비 */
+          }
+
+          &::-webkit-scrollbar-track {
+            background: $--gray-900; /* 스크롤바 트랙 배경색 */
+            border-radius: 0.625rem;
+          }
+
+          &::-webkit-scrollbar-thumb {
+            background-color: $--gray-600; /* 스크롤바 손잡이 색상 */
+            border-radius: 0.625rem; /* 스크롤바 손잡이 모서리 둥글게 */
+            border: 2px solid $--gray-800; /* 스크롤바 손잡이 테두리 */
+          }
+
+          &::-webkit-scrollbar-thumb:hover {
+            background-color: $--gray-400; /* 스크롤바 손잡이 호버 시 색상 */
+          }
+
+          &::-webkit-scrollbar-corner {
+            background: $--gray-800; /* 스크롤바 모서리 색상 */
+          }
+        }
+      }
+
+      &.active .shortcut__group {
+        display: block;
+      }
+    }
+  }
+
+  //링크 목록
+  &__hrContainer {
+    @include mobileW {
+      @include flexbox(column, nowrap, start, null, null);
+    }
+
+    @include tabletW {
+      @include flexbox(row, nowrap, start, null, null);
+    }
+
+    @include desktopW {
+      @include flexbox(row, nowrap, start, null, null);
+    }
+    list-style: none;
+    padding: 0.625rem 0;
+  }
+
+  // 링크 리스트
+  &__hrList {
+    margin-top: 0.75rem;
+    margin-right: 0.75rem;
+    display: inline-block;
+    text-decoration: none;
+    color: $--gray-200;
+  }
+
+  // 회사정보 표기
+  &__ownerinfoContainer {
+    @include mobileW {
+      display: none;
+    }
+
+    @include tabletW {
+      display: inline-block;
+      font-size: $--paragraph-small;
+      text-decoration: none;
+    }
+
+    @include desktopW {
+      display: inline-block;
+      font-size: $--paragraph-large;
+    }
+
+    p {
+      margin: 0.3125rem 0;
+      color: $--gray-500;
+    }
+
+    .hr__lineHeight {
+      line-height: 1.5;
+
+      a {
+        color: $--gray-500;
+      }
+    }
+
+    .hr__divLine {
+      margin: 0 0.3125rem;
+    }
+  }
+
+  &__icon {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+
+    .youtube {
+      @include mobileW() {
+        display: inline-block;
+        width: 1.5rem;
+        height: 1.5rem;
+      }
+
+      @include tabletW() {
+        display: inline-block;
+        width: 1.875rem;
+        height: 1.875rem;
+      }
+      @include desktopW() {
+        gap: 1.25rem;
+        display: inline-block;
+        width: 3.25rem;
+        height: 3.25rem;
+      }
+
+      @include background-image(url('/src/assets/footer/icon_Youtube.svg'));
+    }
+    .instagram {
+      @include mobileW() {
+        display: inline-block;
+        width: 1.5rem;
+        height: 1.5rem;
+      }
+
+      @include tabletW() {
+        display: inline-block;
+        width: 1.875rem;
+        height: 1.875rem;
+      }
+      @include desktopW() {
+        gap: 1.25rem;
+        display: inline-block;
+        width: 3.25rem;
+        height: 3.25rem;
+      }
+
+      @include background-image(url('/src/assets/footer/icon_Instagram.svg'));
+    }
+    .twitter {
+      @include mobileW() {
+        display: inline-block;
+        width: 1.5rem;
+        height: 1.5rem;
+      }
+
+      @include tabletW() {
+        display: inline-block;
+        width: 1.875rem;
+        height: 1.875rem;
+      }
+      @include desktopW() {
+        gap: 1.25rem;
+        display: inline-block;
+        width: 3.25rem;
+        height: 3.25rem;
+      }
+
+      @include background-image(url('/src/assets/footer/icon_Twitter.svg'));
+    }
+    .facebook {
+      @include mobileW() {
+        display: inline-block;
+        width: 1.5rem;
+        height: 1.5rem;
+      }
+
+      @include tabletW() {
+        display: inline-block;
+        width: 1.875rem;
+        height: 1.875rem;
+      }
+      @include desktopW() {
+        gap: 1.25rem;
+        display: inline-block;
+        width: 3.25rem;
+        height: 3.25rem;
+      }
+
+      @include background-image(url('/src/assets/footer/icon_Facebook.svg'));
+    }
+  }
+
+  &__copyright {
+    // text-align: center;
+    padding: 0.625rem 0;
+    color: $--gray-500;
+    @include mobileW {
+      font-size: $--paragraph-small;
+    }
+
+    @include tabletW {
+      font-size: $--paragraph-small;
+    }
+
+    @include desktopW {
+      font-size: $--paragraph-large;
+    }
+  }
+}
