@@ -36,23 +36,4 @@ document.addEventListener('DOMContentLoaded', () => {
       toggleIcon.src = '/src/assets/icon/slidePlay.svg';
     }
   });
-
-  const updateButtonImages = () => {
-    const prevButton = document.querySelector('.swiper-button-prev img');
-    const nextButton = document.querySelector('.swiper-button-next img');
-
-    if (window.innerWidth <= 768) {
-      prevButton.src = '/src/assets/icon/slidePrevMobile.svg';
-      nextButton.src = '/src/assets/icon/slideNextMobile.svg';
-    } else if (window.innerWidth > 768 && window.innerWidth < 1440) {
-      prevButton.src = '/src/assets/icon/slidePrevTablet.svg';
-      nextButton.src = '/src/assets/icon/slideNextTablet.svg';
-    } else {
-      prevButton.src = '/src/assets/icon/slidePrevDesktop.svg';
-      nextButton.src = '/src/assets/icon/slideNextDesktop.svg';
-    }
-  };
-
-  updateButtonImages();
-  window.addEventListener('resize', updateButtonImages);
 });

@@ -28,9 +28,9 @@
     .swiper-button-next-custom {
         position: absolute;
         top: 50%;
-        // width: 0;
+        width: 0;
         cursor: pointer;
-        // color: transparent;
+        color: transparent;
         font-size: 0;
         background-color: transparent;
         border: none;
@@ -38,14 +38,18 @@
         &::after {
             display: none;
         }
+
+        img {
+            width: 1.5rem;
+        }
     }
     
     .swiper-button-prev-custom {
-        left: 0;
+        left: 0.5rem;
     }
     
     .swiper-button-next-custom {
-        right: 0;
+        right: 0.5rem;
     }
     
     .main-banner-info {
@@ -142,13 +146,20 @@
             padding: 1.25rem;
             font-size: $--label-small;
         }
-    
+
+        .swiper-button-prev-custom,
+        .swiper-button-next-custom {
+            img {
+                width: 2.5rem;
+            }
+        }
+        
         .swiper-button-prev-custom {
-            left: 1rem;
+            left: 1.5rem;
         }
     
         .swiper-button-next-custom {
-            right: 1rem;
+            right: 1.5rem;
         }
     
         .main-banner-info {
@@ -197,7 +208,14 @@
             padding: 1.25rem;
             font-size: $--label-small;
         }
-    
+
+        .swiper-button-prev-custom,
+        .swiper-button-next-custom {
+            img {
+                width: 3rem;
+            }
+        }
+
         .swiper-button-prev-custom {
             left: 2rem;
         }
