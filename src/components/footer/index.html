@@ -10,10 +10,12 @@
   </head>
   <body>
     <footer class="footer">
+      <h2 class="sr-only">푸터</h2>
       <!-- footer 내용 전체를 감싸는 wrapper -->
       <div class="footer__wrapper">
         <!-- footer 상단 공지 부분 감싸는 wrapper -->
-        <div class="footer__wrapper__upper type-simple">
+        <!-- 이 div에 type-simple을 추가하면 simple type으로 지정되어 공지사항 및 바로가기 창 사라짐 -->
+        <div class="footer__wrapper__upper">
           <!-- 공지사항 -->
           <div class="footer__noticeLink">
             <a href="https://www.tving.com/help/notice" class="footer__notice">공지사항</a>
@@ -73,20 +75,19 @@
         </ul>
 
         <!-- 회사정보 표기 -->
-        <div class="footer__ownerinfoContainer type-simple">
+        <div class="footer__ownerinfoContainer">
           <p class="hr__lineHeight">
-            대표이사: 김멋사<span class="hr__divLine" aria-hidden="true">ㅣ</span><a href="/">사업자정보확인</a><span class="hr__divLine" aria-hidden="true">ㅣ</span> 사업자등록번호: 없음니다<span class="hr__divLine" aria-hidden="true">ㅣ</span>
+            대표이사: 김멋사<span class="hr__divLine" aria-hidden="true">ㅣ</span><a href="https://www.ftc.go.kr/bizCommPop.do?wrkr_no=1888801893&apv_perm_no=">사업자정보확인</a><span class="hr__divLine" aria-hidden="true">ㅣ</span> 사업자등록번호: 없음니다<span class="hr__divLine" aria-hidden="true">ㅣ</span>
             통신판매신고번호:2024-서울마포-3호
           </p>
           <p class="hr__lineHeight">
-            사업장: 서울특별시 마포구 상암산로 34, DMC 디지털큐브 15층(상암동) 에 가고싶어요
+            사업장: 서울특별시 마포구 상암산로 34, DMC 디지털큐브 15층(상암동)
             <span class="hr__divLine" aria-hidden="true">ㅣ</span>
             호스팅사업자: 씨제이올리브네트윅스(주)
           </p>
           <p class="hr__lineHeight">
-            고객센터 (평일 09시~17시/점심시간 13시~14시)
-            <a href="https://www.tving.com/help/qna" class="">고객문의 바로가기</a><span class="hr__divLine" aria-hidden="true">ㅣ</span> <a href="/">대표메일: tving@cj.net</a><span class="hr__divLine" aria-hidden="true">ㅣ</span>
-            <a href="/">고객센터: 1670-1525(평일/주말 09~18시, 공휴일 휴무)</a>
+            <a href="https://www.tving.com/help/qna" class="">고객문의 바로가기</a><span class="hr__divLine" aria-hidden="true">ㅣ</span> <a href="mailto:tving@cj.net">대표메일: tving@cj.net</a><span class="hr__divLine" aria-hidden="true">ㅣ</span>
+            <a href="https://www.tving.com/help/notice">고객센터: 1670-1525(평일/주말 09~18시, 공휴일 휴무)</a>
           </p>
           <p class="hr__lineHeight">
             ENM 시청자 상담실 (편성 문의 및 시청자 의견): 080-080-0780
@@ -96,23 +97,23 @@
         </div>
 
         <!-- SNS 공유버튼 -->
-        <ul class="footer__sprite">
-          <li class="sprite sprite__youtube">
+        <ul class="footer__icon">
+          <li class="icon icon__youtube">
             <a href="https://www.youtube.com/c/TVING_official/" class="youtube" target="_blank" aria-label="유튜브">
               <span class="sr-only">유튜브 링크</span>
             </a>
           </li>
-          <li class="sprite sprite__instagram">
+          <li class="icon icon__instagram">
             <a href="https://www.instagram.com/tving.official/" class="instagram" target="_blank" aria-label="인스타그램">
               <span class="sr-only">인스타그램 링크</span>
             </a>
           </li>
-          <li class="sprite sprite__twitter">
+          <li class="icon icon__twitter">
             <a href="https://x.com/tvingdotcom/" class="twitter" target="_blank" aria-label="트위터">
               <span class="sr-only">트위터 링크</span>
             </a>
           </li>
-          <li class="sprite sprite__facebook">
+          <li class="icon icon__facebook">
             <a href="https://www.facebook.com/CJTVING/" class="facebook" target="_blank" aria-label="페이스북">
               <span class="sr-only">페이스북 링크</span>
             </a>

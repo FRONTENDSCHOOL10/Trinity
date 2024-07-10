@@ -96,6 +96,8 @@ $--desktop: 1920px;
   }
 }
 
+// 푸터 기본 폰트 설정
+
 html,
 body,
 .shortcut__btn {
@@ -164,6 +166,10 @@ body,
           text-decoration: none;
         }
       }
+    }
+
+    .type-simple {
+      display: none;
     }
   }
 
