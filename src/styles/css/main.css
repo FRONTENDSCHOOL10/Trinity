@@ -1216,233 +1216,6 @@ body {
   }
 }
 
-body {
-  background-color: rgb(107, 107, 107);
-}
-
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  clip: rect(0, 0, 0, 0);
-  clip-path: polygon(0 0, 0 0, 0 0);
-  overflow: hidden;
-  padding: 0;
-  white-space: nowrap;
-  border-width: 0;
-}
-
-.header {
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 100%);
-  padding: 0.5rem 1rem;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  align-items: center;
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: auto;
-  left: 0;
-  z-index: 9999;
-}
-.header__logo {
-  background-image: url("/assets/header/TAING_logo.svg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  min-width: 2.875rem;
-  min-height: 0.9375rem;
-  margin-right: 1.75rem;
-}
-.header__nav {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: space-between;
-  align-items: center;
-}
-.header__nav__program {
-  display: none;
-}
-.header__nav__program__item {
-  align-items: center;
-  line-height: 1.5;
-}
-.header__nav__program__item a {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  align-items: center;
-  text-decoration: none;
-  color: rgb(196, 196, 196);
-  font-size: 0.75rem;
-}
-.header__nav__program__item a:hover {
-  color: rgb(255, 255, 255);
-}
-.header__nav__program__item--live__img {
-  width: 1.25rem;
-  inline-size: 1.25rem;
-  height: 1.25rem;
-  block-size: 1.25rem;
-  background-image: url("/assets/header/live_default.svg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  margin-right: 0.25rem;
-}
-.header__nav__program__item--live__img:hover {
-  background-image: url("/assets/header/live_hover.svg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-}
-.header__nav__program__item--paramount__img {
-  width: 4.0625rem;
-  inline-size: 4.0625rem;
-  height: 1.25rem;
-  block-size: 1.25rem;
-  background-image: url("/assets/header/paramount_default.svg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-}
-.header__nav__program__item--paramount__img:hover {
-  background-image: url("/assets/header/paramount_hover.svg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-}
-.header__aside {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  gap: 1rem;
-  margin-left: auto;
-}
-.header__aside__button {
-  background: none;
-  border: none;
-  padding: 0;
-  margin: 0;
-}
-.header__aside__button--search {
-  width: 1.125rem;
-  inline-size: 1.125rem;
-  height: 1.125rem;
-  block-size: 1.125rem;
-  background-image: url("/assets/header/search_default.svg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-}
-.header__aside__button--search:hover {
-  background-image: url("/assets/header/search_hover.svg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  cursor: pointer;
-}
-.header__aside__button--profile {
-  width: 1.125rem;
-  inline-size: 1.125rem;
-  height: 1.125rem;
-  block-size: 1.125rem;
-  background-image: url("/assets/header/mobile_profile.png");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  cursor: pointer;
-}
-
-@media (min-width: 768px) and (max-width: 1919px) {
-  .header {
-    padding: 1rem 2.5rem;
-    font-size: 1.3125rem;
-  }
-  .header__logo {
-    min-width: 4.8125rem;
-    min-height: 1.5rem;
-    margin-right: 1.75rem;
-  }
-  .header__nav__program {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    gap: 1.75rem;
-    justify-content: left;
-    align-items: center;
-  }
-  .header__aside {
-    gap: 1.5rem;
-  }
-  .header__aside__button--search {
-    width: 1.5rem;
-    inline-size: 1.5rem;
-    height: 1.5rem;
-    block-size: 1.5rem;
-  }
-  .header__aside__button--profile {
-    width: 1.5rem;
-    inline-size: 1.5rem;
-    height: 1.5rem;
-    block-size: 1.5rem;
-    background-image: url("/assets/header/tablet_profile.png");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-  }
-}
-@media (min-width: 1920px) {
-  .header {
-    padding: 1.8125rem 4.375rem;
-  }
-  .header__logo {
-    min-width: 8.25rem;
-    min-height: 2.625rem;
-    margin-right: 3.25rem;
-  }
-  .header__nav__program {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    gap: 3.25rem;
-  }
-  .header__nav__program__item a {
-    font-size: 1.3125rem;
-  }
-  .header__nav__program__item--live__img {
-    width: 2.125rem;
-    inline-size: 2.125rem;
-    height: 2.125rem;
-    block-size: 2.125rem;
-    margin-right: 0.625rem;
-  }
-  .header__nav__program__item--paramount__img {
-    width: 6.9056rem;
-    inline-size: 6.9056rem;
-    height: 1.5938rem;
-    block-size: 1.5938rem;
-  }
-  .header__aside {
-    gap: 3.25rem;
-  }
-  .header__aside__button--search {
-    width: 2.5rem;
-    inline-size: 2.5rem;
-    height: 2.5rem;
-    block-size: 2.5rem;
-  }
-  .header__aside__button--profile {
-    width: 2.5rem;
-    inline-size: 2.5rem;
-    height: 2.5rem;
-    block-size: 2.5rem;
-  }
-}
 .sr-only {
   position: absolute;
   width: 1px;
@@ -1673,6 +1446,7 @@ body {
   .footer__ownerinfoContainer {
     display: inline-block;
     font-size: 0.75rem;
+    text-decoration: none;
   }
 }
 @media (min-width: 1920px) {
@@ -1687,6 +1461,9 @@ body {
 }
 .footer__ownerinfoContainer .hr__lineHeight {
   line-height: 1.5;
+}
+.footer__ownerinfoContainer .hr__lineHeight a {
+  color: rgb(107, 107, 107);
 }
 .footer__ownerinfoContainer .hr__divLine {
   margin: 0 0.3125rem;
@@ -1703,18 +1480,15 @@ body {
 @media (max-width: 767px) {
   .footer__icon {
     min-width: 320px;
-  }
-  .footer__icon {
-    width: 1.5rem;
-    height: 1.5rem;
     margin-right: 0.5rem;
   }
   .footer__icon__youtube {
     display: inline-block;
-    background-image: url("/assets/footer/youtube.svg");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
+    width: 1.5rem;
+    height: 1.5rem;
+    background-image: url("@/assets/footer/icon_Facebook.svg");
+    background: no-repeat center cover;
+    background-image: url("@/assets/footer/y.png");
   }
 }
 .footer__icon a {
@@ -1725,25 +1499,25 @@ body {
   background-size: cover;
 }
 .footer__icon .youtube {
-  background-image: url("/assets/footer/youtube.svg");
+  background-image: url("/assets/footer/icon_Youtube.svg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
 }
 .footer__icon .instagram {
-  background-image: url("/assets/footer/insta.svg");
+  background-image: url("/assets/footer/icon_Instagram.svg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
 }
 .footer__icon .twitter {
-  background-image: url("/assets/footer/twitter.svg");
+  background-image: url("/assets/footer/icon_Twitter.svg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
 }
 .footer__icon .facebook {
-  background-image: url("/assets/footer/facebook.svg");
+  background-image: url("/assets/footer/icon_Facebook.svg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -1767,4 +1541,11 @@ body {
   .footer__copyright {
     font-size: 1.3125rem;
   }
+}
+
+img {
+  display: inline-block;
+  border: 1px solid red;
+  width: 100px;
+  height: 100px;
 }

@@ -64,6 +64,80 @@
         </div>
       </div>
     </form>
+
+    
+    <main>
+      <section class="login">
+        <div class="login__content-wrap">
+          <!--타이틀 시작-->
+          <div class="login__title-wrap">
+            <h3 class="login__title">TVING ID 로그인</h3>
+          </div>
+
+          <!-- 입력폼 -->
+          <form action="#" method="post" class="login-form" name="input-form">
+            <!-- 아이디 입력 란 -->
+            <div class="form-group">
+              <label for="email-input" class="">
+                <span class="sr-only">아이디</span>
+                <input type="email" id="email-input" name="email-input" required placeholder="아이디" autocomplete="off" />
+                <!-- 입력 지우는 버튼 -->
+                <button type="button" id="id-close" class="login__button--close"></button>
+              </label>
+            </div>
+
+            <!-- 비밀번호 입력 란 -->
+            <div class="form-group">
+              <label for="pw-input" class="">
+                <span class="sr-only">비밀번호</span>
+                <input type="password" id="pw-input" name="pw-input" required placeholder="비밀번호" autocomplete="off" />
+                <!-- 입력 지우는 버튼 -->
+                <button type="button" id="id-close" class="login__button--close"></button>
+                <!-- 비밀번호 표시/비표시 버튼 -->
+                <button type="button" id="eyes" class="login__button--eyes"></button>
+              </label>
+            </div>
+
+            <div class="login__btn-autologin">
+              <label for="toggle-checkbox" class="checkbox-content">
+                <input type="checkbox" id="toggle-checkbox" name="toggle-checkbox" class="checkbox" />
+                자동로그인
+              </label>
+            </div>
+          </form>
+
+          <div class="login-button">
+            <label for="login-button" class="sr-only">로그인 버튼</label>
+            <button type="submit" id="login-button">로그인하기</button>
+          </div>
+
+          <div class="login__btn-wrap">
+            <a href="/" id="findId" class="login__btn login__btn--long login__btn--noborder">아이디 찾기</a>
+            <span class="login__btn--middle">|</span>
+            <a href="/" id="findPw" class="login__btn login__btn--long login__btn--noborder">비밀번호 찾기</a>
+          </div>
+          <div class="login__info-join">
+            아직 계정이 없으신가요?
+            <a href="/" id="regist" class="login__btn login__btn--noborder">회원가입하기</a>
+          </div>
+
+          <form></form>
+          <div class="login__btn-wrap">
+            <button id="doLoginBtn" class="login__btn login__btn--long login__btn--bgred">로그인하기</button>
+          </div>
+
+          <div class="login__btn-wrap">
+            <a href="/" id="findId" class="login__btn login__btn--long login__btn--noborder">아이디 찾기</a>
+            <span class="sr-only login__btn--middle">|</span>
+            <a href="/" id="findPw" class="login__btn login__btn--long login__btn--noborder">비밀번호 찾기</a>
+          </div>
+          <div class="login__info-join">
+            아직 계정이 없으신가요?
+            <a href="/" id="regist" class="login__btn login__btn--noborder">회원가입하기</a>
+          </div>
+        </div>
+      </section>
+    </main>
   </body>
 </html>
 

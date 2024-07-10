@@ -22,15 +22,16 @@ $--desktop: 1920px;
 @mixin mobileW {
   // @media (min-width: $--mobile) and (max-width: ($--tablet - 1)) {
   @media (max-width: ($--tablet - 1)) {
-    min-width: $--mobile;
     @content;
   }
 }
+
 @mixin tabletW {
-  @media (min-width: $--tablet) and (max-width: ($--desktop - 1)) {
+  @media (min-width: $--tablet) and (max-width: ($--desktop)) {
     @content;
   }
 }
+
 @mixin desktopW {
   @media (min-width: $--desktop) {
     @content;
@@ -120,6 +121,7 @@ body,
   color: $--white;
   padding: 1rem;
   min-width: $--mobile;
+  margin-bottom: 5.12rem;
 
   &__wrapper {
     @include mobileW {
@@ -306,6 +308,7 @@ body,
     @include tabletW {
       display: inline-block;
       font-size: $--paragraph-small;
+      text-decoration: none;
     }
 
     @include desktopW {
@@ -320,6 +323,10 @@ body,
 
     .hr__lineHeight {
       line-height: 1.5;
+
+      a {
+        color: $--gray-500;
+      }
     }
 
     .hr__divLine {
@@ -328,39 +335,93 @@ body,
   }
 
   &__icon {
-    border-radius: 50%;
-    @include mobileW {
-      & {
-        width: 1.5rem;
-        height: 1.5rem;
-        margin-right: 0.5rem;
-      }
-
-      &__youtube {
-        display: inline-block;
-        @include background-image(url('/assets/footer/youtube.svg'), no-repeat, center, cover);
-      }
-    }
-
-    @include flexbox(row, null, flex-start, stretch, 1.25rem);
-    margin-top: 1.25rem;
-
-    a {
-      @include size(2.5rem);
-      @include background-image(null, no-repeat, center, cover);
-    }
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
 
     .youtube {
-      @include background-image(url('/assets/footer/youtube.svg'), no-repeat, center, cover);
+      @include mobileW() {
+        display: inline-block;
+        width: 1.5rem;
+        height: 1.5rem;
+      }
+
+      @include tabletW() {
+        display: inline-block;
+        width: 1.875rem;
+        height: 1.875rem;
+      }
+      @include desktopW() {
+        gap: 1.25rem;
+        display: inline-block;
+        width: 3.25rem;
+        height: 3.25rem;
+      }
+
+      @include background-image(url('/src/assets/footer/icon_Youtube.svg'));
     }
     .instagram {
-      @include background-image(url('/assets/footer/insta.svg'));
+      @include mobileW() {
+        display: inline-block;
+        width: 1.5rem;
+        height: 1.5rem;
+      }
+
+      @include tabletW() {
+        display: inline-block;
+        width: 1.875rem;
+        height: 1.875rem;
+      }
+      @include desktopW() {
+        gap: 1.25rem;
+        display: inline-block;
+        width: 3.25rem;
+        height: 3.25rem;
+      }
+
+      @include background-image(url('/src/assets/footer/icon_Instagram.svg'));
     }
     .twitter {
-      @include background-image(url('/assets/footer/twitter.svg'));
+      @include mobileW() {
+        display: inline-block;
+        width: 1.5rem;
+        height: 1.5rem;
+      }
+
+      @include tabletW() {
+        display: inline-block;
+        width: 1.875rem;
+        height: 1.875rem;
+      }
+      @include desktopW() {
+        gap: 1.25rem;
+        display: inline-block;
+        width: 3.25rem;
+        height: 3.25rem;
+      }
+
+      @include background-image(url('/src/assets/footer/icon_Twitter.svg'));
     }
     .facebook {
-      @include background-image(url('/assets/footer/facebook.svg'));
+      @include mobileW() {
+        display: inline-block;
+        width: 1.5rem;
+        height: 1.5rem;
+      }
+
+      @include tabletW() {
+        display: inline-block;
+        width: 1.875rem;
+        height: 1.875rem;
+      }
+      @include desktopW() {
+        gap: 1.25rem;
+        display: inline-block;
+        width: 3.25rem;
+        height: 3.25rem;
+      }
+
+      @include background-image(url('/src/assets/footer/icon_Facebook.svg'));
     }
   }
 
