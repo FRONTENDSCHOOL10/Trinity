@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
       slideChange: function () {
         const activeSlide = this.slides[this.activeIndex];
         const imgElement = activeSlide.querySelector('img');
-        const description = imgElement.getAttribute('alt');
+        const description = imgElement.getAttribute('data-description');
         const subtextElement = document.querySelector('.main-banner-subtext');
         subtextElement.textContent = description;
       },
