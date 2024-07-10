@@ -3,7 +3,7 @@ import { defineConfig } from 'vite';
 
 export default defineConfig({
   // src 폴더를 루트 디렉토리로 설정
-  root: 'src',
+  // root: 'src',
   publicDir: resolve(__dirname, 'public'),
   resolve: {
     // @ 기호를 사용하여 src 폴더의 경로를 별칭으로 설정
