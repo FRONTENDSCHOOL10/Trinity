@@ -238,10 +238,10 @@ $--desktop-log-btn-h: 5.375rem;
     
     &__container {
         position: relative;
-        padding: 1.75rem .96875rem 0 .96875rem;
         margin: 0 auto;
         color: $--white;
         font-size: $--label-small;
+        padding: 1.75rem .96875rem 0 .96875rem;
         @media (min-width:$--tablet) and (max-width:($--desktop - 1)){
             padding: 2.75rem 11rem 0 11rem;
         }
@@ -258,7 +258,13 @@ $--desktop-log-btn-h: 5.375rem;
             transform: translate(-50%,-50%);
             z-index: 1;
             & .tit__form {
-                width: 100%;
+                padding: 1.75rem .96875rem 0 .96875rem;
+                @media (min-width:$--tablet) and (max-width:($--desktop - 1)){
+                    padding: 2.75rem 11rem 0 11rem;
+                }
+                @media (min-width: $--desktop){
+                    padding: 4.375rem 37.125rem 0 37.125rem;
+                }                width: 100%;
                 color: $--white;
                 background-color: black;
                 display: flex;

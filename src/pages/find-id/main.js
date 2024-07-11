@@ -128,7 +128,7 @@ async function handleLogin(e) {
             const template = `
             <div class="tit__form">
                 <div class="tit__box">
-                    <h3>입력하신 정보와 일치하는 회원을 찾을 수 없습니다.
+                    <h3>입력하신 정보와 일치하는 <br/>회원을 찾을 수 없습니다.
                     </h3>
                     <p class="desc">연속 10회 틀릴 경우
                     <br/>
