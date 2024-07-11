@@ -226,7 +226,6 @@ $--desktop-log-btn-h: 5.375rem;
 
 // find-id
 .find__wrap {
-    position: relative;
     font-size: .75rem;
     @include flexbox(center);
     @media (min-width:$--tablet) and (max-width:($--desktop - 1)){
@@ -235,46 +234,9 @@ $--desktop-log-btn-h: 5.375rem;
     @media (min-width: $--desktop){
         font-size: 1.75rem;
     }
-    & #find__next {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%,-50%);
-        z-index: 1;
-        & .tit__form {
-            width: 100vh;
-            min-width: 320px;
-            height: 100vh;
-            color: $--white;
-            background-color: black;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
-        & a {
-            text-decoration: none;
-        }
-        @include headTit($--heading-large, 0);
-        & .desc {
-            font-size: $--label-small;
-            margin: .625rem 0 1.5rem 0;
-        }
-        @media (min-width:$--tablet) and (max-width:($--desktop - 1)){
-            @include headTit($--heading-x-l, 0);
-            & .desc {
-                font-size: $--label-medium;
-            }
-        }
-        @media (min-width: $--desktop){
-            @include headTit($--heading-x-x-x-l, 0);
-            & .desc {
-                font-size: $--label-large;
-            }
-        }
-    }
+    
     &__container {
+        position: relative;
         padding: 1.75rem .96875rem 0 .96875rem;
         margin: 0 auto;
         color: $--white;
@@ -285,6 +247,63 @@ $--desktop-log-btn-h: 5.375rem;
         @media (min-width: $--desktop){
             padding: 4.375rem 37.125rem 0 37.125rem;
         }
+        & #find__next {
+            position: absolute;
+            display: flex;
+            width: 100%;
+            height: 100%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            z-index: 1;
+            & .tit__form {
+                width: 100%;
+                color: $--white;
+                background-color: black;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+            }
+            & a {
+                text-decoration: none;
+            }
+            @include headTit($--heading-large, 0);
+            & .tt {
+                display: block;
+                font-size: $--label-medium;
+                padding: 0.625rem;
+                margin: .625rem 0 1.5rem 0;
+                border: 1px solid $--gray-600;
+                border-radius: .25rem;
+            }
+            & .desc {
+                font-size: $--label-small;
+                margin: .625rem 0 1.5rem 0;
+            }
+            @media (min-width:$--tablet) and (max-width:($--desktop - 1)){
+                @include headTit($--heading-x-l, 0);
+                & .tt {
+                    font-size: $--label-medium;
+                    padding: 0.625rem;
+                }
+                & .desc {
+                    font-size: $--label-medium;
+                }
+            }
+            @media (min-width: $--desktop){
+                @include headTit($--heading-x-x-x-l, 0);
+                & .tt {
+                    font-size: $--label-large;
+                    padding: 1.5rem;
+                }
+                & .desc {
+                    font-size: $--label-large;
+                }
+            }
+        }
+
         & .head__form {
             &__tit {
                 @include head($--heading-medium, 1.75rem);
