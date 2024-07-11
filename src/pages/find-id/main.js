@@ -102,6 +102,8 @@ async function handleLogin(e) {
         const userEmail = users.find(user => user.email === email);
 
         if (userEmail) {
+            setDocumentTitle('TAING / 아이디 찾기 결과 있음');
+
             const maskedEmail = `${userEmail.id.slice(0, -4)}${'*'.repeat(4)}`;
             
             find_next.style.display = 'flex';
@@ -123,6 +125,8 @@ async function handleLogin(e) {
             insertLast('#find__next', template);
             
         } else {
+            setDocumentTitle('TAING / 아이디 찾기 결과 없음');
+
             find_next.style.display = 'flex';
 
             const template = `

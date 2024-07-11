@@ -68,6 +68,8 @@ async function handleFindPw(e) {
         const findUser = users.find(user => user.username === userId);
         
         if (findUser) {
+            setDocumentTitle('TAING / 비밀번호 찾기 결과 있음');
+
             find_next.style.display = 'flex';
             const template = `
             <div class="tit__form">
@@ -92,6 +94,8 @@ async function handleFindPw(e) {
             find_pwBtn.disabled = true;
 
         } else {
+            setDocumentTitle('TAING / 비밀번호 찾기 결과 없음');
+
             find_next.style.display = 'flex';
 
             const template = `
