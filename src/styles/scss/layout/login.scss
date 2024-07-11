@@ -1,0 +1,187 @@
+// 임시
+body {
+  color: white;
+}
+
+// main.scss
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #000; // Black background
+  color: #fff; // White text
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.login {
+  background-color: $--black; // Dark gray background for the login box
+  border: 1px solid red;
+  padding: 2rem;
+
+  //   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+
+  &__content-wrap {
+    width: 100%;
+  }
+
+  &__title-wrap {
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+
+  &__title {
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+
+  .login-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 0.25rem;
+    align-self: stretch;
+
+    .form-group {
+      margin-bottom: 1rem;
+      position: relative;
+
+      input {
+        display: inline-flex;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        padding: 0.75rem;
+        font-size: 1rem;
+
+        border-radius: 0.25rem;
+        background-color: $--brand-dark-bg-2;
+        color: $--gray-600;
+        outline: none;
+
+        &::placeholder {
+          //   color: #999;
+        }
+
+        &:focus {
+          border: 1px solid $--gray-600;
+        }
+      }
+
+      .login__button--close {
+        position: absolute;
+        top: 50%;
+        right: 0.75rem;
+        transform: translateY(-50%);
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-size: 1.2rem;
+        color: #999;
+
+        &:hover {
+          color: #fff;
+        }
+      }
+
+      .login__button--eyes {
+        position: absolute;
+        top: 50%;
+        right: 2.5rem;
+        transform: translateY(-50%);
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-size: 1.2rem;
+        color: #999;
+
+        &:hover {
+          color: #fff;
+        }
+      }
+    }
+  }
+
+  &__btn-autologin {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+
+    .checkbox-content {
+      display: flex;
+      align-items: center;
+
+      .checkbox {
+        margin-right: 0.5rem;
+      }
+    }
+  }
+
+  .login-button {
+    margin-bottom: 1rem;
+
+    #login-button {
+      width: 100%;
+      padding: 0.75rem;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #fff;
+      background-color: $--brand-red-1; // Red button color
+      border: none;
+      border-radius: 0.25rem;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #cc1030; // Darker red on hover
+      }
+    }
+  }
+
+  &__btn-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+
+    .login__btn {
+      color: #ff004d;
+      text-decoration: none;
+      font-weight: 700;
+
+      &--long {
+        margin: 0 0.5rem;
+      }
+
+      &--noborder {
+        border: none;
+      }
+    }
+
+    .login__btn--middle {
+      color: #999;
+    }
+  }
+
+  &__info-join {
+    text-align: center;
+    color: $--gray-500;
+
+    .login__btn {
+      color: $--gray-300;
+      text-decoration: none;
+      font-weight: 700;
+    }
+  }
+}
