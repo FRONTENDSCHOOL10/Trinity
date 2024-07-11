@@ -22,6 +22,10 @@ findUserId.addEventListener('input', find_pw_validation);
 // 초기 상태에서 버튼 비활성화
 find_pwBtn.disabled = true;
 
+// find__next 비활성화
+const find_next = document.getElementById('find__next');
+find_next.style.display = 'none';
+
 async function handleFindPw(e) {
     e.preventDefault();
 
@@ -30,21 +34,22 @@ async function handleFindPw(e) {
     try {
         // 전체 사용자 목록을 가져와서 아이디로 필터링
         const users = await pb.collection('users').getFullList();
-        const findUser = users.find(user => user.id === userId);
+        const findUser = users.find(user => user.username === userId);
         
         if (findUser) {
-            // 비밀번호 변수 설정 (여기서는 'password' 필드가 존재한다고 가정)
-            const userPassword = findUser.password;
-
+            find_next.style.display = 'flex';
             const template = `
-            <div class="tit__box">
-                <h3>입력하신 정보와 일치하는 결과입니다.</h3>
-                <b>비밀번호: ${userPassword}</b> <!-- 보안상 위험한 코드 -->
-                <p class="desc">개인정보 보호를 위해 아이디 또는 이메일의 일부만 제공합니다.</p>
-                <!-- 병합 후 경로 수정 필요할 수도 -->
-                <a href="/src/pages/loginPage/index.html">
-                <button type="button" class="button--red">로그인하러 가기</button>
-                </a>
+            <div class="tit__form">
+                <div class="tit__box">
+                    <h3>입력하신 정보와 일치하는 회원입니다.</h3>
+                    <p class="tt">${findUser.email}</p>
+                    <p class="desc">개인정보 보호를 위해 가입하신 이메일로 전달해드렸습니다.</p>
+                    <p class="desc"></p>
+                    <!-- 병합 후 경로 수정 필요할 수도 -->
+                    <a href="/src/pages/loginpage/index.html">
+                    <button type="button" class="button--red">로그인하러 가기</button>
+                    </a>
+                </div>
             </div>
             `;
             
@@ -56,10 +61,13 @@ async function handleFindPw(e) {
             find_pwBtn.disabled = true;
 
         } else {
+            find_next.style.display = 'flex';
+
             const template = `
             <div class="tit__form">
                 <div class="tit__box">
-                    <h3>일치하는 결과를 찾을 수 없습니다.</h3>
+                    <h3>입력하신 정보와 일치하는 회원을 찾을 수 없습니다.</h3>
+                    <p class="tt"></p>
                     <p class="desc"></p>
                     <!-- 병합 후 경로 수정 필요할 수도 -->
                     <a href="/src/pages/find-pw/index.html">

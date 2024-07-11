@@ -5,7 +5,7 @@ import pb from '@/api/pocketbase';
 setDocumentTitle('TAING / 아이디 찾기');
 
 const find_idBtn = getNode('.find-id');
-const findUseremail = getNode('#userEmail');
+const findUseremail = getNode('#findUserEmail');
 const errorMessage = '이메일 형식으로 입력해 주세요.';
 
 function emailReg(text) {
@@ -14,10 +14,10 @@ function emailReg(text) {
 }
 
 function find_showError() {
-    const errorElement = getNode('#userEmailError');
+    const errorElement = getNode('#findUserEmailError');
     if (!errorElement) {
         const errorSpan = `
-            <span class="error__message" id="userEmailError">${errorMessage}</span>
+            <span class="error__message" id="findUserEmailError">${errorMessage}</span>
         `;
         insertLast('.input__form', errorSpan);
     }
@@ -27,7 +27,7 @@ function find_showError() {
 find_showError()
 
 function find_clearError() {
-    const errorElement = getNode('#userEmailError');
+    const errorElement = getNode('#findUserEmailError');
     if (errorElement) {
         errorElement.remove();
     }
@@ -50,6 +50,10 @@ findUseremail.addEventListener('input', find_id_validation);
 // 초기 버튼 비활성화
 find_idBtn.disabled = true;
 
+// find__next 비활성화
+const find_next = document.getElementById('find__next');
+find_next.style.display = 'none';
+
 async function handleLogin(e) {
     e.preventDefault();
 
@@ -58,13 +62,17 @@ async function handleLogin(e) {
     try {
         const users = await pb.collection('users').getFullList();
         const userEmail = users.find(user => user.email === email);
-        console.log(userEmail);
+
         if (userEmail) {
+            const maskedEmail = `${userEmail.id.slice(0, -4)}${'*'.repeat(4)}`;
+            
+            find_next.style.display = 'flex';
+
             const template = `
                 <div class="tit__form">
                     <div class="tit__box">
-                        <h3>입력하신 정보와 일치하는 결과입니다.</h3>
-                        <b>${userEmail.id}</b> 
+                        <h3>입력하신 정보와 일치하는 회원입니다.</h3>
+                        <p class="tt">${maskedEmail}</p> 
                         <p class="desc">개인정보 보호를 위해 아이디 또는 이메일의 일부만 제공합니다.</p>
                         <!-- 병합 후 경로 수정 필요할 수도 -->
                         <a href="/src/pages/loginpage/index.html">
@@ -77,16 +85,18 @@ async function handleLogin(e) {
             insertLast('#find__next', template);
             
         } else {
+            find_next.style.display = 'flex';
+
             const template = `
             <div class="tit__form">
                 <div class="tit__box">
-                    <h3>일치하는 결과를 찾을 수 없습니다.
+                    <h3>입력하신 정보와 일치하는 회원을 찾을 수 없습니다.
                     </h3>
                     <p class="desc">연속 10회 틀릴 경우
                     <br/>
                     아이디 찾기 기능이 일시적으로 제한됩니다.
                     </p>
-                    <a href="/src/components/find-id/index.html">
+                    <a href="/src/pages/find-id/index.html">
                         <button type="button" class="button--white">아이디 다시 찾기</button>
                     </a>
                 </div>
