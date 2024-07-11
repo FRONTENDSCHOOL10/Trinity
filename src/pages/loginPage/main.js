@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const decryptedToken = getDecryptedToken(auth.token);
     pb.authStore.save(decryptedToken, auth.userInfo);
     alert('자동 로그인되었습니다.');
-    location.href = '/pages/main/index.html'; // 로그인 후 이동할 페이지
+    location.href = '/index.html'; // 로그인 후 이동할 페이지
   }
 });
 
