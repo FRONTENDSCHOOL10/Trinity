@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ko-KR">
+  <head>
+    <title>find-pw</title>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/src/styles/scss/main.scss">
+    <script type="module" src="./main.js"></script>
+  </head>
+  <body>
+
+        <article class="find__wrap">
+        
+            <div id="find__next"></div>
+
+            <div class="find__wrap__container">
+
+                <div class="head__form">
+                    <h2 class="head__form__tit">비밀번호 찾기</h2>
+                </div>
+
+                <form action="URL" class="find__form find__form--pw">
+                    <div class="tit__box">
+                        <p class="tt sr-only"></p>
+                        <p class="desc">가입 시 등록한 이메일을 입력해주세요.</p>
+                    </div>
+
+                    <fieldset class="find__input__container">
+                        <div class="input__form">
+                            <label for="findUserId" class="sr-only">아이디</label>
+                            <input type="text" class="input--log" id="findUserId" name="findUserId" placeholder="아이디" required aria-invalid="false" aria-describedby="findUserIdError" />
+                        </div>
+
+                        <button type="submit" class="button--gray find-confirm find-pw">확인</button>
+
+                    </fieldset>
+                </form>
+            </div>
+        
+        </article>  
+
+    </body>
+</html>
