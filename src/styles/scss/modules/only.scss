@@ -140,12 +140,12 @@ $--translate--value: -1.5%;
   
         .swiper-button-prev {
           left: -($--space-xxl);
-          @include swiperPrevButtonBackground('/assets/icon_slide_left.svg');
+          @include swiperPrevButtonBackground('/src/assets/icon/slidePrev.svg');
         }
   
         .swiper-button-next {
           right: -($--space-xxl);
-          @include swiperNextButtonBackground('/assets/icon_slide_right.svg');
+          @include swiperNextButtonBackground('/src/assets/icon/slideNext.svg');
         }
   
         .swiper-button-disabled {
@@ -203,12 +203,12 @@ $--translate--value: -1.5%;
     
         .swiper-button-prev {
           left: -($--space-xxxl);
-          @include swiperPrevButtonBackground('/assets/icon_slide_left.svg');
+          @include swiperPrevButtonBackground('/src/assets/icon/slidePrev.svg');
         }
     
         .swiper-button-next {
           right: -($--space-xxxl);
-          @include swiperNextButtonBackground('/assets/icon_slide_right.svg');
+          @include swiperNextButtonBackground('/src/assets/icon/slideNext.svg');
         }
     
         .swiper-button-disabled {

@@ -4,6 +4,9 @@
 body {
   font-family: 'Pretendard Variable', Pretendard, sans-serif;
   font-size: $--base-font-size;
+  display: flex;
+  flex-flow: column nowrap;
+  background-color: $--black;
 }
 
 // 숨김 콘텐츠

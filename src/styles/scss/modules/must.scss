@@ -58,14 +58,14 @@
         }
 
         .adult-only {
-          background-image:url('/assets/poster/adultOnly.svg');
+          background-image:url('/src/assets/icon/adultOnly.svg');
           background-repeat: no-repeat;
           background-position: center center;
           background-size: contain;
         }
 
         .original {
-          background-image:url('/assets/poster/original.svg');
+          background-image:url('/src/assets/icon/original.svg');
           background-repeat: no-repeat;
           background-position: center center;
           background-size: contain;
@@ -149,7 +149,7 @@
             position: absolute;
             width: 100%;
             height: 6%;
-            bottom: 14%;
+            bottom: 12%;
           }
         }
       }
@@ -172,12 +172,12 @@
   
         .swiper-button-prev {
           left: -($--space-xxl);
-          @include swiperPrevButtonBackground('/assets/icon_slide_left.svg');
+          @include swiperPrevButtonBackground('/src/assets/icon/slidePrev.svg');
         }
   
         .swiper-button-next {
           right: -($--space-xxl);
-          @include swiperNextButtonBackground('/assets/icon_slide_right.svg');
+          @include swiperNextButtonBackground('/src/assets/icon/slideNext.svg');
         }
   
         .swiper-button-disabled {
@@ -229,7 +229,7 @@
             position: absolute;
             width: 100%;
             height: 6%;
-            bottom: 14%;
+            bottom: 18%;
           }
         }
       }
@@ -252,12 +252,12 @@
     
         .swiper-button-prev {
           left: -($--space-xxxl);
-          @include swiperPrevButtonBackground('/assets/icon_slide_left.svg');
+          @include swiperPrevButtonBackground('/src/assets/icon/slidePrev.svg');
         }
     
         .swiper-button-next {
           right: -($--space-xxxl);
-          @include swiperNextButtonBackground('/assets/icon_slide_right.svg');
+          @include swiperNextButtonBackground('/src/assets/icon/slideNext.svg');
         }
     
         .swiper-button-disabled {
