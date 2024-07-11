@@ -228,6 +228,7 @@ $--desktop-log-btn-h: 5.375rem;
 // find-id
 .find__wrap {
     font-size: .75rem;
+    height: 100vh;
     @include flexbox(center);
     @media (min-width:$--tablet) and (max-width:($--desktop - 1)){
         font-size: 16px;
@@ -235,13 +236,13 @@ $--desktop-log-btn-h: 5.375rem;
     @media (min-width: $--desktop){
         font-size: 1.75rem;
     }
-    
     &__container {
         position: relative;
+        align-content: center;
+        padding: 1.75rem .96875rem 0 .96875rem;
         margin: 0 auto;
         color: $--white;
         font-size: $--label-small;
-        padding: 1.75rem .96875rem 0 .96875rem;
         @media (min-width:$--tablet) and (max-width:($--desktop - 1)){
             padding: 2.75rem 11rem 0 11rem;
         }
