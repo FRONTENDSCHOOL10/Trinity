@@ -1,4 +1,4 @@
-import '/src/styles/css/main.css';
+import '/src/styles/scss/main.scss';
 import { setDocumentTitle, setStorage, insertLast, getNode } from 'kind-tiger';
 import pb from '@/api/pocketbase';
 
@@ -6,26 +6,57 @@ setDocumentTitle('TAING / 비밀번호 찾기');
 
 const find_pwBtn = getNode('.find-pw');
 const findUserId = getNode('#findUserId');
+const btnClear = document.querySelector('.btnClear');
 
+// 초기 버튼 비활성화
+find_pwBtn.disabled = true;
+
+// 초기 find__next 비활성화
+const find_next = document.getElementById('find__next');
+find_next.style.display = 'none';
+
+// 초기 btnClear 숨기기
+btnClear.style.display = 'none';
+
+
+// 입력했을 경우 btn 활성화
 function find_pw_validation(e) {
     const target = e.currentTarget;
-    if (target.value.length > 0) {
+    if (target.value.length > 0) { 
+        // 한글자라도 입력되었을 경우
         find_pwBtn.disabled = false;
     } else {
         find_pwBtn.disabled = true;
     }
 }
 
-// 사용자 입력 필드에 이벤트 리스너 추가
 findUserId.addEventListener('input', find_pw_validation);
 
-// 초기 상태에서 버튼 비활성화
-find_pwBtn.disabled = true;
 
-// find__next 비활성화
-const find_next = document.getElementById('find__next');
-find_next.style.display = 'none';
+// 입력 시 옆에 X 마크 띄우기 
+function inputClear() {
+    const inputValue = findUserId.value.trim(); // 입력 값에서 공백 제거
 
+    if (inputValue.length > 0) {
+        btnClear.style.display = 'block'; // 입력 값이 있으면 btnClear 보이기
+    } else {
+        btnClear.style.display = 'none'; // 입력 값이 없으면 btnClear 숨기기
+    }
+}
+
+findUserId.addEventListener('input', inputClear); // 입력 이벤트 감지
+
+
+// 버튼 클릭 시 입력 값 초기화
+btnClear.addEventListener('click', function(e) {
+    e.preventDefault();
+    findUserId.value = ''; // 입력 필드 값을 초기화
+    btnClear.style.display = 'none'; // btnClear 숨기기
+    find_pwBtn.disabled = true; // 버튼 비활성화
+});
+
+
+// 아이디 입력으로 사용자 확인 후 이메일 받기
 async function handleFindPw(e) {
     e.preventDefault();
 
@@ -57,7 +88,7 @@ async function handleFindPw(e) {
 
             // 입력 필드 초기화
             findUserId.value = '';
-            // 버튼 다시 비활성화
+            // 버튼 비활성화
             find_pwBtn.disabled = true;
 
         } else {
@@ -67,7 +98,7 @@ async function handleFindPw(e) {
             <div class="tit__form">
                 <div class="tit__box">
                     <h3>입력하신 정보와 일치하는 회원을 찾을 수 없습니다.</h3>
-                    <p class="tt"></p>
+                    <p class="tt sr-only"></p>
                     <p class="desc"></p>
                     <!-- 병합 후 경로 수정 필요할 수도 -->
                     <a href="/src/pages/find-pw/index.html">
@@ -83,9 +114,9 @@ async function handleFindPw(e) {
         console.error('Error fetching user:', error);
     }
 
-    // 입력 필드 초기화
+    // 리셋 후 입력 필드 초기화
     findUserId.value = '';
-    // 리셋 된 후 초기 버튼 비활성화
+    // 리셋 후 초기 버튼 비활성화
     find_pwBtn.disabled = true;
 }
 
