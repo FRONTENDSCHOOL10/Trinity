@@ -89,7 +89,6 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 document.addEventListener('DOMContentLoaded', function() {
-    // 삭제 아이콘 클릭 시 입력 필드의 값을 초기화합니다.
     let deleteIcons = document.querySelectorAll('.delete-icon');
     deleteIcons.forEach(function(icon) {
         icon.addEventListener('click', function() {
