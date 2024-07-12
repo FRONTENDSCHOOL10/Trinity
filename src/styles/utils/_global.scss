@@ -1,0 +1,25 @@
+@import '/src/styles/utils/_font';
+@import '/src/styles/utils/_style';
+
+body {
+  font-family: 'Pretendard Variable', Pretendard, sans-serif;
+  font-size: $--base-font-size;
+  display: flex;
+  flex-flow: column nowrap;
+  background-color: $--black;
+}
+
+// 숨김 콘텐츠
+
+@mixin a11yHidden{
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  clip: rect(0,0,0,0);
+  clip-path: polygon(0 0, 0 0, 0 0);
+  overflow: hidden;
+  padding: 0;
+  white-space: nowrap;
+  border-width: 0;
+}

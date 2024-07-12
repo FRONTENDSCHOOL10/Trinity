@@ -16,6 +16,14 @@ export default defineConfig({
       input: {
         // 기본 입력 파일을 설정 (index.html이 src 폴더 내에 위치한다고 가정)
         main: resolve(__dirname, 'index.html'),
+        // 아래 경로 페이지도 함께 컴파일
+        findId: resolve(__dirname, 'src/pages/findId/index.html'),
+        findPw: resolve(__dirname, 'src/pages/findPw/index.html'),
+        // landing: resolve(__dirname, 'src/pages/landing/index.html'),
+        login: resolve(__dirname, 'src/pages/login/index.html'),
+        // profileEdit: resolve(__dirname, 'src/pages/profileEdit/index.html'),
+        // profileSelect: resolve(__dirname, 'src/pages/profileSelect/index.html'),
+        signUp: resolve(__dirname, 'src/pages/signUp/index.html'),
       },
     },
   },
@@ -30,7 +38,7 @@ export default defineConfig({
       scss: {
         // SCSS 변수 파일을 모든 SCSS 파일에 자동으로 포함
         // additionalData: `
-        //   @import "@/styles/scss/main.scss";
+        //   @import "@/styles/main.scss";
         // `,
       },
       modules: {

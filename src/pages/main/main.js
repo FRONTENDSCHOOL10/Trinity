@@ -2,7 +2,7 @@ import getPbImageURL from '@/api/getPbImageURL';
 import pb from '@/api/pocketbase';
 import { getNode, getStorage, insertLast, insertAfter, setDocumentTitle, setStorage } from 'kind-tiger';
 import defaultAuthData from '@/api/defaultAuthData';
-import renderHeader from '@/components/header/header';
+import renderHeader from '@/layout/header/header';
 import renderMainVisualSlider from '@/components/mainVisual/mainVisual';
 import renderMustContentSlider from '@/components/contentSlider/must/must';
 import renderQuickVodContentSlider from '@/components/contentSlider/quick/quick';
@@ -11,7 +11,7 @@ import renderLiveContentSlider from '@/components/contentSlider/live/live';
 import renderOnlyContentSlider from '@/components/contentSlider/only/only';
 import renderAdBanner from '@/components/adBanner/adBanner';
 import renderEventSlider from '@/components/eventSlider/eventSlider';
-import { renderFooter, footerScript } from '@/components/footer/footer';
+import { renderFooter, footerScript } from '@/layout/footer/footer';
 
 setDocumentTitle('TAING');
 
@@ -22,9 +22,9 @@ if (!localStorage.getItem('auth')) {
 
 const auth = localStorage.getItem('auth');
 
-// 로그인 되어있지 않으면 로그인 페이지로 보내는 코드(임시로 src내부 index.html과 연결해둠)
+// 로그인 되어있지 않으면 랜딩 페이지로 보내는 코드
 if (!auth.isAuth) {
-  // location.replace('/src/index.html');
+  // location.replace('/src/pages/landing/index.html');
 }
 
 renderHeader();

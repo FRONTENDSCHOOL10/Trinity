@@ -16716,7 +16716,7 @@ namespace echo {
  interface IPExtractor {(_arg0: http.Request): string }
  /**
   * Logger defines the logging interface that Echo uses internally in few places.
-  * For logging in handlers use your own logger instance (dependency injected or package/public variable) from logging framework of your choice.
+  * For logging in handlers use your own logger instance (dependency injected or package/public/icon variable) from logging framework of your choice.
   */
  interface Logger {
   [key:string]: any;

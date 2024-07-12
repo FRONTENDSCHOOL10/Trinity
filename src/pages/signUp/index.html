@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입 페이지</title>
+    <script src="/src/pages/signUp/signUp.js" type="module"></script>
+    <link rel="stylesheet" href="/src/styles/signUp.scss">
+</head>
+<body>
+    <div class="sign-up-container">
+        <h1 class="tving-sign-up-title">티빙 회원가입</h1>
+        <h3 class="tving-sign-up-subtitle">아이디와 이메일로 간편하게 티빙을 시작하세요!</h3>
+          <form action="#" method="post">
+              <label for="user-id" class="sr-only">아이디</label>
+              <input type="text" id="user-id" name="user-id" placeholder="아이디 " required>
+              <span class="delete-icon invisible"><img src="/public/icon/signUp/iconDelete.svg" alt="입력 삭제"></span>
+              <p class="input-subtext">영문 또는 영문, 숫자 조합 6~12자리</p>
+  
+            <label for="user-pw" class="sr-only">비밀번호</label>
+            <input type="password" id="user-pw" name="user-pw" placeholder="비밀번호" required>
+            <span class="delete-icon delete-pw invisible"><img src="/public/icon/signUp/iconDelete.svg" alt="입력 삭제"></span>
+            <p class="input-subtext">영문, 숫자, 특수문자(~!@#$%^&*) 조합 8~15자리</p>
+            <span class="password-toggle-icon"><img src="/public/icon/signUp/iconWatching.svg" alt="입력된 비밀번호 보기"></span>
+
+            
+            <label for="confirm-password" class="sr-only">비밀번호 확인</label>
+            <input type="password" id="confirm-password" name="confirm-password" placeholder="비밀번호 확인" required>
+            <span class="delete-icon delete-pw invisible"><img src="/public/icon/signUp/iconDelete.svg" alt="입력 삭제"></span>
+            <p class="input-subtext">&nbsp;</p>
+            <span class="password-toggle-icon"><img src="/public/icon/signUp/iconWatching.svg" alt="입력된 비밀번호 보기"></span>
+              
+              <label for="email" class="sr-only">이메일</label>
+              <input type="email" id="email" name="email" placeholder="이메일" required>
+              <span class="delete-icon invisible"><img src="/public/icon/signUp/iconDelete.svg" alt="입력 삭제"></span>
+              <p class="input-subtext"></p>
+              
+              <div class="privacy-policy">
+                <div class="check-wrapper checked-all">
+                  <input type="checkbox" id="agree-all" name="agree-all" tabindex="0">
+                  <label for="agree-all">모두 동의합니다.</label>
+                </div>
+                <div class="check-wrapper">
+                  <input type="checkbox" id="age-check" name="age-check" required tabindex="0">
+                  <label for="age-check">만 14세 이상입니다.</label>
+                </div>
+                <div class="check-wrapper">
+                    <input type="checkbox" id="privacy-check" name="privacy-check" required tabindex="0">
+                    <label for="privacy-check">[필수] 서비스 이용약관 동의</label>
+                  </div>
+                  <div class="check-wrapper">
+                    <input type="checkbox" id="terms-check" name="terms-check" required tabindex="0">
+                    <label for="terms-check">[필수] 개인정보 수집 및 서비스 활용 동의</label>
+                  </div>
+                  <div class="check-wrapper">
+                    <input type="checkbox" id="channel-check" name="channel-check" required tabindex="0">
+                    <label for="channel-check">[필수] 채널 홈페이지 개인정보 제 3자 제공동의</label>
+                  </div>
+                  <div class="check-wrapper">
+                    <input type="checkbox" id="service-check" name="service-check" tabindex="0">
+                    <label for="service-check">[선택] 개인정보 수집 및 서비스 활용 동의</label>
+                  </div>
+                  <div class="check-wrapper checked-optional">
+                    <input type="checkbox" id="marketing-sms-check" name="marketing-sms-check" tabindex="0">
+                    <label for="marketing-sms-check">[선택] 마케팅 정보 SMS 수신동의</label>
+                  </div>
+                  <div class="check-wrapper checked-optional">
+                    <input type="checkbox" id="marketing-email-check" name="marketing-email-check" tabindex="0">
+                    <label for="marketing-email-check">[선택] 마케팅 정보 이메일 수신동의</label>
+                  </div>
+              </div>
+              
+              <button type="submit" class="sign-up">회원가입 하기</button>
+          </form>
+      </div>
+</body>
+</html>

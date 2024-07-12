@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <script type="module" src="/src/pages/login/login.js"></script>
+    <link rel="stylesheet" href="/src/styles/login.scss" />
+  </head>
+  <body>
+    <main class="main-login">
+      <section class="login">
+        <div class="login__wrapper">
+          <h1 class="login__title">TVING ID 로그인</h1>
+          <!-- 로그인 폼 시작 -->
+          <form class="login__form">
+            <!-- 아이디 입력구간 -->
+            <div class="login__input-group">
+              <label for="email-input" class="login__label sr-only">아이디</label>
+              <input type="text" id="email-input" class="login__input login__input--id" placeholder="아이디" required />
+              <button type="button" class="login__button-clear" aria-label="아이디 입력 지우기" onclick="clearInput('email-input')"></button>
+            </div>
+            <!-- 비밀번호 입력구간 -->
+            <div class="login__input-group">
+              <label for="pw-input" class="login__label sr-only">비밀번호</label>
+              <input type="password" id="pw-input" class="login__input login__input--password" placeholder="비밀번호" required />
+              <button type="button" class="login__button-clear" aria-label="비밀번호 입력 지우기" onclick="clearInput('pw-input')"></button>
+              <button type="button" class="login__button-show-password" aria-label="비밀번호 표시"></button>
+            </div>
+        </div>
+          <!-- 자동로그인 세션 -->
+          <div class="login__options">
+            <label class="login__remember">
+              <input type="checkbox" class="login__checkbox" />
+              <span class="login__remember__icon" id="login-icon" tabindex="0" aria-checked="false"></span>
+              자동로그인
+            </label>
+          </div>
+          <!-- 로그인하기 버튼 -->
+          <button type="submit" class="button button--login">로그인하기</button>
+        </form>
+        <!-- 아이디/비밀번호 찾기 세션 -->
+        <div class="login__links">
+          <a href="/src/pages/findId/index.html" class="login__link">아이디 찾기 <span class="icon-delete"></span></a>
+          <span class="login__divider">|</span>
+          <a href="/src/pages/findPw/index.html" class="login__link"
+            >비밀번호 찾기
+            <span class="login__icon--delete"></span>
+            <span class="login__icon--vision"></span>
+          </a>
+        </div>
+        <!-- 회원가입 세션 -->
+        <div class="login__links">
+          <span>아직 계정이 없으신가요?</span>
+          <a href="/src/pages/signUp/index.html" class="login__link"><strong>회원가입하기</strong></a>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="ko-KR">
+  <head>
+    <title>find-pw</title>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="module" src="/src/pages/findPw/findPw.js"></script>
+    <link rel="stylesheet" href="/src/styles/find.scss">
+  </head>
+  <body>
+
+        <article class="find__wrap">
+        
+            <div class="find__wrap__container">
+                <div id="find__next"></div>
+
+                <div class="head__form">
+                    <h2 class="head__form__tit">비밀번호 찾기</h2>
+                </div>
+
+                <form action="URL" class="find__form find__form--pw">
+                    <div class="tit__box">
+                        <p class="tt sr-only"></p>
+                        <p class="desc">가입 시 등록한 아이디를 입력해주세요.</p>
+                    </div>
+
+                    <fieldset class="find__input__container">
+                        <div class="input__form">
+                            <label for="findUserId" class="sr-only" id="nameLabel">아이디 입력창</label>
+                            <input type="text" class="input--log" id="findUserId" name="findUserId" placeholder="아이디" required aria-invalid="false" aria-describedby="findUserIdError" aria-labelledby="nameLabel" />
+                            <button type="button" class="btnClear" aria-label="지우기"></button>
+                        </div>
+
+                        <span class="sr-only">유효한 이메일 입력 시 버튼이 활성화 됩니다.</span>
+
+                        <button type="submit" class="button--gray find-confirm find-pw" aria-controls="findUserId">확인</button>
+
+                    </fieldset>
+                </form>
+            </div>
+        
+        </article>  
+
+    </body>
+</html>
