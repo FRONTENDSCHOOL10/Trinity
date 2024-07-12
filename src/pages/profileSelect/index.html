@@ -14,57 +14,25 @@
 
         <div class="profile__modify__wrap__container">
             <div class="head__form">
-                <h2 class="head__form__tit">
-                    프로필 선택
-                    <p>시청할 프로필을 선택해주세요.</p>
-                </h2>
+                <h2 class="tit">프로필 선택</h2>
+                <p class="desc">시청할 프로필을 선택해주세요.</p>
             </div>
 
             <ul class="profile__form">
                 <li class="profile__form--item">
-                    <div class="item__form">
-                        <span class="profile-form">
-                            <img class="user-profile" src="/public/profileModify/profile-01.svg" alt="사용자 ">
-                        </span>
+                    <a class="item__form" href="/" role="button">
+                        <figure class="user-profile">
+                            <img src="/public/profileModify/profile-01.svg" alt="프로필">
+                            <figcaption class="sr-only">${}의 프로필</figcaption>
+                        </figure>
                         <span class="bg"></span>
                         <span class="icon"><img src="/public/profileModify/rock.svg" alt=""></span>
-                    </div>
+                    </a>
                     <p class="name">유저네임</p>
                 </li>
-                <li class="profile__form--item">
-                    <div class="item__form">
-                        <span class="user-profile">
-                            <img src="/public/profileModify/profile-01.svg" alt="">
-                        </span>
-                        <span class="bg"></span>
-                        <span class="icon"><img src="/public/profileModify/rock.svg" alt=""></span>
-                    </div>
-                    <p class="name">유저네임</p>
-                </li>
-                <li class="profile__form--item">
-                    <div class="item__form">
-                        <span class="profile-form">
-                            <img class="user-profile" src="/public/profileModify/profile-01.svg" alt="사용자 ">
-                        </span>
-                        <span class="bg"></span>
-                        <span class="icon"><img src="/public/profileModify/rock.svg" alt=""></span>
-                    </div>
-                    <p class="name">유저네임</p>
-                </li>
-                <li class="profile__form--item">
-                    <div class="item__form">
-                        <span class="user-profile">
-                            <img src="/public/profileModify/profile-01.svg" alt="">
-                        </span>
-                        <span class="bg"></span>
-                        <span class="icon"><img src="/public/profileModify/rock.svg" alt=""></span>
-                    </div>
-                    <p class="name">유저네임</p>
-                </li>
-                
             </ul>
             
-            <button type="button" class="button--gray-sm btnModify btnEdit">프로필 편집</button>
+            <button aria-label="프로필 편집하기" type="button" class="button--gray-sm btnModify btnEdit">프로필 편집</button>
             
         </div>
 
