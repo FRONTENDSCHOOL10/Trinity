@@ -69,7 +69,7 @@
 }
 
 // Base styles
-body {
+.main-login {
   background-color: $--black;
   color: $--white;
   @include flex-center;
