@@ -1,187 +1,318 @@
-// 임시
-body {
-  color: white;
-}
+// Mixins
 
-// main.scss
-
-body {
-  font-family: Arial, sans-serif;
-  background-color: #000; // Black background
-  color: #fff; // White text
+@mixin flex-center {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  margin: 0;
 }
 
-main {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
+@mixin background-image($url: url(''), $repeat: no-repeat, $position: center, $size: cover) {
+  background-image: $url;
+  background-repeat: $repeat;
+  background-position: $position;
+  background-size: $size;
 }
 
-.login {
-  background-color: $--black; // Dark gray background for the login box
-  border: 1px solid red;
-  padding: 2rem;
+@mixin mobileW {
+  // @media (min-width: $--mobile) and (max-width: ($--tablet - 1)) {
+  @media (max-width: ($--tablet - 1)) {
+    @content;
+  }
+}
 
-  //   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+@mixin tabletW {
+  @media (min-width: $--tablet) and (max-width: ($--desktop)) {
+    @content;
+  }
+}
+
+@mixin desktopW {
+  @media (min-width: $--desktop) {
+    @content;
+  }
+}
+
+//입력 서식 컴포넌트 화
+@mixin input-style() {
+  @include flex-center();
+  position: relative;
   width: 100%;
-  max-width: 400px;
+  height: 2.875rem;
+  padding: 0 1.25rem 0 1rem;
+  margin-bottom: 0.5rem;
+  border: 1px solid $--gray-700;
+  border-radius: 3px;
+  background: $--brand-dark-bg-2;
+  color: $--white;
 
-  &__content-wrap {
-    width: 100%;
+  &:focus {
+    border: $--gray-100;
   }
 
-  &__title-wrap {
-    text-align: center;
-    margin-bottom: 1.5rem;
+  &::placeholder {
+    color: $--gray-600;
   }
 
+  @include tabletW() {
+    height: 3.125rem;
+    font-size: 1rem;
+  }
+
+  @include desktopW() {
+    font-size: 1.75rem;
+    height: 3.875rem;
+  }
+}
+
+.sr-only {
+  @include a11yHidden();
+}
+
+// Base styles
+body {
+  background-color: $--black;
+  color: $--white;
+  @include flex-center;
+  width: calc(100% - 7.776rem);
+  margin: 0 3.888rem;
+}
+
+//로그인 서식 시작
+.login {
+  min-width: 18rem;
+  max-width: 36rem;
+  width: 100%;
+  text-align: center;
+  margin: 4.167rem auto 0;
+
+  @include tabletW() {
+    font-size: 1rem;
+    max-width: none;
+    width: 26.25rem;
+  }
+
+  @include desktopW() {
+    font-size: 1.75rem;
+    max-width: none;
+    width: 45.75rem;
+  }
+
+  &__wrapper {
+    @include flex-center();
+    flex-direction: column;
+  }
+
+  //로그인 제목
   &__title {
     font-size: 1.5rem;
-    font-weight: 700;
-  }
+    margin-bottom: 1rem;
+    font-weight: bold;
 
-  .login-form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 0.25rem;
-    align-self: stretch;
+    @include tabletW() {
+      font-size: 1.75rem;
+    }
 
-    .form-group {
-      margin-bottom: 1rem;
-      position: relative;
-
-      input {
-        display: inline-flex;
-        flex-direction: column;
-        align-items: flex-start;
-        width: 100%;
-        padding: 0.75rem;
-        font-size: 1rem;
-
-        border-radius: 0.25rem;
-        background-color: $--brand-dark-bg-2;
-        color: $--gray-600;
-        outline: none;
-
-        &::placeholder {
-          //   color: #999;
-        }
-
-        &:focus {
-          border: 1px solid $--gray-600;
-        }
-      }
-
-      .login__button--close {
-        position: absolute;
-        top: 50%;
-        right: 0.75rem;
-        transform: translateY(-50%);
-        background: none;
-        border: none;
-        cursor: pointer;
-        font-size: 1.2rem;
-        color: #999;
-
-        &:hover {
-          color: #fff;
-        }
-      }
-
-      .login__button--eyes {
-        position: absolute;
-        top: 50%;
-        right: 2.5rem;
-        transform: translateY(-50%);
-        background: none;
-        border: none;
-        cursor: pointer;
-        font-size: 1.2rem;
-        color: #999;
-
-        &:hover {
-          color: #fff;
-        }
-      }
+    @include desktopW() {
+      font-size: 2.375rem;
     }
   }
 
-  &__btn-autologin {
+  //로그인 제출 세션
+  &__form {
+    background-color: $--black;
+    padding: 1rem;
+    width: 100%;
+  }
+
+  // 입력 세션
+  &__input-group {
+    position: relative;
+    width: 100%;
     display: flex;
-    align-items: center;
+    flex-direction: row;
+    align-content: center;
+    margin: 1rem auto;
+  }
+
+  &__input {
+    @include input-style();
+  }
+
+  &__button-clear {
+    position: absolute;
+    width: 1.25rem;
+    height: 1.25rem;
+    right: 1.25rem;
+    top: calc(50% - 1rem);
+
+    border: none;
+    color: $--white;
+    cursor: pointer;
+    font-size: 1rem;
+    background: url('/login/IconDelete.svg') no-repeat center;
+    @include desktopW() {
+      width: 1.5rem;
+      height: 1.5rem;
+      right: 1rem;
+    }
+  }
+
+  &__button-show-password {
+    position: absolute;
+    width: 1.25rem;
+    height: 1.25rem;
+    right: 0rem;
+    top: calc(50% - 1rem);
+    right: 5%;
+
+    margin-left: auto;
+    margin-right: 2rem;
+
+    background: url('/login/IconInVisible.svg') no-repeat center;
+    border: none;
+    cursor: pointer;
+
+    &:active {
+      background-image: url('/login/IconVisible.svg');
+    }
+  }
+
+  &__options {
+    text-align: left;
     margin-bottom: 1rem;
 
-    .checkbox-content {
+    &-remember {
       display: flex;
       align-items: center;
+      margin-left: 0.75rem;
 
-      .checkbox {
+      font-size: 0.75rem;
+      @include desktopW() {
+        font-size: 1.5rem;
+      }
+
+      .login__checkbox {
         margin-right: 0.5rem;
       }
     }
   }
 
-  .login-button {
-    margin-bottom: 1rem;
-
-    #login-button {
-      width: 100%;
-      padding: 0.75rem;
-      font-size: 1rem;
-      font-weight: 700;
-      color: #fff;
-      background-color: $--brand-red-1; // Red button color
-      border: none;
-      border-radius: 0.25rem;
-      cursor: pointer;
-
-      &:hover {
-        background-color: #cc1030; // Darker red on hover
-      }
-    }
-  }
-
-  &__btn-wrap {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 1rem;
-
-    .login__btn {
-      color: #ff004d;
-      text-decoration: none;
-      font-weight: 700;
-
-      &--long {
-        margin: 0 0.5rem;
-      }
-
-      &--noborder {
-        border: none;
-      }
-    }
-
-    .login__btn--middle {
-      color: #999;
-    }
-  }
-
-  &__info-join {
-    text-align: center;
+  &__links {
+    margin-top: 1rem;
     color: $--gray-500;
 
-    .login__btn {
+    .login__link {
       color: $--gray-300;
       text-decoration: none;
-      font-weight: 700;
+      margin: 0 0.5rem;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    .login__divider {
+      color: $--gray-400;
+    }
+  }
+
+  &__show-password-button.active {
+    background-image: url('/login/IconVisible.svg');
+  }
+
+  &__checkbox {
+    display: none;
+  }
+
+  &__remember {
+    display: flex;
+    justify-self: center;
+    align-items: center;
+    color: $--gray-500;
+
+    &__icon {
+      width: 1rem;
+      height: 1rem;
+      border-radius: 50%;
+      margin-right: 0.25rem;
+      display: inline-block;
+      cursor: pointer;
+      @include background-image(url('/login/IconCheckCircleGray.svg'));
+
+      @include desktopW() {
+        width: 1.5rem;
+        height: 1.5rem;
+        margin-right: 0.5rem;
+      }
+
+      &:focus {
+        outline: 2px solid $--gray-200;
+      }
+
+      &.active {
+        @include background-image(url('/login/IconCheckCircle.svg'));
+      }
+    }
+  }
+}
+
+// Button Component
+.button {
+  display: inline-block;
+  padding: 0.75rem 1rem;
+  width: 100%;
+  height: 2.875rem;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 1rem;
+  text-align: center;
+
+  &--login {
+    background-color: $--brand-red-1;
+    color: $--white;
+
+    &:hover {
+      background-color: darken($--brand-red-1, 10%);
+    }
+  }
+
+  @include tabletW() {
+    font-size: 1rem;
+  }
+
+  @include desktopW() {
+    font-size: 1.75rem;
+    margin: 0.5rem 0;
+  }
+}
+
+@include tabletW() {
+  .login {
+    &__title {
+    }
+
+    &__input {
+    }
+
+    .button--login {
+      height: 3.125rem;
+    }
+  }
+}
+
+@include desktopW() {
+  .login {
+    max-width: 500px;
+
+    &__title {
+    }
+
+    &__input {
+    }
+
+    .button--login {
+      height: 5.375rem;
     }
   }
 }
