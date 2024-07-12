@@ -1,0 +1,20 @@
+/* /src/styles/main.scss */
+@import '/src/styles/utils/_reset';
+@import '/src/styles/utils/_global';
+@import '/src/styles/layout/header';
+@import '/src/styles/layout/footer';
+
+.header {
+  background-color: yellow; /* 기본 배경색 */
+  transition: background-color 0.5s ease; /* 부드러운 전환 효과 */
+}
+
+.header--scrolled {
+  background-color: rgba(0, 0, 0, 0.8); /* 스크롤 시 변경할 배경색 (예: 검정색) */
+}
+
+.useless {
+  span {
+    color: white;
+  }
+}
