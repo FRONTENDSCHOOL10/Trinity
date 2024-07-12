@@ -2255,9 +2255,18 @@ body {
   justify-content: center;
   align-items: center;
   text-align: left;
-  padding: 20px;
-  border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding-top: 2.38rem;
+}
+@media (min-width: 768px) {
+  .sign-up-container {
+    padding-top: 3.5rem;
+  }
+}
+@media (min-width: 1920px) {
+  .sign-up-container {
+    padding-top: 6.25rem;
+  }
 }
 
 .tving-sign-up-title {
@@ -2265,12 +2274,35 @@ body {
   font-weight: 700;
   margin-top: 1.75rem;
 }
+@media (min-width: 768px) {
+  .tving-sign-up-title {
+    margin-top: 2.75rem;
+    font-size: 1.75rem;
+  }
+}
+@media (min-width: 1920px) {
+  .tving-sign-up-title {
+    margin-top: 4.3rem;
+    font-size: 2.375rem;
+  }
+}
 
 .tving-sign-up-subtitle {
   font-size: 0.75rem;
   color: rgb(137, 137, 137);
   margin-top: 1rem;
   margin-bottom: 1.75rem;
+}
+@media (min-width: 768px) {
+  .tving-sign-up-subtitle {
+    font-size: 1rem;
+  }
+}
+@media (min-width: 1920px) {
+  .tving-sign-up-subtitle {
+    margin-top: 1.75rem;
+    font-size: 1.75rem;
+  }
 }
 
 form {
@@ -2288,6 +2320,7 @@ form {
   align-items: flex-start;
   text-align: left;
   color: rgb(107, 107, 107);
+  margin-top: 1rem;
   margin-bottom: 1rem;
 }
 .privacy-policy #agree-all {
@@ -2334,12 +2367,166 @@ input[type=password].is-active,
 input[type=email].is-active {
   box-shadow: 0 0 0 1px rgb(225, 225, 225) inset;
 }
+@media (min-width: 768px) {
+  input[type=text],
+  input[type=password],
+  input[type=email] {
+    font-family: "Pretendard Variable", Pretendard, sans-serif;
+    width: 70%;
+    min-width: 26rem;
+    height: 3.37rem;
+    background-color: #212121;
+    font-size: rgb(107, 107, 107);
+    color: rgb(255, 255, 255);
+    border-radius: 0.25rem;
+    text-indent: 1rem;
+    font-weight: 400;
+    padding: 0;
+    cursor: pointer;
+  }
+  input[type=text]:hover,
+  input[type=password]:hover,
+  input[type=email]:hover {
+    box-shadow: 0 0 0 1px rgb(225, 225, 225) inset;
+  }
+  input[type=text].is-active,
+  input[type=password].is-active,
+  input[type=email].is-active {
+    box-shadow: 0 0 0 1px rgb(225, 225, 225) inset;
+  }
+}
+@media (min-width: 1920px) {
+  input[type=text],
+  input[type=password],
+  input[type=email] {
+    font-family: "Pretendard Variable", Pretendard, sans-serif;
+    width: 70%;
+    min-width: 45.75rem;
+    height: 6rem;
+    background-color: #212121;
+    font-size: rgb(107, 107, 107);
+    color: rgb(255, 255, 255);
+    border-radius: 0.25rem;
+    text-indent: 1.5rem;
+    font-weight: 400;
+    padding: 0;
+    cursor: pointer;
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+  }
+  input[type=text]:hover,
+  input[type=password]:hover,
+  input[type=email]:hover {
+    box-shadow: 0 0 0 1px rgb(225, 225, 225) inset;
+  }
+  input[type=text].is-active,
+  input[type=password].is-active,
+  input[type=email].is-active {
+    box-shadow: 0 0 0 1px rgb(225, 225, 225) inset;
+  }
+}
 
 .input-subtext {
-  font-size: 12px;
+  font-size: 0.75rem;
   color: rgb(107, 107, 107);
   margin-top: 0.25rem;
   text-align: left;
+}
+@media (min-width: 1920px) {
+  .input-subtext {
+    font-size: 1.3rem;
+    position: relative;
+    top: -0.5rem;
+  }
+}
+
+.invisible {
+  display: none;
+}
+
+.visible {
+  display: inline-block; /* 또는 다른 적절한 display 값 */
+}
+
+.error {
+  color: red;
+}
+
+.delete-icon {
+  position: relative;
+  top: -2.15rem;
+  left: 16rem;
+  z-index: 1;
+  width: 0;
+  height: 0;
+}
+@media (min-width: 768px) {
+  .delete-icon {
+    position: relative;
+    top: -2.3rem;
+    left: 24rem;
+    z-index: 1;
+  }
+}
+@media (min-width: 1920px) {
+  .delete-icon {
+    position: relative;
+    top: -5rem;
+    left: 42rem;
+    z-index: 1;
+    scale: 1.75;
+  }
+}
+
+.delete-pw {
+  position: relative;
+  top: -2.15rem;
+  left: 14.4rem;
+  z-index: 1;
+  width: 0;
+  height: 0;
+}
+@media (min-width: 768px) {
+  .delete-pw {
+    position: relative;
+    top: -2.3rem;
+    left: 22rem;
+    z-index: 1;
+  }
+}
+@media (min-width: 1920px) {
+  .delete-pw {
+    position: relative;
+    top: -5rem;
+    left: 39rem;
+    z-index: 1;
+  }
+}
+
+.password-toggle-icon {
+  position: relative;
+  top: -3rem;
+  left: 16rem;
+  z-index: 1;
+  width: 0;
+  height: 0;
+}
+@media (min-width: 768px) {
+  .password-toggle-icon {
+    position: relative;
+    top: -3.4rem;
+    left: 23.8rem;
+    z-index: 1;
+  }
+}
+@media (min-width: 1920px) {
+  .password-toggle-icon {
+    position: relative;
+    top: -6.7rem;
+    left: 42rem;
+    z-index: 1;
+    scale: 1.75;
+  }
 }
 
 button.sign-up {
@@ -2360,6 +2547,18 @@ button.sign-up {
   align-items: center;
   flex-shrink: 0;
   cursor: pointer;
+}
+@media (min-width: 768px) {
+  button.sign-up {
+    font-size: 1rem;
+    height: 3.37rem;
+  }
+}
+@media (min-width: 1920px) {
+  button.sign-up {
+    font-size: 1.3rem;
+    height: 5.38rem;
+  }
 }
 
 input[type=checkbox] {
@@ -2382,6 +2581,18 @@ input[type=checkbox] {
   cursor: pointer;
   display: inline-block;
 }
+@media (min-width: 768px) {
+  .check-wrapper label {
+    padding-left: 1.75rem;
+  }
+}
+@media (min-width: 1920px) {
+  .check-wrapper label {
+    font-size: 1.3rem;
+    padding-left: 2.37rem;
+    padding-bottom: 0.75rem;
+  }
+}
 
 .check-wrapper label::before {
   position: absolute;
@@ -2393,24 +2604,40 @@ input[type=checkbox] {
   background-repeat: no-repeat;
 }
 
-.checked-all {
-  padding-bottom: 0.75rem;
-}
-
 .checked-optional {
   padding-left: 1rem;
+}
+@media (min-width: 1920px) {
+  .checked-optional {
+    padding-left: 2.25rem;
+  }
 }
 
 #agree-all + label::before {
   content: url("/signUp/checkAllIcon.svg");
+}
+@media (min-width: 1920px) {
+  #agree-all + label::before {
+    scale: 1.5;
+  }
 }
 
 #agree-all:checked + label::before {
   content: url("/signUp/checkedAllIcon.svg");
 }
 
+#agree-all:focus + label::before {
+  outline: 1px solid rgb(225, 225, 225);
+  border-radius: 0.3rem;
+}
+
 #age-check + label::before {
   content: url("/signUp/checkIcon.svg");
+}
+@media (min-width: 1920px) {
+  #age-check + label::before {
+    scale: 1.5;
+  }
 }
 
 #age-check:checked + label::before {
@@ -2420,8 +2647,18 @@ input[type=checkbox] {
   box-shadow: 0 0 0 1px rgb(225, 225, 225) inset;
 }
 
+#age-check:focus + label::before {
+  outline: 1px solid rgb(225, 225, 225);
+  border-radius: 0.3rem;
+}
+
 #privacy-check + label::before {
   content: url("/signUp/checkIcon.svg");
+}
+@media (min-width: 1920px) {
+  #privacy-check + label::before {
+    scale: 1.5;
+  }
 }
 
 #privacy-check:checked + label::before {
@@ -2431,8 +2668,18 @@ input[type=checkbox] {
   box-shadow: 0 0 0 1px rgb(225, 225, 225) inset;
 }
 
+#privacy-check:focus + label::before {
+  outline: 1px solid rgb(225, 225, 225);
+  border-radius: 0.3rem;
+}
+
 #terms-check + label::before {
   content: url("/signUp/checkIcon.svg");
+}
+@media (min-width: 1920px) {
+  #terms-check + label::before {
+    scale: 1.5;
+  }
 }
 
 #terms-check:checked + label::before {
@@ -2442,8 +2689,18 @@ input[type=checkbox] {
   box-shadow: 0 0 0 1px rgb(225, 225, 225) inset;
 }
 
+#terms-check:focus + label::before {
+  outline: 1px solid rgb(225, 225, 225);
+  border-radius: 0.3rem;
+}
+
 #channel-check + label::before {
   content: url("/signUp/checkIcon.svg");
+}
+@media (min-width: 1920px) {
+  #channel-check + label::before {
+    scale: 1.5;
+  }
 }
 
 #channel-check:checked + label::before {
@@ -2453,8 +2710,18 @@ input[type=checkbox] {
   box-shadow: 0 0 0 1px rgb(225, 225, 225) inset;
 }
 
+#channel-check:focus + label::before {
+  outline: 1px solid rgb(225, 225, 225);
+  border-radius: 0.3rem;
+}
+
 #service-check + label::before {
   content: url("/signUp/checkIcon.svg");
+}
+@media (min-width: 1920px) {
+  #service-check + label::before {
+    scale: 1.5;
+  }
 }
 
 #service-check:checked + label::before {
@@ -2464,8 +2731,18 @@ input[type=checkbox] {
   box-shadow: 0 0 0 1px rgb(225, 225, 225) inset;
 }
 
+#service-check:focus + label::before {
+  outline: 1px solid rgb(225, 225, 225);
+  border-radius: 0.3rem;
+}
+
 #marketing-sms-check + label::before {
   content: url("/signUp/checkIcon.svg");
+}
+@media (min-width: 1920px) {
+  #marketing-sms-check + label::before {
+    scale: 1.5;
+  }
 }
 
 #marketing-sms-check:checked + label::before {
@@ -2475,8 +2752,18 @@ input[type=checkbox] {
   box-shadow: 0 0 0 1px rgb(225, 225, 225) inset;
 }
 
+#marketing-sms-check:focus + label::before {
+  outline: 1px solid rgb(225, 225, 225);
+  border-radius: 0.3rem;
+}
+
 #marketing-email-check + label::before {
   content: url("/signUp/checkIcon.svg");
+}
+@media (min-width: 1920px) {
+  #marketing-email-check + label::before {
+    scale: 1.5;
+  }
 }
 
 #marketing-email-check:checked + label::before {
@@ -2484,4 +2771,9 @@ input[type=checkbox] {
 }
 #marketing-email-check:checked + label::before.is-active {
   box-shadow: 0 0 0 1px rgb(225, 225, 225) inset;
+}
+
+#marketing-email-check:focus + label::before {
+  outline: 1px solid rgb(225, 225, 225);
+  border-radius: 0.3rem;
 }
