@@ -1,6 +1,5 @@
-import { getNode, setStorage } from 'kind-tiger';
-import PocketBase from 'pocketbase';
-// import CryptoJS from 'crypto-js'; // CryptoJS 모듈 주석 처리
+import { getNode, isString, getStorage, setStorage } from 'kind-tiger';
+import { PocketBase } from 'pocketbase';
 
 const pb = new PocketBase('https://plainyogurt.pockethost.io/');
 const findButton = getNode('.button--login');
