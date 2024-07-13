@@ -2,7 +2,7 @@ import getPbImageURL from '@/api/getPbImageURL';
 import pb from '@/api/pocketbase';
 import { getNode, getStorage, insertLast, insertAfter, setDocumentTitle, setStorage } from 'kind-tiger';
 import defaultAuthData from '@/api/defaultAuthData';
-import renderHeader from '@/layout/header/header';
+import { renderHeader } from '@/layout/header/header';
 import renderMainVisualSlider from '@/components/mainVisual/mainVisual';
 import renderMustContentSlider from '@/components/contentSlider/must/must';
 import renderQuickVodContentSlider from '@/components/contentSlider/quick/quick';

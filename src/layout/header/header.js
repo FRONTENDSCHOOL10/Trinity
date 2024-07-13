@@ -2,6 +2,21 @@ import getPbImageURL from '@/api/getPbImageURL';
 import pb from '@/api/pocketbase';
 import { insertLast } from 'kind-tiger';
 
+function headerScript() {
+  document.addEventListener('DOMContentLoaded', () => {
+    const header = document.querySelector('.header');
+    const changeBackgroundColorScrollPosition = 100; // 스크롤 위치 기준 설정 (예: 100px)
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > changeBackgroundColorScrollPosition) {
+        header.classList.add('header--scrolled');
+      } else {
+        header.classList.remove('header--scrolled');
+      }
+    });
+  });
+}
+
 async function renderHeader() {
   const headerTemplate = `
     <h1 class="sr-only">TAING</h1>
@@ -50,5 +65,8 @@ async function renderHeader() {
 
   //   insertLast('.header', template);
   // });
+
+  // headerScript 함수 호출하여 스크롤 이벤트 설정
+  headerScript();
 }
-export default renderHeader;
+export { renderHeader, headerScript };
