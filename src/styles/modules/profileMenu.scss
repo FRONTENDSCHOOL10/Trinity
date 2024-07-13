@@ -1,0 +1,23 @@
+.header__aside__button--profile {
+  &:hover {
+    .modal-layer {  
+      display: block;
+      position: relative;
+      right: 600px;
+      top: 0;
+      padding: 50px 0 0 0;
+    }
+      .modal {
+        display: flex;
+        flex-direction: column;
+        width: 600px;
+        aspect-ratio: 6/4;
+        background-color: #ffffff;
+    }
+  }
+}
+
+.modal-layer {  
+  display: none;
+  // display: block;
+}
