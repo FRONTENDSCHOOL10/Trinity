@@ -5,7 +5,7 @@ import { insertLast } from 'kind-tiger';
 function headerScript() {
   document.addEventListener('DOMContentLoaded', () => {
     const header = document.querySelector('.header');
-    const changeBackgroundColorScrollPosition = 100; // 스크롤 위치 기준 설정 (예: 100px)
+    const changeBackgroundColorScrollPosition = 100; // 스크롤 위치 기준 설정
 
     window.addEventListener('scroll', () => {
       if (window.scrollY > changeBackgroundColorScrollPosition) {
