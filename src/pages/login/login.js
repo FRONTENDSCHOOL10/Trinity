@@ -173,10 +173,10 @@ function togglePasswordVisibility() {
 
   if (passwordInput.type === 'password') {
     passwordInput.type = 'text';
-    showPasswordButton.style.backgroundImage = "url('/public/icon/login/iconVisible.svg')";
+    showPasswordButton.style.backgroundImage = "url('/icon/login/iconVisible.svg')";
   } else {
     passwordInput.type = 'password';
-    showPasswordButton.style.backgroundImage = "url('/public/icon/login/iconInVisibleForMT.svg')";
+    showPasswordButton.style.backgroundImage = "url('/icon/login/iconInvisible.svg')";
   }
 }
 
