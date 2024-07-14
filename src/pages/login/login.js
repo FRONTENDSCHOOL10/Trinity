@@ -8,7 +8,7 @@ const loginIcon = getNode('#login-icon');
 const saveLoginCheckbox = getNode('.login__checkbox');
 const emailInput = getNode('#email-input');
 const passwordInput = getNode('#pw-input');
-const SECRET_KEY = 'your-secret-key'; // 비밀 키는 환경 변수나 안전한 곳에 저장하세요.
+// const SECRET_KEY = 'your-secret-key'; // 비밀 키는 환경 변수나 안전한 곳에 저장하세요.
 
 /**
  * 클로저를 사용하여 saveLoginInfo 변수를 보호합니다.
