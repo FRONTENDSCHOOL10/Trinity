@@ -2,7 +2,6 @@ import { setDocumentTitle, setStorage, getNode, insertLast } from 'kind-tiger';
 import defaultAuthData from '@/api/defaultAuthData';
 import { headerScript } from '@/layout/header/header';
 import { renderFooter, footerScript } from '@/layout/footer/footer';
-import renderOnlyContentSlider from '@/components/contentSlider/only/only';
 
 setDocumentTitle('TAING');
 
@@ -15,6 +14,33 @@ headerScript();
 
 const app = document.getElementById('app');
 
-renderOnlyContentSlider();
 renderFooter();
 footerScript();
+
+const swiper = new Swiper('.swiper', {
+  effect: 'coverflow',
+  spaceBetween: 30,
+  slideShadows: true,
+  centeredSlides: true,
+  coverflowEffect: {
+    rotate: 50,
+    stretch: 0,
+    depth: 100,
+    modifier: 1,
+    slideShadows: false,
+  },
+  autoplay: {
+    delay: 2500,
+    disableOnInteraction: false,
+  },
+  grabCursor: true,
+  keyboard: {
+    enabled: true,
+  },
+  loop: true,
+  loopAdditionalSlides: 2,
+  preloadImages: true,
+  lazy: {
+    loadPrevNext: true,
+  },
+});
