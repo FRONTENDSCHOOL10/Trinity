@@ -176,7 +176,7 @@ function togglePasswordVisibility() {
     showPasswordButton.style.backgroundImage = "url('/icon/login/iconVisible.svg')";
   } else {
     passwordInput.type = 'password';
-    showPasswordButton.style.backgroundImage = "url('/icon/login/iconInVisibleForMT.svg')";
+    showPasswordButton.style.backgroundImage = "url('/icon/login/iconInvisible.svg')";
   }
 }
 
