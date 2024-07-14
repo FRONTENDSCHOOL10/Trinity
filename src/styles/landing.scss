@@ -15,7 +15,7 @@
   color: white;
   position: relative;
   height: 100%;
-  margin-top: 3.125rem;
+  // margin-top: 3.125rem;
   min-width: 20rem;
   background: $--black;
   display: flex;
@@ -35,7 +35,7 @@
 //scroll-section-0, onboarding
 
 .scroll-section-0 {
-  padding: 80px 0 130px 0;
+  padding: 5rem 0 8.125rem 0;
 }
 
 .onboarding {
@@ -43,17 +43,25 @@
   flex-flow: column nowrap;
   align-items: center;
   justify-content: center;
+
+  overflow: visible;
+
   width: 100%;
-  height: auto;
-  overflow: hidden;
-  @include background-image(url(/image/landing/background-img-M.png));
+  height: 85vh;
+
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 1) 100%), url('/image/landing/background-img-M.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  @include tabletW() {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 1) 100%), url('/image/landing/background-img-T.png');
+  }
+  @include desktopW() {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 1) 100%), url('/image/landing/background-img-D.png');
+  }
 
   &__phrase {
     gap: 1rem;
-    text-transform: uppercase;
-    -webkit-text-stroke: 4px #000;
-    -webkit-text-fill-color: transparent;
-    -webkit-font-smoothing: subpixel-antialiased;
 
     &__title {
       font-weight: 700;
@@ -74,7 +82,6 @@
     flex-flow: row nowrap;
     align-items: center;
     justify-content: center;
-    border: 1px solid red;
     border-radius: 4px;
     background-color: $--brand-red-2;
     gap: 0.5rem;
