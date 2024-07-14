@@ -2,6 +2,7 @@
 @import '/src/styles/utils/_global';
 @import '/src/styles/layout/header';
 @import '/src/styles/layout/footer';
+@import '/src/styles/find'; // find의 일부사용 중
 
 // Profile Size
 $--mo-proImg: 7.125rem;
@@ -64,7 +65,7 @@ $--desk-btnModify-h: 5.375rem;
 }
 
 //profile-modify
-.profile__modify__wrap {
+.profile__wrap {
     font-size: .75rem;
     height: 100vh;
     @include flexbox(center);
@@ -78,6 +79,7 @@ $--desk-btnModify-h: 5.375rem;
         position: relative;
         align-content: center;
         padding: 0 2.125rem;
+        margin: 0 auto;
         color: $--white;
         font-size: $--label-small;
         & .head__form {
@@ -170,7 +172,6 @@ $--desk-btnModify-h: 5.375rem;
                         font-size: $--label-medium;
                     }
                     @media (min-width: $--desktop){
-                        @include squareSize($--desk-proImg);
                         font-size: $--label-x-l;
                     }
                 }
