@@ -84,6 +84,7 @@ $--desktop-icon-size: 2.5rem;
 
 .header {
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 100%);
+  transition: background-color 0.5s ease; // 스크롤 시 부드러운 전환효과를 위한 코드
   padding: 0.5rem 1rem;
 
   @include flexbox(row, nowrap, null, center, null);
@@ -176,6 +177,11 @@ $--desktop-icon-size: 2.5rem;
       }
     }
   }
+}
+
+// 헤더 배경 전환효과를 위한 부분
+.header--scrolled {
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
 .header__nav__program__item--live a {
