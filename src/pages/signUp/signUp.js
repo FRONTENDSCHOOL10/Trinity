@@ -58,10 +58,10 @@ function togglePasswordVisibility(element) {
   pwInput.classList.toggle('active');
 
   if (pwInput.classList.contains('active')) {
-    element.querySelector('img').src = '/public/icon/signUp/iconWatched.svg';
+    element.querySelector('img').src = '/icon/signUp/iconWatched.svg';
     pwInput.setAttribute('type', 'text');
   } else {
-    element.querySelector('img').src = '/public/icon/signUp/iconWatching.svg';
+    element.querySelector('img').src = '/icon/signUp/iconWatching.svg';
     pwInput.setAttribute('type', 'password');
   }
 }
@@ -71,10 +71,10 @@ function toggleConfirmPasswordVisibility(element){
   confirmPwInput.classList.toggle('active');
 
   if (confirmPwInput.classList.contains('active')) {
-    element.querySelector('img').src = '/public/icon/signUp/iconWatched.svg';
+    element.querySelector('img').src = '/icon/signUp/iconWatched.svg';
     confirmPwInput.setAttribute('type', 'text');
   } else {
-    element.querySelector('img').src = '/public/icon/signUp/iconWatching.svg';
+    element.querySelector('img').src = '/icon/signUp/iconWatching.svg';
     confirmPwInput.setAttribute('type', 'password');
   }
 }
