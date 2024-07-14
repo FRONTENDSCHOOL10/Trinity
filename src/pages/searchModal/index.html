@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>검색 모달</title>
     <link rel="stylesheet" href="/src/styles/main.scss">
+    <script src="./main.js" type="module"></script>
 </head>
 <body>
     <header>
@@ -16,24 +17,31 @@
             <label for="searchInput" class="sr-only">컨텐츠 검색창</label>
             <input type="text" id="searchInput" placeholder="검색">
             <button id="searchSubmitBtn"></button>
-            <section class="search-history">
-             <p class="search-history-title">최근 검색어</p>
-             <ol class="search-history-list">
-                <li class="search-history-item">검색 내역이 없습니다.</li>
-             </ol>
-            </section>
-            <section class="popular-searches">
-                <p class="popular-searches-title">실시간 인기 검색어</p>
-                <ol class="popular-searches-list decimal">
-                    <li class="popular-searches-item">재벌집 막내아들</li>
-                    <li class="popular-searches-item">삼위일체</li>
-                    <li class="popular-searches-item">트리니티</li>
-                </ol>
-                <p class="popular-searches-date">2022.12.24 오전 03.04 기준</p>
-            </section>
+            <div class="section-wrapper">
+                <section class="search-history">
+                    <h1 class="search-history-title">최근 검색어</h1>
+                    <ol class="search-history-list">
+                       <li class="search-history-item">검색 내역이 없습니다.</li>
+                    </ol>
+                   </section>
+                   <section class="popular-searches">
+                       <h1 class="popular-searches-title">실시간 인기 검색어</h1>
+                       <ol class="popular-searches-list">
+                           <li class="popular-searches-item">재벌집 막내아들</li>
+                           <li class="popular-searches-item">삼위일체</li>
+                           <li class="popular-searches-item">트리니티</li>
+                           <li class="popular-searches-item">삼위일체</li>
+                           <li class="popular-searches-item">트리니티</li>
+                           <li class="popular-searches-item">삼위일체</li>
+                           <li class="popular-searches-item">트리니티</li>
+                           <li class="popular-searches-item">삼위일체</li>
+                           <li class="popular-searches-item">트리니티</li>
+                           <li class="popular-searches-item">삼위일체</li>
+                       </ol>
+                       <p class="popular-searches-date">2022.12.24 오전 03.04 기준</p>
+                   </section>
+            </div>
         </div>
     </div>
-
-    <script src="./main.js"></script>
 </body>
 </html>
