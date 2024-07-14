@@ -105,16 +105,12 @@ $--desk-btnModify-h: 5.375rem;
             }
         }
         & .profile__form {
-            display: grid;
-            place-items: center;
-            grid-template-columns: repeat(2, minmax($--mo-proImg, $--mo-proImg));
-            gap: 1.5rem;
+            // min-width: 20rem;
+            @include flexbox(row, wrap, center, center, 1.5rem);
             @media (min-width:$--tablet) and (max-width:($--desktop - 1)){
-                grid-template-columns: repeat(4, minmax($--tablet-proImg, $--tablet-proImg));
                 gap: 2rem;
             }
             @media (min-width: $--desktop){
-                grid-template-columns: repeat(4, minmax($--desk-proImg, $--desk-proImg));
                 gap: 3.25rem;
             }
             &--item {
