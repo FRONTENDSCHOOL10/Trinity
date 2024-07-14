@@ -154,7 +154,7 @@
     color: $--white;
     cursor: pointer;
     font-size: 1rem;
-    background: url('/public/icon/login/iconDelete.svg') no-repeat center;
+    background: url('/icon/login/iconDelete.svg') no-repeat center;
     @include desktopW() {
       width: 1.5rem;
       height: 1.5rem;
@@ -173,12 +173,12 @@
     margin-left: auto;
     margin-right: 2rem;
 
-    background: url('/public/icon/login/iconInvisible.svg') no-repeat center;
+    background: url('/icon/login/iconInvisible.svg') no-repeat center;
     border: none;
     cursor: pointer;
 
     &:active {
-      background-image: url('/public/icon/login/iconVisible.svg');
+      background-image: url('/icon/login/iconVisible.svg');
     }
   }
 
@@ -222,7 +222,7 @@
   }
 
   &__show-password-button.active {
-    background-image: url('/public/icon/login/iconVisible.svg');
+    background-image: url('/icon/login/iconVisible.svg');
   }
 
   &__checkbox {
@@ -242,7 +242,7 @@
       margin-right: 0.25rem;
       display: inline-block;
       cursor: pointer;
-      @include background-image(url('/public/icon/login/iconCheckCircleGray.svg'));
+      @include background-image(url('/icon/login/iconCheckCircleGray.svg'));
 
       @include desktopW() {
         width: 1.5rem;
@@ -255,7 +255,7 @@
       }
 
       &.active {
-        @include background-image(url('/public/icon/login/iconCheckCircle.svg'));
+        @include background-image(url('/icon/login/iconCheckCircle.svg'));
       }
     }
   }
