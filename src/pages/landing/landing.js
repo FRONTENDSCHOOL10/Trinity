@@ -17,7 +17,7 @@ const app = document.getElementById('app');
 renderFooter();
 footerScript();
 
-const swiper = new Swiper('.swiper', {
+const swiper1 = new Swiper('.mySwiper1', {
   effect: 'coverflow',
   spaceBetween: 30,
   slideShadows: true,
