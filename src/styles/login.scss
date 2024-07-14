@@ -89,6 +89,9 @@
     @include background-image(url('/icon/header/iconTaingLogo.svg'));
     min-width: 2.875rem;
     min-height: 0.9375rem;
+    max-width: 6.25rem;
+    width: 10%;
+    aspect-ratio: 2.875/0.9375;
   }
 }
 
