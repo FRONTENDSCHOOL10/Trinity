@@ -2,10 +2,29 @@
 @import '/src/styles/utils/_reset';
 @import '/src/styles/utils/_global';
 @import '/src/styles/layout/header';
+@import '/src/styles/modules/mainVisual';
+@import '/src/styles/modules/contentSlider';
+@import '/src/styles/modules/adBanner';
+@import '/src/styles/modules/eventSlider.scss';
 @import '/src/styles/layout/footer';
 
+//mixin
+
+//임시 body 설정
+.landing {
+  color: white;
+  position: relative;
+  height: 100%;
+  margin-top: 3.125rem;
+  min-width: 20rem;
+  background: $--black;
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+// 헤더
 .header {
-  background-color: yellow; /* 기본 배경색 */
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 100%); /* 기본 배경색 */
   transition: background-color 0.5s ease; /* 부드러운 전환 효과 */
 }
 
@@ -13,8 +32,32 @@
   background-color: rgba(0, 0, 0, 0.8); /* 스크롤 시 변경할 배경색 (예: 검정색) */
 }
 
-.useless {
-  span {
-    color: white;
+//scroll-section-0, onboarding
+
+.onboarding {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+
+  &__button {
+    display: inline-flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid red;
+    border-radius: 4px;
+    background-color: $--brand-red-2;
+
+    &-logo {
+      border: 5px solid blue;
+      outline: 5px solid blue;
+    }
+
+    &-content {
+      text-decoration: none;
+      font: 12px;
+      color: $--white;
+    }
   }
 }

@@ -1,7 +1,8 @@
-import { setDocumentTitle, setStorage } from 'kind-tiger';
+import { setDocumentTitle, setStorage, getNode, insertLast } from 'kind-tiger';
 import defaultAuthData from '@/api/defaultAuthData';
 import { headerScript } from '@/layout/header/header';
 import { renderFooter, footerScript } from '@/layout/footer/footer';
+import renderOnlyContentSlider from '@/components/contentSlider/only/only';
 
 setDocumentTitle('TAING');
 
@@ -12,5 +13,8 @@ if (!localStorage.getItem('auth')) {
 
 headerScript();
 
+const app = document.getElementById('app');
+
+renderOnlyContentSlider();
 renderFooter();
 footerScript();

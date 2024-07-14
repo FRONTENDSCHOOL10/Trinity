@@ -4,34 +4,36 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Landing</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
     <link rel="stylesheet" href="/src/styles/landing.scss" />
     <script type="module" src="/src/pages/landing/landing.js"></script>
   </head>
-  <body>
+  <body class="landing">
     <header class="header">
       <h1 class="sr-only">TAING</h1>
       <a href="/" class="header__logo"></a>
     </header>
 
-    <body id="onboarding">
-      <header class="onboarding">
-        <h1 class="onboarding__title">
-          <a class="onboarding__link" href="/"><span class="sr-only">타잉 로고</span></a>
-        </h1>
-      </header>
+    <section class="scroll-section-0 onboarding">
+      <h2 class="onboarding__title sr-only" aria-hidden="true">타잉 오리지널 콘텐츠</h2>
+      <p class="onboarding__phrase-Title">
+        타잉 오리지널 콘텐츠,<br />
+        방송, 영화, 해외시리즈까지!<br />
+        재미를 플레이해보세요.
+      </p>
+      <p class="onboarding__phrase-Sub">간편하게 가입하고, 원하실 때 해지할 수 있어요.</p>
+      <div class="onboarding__button">
+        <img src="/image/landing/iconTAING.svg" alt="TAINGimg" />
+        <a href="/src/pages/login/index.html" class="onboarding__button-content">새로워진 타잉을 만나보세요!</a>
+      </div>
+    </section>
 
-      <section class="original">
-        <h2 class="original__title sr-only" aria-hidden="true">타잉 오리지널 콘텐츠</h2>
-        <div class="original__info">
-          <p class="original__contentTitle">
-            티빙 오리지널 콘텐츠,<br />
-            방송, 영화, 해외시리즈까지!<br />
-            재미를 플레이해보세요.
-          </p>
-          <p class="original__contentSub">간편하게 가입하고, 원하실 때 해지할 수 있어요.</p>
-          <a href="/" class="original__btn">새로워진 티빙을 만나보세요!</a>
-        </div>
-      </section>
+    <main id="app">메인 예시1</main>
+
+    <!-- 
+
 
       <section class="fun">
         <h2 class="fun__title sr-only" aria-hidden="true">타잉에만 있는 재미</h2>
@@ -52,85 +54,6 @@
             <li class="fun__items fun__03"><img src="./../images/drinkM_onboading.png" alt="술꾼 도시여자들" /></li>
           </ul>
         </div>
-      </section>
-
-      <section class="useless">
-        <span> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ipsa explicabo. Eum, odio. Quo eaque dolore, ipsum, unde quibusdam delectus alias quaerat nam dolorem dolorum laboriosam deserunt neque veritatis iure? </span>
-        <span> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ipsa explicabo. Eum, odio. Quo eaque dolore, ipsum, unde quibusdam delectus alias quaerat nam dolorem dolorum laboriosam deserunt neque veritatis iure? </span>
-        <span> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ipsa explicabo. Eum, odio. Quo eaque dolore, ipsum, unde quibusdam delectus alias quaerat nam dolorem dolorum laboriosam deserunt neque veritatis iure? </span>
-        <span> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ipsa explicabo. Eum, odio. Quo eaque dolore, ipsum, unde quibusdam delectus alias quaerat nam dolorem dolorum laboriosam deserunt neque veritatis iure? </span>
-        <span> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ipsa explicabo. Eum, odio. Quo eaque dolore, ipsum, unde quibusdam delectus alias quaerat nam dolorem dolorum laboriosam deserunt neque veritatis iure? </span>
-        <span> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ipsa explicabo. Eum, odio. Quo eaque dolore, ipsum, unde quibusdam delectus alias quaerat nam dolorem dolorum laboriosam deserunt neque veritatis iure? </span>
-        <span> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ipsa explicabo. Eum, odio. Quo eaque dolore, ipsum, unde quibusdam delectus alias quaerat nam dolorem dolorum laboriosam deserunt neque veritatis iure? </span>
-        <span> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ipsa explicabo. Eum, odio. Quo eaque dolore, ipsum, unde quibusdam delectus alias quaerat nam dolorem dolorum laboriosam deserunt neque veritatis iure? </span>
-        <span> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ipsa explicabo. Eum, odio. Quo eaque dolore, ipsum, unde quibusdam delectus alias quaerat nam dolorem dolorum laboriosam deserunt neque veritatis iure? </span>
-        <span> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ipsa explicabo. Eum, odio. Quo eaque dolore, ipsum, unde quibusdam delectus alias quaerat nam dolorem dolorum laboriosam deserunt neque veritatis iure? </span>
-        <span> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ipsa explicabo. Eum, odio. Quo eaque dolore, ipsum, unde quibusdam delectus alias quaerat nam dolorem dolorum laboriosam deserunt neque veritatis iure? </span>
-        <span> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ipsa explicabo. Eum, odio. Quo eaque dolore, ipsum, unde quibusdam delectus alias quaerat nam dolorem dolorum laboriosam deserunt neque veritatis iure? </span>
-        <span> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ipsa explicabo. Eum, odio. Quo eaque dolore, ipsum, unde quibusdam delectus alias quaerat nam dolorem dolorum laboriosam deserunt neque veritatis iure? </span>
-        <span> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ipsa explicabo. Eum, odio. Quo eaque dolore, ipsum, unde quibusdam delectus alias quaerat nam dolorem dolorum laboriosam deserunt neque veritatis iure? </span>
-        <span> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ipsa explicabo. Eum, odio. Quo eaque dolore, ipsum, unde quibusdam delectus alias quaerat nam dolorem dolorum laboriosam deserunt neque veritatis iure? </span>
-        <span> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ipsa explicabo. Eum, odio. Quo eaque dolore, ipsum, unde quibusdam delectus alias quaerat nam dolorem dolorum laboriosam deserunt neque veritatis iure? </span>
-        <span> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ipsa explicabo. Eum, odio. Quo eaque dolore, ipsum, unde quibusdam delectus alias quaerat nam dolorem dolorum laboriosam deserunt neque veritatis iure? </span>
-        <span> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ipsa explicabo. Eum, odio. Quo eaque dolore, ipsum, unde quibusdam delectus alias quaerat nam dolorem dolorum laboriosam deserunt neque veritatis iure? </span>
-        <span> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ipsa explicabo. Eum, odio. Quo eaque dolore, ipsum, unde quibusdam delectus alias quaerat nam dolorem dolorum laboriosam deserunt neque veritatis iure? </span>
-        <span> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ipsa explicabo. Eum, odio. Quo eaque dolore, ipsum, unde quibusdam delectus alias quaerat nam dolorem dolorum laboriosam deserunt neque veritatis iure? </span>
-        <span> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ipsa explicabo. Eum, odio. Quo eaque dolore, ipsum, unde quibusdam delectus alias quaerat nam dolorem dolorum laboriosam deserunt neque veritatis iure? </span>
-        <span> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ipsa explicabo. Eum, odio. Quo eaque dolore, ipsum, unde quibusdam delectus alias quaerat nam dolorem dolorum laboriosam deserunt neque veritatis iure? </span>
-        <span> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ipsa explicabo. Eum, odio. Quo eaque dolore, ipsum, unde quibusdam delectus alias quaerat nam dolorem dolorum laboriosam deserunt neque veritatis iure? </span>
-        <span> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ipsa explicabo. Eum, odio. Quo eaque dolore, ipsum, unde quibusdam delectus alias quaerat nam dolorem dolorum laboriosam deserunt neque veritatis iure? </span>
-        <span> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ipsa explicabo. Eum, odio. Quo eaque dolore, ipsum, unde quibusdam delectus alias quaerat nam dolorem dolorum laboriosam deserunt neque veritatis iure? </span>
-        <span> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ipsa explicabo. Eum, odio. Quo eaque dolore, ipsum, unde quibusdam delectus alias quaerat nam dolorem dolorum laboriosam deserunt neque veritatis iure? </span>
-        <span> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ipsa explicabo. Eum, odio. Quo eaque dolore, ipsum, unde quibusdam delectus alias quaerat nam dolorem dolorum laboriosam deserunt neque veritatis iure? </span>
-        <span> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ipsa explicabo. Eum, odio. Quo eaque dolore, ipsum, unde quibusdam delectus alias quaerat nam dolorem dolorum laboriosam deserunt neque veritatis iure? </span>
-        <span> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ipsa explicabo. Eum, odio. Quo eaque dolore, ipsum, unde quibusdam delectus alias quaerat nam dolorem dolorum laboriosam deserunt neque veritatis iure? </span>
-        <span> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ipsa explicabo. Eum, odio. Quo eaque dolore, ipsum, unde quibusdam delectus alias quaerat nam dolorem dolorum laboriosam deserunt neque veritatis iure? </span>
-        <span> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ipsa explicabo. Eum, odio. Quo eaque dolore, ipsum, unde quibusdam delectus alias quaerat nam dolorem dolorum laboriosam deserunt neque veritatis iure? </span>
-        <span> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ipsa explicabo. Eum, odio. Quo eaque dolore, ipsum, unde quibusdam delectus alias quaerat nam dolorem dolorum laboriosam deserunt neque veritatis iure? </span>
-        <span> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ipsa explicabo. Eum, odio. Quo eaque dolore, ipsum, unde quibusdam delectus alias quaerat nam dolorem dolorum laboriosam deserunt neque veritatis iure? </span>
-        <span> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ipsa explicabo. Eum, odio. Quo eaque dolore, ipsum, unde quibusdam delectus alias quaerat nam dolorem dolorum laboriosam deserunt neque veritatis iure? </span>
-        <span> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ipsa explicabo. Eum, odio. Quo eaque dolore, ipsum, unde quibusdam delectus alias quaerat nam dolorem dolorum laboriosam deserunt neque veritatis iure? </span>
-        <span> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ipsa explicabo. Eum, odio. Quo eaque dolore, ipsum, unde quibusdam delectus alias quaerat nam dolorem dolorum laboriosam deserunt neque veritatis iure? </span>
-        <span> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ipsa explicabo. Eum, odio. Quo eaque dolore, ipsum, unde quibusdam delectus alias quaerat nam dolorem dolorum laboriosam deserunt neque veritatis iure? </span>
-        <span> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ipsa explicabo. Eum, odio. Quo eaque dolore, ipsum, unde quibusdam delectus alias quaerat nam dolorem dolorum laboriosam deserunt neque veritatis iure? </span>
-        <span> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ipsa explicabo. Eum, odio. Quo eaque dolore, ipsum, unde quibusdam delectus alias quaerat nam dolorem dolorum laboriosam deserunt neque veritatis iure? </span>
-        <span> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ipsa explicabo. Eum, odio. Quo eaque dolore, ipsum, unde quibusdam delectus alias quaerat nam dolorem dolorum laboriosam deserunt neque veritatis iure? </span>
-        <span> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ipsa explicabo. Eum, odio. Quo eaque dolore, ipsum, unde quibusdam delectus alias quaerat nam dolorem dolorum laboriosam deserunt neque veritatis iure? </span>
-        <span> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ipsa explicabo. Eum, odio. Quo eaque dolore, ipsum, unde quibusdam delectus alias quaerat nam dolorem dolorum laboriosam deserunt neque veritatis iure? </span>
-        <span> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ipsa explicabo. Eum, odio. Quo eaque dolore, ipsum, unde quibusdam delectus alias quaerat nam dolorem dolorum laboriosam deserunt neque veritatis iure? </span>
-        <span> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ipsa explicabo. Eum, odio. Quo eaque dolore, ipsum, unde quibusdam delectus alias quaerat nam dolorem dolorum laboriosam deserunt neque veritatis iure? </span>
-        <span> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ipsa explicabo. Eum, odio. Quo eaque dolore, ipsum, unde quibusdam delectus alias quaerat nam dolorem dolorum laboriosam deserunt neque veritatis iure? </span>
-        <span> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ipsa explicabo. Eum, odio. Quo eaque dolore, ipsum, unde quibusdam delectus alias quaerat nam dolorem dolorum laboriosam deserunt neque veritatis iure? </span>
-        <span> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ipsa explicabo. Eum, odio. Quo eaque dolore, ipsum, unde quibusdam delectus alias quaerat nam dolorem dolorum laboriosam deserunt neque veritatis iure? </span>
-        <span> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ipsa explicabo. Eum, odio. Quo eaque dolore, ipsum, unde quibusdam delectus alias quaerat nam dolorem dolorum laboriosam deserunt neque veritatis iure? </span>
-        <span> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ipsa explicabo. Eum, odio. Quo eaque dolore, ipsum, unde quibusdam delectus alias quaerat nam dolorem dolorum laboriosam deserunt neque veritatis iure? </span>
-        <span> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ipsa explicabo. Eum, odio. Quo eaque dolore, ipsum, unde quibusdam delectus alias quaerat nam dolorem dolorum laboriosam deserunt neque veritatis iure? </span>
-        <span> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ipsa explicabo. Eum, odio. Quo eaque dolore, ipsum, unde quibusdam delectus alias quaerat nam dolorem dolorum laboriosam deserunt neque veritatis iure? </span>
-        <span> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ipsa explicabo. Eum, odio. Quo eaque dolore, ipsum, unde quibusdam delectus alias quaerat nam dolorem dolorum laboriosam deserunt neque veritatis iure? </span>
-        <span> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ipsa explicabo. Eum, odio. Quo eaque dolore, ipsum, unde quibusdam delectus alias quaerat nam dolorem dolorum laboriosam deserunt neque veritatis iure? </span>
-        <span> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ipsa explicabo. Eum, odio. Quo eaque dolore, ipsum, unde quibusdam delectus alias quaerat nam dolorem dolorum laboriosam deserunt neque veritatis iure? </span>
-        <span> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ipsa explicabo. Eum, odio. Quo eaque dolore, ipsum, unde quibusdam delectus alias quaerat nam dolorem dolorum laboriosam deserunt neque veritatis iure? </span>
-        <span> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ipsa explicabo. Eum, odio. Quo eaque dolore, ipsum, unde quibusdam delectus alias quaerat nam dolorem dolorum laboriosam deserunt neque veritatis iure? </span>
-        <span> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ipsa explicabo. Eum, odio. Quo eaque dolore, ipsum, unde quibusdam delectus alias quaerat nam dolorem dolorum laboriosam deserunt neque veritatis iure? </span>
-        <span> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ipsa explicabo. Eum, odio. Quo eaque dolore, ipsum, unde quibusdam delectus alias quaerat nam dolorem dolorum laboriosam deserunt neque veritatis iure? </span>
-        <span> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ipsa explicabo. Eum, odio. Quo eaque dolore, ipsum, unde quibusdam delectus alias quaerat nam dolorem dolorum laboriosam deserunt neque veritatis iure? </span>
-        <span> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ipsa explicabo. Eum, odio. Quo eaque dolore, ipsum, unde quibusdam delectus alias quaerat nam dolorem dolorum laboriosam deserunt neque veritatis iure? </span>
-        <span> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ipsa explicabo. Eum, odio. Quo eaque dolore, ipsum, unde quibusdam delectus alias quaerat nam dolorem dolorum laboriosam deserunt neque veritatis iure? </span>
-        <span> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ipsa explicabo. Eum, odio. Quo eaque dolore, ipsum, unde quibusdam delectus alias quaerat nam dolorem dolorum laboriosam deserunt neque veritatis iure? </span>
-        <span> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ipsa explicabo. Eum, odio. Quo eaque dolore, ipsum, unde quibusdam delectus alias quaerat nam dolorem dolorum laboriosam deserunt neque veritatis iure? </span>
-        <span> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ipsa explicabo. Eum, odio. Quo eaque dolore, ipsum, unde quibusdam delectus alias quaerat nam dolorem dolorum laboriosam deserunt neque veritatis iure? </span>
-        <span> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ipsa explicabo. Eum, odio. Quo eaque dolore, ipsum, unde quibusdam delectus alias quaerat nam dolorem dolorum laboriosam deserunt neque veritatis iure? </span>
-        <span> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ipsa explicabo. Eum, odio. Quo eaque dolore, ipsum, unde quibusdam delectus alias quaerat nam dolorem dolorum laboriosam deserunt neque veritatis iure? </span>
-        <span> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ipsa explicabo. Eum, odio. Quo eaque dolore, ipsum, unde quibusdam delectus alias quaerat nam dolorem dolorum laboriosam deserunt neque veritatis iure? </span>
-        <span> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ipsa explicabo. Eum, odio. Quo eaque dolore, ipsum, unde quibusdam delectus alias quaerat nam dolorem dolorum laboriosam deserunt neque veritatis iure? </span>
-        <span> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ipsa explicabo. Eum, odio. Quo eaque dolore, ipsum, unde quibusdam delectus alias quaerat nam dolorem dolorum laboriosam deserunt neque veritatis iure? </span>
-        <span> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ipsa explicabo. Eum, odio. Quo eaque dolore, ipsum, unde quibusdam delectus alias quaerat nam dolorem dolorum laboriosam deserunt neque veritatis iure? </span>
-        <span> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ipsa explicabo. Eum, odio. Quo eaque dolore, ipsum, unde quibusdam delectus alias quaerat nam dolorem dolorum laboriosam deserunt neque veritatis iure? </span>
-        <span> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ipsa explicabo. Eum, odio. Quo eaque dolore, ipsum, unde quibusdam delectus alias quaerat nam dolorem dolorum laboriosam deserunt neque veritatis iure? </span>
-        <span> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ipsa explicabo. Eum, odio. Quo eaque dolore, ipsum, unde quibusdam delectus alias quaerat nam dolorem dolorum laboriosam deserunt neque veritatis iure? </span>
-        <span> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ipsa explicabo. Eum, odio. Quo eaque dolore, ipsum, unde quibusdam delectus alias quaerat nam dolorem dolorum laboriosam deserunt neque veritatis iure? </span>
-        <span> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ipsa explicabo. Eum, odio. Quo eaque dolore, ipsum, unde quibusdam delectus alias quaerat nam dolorem dolorum laboriosam deserunt neque veritatis iure? </span>
-        <span> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ipsa explicabo. Eum, odio. Quo eaque dolore, ipsum, unde quibusdam delectus alias quaerat nam dolorem dolorum laboriosam deserunt neque veritatis iure? </span>
       </section>
 
       <section class="look">
@@ -231,10 +154,7 @@
           <p class="new__contentTitle">지금 시작해보세요</p>
           <a href="/" class="new__btn">새로워진 티빙을 만나보세요!</a>
         </div>
-      </section>
-
-      <footer class="footer__area"></footer>
-    </body>
+      </section> -->
 
     <footer class="footer"></footer>
   </body>
