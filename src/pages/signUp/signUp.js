@@ -52,26 +52,45 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
-function togglePasswordVisibility(element) {
-  const input = element.previousElementSibling;
-  input.classList.toggle('active');
 
-  if (input.classList.contains('active')) {
-    element.querySelector('img').src = '/public/icon/signUp/iconWatched.svg';
-    input.setAttribute('type', 'text');
+function togglePasswordVisibility(element) {
+  const pwInput = getNode("#user-pw");
+  pwInput.classList.toggle('active');
+
+  if (pwInput.classList.contains('active')) {
+    element.querySelector('img').src = '/icon/signUp/iconWatched.svg';
+    pwInput.setAttribute('type', 'text');
   } else {
-    element.querySelector('img').src = '/public/icon/signUp/iconWatching.svg';
-    input.setAttribute('type', 'password');
+    element.querySelector('img').src = '/icon/signUp/iconWatching.svg';
+    pwInput.setAttribute('type', 'password');
   }
 }
 
-// HTML에서 toggle button과 연결된 아이콘 및 input 설정
-const toggleButtons = document.querySelectorAll('.password-toggle-icon');
-toggleButtons.forEach((button) => {
-  button.addEventListener('click', function () {
+function toggleConfirmPasswordVisibility(element){
+  const confirmPwInput = getNode("#confirm-password");
+  confirmPwInput.classList.toggle('active');
+
+  if (confirmPwInput.classList.contains('active')) {
+    element.querySelector('img').src = '/icon/signUp/iconWatched.svg';
+    confirmPwInput.setAttribute('type', 'text');
+  } else {
+    element.querySelector('img').src = '/icon/signUp/iconWatching.svg';
+    confirmPwInput.setAttribute('type', 'password');
+  }
+}
+
+document.querySelectorAll('.pw-visible').forEach(icon => {
+  icon.addEventListener('click', function() {
     togglePasswordVisibility(this);
   });
 });
+
+document.querySelectorAll('.comfirm-pw-visible').forEach(icon => {
+  icon.addEventListener('click', function() {
+    toggleConfirmPasswordVisibility(this);
+  })
+})
+
 
 async function handleSignUp(event) {
   event.preventDefault();
