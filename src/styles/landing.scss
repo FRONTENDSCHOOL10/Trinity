@@ -34,13 +34,42 @@
 
 //scroll-section-0, onboarding
 
+.scroll-section-0 {
+  padding: 80px 0 130px 0;
+}
+
 .onboarding {
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
   justify-content: center;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  @include background-image(url(/image/landing/background-img-M.png));
+
+  &__phrase {
+    gap: 1rem;
+    text-transform: uppercase;
+    -webkit-text-stroke: 4px #000;
+    -webkit-text-fill-color: transparent;
+    -webkit-font-smoothing: subpixel-antialiased;
+
+    &__title {
+      font-weight: 700;
+      line-height: 140%;
+      text-align: center;
+    }
+
+    &__sub {
+      color: $--gray-400;
+      line-height: 160%;
+    }
+  }
 
   &__button {
+    margin-top: 1rem;
+    padding: 0.5 1 0.5 0.5;
     display: inline-flex;
     flex-flow: row nowrap;
     align-items: center;
@@ -48,14 +77,20 @@
     border: 1px solid red;
     border-radius: 4px;
     background-color: $--brand-red-2;
+    gap: 0.5rem;
 
     &-logo {
+      width: 1.625rem;
+      padding-left: 0.5rem;
+      padding-bottom: 0.5rem;
     }
 
     &-content {
       text-decoration: none;
       font: 12px;
       color: $--white;
+      font-weight: 600;
+      padding-right: 1rem;
     }
   }
 }
