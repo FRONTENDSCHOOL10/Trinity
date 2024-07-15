@@ -17,7 +17,7 @@
   color: white;
   position: relative;
   height: 100%;
-  // margin-top: 3.125rem;
+  margin-top: 3.125rem;
   min-width: 20rem;
   background: $--black;
   display: flex;
@@ -31,7 +31,7 @@
 }
 
 .header--scrolled {
-  background-color: rgba(0, 0, 0, 0.8); /* 스크롤 시 변경할 배경색 (예: 검정색) */
+  background-color: rgba(0, 0, 0, 0.7); /* 스크롤 시 변경할 배경색 (예: 검정색) */
 }
 
 //scroll-section-0, onboarding
@@ -39,6 +39,7 @@
 .scroll-section-0 {
   padding: 5rem 0 8rem 0;
   margin-bottom: -1rem;
+  height: calc(100vh - 3.125rem);
 }
 
 .onboarding {
@@ -52,7 +53,9 @@
 
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 1) 90%, rgba(0, 0, 0, 1) 100%), url('/image/landing/background-img-M.png');
   background-size: cover;
-  background-position: center;
+  background-position-y: -5rem;
+  padding-top: 4rem;
+  margin-top: -4rem;
   background-repeat: no-repeat;
 
   // animation: scaleUp 5s ease forwards;
@@ -64,19 +67,6 @@
   //     transform: scale(1.1);
   //   }
   // }
-
-  @include tabletW() {
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 1) 100%), url('/image/landing/background-img-T.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-  }
-  @include desktopW() {
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 1) 100%), url('/image/landing/background-img-D.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-  }
 
   &__phrase {
     gap: 1rem;
@@ -95,7 +85,7 @@
 
   &__button {
     margin-top: 1rem;
-    padding: 0.5 1 0.5 0.5;
+
     display: inline-flex;
     flex-flow: row nowrap;
     align-items: center;
@@ -103,11 +93,17 @@
     border-radius: 4px;
     background-color: $--brand-red-2;
     gap: 0.5rem;
+    width: 16rem;
+    // height: 3rem;
+    aspect-ratio: 16/3;
 
     &-logo {
       width: 1.625rem;
       padding-left: 0.5rem;
       padding-bottom: 0.5rem;
+      img {
+        height: 100%;
+      }
     }
 
     &-content {
@@ -118,10 +114,24 @@
       padding-right: 1rem;
     }
   }
+
+  @include tabletW() {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 1) 100%), url('/image/landing/background-img-T.png');
+    background-size: cover;
+    // background-position: center;
+    background-repeat: no-repeat;
+  }
+  @include desktopW() {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 1) 100%), url('/image/landing/background-img-D.png');
+    background-size: cover;
+    // background-position: center;
+    background-repeat: no-repeat;
+  }
 }
 
 .scroll-section-1 {
   margin-top: 3rem;
+  height: 100vh;
 }
 
 .original {
@@ -177,7 +187,7 @@
 
   @include desktopW() {
     &__phrase {
-      &__title {
+      &__main {
         font-weight: 700;
         line-height: 140%;
         font-size: 3.2rem;
@@ -209,6 +219,7 @@
 
 .scroll-section-2 {
   margin-top: 3rem;
+  height: 80vh;
 }
 
 .customized {
@@ -311,18 +322,38 @@
 }
 
 .enroll {
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+  width: 100%;
+
+  &__wrapper {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__info {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+  }
 
   &__logo {
     margin-bottom: 1.12rem;
+    width: 20%;
+    min-width: 5.1875rem;
+    img {
+      width: 100%;
+    }
   }
 
   &__title {
     margin-bottom: 1.12rem;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 140%;
   }
 
   &__button {
@@ -334,19 +365,108 @@
     border-radius: 4px;
     background-color: $--brand-red-2;
     gap: 0.5rem;
+    width: 16rem;
+    // height: 3rem;
+    aspect-ratio: 16/3;
 
     &-logo {
       width: 1.625rem;
       padding-left: 0.5rem;
       padding-bottom: 0.5rem;
+      img {
+        width: 100%;
+      }
     }
 
     &-content {
       text-decoration: none;
-      font: 12px;
+      font: 0.75rem;
       color: $--white;
       font-weight: 600;
       padding-right: 1rem;
+      line-height: 150%;
+    }
+  }
+
+  @include tabletW() {
+    &__logo {
+      width: 8.4375rem;
+    }
+
+    &__title {
+      font-size: 1.75rem;
+      font-weight: 700;
+      line-height: 140%;
+    }
+
+    &__button {
+      padding: 0.5 1 0.5 0.5;
+      display: inline-flex;
+      flex-flow: row nowrap;
+      align-items: center;
+      justify-content: center;
+      border-radius: 4px;
+      background-color: $--brand-red-2;
+      gap: 0.5rem;
+      width: 17.6875rem;
+
+      &-logo {
+        width: 2.25rem;
+        padding: 0 1rem 0.5rem 0.5rem;
+        img {
+          width: 100%;
+        }
+      }
+
+      &-content {
+        text-decoration: none;
+        font-size: 1rem;
+        color: $--white;
+        font-weight: 600;
+        padding-right: 1rem;
+      }
+    }
+  }
+  @include desktopW() {
+    &__logo {
+      width: 17.5rem;
+    }
+    &__title {
+      font-size: 3.125rem;
+      font-weight: 700;
+      line-height: 140%;
+    }
+
+    &__button {
+      padding: 0.5rem 1rem 0.5rem 0.5rem;
+      display: inline-flex;
+      flex-flow: row nowrap;
+      align-items: center;
+      justify-content: center;
+      border-radius: 4px;
+      background-color: $--brand-red-2;
+      gap: 0.5rem;
+      width: 31.625rem;
+      height: 5rem;
+
+      &-logo {
+        border: 1px solid blue;
+        width: 4rem;
+        padding: 0 1.5rem 0.5rem 0.5rem;
+
+        img {
+          width: 100%;
+        }
+      }
+
+      &-content {
+        text-decoration: none;
+        font-size: 1.77688rem;
+        color: $--white;
+        font-weight: 600;
+        padding-right: 1rem;
+        line-height: 150%;
+      }
     }
   }
 }
