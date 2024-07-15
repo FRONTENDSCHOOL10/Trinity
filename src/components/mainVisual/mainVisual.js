@@ -32,17 +32,17 @@ async function renderMainVisualSlider() {
 
   const mainVisualBtnTemplate = `
     <button class="swiper-button-prev-custom swiper-button-prev">
-      <img src="/public/icon/main/slidePrev.svg" alt="이전">
+      <img src="/icon/main/slidePrev.svg" alt="이전">
       <span class="sr-only">이전 슬라이드</span>
     </button>
     <button class="swiper-button-next-custom swiper-button-next">
-      <img src="/public/icon/main/slideNext.svg" alt="다음">
+      <img src="/icon/main/slideNext.svg" alt="다음">
       <span class="sr-only">다음 슬라이드</span>
     </button>
     <div class="main-banner-info">
       <p class="main-banner-subtext"></p>
       <button class="main-banner-toggle-btn">
-        <img id="toggleIcon" src="/public/icon/main/slidePause.svg" alt="Play">
+        <img id="toggleIcon" src="/icon/main/slidePause.svg" alt="Play">
         <span class="sr-only">슬라이드 재생/정지</span>
       </button>
       <div class="main-banner-pagination swiper-pagination"></div>
@@ -83,10 +83,10 @@ async function renderMainVisualSlider() {
   toggleButton.addEventListener('click', () => {
     if (toggleIcon.src.includes('slidePlay.svg')) {
       swiper.autoplay.start();
-      toggleIcon.src = '/public/icon/main/slidePause.svg';
+      toggleIcon.src = '/icon/main/slidePause.svg';
     } else {
       swiper.autoplay.stop();
-      toggleIcon.src = '/public/icon/main/slidePlay.svg';
+      toggleIcon.src = '/icon/main/slidePlay.svg';
     }
   });
 }

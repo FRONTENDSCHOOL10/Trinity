@@ -1,5 +1,7 @@
 import { getNode, isString, getStorage, setStorage } from 'kind-tiger';
 import PocketBase from 'pocketbase';
+import { headerScript } from '@/layout/header/header';
+import { renderFooter, footerScript } from '@/layout/footer/footer';
 
 const pb = new PocketBase('https://plainyogurt.pockethost.io/');
 const findButton = getNode('.button--login');
@@ -9,6 +11,17 @@ const saveLoginCheckbox = getNode('.login__checkbox');
 const emailInput = getNode('#email-input');
 const passwordInput = getNode('#pw-input');
 const SECRET_KEY = 'your-secret-key'; // 비밀 키는 환경 변수나 안전한 곳에 저장하세요.
+
+/* -------------------------------------------------------------------------- */
+/*                                  헤더 렌더링 코드                           */
+/* -------------------------------------------------------------------------- */
+headerScript();
+
+/* -------------------------------------------------------------------------- */
+/*                                  푸터 렌더링 코드                           */
+/* -------------------------------------------------------------------------- */
+renderFooter();
+footerScript();
 
 /**
  * 클로저를 사용하여 saveLoginInfo 변수를 보호합니다.
@@ -120,15 +133,6 @@ const SECRET_KEY = 'your-secret-key'; // 비밀 키는 환경 변수나 안전�
     const encryptedToken = token; // 암호화 없이 토큰 저장
 
     // localStorage에 저장
-    localStorage.setItem(
-      'auth',
-      JSON.stringify({
-        isAuth: true,
-        userInfo,
-        token: encryptedToken,
-      })
-    );
-
     setStorage('auth', {
       isAuth: true,
       userInfo,
@@ -173,10 +177,10 @@ function togglePasswordVisibility() {
 
   if (passwordInput.type === 'password') {
     passwordInput.type = 'text';
-    showPasswordButton.style.backgroundImage = "url('/public/icon/login/iconVisible.svg')";
+    showPasswordButton.style.backgroundImage = "url('/icon/login/iconVisible.svg')";
   } else {
     passwordInput.type = 'password';
-    showPasswordButton.style.backgroundImage = "url('/public/icon/login/iconInVisibleForMT.svg')";
+    showPasswordButton.style.backgroundImage = "url('/icon/login/iconInvisible.svg')";
   }
 }
 
