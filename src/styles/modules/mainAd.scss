@@ -1,0 +1,168 @@
+$--space-xxs: 0.25rem;
+$--space-xs: 0.5rem;
+$--space-s: 0.75rem;
+$--space-m: 1rem;
+$--space-lg: 1.75rem;
+$--space-xl: 2.25rem;
+$--space-xxl: 2.5rem;
+$--space-xxxl: 4.375rem;
+$--font-size-s: 0.75rem;
+$--font-size-m: 1rem;
+$--font-size-lg:1.33rem; 
+$--font-size-xl: 1.78rem;
+$--font-size-xxl: 2.125rem;
+$--font-size-xxxl: 2.875rem;
+$--font-size-xxxxl: 4.375rem;
+$--mobile-icon-size: 1.125rem;
+$--tablet-icon-size: 1.5rem;
+$--desktop-icon-size: 2.5rem;
+$--modal-width-mobile: 200px;
+$--modal-width-tablet: 280px;
+$--modal-width-desktop: 300px;
+$--modal-padding-mobile: 1rem;
+$--modal-padding-tablet: 1.25rem;
+$--modal-padding-desktop: 2rem;
+$--modal-background-color: #212121;
+$--modal-border-color: #4d4d4d;
+$--modal-line-color: #2e2e2e;
+$--modal-focus-color: #2e2e2e;
+$--logout-modal-line-color: #a6a6a6;
+$--default-text-color: #a6a6a6;
+
+@mixin text($size, $lineHeight, $weight:400) {
+  font-size: $size;
+  line-height: $lineHeight;
+  font-weight: $weight;
+}
+
+.stop-scrolling {
+  height: 100%;
+  overflow: hidden;
+}
+
+.main-ad-modal-wrapper {  
+  display: none;
+  user-select:none;
+}
+
+.main-ad-modal-dimm {
+  position:fixed;
+  inset: 0;
+  display: flex;
+  margin: auto;
+  background-color: rgba(0,0,0, .9);
+}
+
+.main-ad-modal {
+  display: flex;
+  flex-flow: column nowrap;  
+  justify-content: center;
+  align-items: center;
+  width: 15.8rem;
+  height: 20rem;
+  margin: auto;
+  background-color: transparent ;
+  border-radius: 0.25rem;
+
+  @media (min-width: $--tablet) and (max-width: ($--desktop - 1)) {
+    width: 20.5rem;
+    height: 25.4rem;
+  }
+
+  @media (min-width: $--desktop) {
+    width: 36.8rem;
+    height: 45.5rem;
+  }
+
+  &__link {
+    &--img {
+      width: 15.75rem;
+      height: 17.73rem;
+
+      @media (min-width: $--tablet) and (max-width: ($--desktop - 1)) {
+        width: 20.5rem;
+        height: 23.125rem;
+      }
+    
+      @media (min-width: $--desktop) {
+        width: 36.66rem;
+        height: 41.4rem;
+      }
+    }
+  }
+  
+  &__button {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0.62rem;
+    
+    @media (min-width: $--desktop) {
+      gap: 0;
+    }
+
+    &--line {
+      background-color: $--white;
+      width: 1px;
+      height: 1rem;
+    }
+
+    &--today-close, &--close {
+      border: none;
+      cursor: pointer;
+      color: $--default-text-color;
+      background-color: rgba(0,0,0,0);
+      @include text($--font-size-s, 160%, 400);
+
+      @media (min-width: $--tablet) and (max-width: ($--desktop - 1)) {
+        @include text($--font-size-s, 160%, 400);
+      }
+    
+      @media (min-width: $--desktop) {
+        @include text($--font-size-lg, 160%, 400);
+      }
+
+      &:hover {
+        color: $--white;
+      }
+    }
+
+    &--today-close {
+      width: 8rem;
+      height: 2rem;
+      padding: 0.5rem;
+
+      @media (min-width: $--tablet) and (max-width: ($--desktop - 1)) {
+        width: 9rem;
+        height: 2.5rem;
+        padding: 0.75rem;
+      }
+    
+      @media (min-width: $--desktop) {
+        width: 16rem;
+        height: 4rem;
+        padding: 1rem 1.5rem;
+      }
+    }
+
+    &--close {
+      width: 3rem;
+      height: 2rem;
+      padding: 0.5rem;
+
+      @media (min-width: $--tablet) and (max-width: ($--desktop - 1)) {
+        width: 4rem;
+        height: 2.5rem;
+        padding: 0.75rem;
+      }
+    
+      @media (min-width: $--desktop) {
+        width: 8rem;
+        height: 4rem;
+        padding: 1rem 1.5rem;
+      }
+    }
+  }
+}
+
