@@ -10,41 +10,28 @@ $--tablet-proImg: 8.25rem;
 $--desk-proImg: 14.625rem;
 
 // Button Size
-$--mo-btnModify-w: 8.4375rem;
-$--mo-btnModify-h: 2.625rem;
-$--tablet-btnModify-w: 9.75rem;
-$--tablet-btnModify-h: 3.125rem;
-$--desk-btnModify-w: 17rem;
-$--desk-btnModify-h: 5.375rem;
+$--mo-btnProfile-w: 8.4375rem;
+$--mo-btnProfile-h: 2.625rem;
+$--tablet-btnProfile-w: 9.75rem;
+$--tablet-btnProfile-h: 3.125rem;
+$--desk-btnProfile-w: 17rem;
+$--desk-btnProfile-h: 5.375rem;
 
 // Buttons style
-@mixin Modifybtn($w, $h, $f-size, $m-top){
+@mixin profileBtn($w, $h, $f-size, $m-top, $bg){
     font-family: 'Pretendard Variable', Pretendard, sans-serif;
     width: $w;
     height: $h;
     font-size: $f-size;
     border-radius: .25rem;
     margin: $m-top auto 0 auto;
-    color: $--gray-300;
-    background-color: transparent;
+    background-color: $bg;
     font-weight: 600;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-shrink: 0;
     cursor: pointer;
-    border: .0625rem solid $--gray-600;
-    &:hover {
-        border:solid $--white;
-        color: $--white;
-        transition: .3s;
-        transform: translateY(-5px);
-    }
-    &:active {
-        border:solid $--white;
-        color: $--white;
-        transition: .3s;
-    }
 }
 
 // Size (width, inline-size, height, block-size)
@@ -55,16 +42,47 @@ $--desk-btnModify-h: 5.375rem;
 
 // 버튼 컴포넌트
 .button--gray-sm {
-    @include Modifybtn($--mo-btnModify-w, $--mo-btnModify-h, .75rem, 2rem);
+    @include profileBtn($--mo-btnProfile-w, $--mo-btnProfile-h, .75rem, 2rem, transparent);
     @media (min-width:$--tablet) and (max-width:($--desktop - 1)){
-        @include Modifybtn($--tablet-btnModify-w, $--tablet-btnModify-h, 1rem, 2.75rem);
+        @include profileBtn($--tablet-btnProfile-w, $--tablet-btnProfile-h, 1rem, 2.75rem, transparent);
     }
     @media (min-width: $--desktop){
-        @include Modifybtn($--desk-btnModify-w, $--desk-btnModify-h, 1.75rem, 4.125rem);
+        @include profileBtn($--desk-btnProfile-w, $--desk-btnProfile-h, 1.75rem, 4.125rem, transparent);
+    }
+    color: $--gray-300;
+    border: .0625rem solid $--gray-600;
+    &:hover {
+        border:solid $--white;
+        color: $--white;
+        transition: .3s;
+    }
+    &:active {
+        border:solid $--white;
+        color: $--white;
+        transition: .3s;
     }
 }
 
-//profile-modify
+.button--white-sm {
+    @include profileBtn($--mo-btnProfile-w, $--mo-btnProfile-h, .75rem, 2rem, $--gray-100);
+    @media (min-width:$--tablet) and (max-width:($--desktop - 1)){
+        @include profileBtn($--tablet-btnProfile-w, $--tablet-btnProfile-h, 1rem, 2.75rem, $--gray-100);
+    }
+    @media (min-width: $--desktop){
+        @include profileBtn($--desk-btnProfile-w, $--desk-btnProfile-h, 1.75rem, 4.125rem, $--gray-100);
+    }        transition: .3s;
+    border: 0px;
+    &:hover {
+        background-color: $--white;
+        transform: translateY(-5px);
+    }
+    &:active {
+        background-color: $--white;
+        transform: translateY(-5px);
+    }
+}
+
+//profile
 .profile__wrap {
     font-size: .75rem;
     height: 100vh;
@@ -138,7 +156,7 @@ $--desk-btnModify-h: 5.375rem;
                         @include position(absolute);
                         @include squareSize(100%);
                         & img {
-                            @include squareSize(100%);
+                            @include squareSize(110%);
                         }
                     }
                     & .bg {
@@ -173,8 +191,8 @@ $--desk-btnModify-h: 5.375rem;
                 }
             }
             // 프로필 선택 페이지에서는 hover 시 outline
-            &.profileSelect .item__form:hover .icon {
-                box-shadow: 0 0 0 4px rgb(225, 225, 225) inset;
+            &.profileSelect .item__form:hover, &.profileSelect .item__form:active {
+                outline: 3px solid white;
             } 
         }
     }
