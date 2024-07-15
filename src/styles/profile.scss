@@ -105,7 +105,6 @@ $--desk-btnModify-h: 5.375rem;
             }
         }
         & .profile__form {
-            // min-width: 20rem;
             @include flexbox(row, wrap, center, center, 1.5rem);
             @media (min-width:$--tablet) and (max-width:($--desktop - 1)){
                 gap: 2rem;
@@ -115,7 +114,7 @@ $--desk-btnModify-h: 5.375rem;
             }
             &--item {
                 text-align: center;
-                &:hover .item__form{
+                & .item__form:hover {
                     // li 전체를 hover시 item__form만 적용되도록
                     transform: translateY(-5%);
                 }
@@ -149,6 +148,7 @@ $--desk-btnModify-h: 5.375rem;
                         background: rgba($color: $--black, $alpha: .7);
                     }
                     & .icon {
+                        transition: all 0.3s ease 0s;
                         @include flexbox(row, nowrap, center, center);
                         @include position(absolute);
                         @include squareSize(100%);
@@ -171,7 +171,11 @@ $--desk-btnModify-h: 5.375rem;
                         font-size: $--label-x-l;
                     }
                 }
-            }   
+            }
+            // 프로필 선택 페이지에서는 hover 시 outline
+            &.profileSelect .item__form:hover .icon {
+                box-shadow: 0 0 0 4px rgb(225, 225, 225) inset;
+            } 
         }
     }
 }
