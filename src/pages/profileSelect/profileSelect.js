@@ -1,14 +1,9 @@
 import '/src/styles/main.scss';
-import defaultAuthData from '/src/api/defaultAuthData';
 import getPbImageURL from '/src/api/getPbImageURL';
-import { setDocumentTitle, setStorage, insertLast } from 'kind-tiger';
+import { setDocumentTitle, insertLast } from 'kind-tiger';
 import pb from '@/api/pocketbase';
 
 setDocumentTitle('TAING / 프로필 선택');
-
-if (!localStorage.getItem('auth')) {
-  setStorage('auth', defaultAuthData);
-}
 
 async function renderProfile() {
     const users = await pb.collection('users').getFullList();
@@ -35,14 +30,8 @@ async function renderProfile() {
                             <p class="name profileName">${item[`profileName${i+1}`]}</p>
                         </li>
                     `;
-                    insertLast('.profile__form', template);
-                    
-                    // isActive가 true이고 isLocked가 true일 경우
-                    
-                } else {
-                    console.log(`비활성한 프로필 ${i+1}을 비활성화 하였습니다.`);
+                    insertLast('.profile__form',template);                    
                 }
-                
                 if (isActive == true && isLocked == false) {
                     const template = `
                     <li class="profile__form--item profileItem">
@@ -58,8 +47,6 @@ async function renderProfile() {
                 insertLast('.profile__form', template); 
                 }
             }
-        } else {
-            console.log('프로필을 찾지 못하였다?');
         }
     });
 }
