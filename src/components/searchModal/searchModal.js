@@ -8,9 +8,9 @@ async function renderSearchModal() {
   const searchModalTemplate = `
     <div id="searchModal" class="modal">
         <div class="modal-content">
-            <div class="input-wrapper">
+            <div class="search-input-wrapper">
                 <label for="searchInput" class="sr-only">컨텐츠 검색창</label>
-                <input type="text" id="searchInput" placeholder="검색">
+                <input type="text" id="searchInput" placeholder="검색" autocomplte="off">
                 <button id="searchSubmitBtn" type="submit"></button>
             </div>
             <div class="section-wrapper">
@@ -41,7 +41,7 @@ async function renderSearchModal() {
     </div>
     `;
 
-  insertLast('.header__aside__button--search', searchModalTemplate);
+  insertLast('.header', searchModalTemplate);
 
   // const event = await pb.collection('event').getFullList(); // SDK
 
@@ -135,28 +135,47 @@ function searchModal() {
     }
 
     const body = document.querySelector('body');
+    const header = document.querySelector('.header');
 
     searchBtn.onclick = function () {
       if (searchModal.style.display === 'block') {
         searchModal.style.display = 'none';
         body.classList.remove('stop-scrolling');
+        header.style.background = 'linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 100%)';
+        header.style.transition = 'background-color 0.5s ease';
+        searchBtn.classList.remove('header__aside__button--search-close');
+        searchBtn.classList.add('header__aside__button--search');
       } else {
         searchModal.style.display = 'block';
         body.classList.add('stop-scrolling');
         loadSearchHistory();
         updatePopularSearchesDate();
+        header.style.background = '#000000';
+        header.style.transition = 'none';
+        searchBtn.classList.remove('header__aside__button--search');
+        searchBtn.classList.add('header__aside__button--search-close');
       }
     };
 
     window.onclick = function (event) {
       if (event.target === searchModal) {
         searchModal.style.display = 'none';
+        body.classList.remove('stop-scrolling');
+        header.style.background = 'linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 100%)';
+        header.style.transition = 'background-color 0.5s ease';
+        searchBtn.classList.remove('header__aside__button--search-close');
+        searchBtn.classList.add('header__aside__button--search');
       }
     };
 
     document.addEventListener('keydown', function (event) {
       if (event.key === 'Escape') {
         searchModal.style.display = 'none';
+        body.classList.remove('stop-scrolling');
+        header.style.background = 'linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 100%)';
+        header.style.transition = 'background-color 0.5s ease';
+        searchBtn.classList.remove('header__aside__button--search-close');
+        searchBtn.classList.add('header__aside__button--search');
       }
     });
 

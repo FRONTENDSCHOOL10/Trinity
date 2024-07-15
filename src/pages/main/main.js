@@ -5,6 +5,7 @@ import defaultAuthData from '@/api/defaultAuthData';
 import { renderHeader } from '@/layout/header/header';
 import { renderSearchModal, searchModal } from '@/components/searchModal/searchModal';
 import { renderProfileMenu, renderLogoutModal, toggleLogoutModal, logout } from '@/components/profileMenu/profileMenu';
+import { renderMainAd, openMainAdModal } from '@/components/mainAd/mainAd';
 import renderMainVisualSlider from '@/components/mainVisual/mainVisual';
 import renderMustContentSlider from '@/components/contentSlider/must/must';
 import renderQuickVodContentSlider from '@/components/contentSlider/quick/quick';
@@ -36,6 +37,9 @@ renderProfileMenu();
 renderLogoutModal();
 toggleLogoutModal();
 logout();
+
+renderMainAd();
+openMainAdModal();
 
 /* -------------------------------------------------------------------------- */
 /*                                메인 비주얼 렌더링 코드                               */
