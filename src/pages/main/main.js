@@ -23,12 +23,20 @@ if (!localStorage.getItem('auth')) {
   setStorage('auth', defaultAuthData);
 }
 
-const auth = localStorage.getItem('auth');
+async function checkIsAuth() {
+  const auth = await getStorage('auth');
 
-// 로그인 되어있지 않으면 랜딩 페이지로 보내는 코드
-if (!auth.isAuth) {
-  location.replace('/src/pages/landing/index.html');
+  // 로그인 되어있지 않으면 랜딩 페이지로 보내는 코드
+  if (!auth.isAuth) {
+    location.replace('/src/pages/landing/index.html');
+  }
 }
+
+checkIsAuth();
+
+/* -------------------------------------------------------------------------- */
+/*                                    헤더 코드                                */
+/* -------------------------------------------------------------------------- */
 
 renderHeader();
 renderSearchModal();
