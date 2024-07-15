@@ -32,6 +32,7 @@ $--desk-btnProfile-h: 5.375rem;
     align-items: center;
     flex-shrink: 0;
     cursor: pointer;
+    text-decoration: none;
 }
 
 // Size (width, inline-size, height, block-size)
@@ -51,15 +52,14 @@ $--desk-btnProfile-h: 5.375rem;
     }
     color: $--gray-300;
     border: .0625rem solid $--gray-600;
+    transition: .3s;
     &:hover {
         border:solid $--white;
         color: $--white;
-        transition: .3s;
     }
     &:active {
         border:solid $--white;
         color: $--white;
-        transition: .3s;
     }
 }
 
@@ -70,15 +70,15 @@ $--desk-btnProfile-h: 5.375rem;
     }
     @media (min-width: $--desktop){
         @include profileBtn($--desk-btnProfile-w, $--desk-btnProfile-h, 1.75rem, 4.125rem, $--gray-100);
-    }        transition: .3s;
+    }
+    color: $--black;
     border: 0px;
+    transition: .3s;
     &:hover {
         background-color: $--white;
-        transform: translateY(-5px);
     }
     &:active {
         background-color: $--white;
-        transform: translateY(-5px);
     }
 }
 
