@@ -49,10 +49,13 @@ $--desktop: 1440px;
     font-size: $fontSize;
 }
 
+// @@@@@@@ 사용하실 때 지워주세요 ~~!!!*&*****
 header {
     background-color: $--white;
     height: 3rem;
 }
+// @@@@@@@@@@@@@@@ 사용하실 때 지워주세요 ~~!!!*&***** 
+
 .modal {
     display: none; 
     position: fixed; 
@@ -61,7 +64,7 @@ header {
     top: 0;
     width: 100%; 
     height: 100%; 
-    overflow: auto; // 전체 창에서 스크롤이 생기지 않도록 함
+    overflow: auto;
 }
 
 .modal-content {
