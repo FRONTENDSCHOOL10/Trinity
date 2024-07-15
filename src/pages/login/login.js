@@ -133,15 +133,6 @@ footerScript();
     const encryptedToken = token; // 암호화 없이 토큰 저장
 
     // localStorage에 저장
-    localStorage.setItem(
-      'auth',
-      JSON.stringify({
-        isAuth: true,
-        userInfo,
-        token: encryptedToken,
-      })
-    );
-
     setStorage('auth', {
       isAuth: true,
       userInfo,

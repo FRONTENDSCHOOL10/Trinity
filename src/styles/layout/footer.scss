@@ -78,7 +78,7 @@
 }
 
 // 푸터 기본 폰트 설정
-.footer, 
+.footer,
 .shortcut__btn {
   @include mobileW {
     font-size: $--paragraph-small;
@@ -330,6 +330,13 @@
     display: flex;
     flex-direction: row;
     gap: 0.5rem;
+    margin: 1rem 0;
+    @include tabletW() {
+      margin: 0.75rem 0;
+    }
+    @include desktopW() {
+      margin: 1.5rem 0;
+    }
 
     .youtube {
       @include mobileW() {
