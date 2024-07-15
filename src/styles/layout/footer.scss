@@ -357,7 +357,7 @@
         height: 3.25rem;
       }
 
-      @include background-image(url('/public/icon/footer/iconYoutube.svg'));
+      @include background-image(url('/icon/footer/iconYoutube.svg'));
     }
     .instagram {
       @include mobileW() {
@@ -378,7 +378,7 @@
         height: 3.25rem;
       }
 
-      @include background-image(url('/public/icon/footer/iconInstagram.svg'));
+      @include background-image(url('/icon/footer/iconInstagram.svg'));
     }
     .twitter {
       @include mobileW() {
@@ -399,7 +399,7 @@
         height: 3.25rem;
       }
 
-      @include background-image(url('/public/icon/footer/iconTwitter.svg'));
+      @include background-image(url('/icon/footer/iconTwitter.svg'));
     }
     .facebook {
       @include mobileW() {
@@ -420,7 +420,7 @@
         height: 3.25rem;
       }
 
-      @include background-image(url('/public/icon/footer/iconFacebook.svg'));
+      @include background-image(url('/icon/footer/iconFacebook.svg'));
     }
   }
 
