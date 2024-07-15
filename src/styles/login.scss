@@ -3,6 +3,8 @@
 @import '/src/styles/layout/header';
 @import '/src/styles/layout/footer';
 
+$--font-family: 'Pretendard Variable', Pretendard, sans-serif;
+
 // Mixins
 
 @mixin flex-center {
@@ -105,6 +107,7 @@
 
 // Base styles
 .main-login {
+  font-family: $--font-family;
   background-color: $--black;
   color: $--white;
   @include flex-center;
@@ -293,6 +296,7 @@
 
 // Button Component
 .button {
+  font-family: $--font-family;
   display: inline-block;
   padding: 0.75rem 1rem;
   width: 100%;
@@ -324,11 +328,11 @@
 
 @include tabletW() {
   .login {
-    &__title {
-    }
+    // &__title {
+    // }
 
-    &__input {
-    }
+    // &__input {
+    // }
 
     .button--login {
       height: 3.125rem;
@@ -340,14 +344,45 @@
   .login {
     max-width: 500px;
 
-    &__title {
-    }
+    // &__title {
+    // }
 
-    &__input {
-    }
+    // &__input {
+    // }
 
     .button--login {
       height: 5.375rem;
+    }
+  }
+}
+
+// span alerting 후추
+.alerting {
+  &__id {
+    font-size: 0.8rem;
+  }
+
+  &__pw {
+    font-size: 1rem;
+  }
+
+  @include tabletW() {
+    &__id {
+      font-size: 1rem;
+    }
+
+    &__pw {
+      font-size: 1rem;
+    }
+  }
+
+  @include desktopW() {
+    &__id {
+      font-size: 1.5rem;
+    }
+
+    &__pw {
+      font-size: 1.5rem;
     }
   }
 }
