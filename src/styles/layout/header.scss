@@ -170,6 +170,16 @@ $--desktop-icon-size: 2.5rem;
         }
       }
 
+      &--search-close {
+        @include size($--mobile-icon-size, $--mobile-icon-size);
+        @include background-image(url('/public/icon/header/iconCloseDefault.svg'));
+
+        &:hover {
+          @include background-image(url('/public/icon/header/iconCloseHover.svg'));
+          cursor: pointer;
+        }
+      }
+
       &--profile {
         @include size(1.125rem, 1.125rem);
         @include background-image(url('/public/imgTemporary.png'));
@@ -232,6 +242,10 @@ $--desktop-icon-size: 2.5rem;
           @include size($--tablet-icon-size, $--tablet-icon-size);
         }
 
+        &--search-close {
+          @include size($--tablet-icon-size, $--tablet-icon-size);
+        }
+
         &--profile {
           @include size($--tablet-icon-size, $--tablet-icon-size);
         }
@@ -282,6 +296,11 @@ $--desktop-icon-size: 2.5rem;
         &--search {
           @include size($--desktop-icon-size, $--desktop-icon-size);
         }
+
+        &--search-close {
+          @include size($--desktop-icon-size, $--desktop-icon-size);
+        }
+
 
         &--profile {
           @include size($--desktop-icon-size, $--desktop-icon-size);

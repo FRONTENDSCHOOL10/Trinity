@@ -12,7 +12,7 @@ async function renderProfileMenu() {
           <img src="/imgTemporary.png" alt="현재 프로필" class="menu-profile-icon" />
           <div class="profile-modal__info--text">
             <p>프로필 이름</p>
-            <a href="">프로필 전환<span class="bracket" aria-hidden="true"> ></span></a>
+            <a href="/src/pages/profileSelect/index.html">프로필 전환<span class="bracket" aria-hidden="true"> ></span></a>
           </div>
         </div>
         <div class="profile-modal__line" aria-hidden="true"></div>

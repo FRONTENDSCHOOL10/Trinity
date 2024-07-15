@@ -60,6 +60,7 @@ async function openMainAdModal() {
       body.classList.add('stop-scrolling');
     });
 
+    // Modal Day Close Button
     const dayCancleBtn = document.querySelector('.main-ad-modal__button--today-close');
     dayCancleBtn.addEventListener('click', () => {
       const timeNow = {
@@ -69,6 +70,8 @@ async function openMainAdModal() {
       setStorage('adTimer', timeNow);
       mainAdModal.style.display = 'none';
       body.classList.remove('stop-scrolling');
+
+      mainAdModal.remove();
     });
 
     // Modal Close Button
@@ -76,6 +79,8 @@ async function openMainAdModal() {
     closeBtn.addEventListener('click', () => {
       mainAdModal.style.display = 'none';
       body.classList.remove('stop-scrolling');
+
+      mainAdModal.remove();
     });
 
     // Modal Focus Trap
@@ -101,9 +106,6 @@ async function openMainAdModal() {
 
     document.addEventListener('keydown', modalTrapFocus);
   }
-
-  // Modal Day Close Button
 }
 
-renderMainAd();
-openMainAdModal();
+export { renderMainAd, openMainAdModal };
