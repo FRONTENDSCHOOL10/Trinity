@@ -10,10 +10,6 @@ if (!localStorage.getItem('auth')) {
   setStorage('auth', defaultAuthData);
 }
 
-
-const that = document.querySelector('.profile__form');
-console.log(that)
-
 async function renderProfile() {
     const users = await pb.collection('users').getFullList();
     console.log(users)
@@ -24,7 +20,7 @@ async function renderProfile() {
             for (let i = 0; i < 4; i++) {
                 const isActive = item[`isActive${i+1}`];
                 
-                if(isActive == true) {;
+                if(isActive == true){
                     const template = `
                     <li class="profile__form--item profileItem">
                         <a class="item__form" href="/" role="button">
