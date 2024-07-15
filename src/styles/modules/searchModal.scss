@@ -1,3 +1,5 @@
+$--desktop: 1440px;
+
 @mixin search-flex($--justify-content, $--align-items) {
     display: flex;
     flex-direction: column;
@@ -16,7 +18,6 @@
 
 @mixin searchInputStyle($w, $h, $bgcolor, $f-size, $border, $indent){
     font-family: 'Pretendard Variable', Pretendard, sans-serif;
-    // width: ;
     min-width: $w;
     height: $h;
     background-color: $bgcolor;
@@ -41,33 +42,46 @@
     color: $--gray-200;
     margin-bottom: 1.25rem;
 }
+
 @mixin searchListStyle(){
     padding-top: $pd;
     color: $c;
     font-size: $fontSize;
 }
 
+header {
+    background-color: $--white;
+    height: 3rem;
+}
 .modal {
-display: none; 
-position: fixed; 
-z-index: 1; 
-left: 0;
-top: 0;
-width: 100%; 
-height: 40rem; 
-overflow: auto;
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; // 전체 창에서 스크롤이 생기지 않도록 함
 }
 
 .modal-content {
     @include search-flex(flex-start, center);
     background-color: $--black;
-    margin-top: 15%; 
+    margin: auto; 
     width: 100%;
     height: 100%; 
+    max-height: 40rem;
+    margin-top: 2rem;
+    @media (min-width:$--desktop) {
+        margin-top: 4.5rem;
+        height: 1000px;
+    }
 }
-
-input[type="text"]{
-    @include searchInputStyle(16rem,2.5rem,transparent,1rem,0,0rem);
+.input-wrapper {
+    @include search-flex(center, center);
+}
+input[type="text"] {
+    @include searchInputStyle(16rem, 2.5rem, transparent, 1rem, 0, 0rem);
     border: 0;
     border-bottom: 0.15rem solid rgb(255, 255, 255);
     margin-top: 1.25rem;
@@ -76,14 +90,17 @@ input[type="text"]{
     position: relative;
     display: inline-block;
     @media (min-width: $--tablet) {
-        @include searchInputStyle(32.5rem,3.5rem,transparent,1.3rem,0,0rem);
+        @include searchInputStyle(32.5rem, 3.5rem, transparent, 1.3rem, 0, 0rem);
+    }
+    @media (min-width: $--desktop) {
+        @include searchInputStyle(92.5rem, 5.5rem, transparent, 2.3rem, 0, 0rem);
     }
 }
 
 #searchSubmitBtn {
     position: relative;
     top: -4.5rem;
-    left: 7rem;
+    left: 7.4rem;
     @include background-image(url('/public/icon/header/iconSearchHover.svg'));
     background-color: transparent;
     border: 0;
@@ -95,15 +112,82 @@ input[type="text"]{
         top: -5.5rem;
         left: 15rem;
     }
+    @media (min-width: $--desktop) {
+        width: 3.15rem;
+        height: 3.15rem;
+        top: -6.8rem;
+        left: 44rem;
+    }
 }
 
 .search-history, .popular-searches {
-    color: $--gray-300;
     width: 14.1rem;
     font-size: 0.75rem;
     box-sizing: border-box;
+    color: $--gray-300;
     margin: 0 3rem 0 3rem;
-    
+    & a {
+        text-decoration: none;
+        color: $--gray-300;
+        &:hover{
+            color: white;
+        }
+    }
+    @media (min-width: $--desktop) {
+        width: 46.25rem;
+        font-size: 1.3rem;
+        margin: 0 3.75rem 0 3.75rem;
+    }
+}
+.search-history {
+    position: relative;
+    .clearAllBtn {
+        position: absolute;
+        top: 0rem;
+        left: 4.5rem;
+        background-color: transparent;
+        border: 0;
+        color: $--gray-600;
+        font-size: 0.75019rem;
+        font-weight: 600;
+            @media (min-width:$--desktop) {
+                font-size: 1.3rem;
+                // top: -8.8rem;
+                left: 9rem;
+            }
+
+        & img {
+            position: relative;
+            width: 0.7rem;
+            height: 0.7rem;
+            top: 0.05rem;
+            padding-left: 0.3rem;
+            @media (min-width:$--desktop) {
+                width: 1rem;
+                height: 1rem; 
+                padding-left: 0.75rem;
+            }
+        }
+    }
+    & li {
+        margin-bottom: 0.5rem;
+        & button {
+            background-color: transparent;
+            border: 0;
+            & img {
+                position: relative;
+                width: 0.7rem;
+                height: 0.7rem;
+                top: 0.15rem;
+                @media (min-width:$--desktop) {
+                    width: 1rem;
+                    height: 1rem; 
+                    top: 0.1rem;
+                    padding-left: 0.5rem;
+                }
+            }
+        }
+    }
 }
 .popular-searches {
     padding-top: 1.25rem;
@@ -112,14 +196,17 @@ input[type="text"]{
     & ol { 
         counter-reset: item;
         list-style-type: none;
-        // list-style-position: inside;
         padding-left: 0;
         padding-bottom: 1rem;
     }
     & li { 
         position: relative;
-        padding-left: 1rem; // 숫자와 텍스트 사이의 간격
-        margin-bottom: 0.5rem; // 리스트 항목 사이의 간격
+        padding-left: 1rem;
+        margin-bottom: 0.5rem;
+        @media (min-width:$--desktop) {
+            padding-left: 2.75rem;
+            margin-bottom: 1rem;
+        }
         &:before { 
             content: counter(item) ""; 
             counter-increment: item;
@@ -129,24 +216,54 @@ input[type="text"]{
             margin-right: 1rem;
             left: 0;
             text-align: right;
+            @media (min-width:$--desktop) {
+                font-size: 1.3rem;
+            }
         }
     }
     & p {
         color: $--gray-500;
         font-size: 0.75019rem;
         font-weight: 400;
+        @media (min-width: $--desktop) {
+            font-size: 1.3rem;
+        }
+    }
+    @media (min-width: $--tablet){
+        padding: 0;
     }
 }
 
-// title style
 .search-history-title, .popular-searches-title {
     @include listTitle;
+    @media (min-width: $--desktop) {
+        font-size: 1.77688rem;
+        font-weight: 600;
+        padding-bottom: 2.25rem;
+    }
 }
 
 @media (min-width: $--tablet) {
-  .section-wrapper {
-    @include horizontal-flex(flex-start, flex-start);
-    width: 33rem;
+    .section-wrapper {
+        @include horizontal-flex(flex-start, flex-start);
+        width: 33rem;
+        position: relative;
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 1px;
+            background-color: $--gray-800; // 원하는 색상으로 변경
+            transform: translateX(-50%);
+        }
+    }
 
-  }    
+}
+
+@media (min-width: $--desktop) {
+    .section-wrapper {
+        width: 92.5rem;
+    }
 }
