@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="ko-KR">
+  <head>
+    <title>TAING</title>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/public/icon/taing.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <link rel="stylesheet" href="/src/styles/main.scss" />
+    <script type="module" src="/src/components/profileMenu/profileMenu.js"></script>
+  </head>
+  <body>
+    <header class="header">
+      <h1 class="sr-only">TAING</h1>
+
+      <a href="/" class="header__logo"></a>
+
+      <nav class="header__nav">
+        <h2 class="sr-only">메인 메뉴</h2>
+
+        <ul class="header__nav__program" role="group">
+          <li class="header__nav__program__item header__nav__program__item--live" role="none">
+            <a href="/">
+              <span class="sr-only">라이브</span>
+              <span class="header__nav__program__item--live header__nav__program__item--live__img"></span>
+              실시간
+            </a>
+          </li>
+          <li class="header__nav__program__item header__nav__program__item--tv" role="none">
+            <a href="/"> TV프로그램 </a>
+          </li>
+          <li class="header__nav__program__item header__nav__program__item--movie" role="none">
+            <a href="/"> 영화 </a>
+          </li>
+          <li class="header__nav__program__item header__nav__program__item--paramount" role="none">
+            <a href="/">
+              <span class="sr-only">파라마운트</span>
+              <span class="header__nav__program__item--paramount__img"></span>
+            </a>
+          </li>
+        </ul>
+
+        <aside class="header__aside">
+          <button type="button" aria-label="검색창 열기" class="header__aside__button header__aside__button--search"></button>
+          <button type="button" aria-label="프로필 메뉴 열기" class="header__aside__button header__aside__button--profile">
+            <!-- <div class="profile-modal-wrapper">
+              <div class="profile-modal">
+                <div class="profile-modal__info">
+                  <img src="/public/imgTemporary.png" alt="현재 프로필" class="menu-profile-icon" />
+                  <div class="profile-modal__info--text">
+                    <p>프로필 이름</p>
+                    <a href="">프로필 전환<span class="bracket" aria-hidden="true"> ></span></a>
+                  </div>
+                </div>
+                <div class="profile-modal__line" aria-hidden="true"></div>
+                <div class="profile-modal__menu">
+                  <div class="menu-wrapper"><a href="">MY</a></div>
+                  <div class="menu-wrapper"><a href="">이용권</a></div>
+                  <div class="menu-wrapper"><a href="">쿠폰등록</a></div>
+                  <div class="menu-wrapper"><a href="">고객센터</a></div>
+                  <div class="menu-wrapper"><a href="" class="logout">로그아웃</a></div>
+                </div>
+              </div>
+            </div> -->
+          </button>
+
+          
+        </aside>
+        
+      </nav>
+
+    <!-- <div class="logout-modal-wrapper">
+      <div class="logout-modal-dimm">
+        <div class="logout-modal">
+          <div class="logout-modal__contents">
+            <p>로그아웃 하시겠습니까?</p>
+          </div>
+          <div class="logout-modal__button">
+            <button type="button" class="logout-modal__button--yes logout-yes">확인</button>
+            <div class="logout-modal__button--line"></div>
+            <button type="button" class="logout-modal__button--no">취소</button>
+          </div>
+        </div>
+      </div>
+    </div> -->
+    </header>
+
+    <main id="app">
+    </main>
+
+    <footer class="footer">
+    </footer>
+
+  </body>
+</html>
