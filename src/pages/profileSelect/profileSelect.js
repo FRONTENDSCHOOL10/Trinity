@@ -10,7 +10,7 @@ async function renderProfile() {
     console.log(users);
 
     users.forEach((item) => {
-        if (item.username === "email1234") {
+        if (item.username === "user") {
             for (let i = 0; i < 4; i++) {
                 const isActive = item[`isActive${i+1}`];
                 const isLocked = item[`isLocked${i+1}`];

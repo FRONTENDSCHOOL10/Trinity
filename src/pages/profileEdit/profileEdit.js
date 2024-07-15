@@ -1,14 +1,9 @@
 import '/src/styles/main.scss';
-import defaultAuthData from '/src/api/defaultAuthData';
 import getPbImageURL from '/src/api/getPbImageURL';
-import { setDocumentTitle, setStorage, insertLast } from 'kind-tiger';
+import { setDocumentTitle, insertLast } from 'kind-tiger';
 import pb from '@/api/pocketbase';
 
 setDocumentTitle('TAING / 프로필 편집');
-
-if (!localStorage.getItem('auth')) {
-  setStorage('auth', defaultAuthData);
-}
 
 async function renderProfile() {
     const users = await pb.collection('users').getFullList();
@@ -35,13 +30,8 @@ async function renderProfile() {
                     </li>
                 `
                 insertLast('.profile__form', template);
-
-                } else {
-                    console.log('비활성한 프로필을 비활성화 하였습니다.')
                 }
             }
-        } else {
-            console.log('프로필을 찾지 못하였다?');
         }
     });
 }
