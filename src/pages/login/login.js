@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const decryptedToken = getDecryptedToken(auth.token);
     pb.authStore.save(decryptedToken, auth.userInfo);
     alert('자동 로그인되었습니다.');
-    location.href = '/index.html'; // 로그인 후 이동할 페이지
+    location.replace('/index.html'); // 로그인 후 이동할 페이지
   }
 
   const showPasswordButton = getNode('.login__button-show-password');
@@ -123,7 +123,7 @@ async function handleLogin(e) {
     }
 
     alert('환영합니다.');
-    location.href = '/index.html'; // 로그인 후 이동할 페이지
+    location.replace('/index.html'); // 로그인 후 이동할 페이지
   } catch (error) {
     alert('인증된 사용자가 아닙니다.');
   }

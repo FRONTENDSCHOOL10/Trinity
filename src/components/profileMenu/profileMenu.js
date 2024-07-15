@@ -54,7 +54,7 @@ function renderLogoutModal() {
   insertLast('.header', logoutModalTemplate);
 }
 
-function toggleLogmoutModal() {
+function toggleLogoutModal() {
   const body = document.querySelector('body');
   const logoutModal = document.querySelector('.logout-modal-wrapper');
 
@@ -109,4 +109,4 @@ function logout() {
 
 // renderProfileMenu();
 
-export { renderProfileMenu, renderLogoutModal, toggleLogmoutModal, logout };
+export { renderProfileMenu, renderLogoutModal, toggleLogoutModal, logout };
