@@ -27,7 +27,7 @@ const auth = localStorage.getItem('auth');
 
 // 로그인 되어있지 않으면 랜딩 페이지로 보내는 코드
 if (!auth.isAuth) {
-  // location.replace('/src/pages/landing/index.html');
+  location.replace('/src/pages/landing/index.html');
 }
 
 renderHeader();
