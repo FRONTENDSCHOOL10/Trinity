@@ -1,4 +1,5 @@
 import { setDocumentTitle, setStorage } from 'kind-tiger';
+import getPbImageURL from '@/api/getPbImageURL';
 import pb from '@/api/pocketbase';
 import { getNode, getStorage, insertLast, insertAfter, setDocumentTitle, setStorage } from 'kind-tiger';
 import defaultAuthData from '@/api/defaultAuthData';
