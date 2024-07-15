@@ -7,9 +7,14 @@ const findButton = getNode('.button--login');
 const loginRemember = getNode('.login__remember');
 const loginIcon = getNode('#login-icon');
 const saveLoginCheckbox = getNode('.login__checkbox');
-const emailInput = getNode('#email-input');
+const idInput = getNode('#id-input');
 const passwordInput = getNode('#pw-input');
+
+const idAlert = getNode('.alerting__id');
+const pwAlert = getNode('.alerting__pw');
+
 const SECRET_KEY = 'your-secret-key'; // 비밀 키는 환경 변수나 안전한 곳에 저장하세요.
+
 let saveLoginInfo = false;
 
 /* -------------------------------------------------------------------------- */
@@ -33,9 +38,9 @@ document.addEventListener('DOMContentLoaded', () => {
     saveLoginInfo = true;
     loginIcon.classList.add('active');
     const decryptedToken = getDecryptedToken(auth.token);
-    pb.authStore.save(decryptedToken, auth.userInfo);
+    pb.authStore.save(decryptedToken, auth.user);
     alert('자동 로그인되었습니다.');
-    location.replace('/index.html'); // 로그인 후 이동할 페이지
+    location.href = '/src/pages/profileEdit/index.html'; // 로그인 후 이동할 페이지
   }
 
   const showPasswordButton = getNode('.login__button-show-password');
@@ -48,10 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
   loginIcon.addEventListener('keydown', handleKeyToggle);
   findButton.addEventListener('click', handleLogin);
 
-  emailInput.addEventListener('input', validateInputs);
-  passwordInput.addEventListener('input', validateInputs);
-
-  validateInputs(); // 초기 입력값 검사하여 로그인 버튼 상태 설정
+  // validateInputs(); // 초기 입력값 검사하여 로그인 버튼 상태 설정
 });
 
 /**
@@ -101,11 +103,17 @@ function handleKeyToggle(e) {
 async function handleLogin(e) {
   e.preventDefault();
 
-  const userEmail = getNode('#email-input').value;
+  const userID = getNode('#id-input').value;
   const userPW = getNode('#pw-input').value;
 
-  if (!emailReg(userEmail)) {
-    alert('올바른 이메일 형식을 입력하세요.');
+  validateInputs();
+
+  //1. 유저 입력을 받아들임
+  //2. 해당 입력이 이메일이면, 이메일로 pb에 요청
+  //2.1 해당 입력이 ID 면, ID로 pb에 요청
+
+  if (!validateString(userID) && !emailReg(userID)) {
+    alert('올바른 형식의 아이디나 이메일을 입력하세요.');
     return;
   }
 
@@ -115,15 +123,11 @@ async function handleLogin(e) {
   }
 
   try {
-    const authData = await pb.collection('users').authWithPassword(userEmail, userPW);
-    const { model, token } = authData;
-
-    if (saveLoginInfo) {
-      saveAuthData(model, token);
-    }
+    const { record, token } = await pb.collection('users').authWithPassword(userID, userPW);
+    saveAuthData(record, token);
 
     alert('환영합니다.');
-    location.replace('/index.html'); // 로그인 후 이동할 페이지
+    location.href = '/src/pages/profileEdit/index.html'; // 로그인 후 이동할 페이지
   } catch (error) {
     alert('인증된 사용자가 아닙니다.');
   }
@@ -131,17 +135,18 @@ async function handleLogin(e) {
 
 /**
  * 사용자 정보를 로컬 스토리지에 저장합니다.
- * @param {Object} userInfo - 사용자 정보 객체
+ * @param {Object} record - 사용자 정보 객체
  * @param {string} token - 인증 토큰
  */
-function saveAuthData(userInfo, token) {
+
+function saveAuthData(record, token) {
   // CryptoJS가 없는 경우에 대한 대체 동작
   const encryptedToken = token; // 암호화 없이 토큰 저장
 
   // localStorage에 저장
   setStorage('auth', {
-    isAuth: true,
-    userInfo,
+    isAuth: !!record,
+    user: record,
     token: encryptedToken,
   });
 }
@@ -161,15 +166,21 @@ function getDecryptedToken(encryptedToken) {
  * 이메일과 비밀번호 입력값의 유효성을 검사하고, 유효한 경우 로그인 버튼을 활성화합니다.
  */
 function validateInputs() {
-  const emailValue = emailInput.value;
+  const idValue = idInput.value;
   const passwordValue = passwordInput.value;
-  const emailValid = emailReg(emailValue);
+  const idOrEmailValid = validateString(idValue) || emailReg(idValue);
   const passwordValid = pwReg(passwordValue);
 
-  if (emailValid && passwordValid) {
-    findButton.removeAttribute('disabled');
+  if (!idOrEmailValid) {
+    idAlert.classList.remove('hidden');
   } else {
-    findButton.setAttribute('disabled', 'true');
+    idAlert.classList.add('hidden');
+  }
+
+  if (!passwordValid) {
+    pwAlert.classList.remove('hidden');
+  } else {
+    pwAlert.classList.add('hidden');
   }
 }
 
@@ -194,7 +205,7 @@ function togglePasswordVisibility() {
  * @param {Event} event - 클릭 이벤트
  */
 function handleClearInput(event) {
-  const inputId = event.currentTarget.getAttribute('onclick').match(/'(.*)'/)[1];
+  const inputId = event.currentTarget.previousElementSibling.id;
   clearInput(inputId);
 }
 
@@ -203,8 +214,10 @@ function handleClearInput(event) {
  * @param {string} inputId - 입력 필드의 ID
  */
 function clearInput(inputId) {
-  getNode(`#${inputId}`).value = '';
-  validateInputs(); // 입력 필드가 지워졌을 때 유효성 검사
+  const input = getNode(`#${inputId}`);
+  if (input) {
+    input.value = '';
+  }
 }
 
 /**
@@ -224,4 +237,21 @@ function emailReg(text) {
  */
 function pwReg(text) {
   return text.length >= 8;
+}
+
+/**
+ * 아이디의 유효성을 검사합니다.
+ * @param {string} input - 아이디 텍스트
+ * @returns {boolean} - 유효한 아이디 형식인지 여부
+ */
+function validateString(input) {
+  // 정규 표현식: 영문 소문자만 또는 영문 소문자와 숫자 조합
+  const regex = /^[a-z0-9]{6,12}$/;
+
+  // 입력 문자열이 조건에 맞는지 검증
+  if (regex.test(input)) {
+    return true;
+  } else {
+    return false;
+  }
 }
