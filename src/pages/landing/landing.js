@@ -8,10 +8,12 @@ if (!localStorage.getItem('auth')) {
   setStorage('auth', defaultAuthData);
 }
 
+// 헤더와 푸터 스크립트 실행
 headerScript();
 renderFooter();
 footerScript();
 
+// Swiper 초기화 함수
 const initializeSwiper = () => {
   new Swiper('.mySwiper1', {
     effect: 'coverflow',
@@ -42,21 +44,29 @@ const initializeSwiper = () => {
   });
 };
 
+// 버튼에 클릭 이벤트 리스너를 추가하는 함수
 const addClickListenerToButton = (buttonSelector) => {
   const button = document.querySelector(buttonSelector);
   if (button) {
-    button.style.cursor = 'pointer';
+    // 클릭 이벤트 리스너 추가
     button.addEventListener('click', (event) => {
       const anchorTag = button.querySelector('a');
       if (anchorTag) {
+        // a 태그의 href로 이동
         window.location.href = anchorTag.href;
       }
     });
   }
 };
 
+// DOMContentLoaded 이벤트가 발생하면 실행
 document.addEventListener('DOMContentLoaded', () => {
+  // Swiper 초기화
   initializeSwiper();
+
+  // 온보딩 버튼에 클릭 이벤트 리스너 추가
   addClickListenerToButton('.onboarding__button');
+
+  // enroll 버튼에 클릭 이벤트 리스너 추가
   addClickListenerToButton('.enroll__button');
 });
