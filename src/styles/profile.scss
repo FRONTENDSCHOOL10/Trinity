@@ -1,0 +1,199 @@
+@import '/src/styles/utils/_reset';
+@import '/src/styles/utils/_global';
+@import '/src/styles/layout/header';
+@import '/src/styles/layout/footer';
+@import '/src/styles/find'; // find의 일부사용 중
+
+// Profile Size
+$--mo-proImg: 7.125rem;
+$--tablet-proImg: 8.25rem;
+$--desk-proImg: 14.625rem;
+
+// Button Size
+$--mo-btnProfile-w: 8.4375rem;
+$--mo-btnProfile-h: 2.625rem;
+$--tablet-btnProfile-w: 9.75rem;
+$--tablet-btnProfile-h: 3.125rem;
+$--desk-btnProfile-w: 17rem;
+$--desk-btnProfile-h: 5.375rem;
+
+// Buttons style
+@mixin profileBtn($w, $h, $f-size, $m-top, $bg){
+    font-family: 'Pretendard Variable', Pretendard, sans-serif;
+    width: $w;
+    height: $h;
+    font-size: $f-size;
+    border-radius: .25rem;
+    margin: $m-top auto 0 auto;
+    background-color: $bg;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+// Size (width, inline-size, height, block-size)
+@mixin squareSize($size){
+    @include inline-size($size);
+    @include block-size($size);
+}
+
+// 버튼 컴포넌트
+.button--gray-sm {
+    @include profileBtn($--mo-btnProfile-w, $--mo-btnProfile-h, .75rem, 2rem, transparent);
+    @media (min-width:$--tablet) and (max-width:($--desktop - 1)){
+        @include profileBtn($--tablet-btnProfile-w, $--tablet-btnProfile-h, 1rem, 2.75rem, transparent);
+    }
+    @media (min-width: $--desktop){
+        @include profileBtn($--desk-btnProfile-w, $--desk-btnProfile-h, 1.75rem, 4.125rem, transparent);
+    }
+    color: $--gray-300;
+    border: .0625rem solid $--gray-600;
+    transition: .3s;
+    &:hover {
+        border:solid $--white;
+        color: $--white;
+    }
+    &:active {
+        border:solid $--white;
+        color: $--white;
+    }
+}
+
+.button--white-sm {
+    @include profileBtn($--mo-btnProfile-w, $--mo-btnProfile-h, .75rem, 2rem, $--gray-100);
+    @media (min-width:$--tablet) and (max-width:($--desktop - 1)){
+        @include profileBtn($--tablet-btnProfile-w, $--tablet-btnProfile-h, 1rem, 2.75rem, $--gray-100);
+    }
+    @media (min-width: $--desktop){
+        @include profileBtn($--desk-btnProfile-w, $--desk-btnProfile-h, 1.75rem, 4.125rem, $--gray-100);
+    }
+    color: $--black;
+    border: 0px;
+    transition: .3s;
+    &:hover {
+        background-color: $--white;
+    }
+    &:active {
+        background-color: $--white;
+    }
+}
+
+//profile
+.profile__wrap {
+    font-size: .75rem;
+    height: 100vh;
+    @include flexbox(center);
+    @media (min-width:$--tablet) and (max-width:($--desktop - 1)){
+        font-size: 1rem;
+    }
+    @media (min-width: $--desktop){
+        font-size: 1.75rem;
+    }
+    &__container {
+        position: relative;
+        align-content: center;
+        padding: 0 2.125rem;
+        margin: 0 auto;
+        color: $--white;
+        font-size: $--label-small;
+        & .head__form {
+            text-align: center;
+            @include headTit($--heading-medium, 2rem);
+            & .desc {
+                font-size: $--paragraph-small;
+                color: $--gray-400;
+                padding-top: 1rem;
+                font-weight: 400;
+            }
+            @media (min-width:$--tablet) and (max-width:($--desktop - 1)){
+                @include headTit($--heading-x-l, 1.75rem);
+                & .desc {
+                    font-size: $--label-medium;
+                }
+            }
+            @media (min-width: $--desktop){
+                @include headTit($--heading-x-x-x-l, 2.75rem);
+                & .desc {
+                    font-size: $--label-x-l;
+                }
+            }
+        }
+        & .profile__form {
+            @include flexbox(row, wrap, center, center, 1.5rem);
+            @media (min-width:$--tablet) and (max-width:($--desktop - 1)){
+                gap: 2rem;
+            }
+            @media (min-width: $--desktop){
+                gap: 3.25rem;
+            }
+            &--item {
+                text-align: center;
+                & .item__form:hover {
+                    // li 전체를 hover시 item__form만 적용되도록
+                    transform: translateY(-5%);
+                }
+                & .item__form {
+                    transition: all 0.3s ease 0s;
+                    @include squareSize($--mo-proImg);
+                    border-radius: .25rem;
+                    overflow: hidden;
+                    display: block;
+                    position: relative;
+                    margin-bottom: 0.75rem;
+                    @media (min-width:$--tablet) and (max-width:($--desktop - 1)){
+                        @include squareSize($--tablet-proImg);
+                    }
+                    @media (min-width: $--desktop){
+                        @include squareSize($--desk-proImg);
+                        margin-bottom: 1rem;
+                    }
+                    & .user-profile {
+                        @include flexbox(row, nowrap, center, center);
+                        @include position(absolute);
+                        @include squareSize(100%);
+                        & img {
+                            @include squareSize(110%);
+                        }
+                    }
+                    & .bg {
+                        @include flexbox(row, nowrap, center, center);
+                        @include position(absolute);
+                        @include squareSize(100%);
+                        background: rgba($color: $--black, $alpha: .7);
+                    }
+                    & .icon {
+                        transition: all 0.3s ease 0s;
+                        @include flexbox(row, nowrap, center, center);
+                        @include position(absolute);
+                        @include squareSize(100%);
+                        & img {
+                            @include squareSize(3.125rem);
+                            @media (min-width: $--desktop){
+                                @include squareSize(3.75rem);
+                            }
+                            cursor: pointer;
+                        }
+                    }
+                }
+                & .name {
+                    color: $--gray-300;
+                    font-size: $--label-small;
+                    @media (min-width:$--tablet) and (max-width:($--desktop - 1)){
+                        font-size: $--label-medium;
+                    }
+                    @media (min-width: $--desktop){
+                        font-size: $--label-x-l;
+                    }
+                }
+            }
+            // 프로필 선택 페이지에서는 hover 시 outline
+            &.profileSelect .item__form:hover, &.profileSelect .item__form:active {
+                outline: 3px solid white;
+            } 
+        }
+    }
+}
