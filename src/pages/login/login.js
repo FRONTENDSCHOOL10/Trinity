@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const decryptedToken = getDecryptedToken(auth.token);
     pb.authStore.save(decryptedToken, auth.user);
     alert('자동 로그인되었습니다.');
-    location.href = '/src/pages/profileEdit/index.html'; // 로그인 후 이동할 페이지
+    location.href = '/src/pages/profileSelect/index.html'; // 로그인 후 이동할 페이지
   }
 
   const showPasswordButton = getNode('.login__button-show-password');
