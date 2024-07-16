@@ -78,7 +78,7 @@
 }
 
 // 푸터 기본 폰트 설정
-.footer, 
+.footer,
 .shortcut__btn {
   @include mobileW {
     font-size: $--paragraph-small;
@@ -330,6 +330,13 @@
     display: flex;
     flex-direction: row;
     gap: 0.5rem;
+    margin: 1rem 0;
+    @include tabletW() {
+      margin: 0.75rem 0;
+    }
+    @include desktopW() {
+      margin: 1.5rem 0;
+    }
 
     .youtube {
       @include mobileW() {
@@ -350,7 +357,7 @@
         height: 3.25rem;
       }
 
-      @include background-image(url('/public/icon/footer/iconYoutube.svg'));
+      @include background-image(url('/icon/footer/iconYoutube.svg'));
     }
     .instagram {
       @include mobileW() {
@@ -371,7 +378,7 @@
         height: 3.25rem;
       }
 
-      @include background-image(url('/public/icon/footer/iconInstagram.svg'));
+      @include background-image(url('/icon/footer/iconInstagram.svg'));
     }
     .twitter {
       @include mobileW() {
@@ -392,7 +399,7 @@
         height: 3.25rem;
       }
 
-      @include background-image(url('/public/icon/footer/iconTwitter.svg'));
+      @include background-image(url('/icon/footer/iconTwitter.svg'));
     }
     .facebook {
       @include mobileW() {
@@ -413,7 +420,7 @@
         height: 3.25rem;
       }
 
-      @include background-image(url('/public/icon/footer/iconFacebook.svg'));
+      @include background-image(url('/icon/footer/iconFacebook.svg'));
     }
   }
 

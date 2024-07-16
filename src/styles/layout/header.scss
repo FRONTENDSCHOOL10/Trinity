@@ -84,6 +84,7 @@ $--desktop-icon-size: 2.5rem;
 
 .header {
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 100%);
+  transition: background-color 0.5s ease; // 스크롤 시 부드러운 전환효과를 위한 코드
   padding: 0.5rem 1rem;
 
   @include flexbox(row, nowrap, null, center, null);
@@ -169,6 +170,16 @@ $--desktop-icon-size: 2.5rem;
         }
       }
 
+      &--search-close {
+        @include size($--mobile-icon-size, $--mobile-icon-size);
+        @include background-image(url('/public/icon/header/iconCloseDefault.svg'));
+
+        &:hover {
+          @include background-image(url('/public/icon/header/iconCloseHover.svg'));
+          cursor: pointer;
+        }
+      }
+
       &--profile {
         @include size(1.125rem, 1.125rem);
         @include background-image(url('/public/imgTemporary.png'));
@@ -176,6 +187,11 @@ $--desktop-icon-size: 2.5rem;
       }
     }
   }
+}
+
+// 헤더 배경 전환효과를 위한 부분
+.header--scrolled {
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
 .header__nav__program__item--live a {
@@ -223,6 +239,10 @@ $--desktop-icon-size: 2.5rem;
 
       &__button {
         &--search {
+          @include size($--tablet-icon-size, $--tablet-icon-size);
+        }
+
+        &--search-close {
           @include size($--tablet-icon-size, $--tablet-icon-size);
         }
 
@@ -276,6 +296,11 @@ $--desktop-icon-size: 2.5rem;
         &--search {
           @include size($--desktop-icon-size, $--desktop-icon-size);
         }
+
+        &--search-close {
+          @include size($--desktop-icon-size, $--desktop-icon-size);
+        }
+
 
         &--profile {
           @include size($--desktop-icon-size, $--desktop-icon-size);

@@ -260,6 +260,10 @@ button.sign-up {
         font-size: 1.3rem;
         height: 5.38rem;
     }
+    &:hover{
+        background-color: $--brand-red-1;
+        color: $--white;
+    }
 }
 
 // 체크박스 숨기기

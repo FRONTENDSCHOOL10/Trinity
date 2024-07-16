@@ -2,7 +2,10 @@ import getPbImageURL from '@/api/getPbImageURL';
 import pb from '@/api/pocketbase';
 import { getNode, getStorage, insertLast, insertAfter, setDocumentTitle, setStorage } from 'kind-tiger';
 import defaultAuthData from '@/api/defaultAuthData';
-import renderHeader from '@/layout/header/header';
+import { renderHeader } from '@/layout/header/header';
+import { renderSearchModal, searchModal } from '@/components/searchModal/searchModal';
+import { renderProfileMenu, renderLogoutModal, toggleLogoutModal, logout } from '@/components/profileMenu/profileMenu';
+import { renderMainAd, openMainAdModal } from '@/components/mainAd/mainAd';
 import renderMainVisualSlider from '@/components/mainVisual/mainVisual';
 import renderMustContentSlider from '@/components/contentSlider/must/must';
 import renderQuickVodContentSlider from '@/components/contentSlider/quick/quick';
@@ -20,14 +23,31 @@ if (!localStorage.getItem('auth')) {
   setStorage('auth', defaultAuthData);
 }
 
-const auth = localStorage.getItem('auth');
+async function checkIsAuth() {
+  const auth = await getStorage('auth');
 
-// 로그인 되어있지 않으면 랜딩 페이지로 보내는 코드
-if (!auth.isAuth) {
-  // location.replace('/src/pages/landing/index.html');
+  // 로그인 되어있지 않으면 랜딩 페이지로 보내는 코드
+  if (!auth.isAuth) {
+    location.replace('/src/pages/landing/index.html');
+  }
 }
 
+checkIsAuth();
+
+/* -------------------------------------------------------------------------- */
+/*                                    헤더 코드                                */
+/* -------------------------------------------------------------------------- */
+
 renderHeader();
+renderSearchModal();
+searchModal();
+renderProfileMenu();
+renderLogoutModal();
+toggleLogoutModal();
+logout();
+
+renderMainAd();
+openMainAdModal();
 
 /* -------------------------------------------------------------------------- */
 /*                                메인 비주얼 렌더링 코드                               */

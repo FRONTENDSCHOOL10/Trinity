@@ -1,168 +1,188 @@
 import { getNode, isString, getStorage, setStorage } from 'kind-tiger';
-import PocketBase from 'pocketbase';
+import pb from '@/api/pocketbase';
+import { headerScript } from '@/layout/header/header';
+import { renderFooter, footerScript } from '@/layout/footer/footer';
 
-const pb = new PocketBase('https://plainyogurt.pockethost.io/');
 const findButton = getNode('.button--login');
 const loginRemember = getNode('.login__remember');
 const loginIcon = getNode('#login-icon');
 const saveLoginCheckbox = getNode('.login__checkbox');
-const emailInput = getNode('#email-input');
+const idInput = getNode('#id-input');
 const passwordInput = getNode('#pw-input');
+
+const idAlert = getNode('.alerting__id');
+const pwAlert = getNode('.alerting__pw');
+
 const SECRET_KEY = 'your-secret-key'; // 비밀 키는 환경 변수나 안전한 곳에 저장하세요.
 
+let saveLoginInfo = false;
+
+/* -------------------------------------------------------------------------- */
+/*                                  헤더 렌더링 코드                           */
+/* -------------------------------------------------------------------------- */
+headerScript();
+
+/* -------------------------------------------------------------------------- */
+/*                                  푸터 렌더링 코드                           */
+/* -------------------------------------------------------------------------- */
+renderFooter();
+footerScript();
+
 /**
- * 클로저를 사용하여 saveLoginInfo 변수를 보호합니다.
+ * 페이지 로드 시 실행되어, 로컬 스토리지에 저장된 인증 정보를 확인하고 자동 로그인을 처리합니다.
  */
-(function () {
-  let saveLoginInfo = false;
+document.addEventListener('DOMContentLoaded', () => {
+  // 로컬 스토리지에 로그인 정보 저장
+  const auth = JSON.parse(localStorage.getItem('auth'));
+  if (auth && auth.isAuth) {
+    saveLoginInfo = true;
+    loginIcon.classList.add('active');
+    const decryptedToken = getDecryptedToken(auth.token);
+    pb.authStore.save(decryptedToken, auth.user);
+    alert('자동 로그인되었습니다.');
+    location.href = '/src/pages/profileEdit/index.html'; // 로그인 후 이동할 페이지
+  }
 
-  /**
-   * 페이지 로드 시 실행되어, 로컬 스토리지에 저장된 인증 정보를 확인하고 자동 로그인을 처리합니다.
-   */
-  document.addEventListener('DOMContentLoaded', () => {
-    // 로컬 스토리지에 로그인 정보 저장
-    const auth = JSON.parse(localStorage.getItem('auth'));
-    if (auth && auth.isAuth) {
-      saveLoginInfo = true;
-      loginIcon.classList.add('active');
-      const decryptedToken = getDecryptedToken(auth.token);
-      pb.authStore.save(decryptedToken, auth.userInfo);
-      alert('자동 로그인되었습니다.');
-      location.href = '/index.html'; // 로그인 후 이동할 페이지
-    }
+  const showPasswordButton = getNode('.login__button-show-password');
+  const clearButtons = document.querySelectorAll('.login__button-clear');
 
-    const showPasswordButton = getNode('.login__button-show-password');
-    const clearButtons = document.querySelectorAll('.login__button-clear');
+  showPasswordButton.addEventListener('click', togglePasswordVisibility);
+  clearButtons.forEach((button) => button.addEventListener('click', handleClearInput));
 
-    showPasswordButton.addEventListener('click', togglePasswordVisibility);
-    clearButtons.forEach((button) => button.addEventListener('click', handleClearInput));
+  loginRemember.addEventListener('click', handleToggle);
+  loginIcon.addEventListener('keydown', handleKeyToggle);
+  findButton.addEventListener('click', handleLogin);
 
-    loginRemember.addEventListener('click', handleToggle);
-    loginIcon.addEventListener('keydown', handleKeyToggle);
-    findButton.addEventListener('click', handleLogin);
+  // validateInputs(); // 초기 입력값 검사하여 로그인 버튼 상태 설정
+});
 
-    emailInput.addEventListener('input', validateInputs);
-    passwordInput.addEventListener('input', validateInputs);
+/**
+ * 로그인 아이콘을 토글하고 저장된 로그인 정보를 업데이트합니다.
+ */
+function toggleLoginIcon() {
+  saveLoginCheckbox.checked = !saveLoginCheckbox.checked;
+  saveLoginInfo = saveLoginCheckbox.checked;
+  loginIcon.classList.toggle('active');
+  loginIcon.setAttribute('aria-checked', saveLoginCheckbox.checked.toString());
+
+  if (loginIcon.classList.contains('active')) {
+    loginRemember.style.color = 'white';
+  } else {
+    loginRemember.style.color = '';
+  }
+}
+
+/**
+ * 로그인 아이콘 또는 로그인 기억 체크박스를 클릭했을 때의 이벤트 핸들러입니다.
+ * @param {Event} e - 클릭 이벤트
+ */
+function handleToggle(e) {
+  e.preventDefault();
+  const target = e.target;
+  if (target.classList.contains('login__icon') || target.closest('.login__remember')) {
+    toggleLoginIcon();
+  }
+}
+
+/**
+ * 스페이스바를 눌렀을 때 로그인 아이콘을 토글합니다.
+ * @param {KeyboardEvent} e - 키보드 이벤트
+ */
+function handleKeyToggle(e) {
+  if (e.keyCode === 32) {
+    // 스페이스바의 키 코드
+    e.preventDefault();
+    toggleLoginIcon();
+  }
+}
+
+/**
+ * 로그인 버튼을 클릭했을 때의 이벤트 핸들러입니다.
+ * @param {Event} e - 클릭 이벤트
+ */
+async function handleLogin(e) {
+  e.preventDefault();
+
+  const userID = getNode('#id-input').value;
+  const userPW = getNode('#pw-input').value;
+
+  validateInputs();
+
+  //1. 유저 입력을 받아들임
+  //2. 해당 입력이 이메일이면, 이메일로 pb에 요청
+  //2.1 해당 입력이 ID 면, ID로 pb에 요청
+
+  if (!validateString(userID) && !emailReg(userID)) {
+    alert('올바른 형식의 아이디나 이메일을 입력하세요.');
+    return;
+  }
+
+  if (!pwReg(userPW)) {
+    alert('비밀번호는 8자리 이상이어야 합니다.');
+    return;
+  }
+
+  try {
+    const { record, token } = await pb.collection('users').authWithPassword(userID, userPW);
+    saveAuthData(record, token);
+
+    alert('환영합니다.');
+    location.href = '/src/pages/profileEdit/index.html'; // 로그인 후 이동할 페이지
+  } catch (error) {
+    alert('인증된 사용자가 아닙니다.');
+  }
+}
+
+/**
+ * 사용자 정보를 로컬 스토리지에 저장합니다.
+ * @param {Object} record - 사용자 정보 객체
+ * @param {string} token - 인증 토큰
+ */
+
+function saveAuthData(record, token) {
+  // CryptoJS가 없는 경우에 대한 대체 동작
+  const encryptedToken = token; // 암호화 없이 토큰 저장
+
+  // localStorage에 저장
+  setStorage('auth', {
+    isAuth: !!record,
+    user: record,
+    token: encryptedToken,
   });
+}
 
-  /**
-   * 로그인 아이콘을 토글하고 저장된 로그인 정보를 업데이트합니다.
-   */
-  function toggleLoginIcon() {
-    saveLoginCheckbox.checked = !saveLoginCheckbox.checked;
-    saveLoginInfo = saveLoginCheckbox.checked;
-    loginIcon.classList.toggle('active');
-    loginIcon.setAttribute('aria-checked', saveLoginCheckbox.checked.toString());
+/**
+ * 저장된 인증 토큰을 반환합니다.
+ * @param {string} encryptedToken - 암호화된 토큰
+ * @returns {string} - 복호화된 토큰
+ */
+function getDecryptedToken(encryptedToken) {
+  // CryptoJS가 없는 경우에 대한 대체 동작
+  // 단순히 저장된 토큰을 반환 (암호화가 없으므로)
+  return encryptedToken;
+}
 
-    if (loginIcon.classList.contains('active')) {
-      loginRemember.style.color = 'white';
-    } else {
-      loginRemember.style.color = '';
-    }
+/**
+ * 이메일과 비밀번호 입력값의 유효성을 검사하고, 유효한 경우 로그인 버튼을 활성화합니다.
+ */
+function validateInputs() {
+  const idValue = idInput.value;
+  const passwordValue = passwordInput.value;
+  const idOrEmailValid = validateString(idValue) || emailReg(idValue);
+  const passwordValid = pwReg(passwordValue);
+
+  if (!idOrEmailValid) {
+    idAlert.classList.remove('hidden');
+  } else {
+    idAlert.classList.add('hidden');
   }
 
-  /**
-   * 로그인 아이콘 또는 로그인 기억 체크박스를 클릭했을 때의 이벤트 핸들러입니다.
-   * @param {Event} e - 클릭 이벤트
-   */
-  function handleToggle(e) {
-    e.preventDefault();
-    const target = e.target;
-    if (target.classList.contains('login__icon') || target.closest('.login__remember')) {
-      toggleLoginIcon();
-    }
+  if (!passwordValid) {
+    pwAlert.classList.remove('hidden');
+  } else {
+    pwAlert.classList.add('hidden');
   }
-
-  /**
-   * 스페이스바를 눌렀을 때 로그인 아이콘을 토글합니다.
-   * @param {KeyboardEvent} e - 키보드 이벤트
-   */
-  function handleKeyToggle(e) {
-    if (e.keyCode === 32) {
-      // 스페이스바의 키 코드
-      e.preventDefault();
-      toggleLoginIcon();
-    }
-  }
-
-  /**
-   * 로그인 버튼을 클릭했을 때의 이벤트 핸들러입니다.
-   * @param {Event} e - 클릭 이벤트
-   */
-  async function handleLogin(e) {
-    e.preventDefault();
-
-    const userEmail = getNode('#email-input').value;
-    const userPW = getNode('#pw-input').value;
-
-    try {
-      const authData = await pb.collection('users').authWithPassword(userEmail, userPW);
-      const { model, token } = authData;
-
-      if (saveLoginInfo) {
-        saveAuthData(model, token);
-      }
-
-      alert('환영합니다.');
-      location.href = '/index.html'; // 로그인 후 이동할 페이지
-    } catch (error) {
-      alert('인증된 사용자가 아닙니다.');
-    }
-  }
-
-  /**
-   * 사용자 정보를 로컬 스토리지에 저장합니다.
-   * @param {Object} userInfo - 사용자 정보 객체
-   * @param {string} token - 인증 토큰
-   */
-  function saveAuthData(userInfo, token) {
-    // CryptoJS가 없는 경우에 대한 대체 동작
-    const encryptedToken = token; // 암호화 없이 토큰 저장
-
-    // localStorage에 저장
-    localStorage.setItem(
-      'auth',
-      JSON.stringify({
-        isAuth: true,
-        userInfo,
-        token: encryptedToken,
-      })
-    );
-
-    setStorage('auth', {
-      isAuth: true,
-      userInfo,
-      token: encryptedToken,
-    });
-  }
-
-  /**
-   * 저장된 인증 토큰을 반환합니다.
-   * @param {string} encryptedToken - 암호화된 토큰
-   * @returns {string} - 복호화된 토큰
-   */
-  function getDecryptedToken(encryptedToken) {
-    // CryptoJS가 없는 경우에 대한 대체 동작
-    // 단순히 저장된 토큰을 반환 (암호화가 없으므로)
-    return encryptedToken;
-  }
-
-  /**
-   * 이메일과 비밀번호 입력값의 유효성을 검사하고, 유효한 경우 로그인 버튼을 활성화합니다.
-   */
-  function validateInputs() {
-    const emailValue = emailInput.value;
-    const passwordValue = passwordInput.value;
-    const emailValid = emailReg(emailValue);
-    const passwordValid = pwReg(passwordValue);
-
-    if (emailValid && passwordValid) {
-      findButton.removeAttribute('disabled');
-    } else {
-      findButton.setAttribute('disabled', 'true');
-    }
-  }
-})();
+}
 
 /**
  * 비밀번호 입력 필드의 가시성을 토글합니다.
@@ -173,10 +193,10 @@ function togglePasswordVisibility() {
 
   if (passwordInput.type === 'password') {
     passwordInput.type = 'text';
-    showPasswordButton.style.backgroundImage = "url('/public/icon/login/iconVisible.svg')";
+    showPasswordButton.style.backgroundImage = "url('/icon/login/iconVisible.svg')";
   } else {
     passwordInput.type = 'password';
-    showPasswordButton.style.backgroundImage = "url('/public/icon/login/iconInVisibleForMT.svg')";
+    showPasswordButton.style.backgroundImage = "url('/icon/login/iconInvisible.svg')";
   }
 }
 
@@ -185,7 +205,7 @@ function togglePasswordVisibility() {
  * @param {Event} event - 클릭 이벤트
  */
 function handleClearInput(event) {
-  const inputId = event.currentTarget.getAttribute('onclick').match(/'(.*)'/)[1];
+  const inputId = event.currentTarget.previousElementSibling.id;
   clearInput(inputId);
 }
 
@@ -194,7 +214,10 @@ function handleClearInput(event) {
  * @param {string} inputId - 입력 필드의 ID
  */
 function clearInput(inputId) {
-  getNode(`#${inputId}`).value = '';
+  const input = getNode(`#${inputId}`);
+  if (input) {
+    input.value = '';
+  }
 }
 
 /**
@@ -203,7 +226,7 @@ function clearInput(inputId) {
  * @returns {boolean} - 유효한 이메일인지 여부
  */
 function emailReg(text) {
-  const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return re.test(String(text).toLowerCase());
 }
 
@@ -213,6 +236,22 @@ function emailReg(text) {
  * @returns {boolean} - 유효한 비밀번호인지 여부
  */
 function pwReg(text) {
-  const re = /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^*+=-]).{6,16}$/;
-  return re.test(String(text).toLowerCase());
+  return text.length >= 8;
+}
+
+/**
+ * 아이디의 유효성을 검사합니다.
+ * @param {string} input - 아이디 텍스트
+ * @returns {boolean} - 유효한 아이디 형식인지 여부
+ */
+function validateString(input) {
+  // 정규 표현식: 영문 소문자만 또는 영문 소문자와 숫자 조합
+  const regex = /^[a-z0-9]{6,12}$/;
+
+  // 입력 문자열이 조건에 맞는지 검증
+  if (regex.test(input)) {
+    return true;
+  } else {
+    return false;
+  }
 }

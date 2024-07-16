@@ -19,7 +19,7 @@ export default defineConfig({
         // 아래 경로 페이지도 함께 컴파일
         findId: resolve(__dirname, 'src/pages/findId/index.html'),
         findPw: resolve(__dirname, 'src/pages/findPw/index.html'),
-        // landing: resolve(__dirname, 'src/pages/landing/index.html'),
+        landing: resolve(__dirname, 'src/pages/landing/index.html'),
         login: resolve(__dirname, 'src/pages/login/index.html'),
         // profileEdit: resolve(__dirname, 'src/pages/profileEdit/index.html'),
         // profileSelect: resolve(__dirname, 'src/pages/profileSelect/index.html'),

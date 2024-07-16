@@ -3,6 +3,8 @@
 @import '/src/styles/layout/header';
 @import '/src/styles/layout/footer';
 
+$--font-family: 'Pretendard Variable', Pretendard, sans-serif;
+
 // Mixins
 
 @mixin flex-center {
@@ -73,8 +75,39 @@
   @include a11yHidden();
 }
 
+.hidden {
+  display: none;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                       헤더                                 */
+/* -------------------------------------------------------------------------- */
+.header {
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 100%);
+  transition: background-color 0.5s ease; // 스크롤 시 부드러운 전환효과를 위한 코드
+  padding: 0.5rem 1rem;
+
+  @include flexbox(row, nowrap, null, center, null);
+  @include position(fixed, 0 0 auto 0);
+  z-index: 9999;
+
+  &__logo {
+    @include background-image(url('/icon/header/iconTaingLogo.svg'));
+    min-width: 2.875rem;
+    min-height: 0.9375rem;
+    max-width: 6.25rem;
+    width: 10%;
+    aspect-ratio: 2.875/0.9375;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                       메인                                 */
+/* -------------------------------------------------------------------------- */
+
 // Base styles
 .main-login {
+  font-family: $--font-family;
   background-color: $--black;
   color: $--white;
   @include flex-center;
@@ -154,7 +187,7 @@
     color: $--white;
     cursor: pointer;
     font-size: 1rem;
-    background: url('/public/icon/login/iconDelete.svg') no-repeat center;
+    background: url('/icon/login/iconDelete.svg') no-repeat center;
     @include desktopW() {
       width: 1.5rem;
       height: 1.5rem;
@@ -173,12 +206,12 @@
     margin-left: auto;
     margin-right: 2rem;
 
-    background: url('/public/icon/login/iconInvisible.svg') no-repeat center;
+    background: url('/icon/login/iconInvisible.svg') no-repeat center;
     border: none;
     cursor: pointer;
 
     &:active {
-      background-image: url('/public/icon/login/iconVisible.svg');
+      background-image: url('/icon/login/iconVisible.svg');
     }
   }
 
@@ -222,7 +255,7 @@
   }
 
   &__show-password-button.active {
-    background-image: url('/public/icon/login/iconVisible.svg');
+    background-image: url('/icon/login/iconVisible.svg');
   }
 
   &__checkbox {
@@ -242,7 +275,7 @@
       margin-right: 0.25rem;
       display: inline-block;
       cursor: pointer;
-      @include background-image(url('/public/icon/login/iconCheckCircleGray.svg'));
+      @include background-image(url('/icon/login/iconCheckCircleGray.svg'));
 
       @include desktopW() {
         width: 1.5rem;
@@ -255,7 +288,7 @@
       }
 
       &.active {
-        @include background-image(url('/public/icon/login/iconCheckCircle.svg'));
+        @include background-image(url('/icon/login/iconCheckCircle.svg'));
       }
     }
   }
@@ -263,6 +296,7 @@
 
 // Button Component
 .button {
+  font-family: $--font-family;
   display: inline-block;
   padding: 0.75rem 1rem;
   width: 100%;
@@ -294,11 +328,11 @@
 
 @include tabletW() {
   .login {
-    &__title {
-    }
+    // &__title {
+    // }
 
-    &__input {
-    }
+    // &__input {
+    // }
 
     .button--login {
       height: 3.125rem;
@@ -310,14 +344,45 @@
   .login {
     max-width: 500px;
 
-    &__title {
-    }
+    // &__title {
+    // }
 
-    &__input {
-    }
+    // &__input {
+    // }
 
     .button--login {
       height: 5.375rem;
+    }
+  }
+}
+
+// span alerting 후추
+.alerting {
+  &__id {
+    font-size: 0.8rem;
+  }
+
+  &__pw {
+    font-size: 1rem;
+  }
+
+  @include tabletW() {
+    &__id {
+      font-size: 1rem;
+    }
+
+    &__pw {
+      font-size: 1rem;
+    }
+  }
+
+  @include desktopW() {
+    &__id {
+      font-size: 1.5rem;
+    }
+
+    &__pw {
+      font-size: 1.5rem;
     }
   }
 }
