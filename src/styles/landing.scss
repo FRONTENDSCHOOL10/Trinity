@@ -73,30 +73,29 @@
 }
 
 .onboarding {
+  position: relative;
+
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
   justify-content: center;
   overflow: hidden;
   width: 100%;
-  // height: 85%;
 
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 1) 90%, rgba(0, 0, 0, 1) 100%), url('/image/landing/background-img-M.png');
-  background-size: cover;
-  background-position-y: -5rem;
   padding-top: 4rem;
   margin-top: -4rem;
-  background-repeat: no-repeat;
 
-  // animation: scaleUp 5s ease forwards;
-  // @keyframes scaleUp {
-  //   from {
-  //     transform: scale(1);
-  //   }
-  //   to {
-  //     transform: scale(1.1);
-  //   }
-  // }
+  &__background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 1) 90%, rgba(0, 0, 0, 1) 100%), url('/image/landing/background-img-M.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: -1;
+  }
 
   &__phrase {
     gap: 1rem;
@@ -130,42 +129,11 @@
     }
   }
 
-  // &__button {
-  //   padding: 0 1rem 0 0.5rem;
-  //   display: flex;
-  //   flex-flow: row nowrap;
-  //   align-items: center;
-  //   justify-content: center;
-  //   border-radius: 4px;
-  //   background-color: $--brand-red-2;
-  //   gap: 0.5rem;
-  //   min-width: 11.75rem;
-  //   height: 2.125rem;
-
-  //   &-logo {
-  //     width: 1.625rem;
-  //     padding: 0;
-  //     margin-bottom: 0.3rem;
-  //     img {
-  //       width: 100%;
-  //     }
-  //   }
-
-  //   &-content {
-  //     text-decoration: none;
-  //     font-size: 0.75rem;
-  //     color: $--white;
-  //     font-weight: 600;
-  //     padding-right: 1rem;
-  //     line-height: 150%;
-  //   }
-  // }
-
   @include tabletW() {
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 1) 100%), url('/image/landing/background-img-T.png');
-    background-size: cover;
-    // background-position: center;
-    background-repeat: no-repeat;
+    &__background {
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 1) 90%, rgba(0, 0, 0, 1) 100%), url('/image/landing/background-img-M.png');
+      background-size: cover;
+    }
 
     &__phrase {
       gap: 1rem;
@@ -183,30 +151,12 @@
         font-size: 1rem;
       }
     }
-
-    // &__button {
-    //   min-width: 17.6875rem;
-    //   height: 3rem;
-    //   &-logo {
-    //     width: 2.25rem;
-    //     padding: 0 0.25rem;
-    //     margin-bottom: 0.5rem;
-    //     img {
-    //       width: 100%;
-    //     }
-    //   }
-
-    //   &-content {
-    //     font-size: 1rem;
-    //     padding-right: 1rem;
-    //   }
-    // }
   }
   @include desktopW() {
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 1) 100%), url('/image/landing/background-img-D.png');
-    background-size: cover;
-    // background-position: center;
-    background-repeat: no-repeat;
+    &__background {
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 1) 90%, rgba(0, 0, 0, 1) 100%), url('/image/landing/background-img-D.png');
+      background-size: cover;
+    }
 
     &__phrase {
       gap: 1rem;
@@ -222,24 +172,6 @@
         font-size: 1.77688rem;
       }
     }
-
-    // &__button {
-    //   min-width: 31rem;
-    //   height: 5rem;
-    //   &-logo {
-    //     width: 4rem;
-    //     padding: 0 0.25rem;
-    //     margin-bottom: 0.45rem;
-    //     margin-right: 2rem;
-    //     img {
-    //       width: 100%;
-    //     }
-    //   }
-
-    //   &-content {
-    //     font-size: 1.77688rem;
-    //   }
-    // }
   }
 }
 
@@ -333,7 +265,7 @@
 
 .scroll-section-2 {
   margin-top: 3rem;
-  height: 80vh;
+  height: 50vh;
 }
 
 .customized {
@@ -343,6 +275,40 @@
   align-items: center;
   text-align: center;
   margin-top: 10rem;
+
+  &__container {
+    .swiper-container {
+      width: 30%;
+      height: 100%;
+      .swiper-slide {
+        text-align: center;
+        margin-right: 20px;
+        img {
+          width: 100%;
+          height: auto;
+          object-fit: cover;
+        }
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+
+      @include tabletW() {
+        width: 12%;
+      }
+
+      @include desktopW() {
+        width: 25%;
+      }
+    }
+
+    .customized-swiper-top {
+      margin-bottom: 2rem;
+    }
+    .customized-swiper-bottom {
+      margin-bottom: 2rem;
+    }
+  }
 
   &__info {
     display: flex;
@@ -437,6 +403,7 @@
 
 .enroll {
   width: 100%;
+  padding-top: 2rem;
 
   &__wrapper {
     display: flex;
