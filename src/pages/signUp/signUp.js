@@ -234,7 +234,7 @@ async function handleSignUp(event) {
   const email = getNode('#email').value;
 
   if (!pwReg(userPw)) {
-    displayError(passwordInput, '비밀번호는 영문, 숫자, 특수문자(~!@#$%^&*) 조합 8~15자리로 구성되어야 합니다.');
+    displayError(passwordInput, '영문, 숫자, 특수문자 조합 8~15자리로 입력하세요.');
     return;
   } else {
     removeError(passwordInput);
