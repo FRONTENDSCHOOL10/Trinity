@@ -11,6 +11,36 @@
 //변수
 
 //mixin
+@mixin buttonTVING($bg-color, $font-size, $height, $min-width, $logo-width, $padding-right, $logo-margin-bottom) {
+  padding: 0 1rem 0 0.5rem;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  background-color: $bg-color;
+  gap: 0.5rem;
+  min-width: $min-width;
+  height: $height;
+
+  &-logo {
+    width: $logo-width;
+    padding: 0;
+    margin-bottom: $logo-margin-bottom;
+    img {
+      width: 100%;
+    }
+  }
+
+  &-content {
+    text-decoration: none;
+    font-size: $font-size;
+    color: $--white;
+    font-weight: 600;
+    padding-right: $padding-right;
+    line-height: 150%;
+  }
+}
 
 //임시 body 설정
 .landing {
@@ -70,62 +100,145 @@
 
   &__phrase {
     gap: 1rem;
+    margin-bottom: 1rem;
 
     &__title {
+      font-size: 1rem;
       font-weight: 700;
       line-height: 140%;
       text-align: center;
     }
 
     &__sub {
+      font-size: 0.75rem;
       color: $--gray-400;
+      font-weight: 400;
       line-height: 160%;
     }
   }
 
   &__button {
-    margin-top: 1rem;
+    @include buttonTVING($--brand-red-2, 0.75rem, 2.125rem, 11.75rem, 1.625rem, 1rem, 0.3rem);
 
-    display: inline-flex;
-    flex-flow: row nowrap;
-    align-items: center;
-    justify-content: center;
-    border-radius: 4px;
-    background-color: $--brand-red-2;
-    gap: 0.5rem;
-    width: 16rem;
-    // height: 3rem;
-    aspect-ratio: 16/3;
-
-    &-logo {
-      width: 1.625rem;
-      padding-left: 0.5rem;
-      padding-bottom: 0.5rem;
-      img {
-        height: 100%;
-      }
+    @include tabletW() {
+      @include buttonTVING($--brand-red-2, 1rem, 3rem, 17.6875rem, 2.25rem, 1rem, 0.5rem);
     }
 
-    &-content {
-      text-decoration: none;
-      font: 12px;
-      color: $--white;
-      font-weight: 600;
-      padding-right: 1rem;
+    @include desktopW() {
+      @include buttonTVING($--brand-red-2, 1.77688rem, 5rem, 31rem, 4rem, 1.77688rem, 0.45rem);
     }
   }
+
+  // &__button {
+  //   padding: 0 1rem 0 0.5rem;
+  //   display: flex;
+  //   flex-flow: row nowrap;
+  //   align-items: center;
+  //   justify-content: center;
+  //   border-radius: 4px;
+  //   background-color: $--brand-red-2;
+  //   gap: 0.5rem;
+  //   min-width: 11.75rem;
+  //   height: 2.125rem;
+
+  //   &-logo {
+  //     width: 1.625rem;
+  //     padding: 0;
+  //     margin-bottom: 0.3rem;
+  //     img {
+  //       width: 100%;
+  //     }
+  //   }
+
+  //   &-content {
+  //     text-decoration: none;
+  //     font-size: 0.75rem;
+  //     color: $--white;
+  //     font-weight: 600;
+  //     padding-right: 1rem;
+  //     line-height: 150%;
+  //   }
+  // }
 
   @include tabletW() {
     background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 1) 100%), url('/image/landing/background-img-T.png');
     background-size: cover;
     // background-position: center;
     background-repeat: no-repeat;
+
+    &__phrase {
+      gap: 1rem;
+      margin-bottom: 1.75rem;
+
+      &__title {
+        font-size: 1.33rem;
+        font-weight: 700;
+        line-height: 140%;
+        text-align: center;
+        margin-bottom: 0.5rem;
+      }
+
+      &__sub {
+        font-size: 1rem;
+      }
+    }
+
+    // &__button {
+    //   min-width: 17.6875rem;
+    //   height: 3rem;
+    //   &-logo {
+    //     width: 2.25rem;
+    //     padding: 0 0.25rem;
+    //     margin-bottom: 0.5rem;
+    //     img {
+    //       width: 100%;
+    //     }
+    //   }
+
+    //   &-content {
+    //     font-size: 1rem;
+    //     padding-right: 1rem;
+    //   }
+    // }
   }
   @include desktopW() {
     background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 1) 100%), url('/image/landing/background-img-D.png');
     background-size: cover;
     // background-position: center;
     background-repeat: no-repeat;
+
+    &__phrase {
+      gap: 1rem;
+      margin-bottom: 3.75rem;
+
+      &__title {
+        font-size: 3.15731rem;
+        text-align: center;
+        margin-bottom: 0.5rem;
+      }
+
+      &__sub {
+        font-size: 1.77688rem;
+      }
+    }
+
+    // &__button {
+    //   min-width: 31rem;
+    //   height: 5rem;
+    //   &-logo {
+    //     width: 4rem;
+    //     padding: 0 0.25rem;
+    //     margin-bottom: 0.45rem;
+    //     margin-right: 2rem;
+    //     img {
+    //       width: 100%;
+    //     }
+    //   }
+
+    //   &-content {
+    //     font-size: 1.77688rem;
+    //   }
+    // }
   }
 }
 
@@ -357,34 +470,14 @@
   }
 
   &__button {
-    padding: 0.5 1 0.5 0.5;
-    display: inline-flex;
-    flex-flow: row nowrap;
-    align-items: center;
-    justify-content: center;
-    border-radius: 4px;
-    background-color: $--brand-red-2;
-    gap: 0.5rem;
-    width: 16rem;
-    // height: 3rem;
-    aspect-ratio: 16/3;
+    @include buttonTVING($--brand-red-2, 0.75rem, 2.125rem, 11.75rem, 1.625rem, 1rem, 0.3rem);
 
-    &-logo {
-      width: 1.625rem;
-      padding-left: 0.5rem;
-      padding-bottom: 0.5rem;
-      img {
-        width: 100%;
-      }
+    @include tabletW() {
+      @include buttonTVING($--brand-red-2, 1rem, 3rem, 17.6875rem, 2.25rem, 1rem, 0.5rem);
     }
 
-    &-content {
-      text-decoration: none;
-      font: 0.75rem;
-      color: $--white;
-      font-weight: 600;
-      padding-right: 1rem;
-      line-height: 150%;
+    @include desktopW() {
+      @include buttonTVING($--brand-red-2, 1.77688rem, 5rem, 31rem, 4rem, 1.77688rem, 0.45rem);
     }
   }
 
@@ -399,33 +492,23 @@
       line-height: 140%;
     }
 
-    &__button {
-      padding: 0.5 1 0.5 0.5;
-      display: inline-flex;
-      flex-flow: row nowrap;
-      align-items: center;
-      justify-content: center;
-      border-radius: 4px;
-      background-color: $--brand-red-2;
-      gap: 0.5rem;
-      width: 17.6875rem;
+    // &__button {
+    //   min-width: 17.6875rem;
+    //   height: 3rem;
+    //   &-logo {
+    //     width: 2.25rem;
+    //     padding: 0 0.25rem;
+    //     margin-bottom: 0.5rem;
+    //     img {
+    //       width: 100%;
+    //     }
+    //   }
 
-      &-logo {
-        width: 2.25rem;
-        padding: 0 1rem 0.5rem 0.5rem;
-        img {
-          width: 100%;
-        }
-      }
-
-      &-content {
-        text-decoration: none;
-        font-size: 1rem;
-        color: $--white;
-        font-weight: 600;
-        padding-right: 1rem;
-      }
-    }
+    //   &-content {
+    //     font-size: 1rem;
+    //     padding-right: 1rem;
+    //   }
+    // }
   }
   @include desktopW() {
     &__logo {
@@ -437,37 +520,23 @@
       line-height: 140%;
     }
 
-    &__button {
-      padding: 0.5rem 1rem 0.5rem 0.5rem;
-      display: inline-flex;
-      flex-flow: row nowrap;
-      align-items: center;
-      justify-content: center;
-      border-radius: 4px;
-      background-color: $--brand-red-2;
-      gap: 0.5rem;
-      width: 31.625rem;
-      height: 5rem;
+    // &__button {
+    //   min-width: 31rem;
+    //   height: 5rem;
+    //   &-logo {
+    //     width: 4rem;
+    //     padding: 0 0.25rem;
+    //     margin-bottom: 0.45rem;
+    //     margin-right: 2rem;
+    //     img {
+    //       width: 100%;
+    //     }
+    //   }
 
-      &-logo {
-        border: 1px solid blue;
-        width: 4rem;
-        padding: 0 1.5rem 0.5rem 0.5rem;
-
-        img {
-          width: 100%;
-        }
-      }
-
-      &-content {
-        text-decoration: none;
-        font-size: 1.77688rem;
-        color: $--white;
-        font-weight: 600;
-        padding-right: 1rem;
-        line-height: 150%;
-      }
-    }
+    //   &-content {
+    //     font-size: 1.77688rem;
+    //   }
+    // }
   }
 }
 
