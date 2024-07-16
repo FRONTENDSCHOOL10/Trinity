@@ -1,9 +1,11 @@
 @import '/src/styles/utils/_reset';
 @import '/src/styles/utils/_global';
 @import '/src/styles/layout/header';
+@import '/src/styles/modules/searchModal';
+@import '/src/styles/modules/profileMenu';
+@import '/src/styles/modules/mainAd';
 @import '/src/styles/modules/mainVisual';
 @import '/src/styles/modules/contentSlider';
 @import '/src/styles/modules/adBanner';
-@import '/src/styles/modules/eventSlider.scss';
+@import '/src/styles/modules/eventSlider';
 @import '/src/styles/layout/footer';
-@import '/src/styles/profile';
