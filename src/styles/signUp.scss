@@ -60,6 +60,7 @@ $--brand-dark-bg-2: #212121;
     font-family: 'Pretendard Variable', Pretendard, sans-serif;
     width: 70%;
     min-width: $w;
+    max-width: $w;
     height: $h;
     background-color: $bgcolor;
     font-size: $f-size;
@@ -190,6 +191,7 @@ input[type="email"] {
     color: $--gray-500; 
     margin-top: 0.25rem;
     text-align: left;
+    max-width: 17.5rem;
     @media (min-width: $--desktop){
         font-size: 1.3rem;
         position: relative;
