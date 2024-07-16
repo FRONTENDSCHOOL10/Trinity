@@ -21,6 +21,13 @@ async function renderWatchingContentSlider() {
     }
   }
 
+  // 현재 시청중인 콘텐츠가 있는지 평가
+  const ChosenProfileWatchingData = await pb.collection('userWatching').getOne(ChosenProfileWatchingDataID);
+
+  if (!ChosenProfileWatchingData.currentWatching) {
+    return;
+  }
+
   const watchingContentSliderTemplate = `
     <section class="watching-lists">
       <h3>${ChosenProfileName}님이 시청하는 콘텐츠</h3>
@@ -39,7 +46,7 @@ async function renderWatchingContentSlider() {
   insertAfter('.must-lists', watchingContentSliderTemplate);
 
   // 현재 시청 중 데이터 받아오기
-  const ChosenProfileWatchingData = await pb.collection('userWatching').getOne(ChosenProfileWatchingDataID);
+  // const ChosenProfileWatchingData = await pb.collection('userWatching').getOne(ChosenProfileWatchingDataID);
   let currentWatching = [];
 
   for (const key in ChosenProfileWatchingData.currentWatching) {
@@ -50,15 +57,18 @@ async function renderWatchingContentSlider() {
 
   watchingContent.forEach((item) => {
     if (currentWatching.includes(item.contentName)) {
+      console.log(ChosenProfileWatchingData.currentWatching[item.contentName][1]);
       let template;
       if (item.isAdultOnly && item.isPlatformOnly) {
         template = `
           <div class="swiper-slide">
             <a href="">
-              <img src="${getPbImageURL(item, 'img')}" alt="${item.imgAlt}">
-              <p class="title">${item.contentName}</p>
+              <img src="${getPbImageURL(item, 'img')}" alt="${item.imgAlt}" class="poster">
+              <p class="title">${ChosenProfileWatchingData.currentWatching[item.contentName][0]}화<button type="button" class="more"><span class="sr-only">더보기</span></button></p>
               <span class="adult-only"></span>
               <span class="original"></span>
+              <div class="line" style="width:${ChosenProfileWatchingData.currentWatching[item.contentName][1]}%;"></div>
+              <img src="/icon/main/iconReplay.svg" alt="다시 재생하기 버튼" class="replay" />
             </a>
           </div>
         `;
@@ -66,9 +76,10 @@ async function renderWatchingContentSlider() {
         template = `
           <div class="swiper-slide">
             <a href="">
-              <img src="${getPbImageURL(item, 'img')}" alt="${item.alt}">
-              <p class="title">${item.contentName}</p>
-              <span class="adult-only"></span>
+              <img src="${getPbImageURL(item, 'img')}" alt="${item.alt}" class="poster">
+              <p class="title">${ChosenProfileWatchingData.currentWatching[item.contentName][0]}화<button type="button" class="more"><span class="sr-only">더보기</span></button></p>
+              <div class="line" style="width:${ChosenProfileWatchingData.currentWatching[item.contentName][1]}%;"></div>
+              <img src="/icon/main/iconReplay.svg" alt="다시 재생하기 버튼" class="replay" />
             </a>
           </div>
         `;
@@ -76,9 +87,11 @@ async function renderWatchingContentSlider() {
         template = `
           <div class="swiper-slide">
             <a href="">
-              <img src="${getPbImageURL(item, 'img')}" alt="${item.alt}">
-              <p class="title">${item.contentName}</p>
+              <img src="${getPbImageURL(item, 'img')}" alt="${item.alt}" class="poster">
+              <p class="title">${ChosenProfileWatchingData.currentWatching[item.contentName][0]}화<button type="button" class="more"><span class="sr-only">더보기</span></button></p>
               <span class="original"></span>
+              <div class="line" style="width:${ChosenProfileWatchingData.currentWatching[item.contentName][1]}%;"></div>
+              <img src="/icon/main/iconReplay.svg" alt="다시 재생하기 버튼" class="replay" />
             </a>
           </div>
         `;
@@ -86,8 +99,10 @@ async function renderWatchingContentSlider() {
         template = `
           <div class="swiper-slide">
             <a href="">
-              <img src="${getPbImageURL(item, 'img')}" alt="${item.alt}">
-              <p class="title">${item.contentName}</p>
+              <img src="${getPbImageURL(item, 'img')}" alt="${item.alt}" class="poster">
+              <p class="title">${ChosenProfileWatchingData.currentWatching[item.contentName][0]}화<button type="button" class="more"><span class="sr-only">더보기</span></button></p>
+              <div class="line" style="width:${ChosenProfileWatchingData.currentWatching[item.contentName][1]}%;"></div>
+              <img src="/icon/main/iconReplay.svg" alt="다시 재생하기 버튼" class="replay" />
             </a>
           </div>
         `;
