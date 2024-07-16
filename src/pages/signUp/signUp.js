@@ -14,17 +14,28 @@ document.addEventListener('DOMContentLoaded', function () {
   const agreeAllCheckbox = getNode('#agree-all');
   const serviceCheckCheckbox = getNode('#service-check');
   const checkboxes = document.querySelectorAll('.privacy-policy input[type="checkbox"]');
+  const checkedMust = document.querySelectorAll('.checked-must')
+  
+  const checkedAge = getNode('#age-check');
+  const checkedPrivacy = getNode('#privacy-check');
+  const checkedTerms = getNode('#terms-check');
+  const checkedChannel = getNode('#channel-check');
 
   agreeAllCheckbox.addEventListener('change', function () {
     checkboxes.forEach(function (checkbox) {
       checkbox.checked = agreeAllCheckbox.checked;
+      checkFormValidity()
     });
-  });
+});
 
   serviceCheckCheckbox.addEventListener('change', function () {
     getNode('#marketing-sms-check').checked = serviceCheckCheckbox.checked;
     getNode('#marketing-email-check').checked = serviceCheckCheckbox.checked;
   });
+
+  checkedMust.forEach(item => item.addEventListener('change', (e) => {
+    checkFormValidity()
+  }));
 
   form.addEventListener('submit', handleSignUp);
 
@@ -163,16 +174,18 @@ document.addEventListener('DOMContentLoaded', function () {
     modalText.innerHTML = content;
     modal.style.display = 'block';
   }
+
+  function checkFormValidity() {
+    const isFormValid = userIdInput.value && emailInput.value && passwordInput.value && confirmPasswordInput.value && checkedAge.checked && checkedPrivacy.checked && checkedTerms.checked && checkedChannel.checked;
+    if (isFormValid) {
+      submitButton.classList.add('submitPossible');
+    } else {
+      submitButton.classList.remove('submitPossible');
+    }
+  }
+
 });
 
-function checkFormValidity() {
-  const isFormValid = userIdInput.value && emailInput.value && passwordInput.value && confirmPasswordInput.value;
-  if (isFormValid) {
-    submitButton.classList.add('submitPossible');
-  } else {
-    submitButton.classList.remove('submitPossible');
-  }
-}
 
 function togglePasswordVisibility(element) {
   const pwInput = getNode("#user-pw");
