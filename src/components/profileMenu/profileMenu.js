@@ -1,17 +1,28 @@
-import { getNode, insertLast, setStorage } from 'kind-tiger';
+import { getNode, insertLast, setStorage, getStorage } from 'kind-tiger';
+import getPbImageURL from '@/api/getPbImageURL';
 // import pb from '@/api/pocketbase';
 import defaultAuthData from '/src/api/defaultAuthData';
 
 // import '/src/pages/main/main';
 
 async function renderProfileMenu() {
+  const profileIndex = await getStorage('selectedProfileIndex');
+
+  const authData = await getStorage('auth');
+
+  const profileName = authData.user[`profileName${profileIndex}`];
+
+  const profileImage = `profileImg${profileIndex}`;
+
+  const profileImagePath = getPbImageURL(authData.user, profileImage);
+
   const profileMenuTemplate = `
     <div class="profile-modal-wrapper">
       <div class="profile-modal">
         <div class="profile-modal__info">
-          <img src="/imgTemporary.png" alt="현재 프로필" class="menu-profile-icon" />
+          <img src="${profileImagePath}" alt="현재 프로필" class="menu-profile-icon" />
           <div class="profile-modal__info--text">
-            <p>프로필 이름</p>
+            <p>${profileName}</p>
             <a href="/src/pages/profileSelect/index.html">프로필 전환<span class="bracket" aria-hidden="true"> ></span></a>
           </div>
         </div>
@@ -31,6 +42,9 @@ async function renderProfileMenu() {
 
   // const users = await pb.collection('mustVod').getFullList();
   // console.log(users);
+  renderLogoutModal();
+  toggleLogoutModal();
+  logout();
 }
 
 function renderLogoutModal() {
@@ -109,4 +123,4 @@ function logout() {
 
 // renderProfileMenu();
 
-export { renderProfileMenu, renderLogoutModal, toggleLogoutModal, logout };
+export default renderProfileMenu;
