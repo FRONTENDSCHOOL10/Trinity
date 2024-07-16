@@ -45,32 +45,38 @@
                   <label for="age-check">만 14세 이상입니다.</label>
                 </div>
                 <div class="check-wrapper">
-                    <input type="checkbox" id="privacy-check" name="privacy-check" required tabindex="0">
-                    <label for="privacy-check">[필수] 서비스 이용약관 동의</label>
-                  </div>
-                  <div class="check-wrapper">
-                    <input type="checkbox" id="terms-check" name="terms-check" required tabindex="0">
-                    <label for="terms-check">[필수] 개인정보 수집 및 서비스 활용 동의</label>
-                  </div>
-                  <div class="check-wrapper">
-                    <input type="checkbox" id="channel-check" name="channel-check" required tabindex="0">
-                    <label for="channel-check">[필수] 채널 홈페이지 개인정보 제 3자 제공동의</label>
-                  </div>
-                  <div class="check-wrapper">
-                    <input type="checkbox" id="service-check" name="service-check" tabindex="0">
-                    <label for="service-check">[선택] 개인정보 수집 및 서비스 활용 동의</label>
-                  </div>
-                  <div class="check-wrapper checked-optional">
-                    <input type="checkbox" id="marketing-sms-check" name="marketing-sms-check" tabindex="0">
-                    <label for="marketing-sms-check">[선택] 마케팅 정보 SMS 수신동의</label>
-                  </div>
-                  <div class="check-wrapper checked-optional">
-                    <input type="checkbox" id="marketing-email-check" name="marketing-email-check" tabindex="0">
-                    <label for="marketing-email-check">[선택] 마케팅 정보 이메일 수신동의</label>
-                  </div>
+                  <input type="checkbox" id="privacy-check" name="privacy-check" required tabindex="0">
+                  <label for="privacy-check"><span>[필수] 서비스 이용약관 동의</span></label>
+                </div>
+                <div class="check-wrapper">
+                  <input type="checkbox" id="terms-check" name="terms-check" required tabindex="0">
+                  <label for="terms-check"><span>[필수] 개인정보 수집 및 서비스 활용 동의</span></label>
+                </div>
+                <div class="check-wrapper">
+                  <input type="checkbox" id="channel-check" name="channel-check" required tabindex="0">
+                  <label for="channel-check"><span>[필수] 채널 홈페이지 개인정보 제 3자 제공동의</span></label>
+                </div>
+                <div class="check-wrapper">
+                  <input type="checkbox" id="service-check" name="service-check" tabindex="0">
+                  <label for="service-check"><span>[선택] 개인정보 수집 및 서비스 활용 동의</span></label>
+                </div>
+                <div class="check-wrapper checked-optional">
+                  <input type="checkbox" id="marketing-sms-check" name="marketing-sms-check" tabindex="0">
+                  <label for="marketing-sms-check">[선택] 마케팅 정보 SMS 수신동의</label>
+                </div>
+                <div class="check-wrapper checked-optional">
+                  <input type="checkbox" id="marketing-email-check" name="marketing-email-check" tabindex="0">
+                  <label for="marketing-email-check">[선택] 마케팅 정보 이메일 수신동의</label>
+                </div>
               </div>
               
-              <button type="submit" class="sign-up">회원가입 하기</button>
+              <button type="submit" class="sign-up" id="submit-btn">회원가입 하기</button>
+              <div id="signup-modal" class="signup-modal">
+                <div class="signup-modal-content">
+                  <span class="signup-close-btn">&times;</span>
+                  <div id="signup-modal-text"></div>
+                </div>
+              </div>
           </form>
       </div>
 </body>
