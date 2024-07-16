@@ -4,7 +4,7 @@ import { getNode, getStorage, insertLast, insertAfter, setDocumentTitle, setStor
 import defaultAuthData from '@/api/defaultAuthData';
 import { renderHeader } from '@/layout/header/header';
 import { renderSearchModal, searchModal } from '@/components/searchModal/searchModal';
-import { renderProfileMenu, renderLogoutModal, toggleLogoutModal, logout } from '@/components/profileMenu/profileMenu';
+import renderProfileMenu from '@/components/profileMenu/profileMenu';
 import { renderMainAd, openMainAdModal } from '@/components/mainAd/mainAd';
 import renderMainVisualSlider from '@/components/mainVisual/mainVisual';
 import renderMustContentSlider from '@/components/contentSlider/must/must';
@@ -47,9 +47,6 @@ renderHeader();
 renderSearchModal();
 searchModal();
 renderProfileMenu();
-renderLogoutModal();
-toggleLogoutModal();
-logout();
 
 renderMainAd();
 openMainAdModal();
