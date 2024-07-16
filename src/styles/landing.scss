@@ -118,6 +118,7 @@
   }
 
   &__button {
+    cursor: pointer;
     @include buttonTVING($--brand-red-2, 0.75rem, 2.125rem, 11.75rem, 1.625rem, 1rem, 0.3rem);
 
     @include tabletW() {
@@ -470,6 +471,7 @@
   }
 
   &__button {
+    cursor: pointer;
     @include buttonTVING($--brand-red-2, 0.75rem, 2.125rem, 11.75rem, 1.625rem, 1rem, 0.3rem);
 
     @include tabletW() {
