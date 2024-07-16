@@ -11,7 +11,7 @@
 //변수
 
 //mixin
-@mixin button($bg-color, $font-size, $height, $min-width, $logo-width, $padding-right, $logo-margin-bottom) {
+@mixin buttonTVING($bg-color, $font-size, $height, $min-width, $logo-width, $padding-right, $logo-margin-bottom) {
   padding: 0 1rem 0 0.5rem;
   display: flex;
   flex-flow: row nowrap;
@@ -118,14 +118,14 @@
   }
 
   &__button {
-    @include button($--brand-red-2, 0.75rem, 2.125rem, 11.75rem, 1.625rem, 1rem, 0.3rem);
+    @include buttonTVING($--brand-red-2, 0.75rem, 2.125rem, 11.75rem, 1.625rem, 1rem, 0.3rem);
 
     @include tabletW() {
-      @include button($--brand-red-2, 1rem, 3rem, 17.6875rem, 2.25rem, 1rem, 0.5rem);
+      @include buttonTVING($--brand-red-2, 1rem, 3rem, 17.6875rem, 2.25rem, 1rem, 0.5rem);
     }
 
     @include desktopW() {
-      @include button($--brand-red-2, 1.77688rem, 5rem, 31rem, 4rem, 1.77688rem, 0.45rem);
+      @include buttonTVING($--brand-red-2, 1.77688rem, 5rem, 31rem, 4rem, 1.77688rem, 0.45rem);
     }
   }
 
@@ -470,14 +470,14 @@
   }
 
   &__button {
-    @include button($--brand-red-2, 0.75rem, 2.125rem, 11.75rem, 1.625rem, 1rem, 0.3rem);
+    @include buttonTVING($--brand-red-2, 0.75rem, 2.125rem, 11.75rem, 1.625rem, 1rem, 0.3rem);
 
     @include tabletW() {
-      @include button($--brand-red-2, 1rem, 3rem, 17.6875rem, 2.25rem, 1rem, 0.5rem);
+      @include buttonTVING($--brand-red-2, 1rem, 3rem, 17.6875rem, 2.25rem, 1rem, 0.5rem);
     }
 
     @include desktopW() {
-      @include button($--brand-red-2, 1.77688rem, 5rem, 31rem, 4rem, 1.77688rem, 0.45rem);
+      @include buttonTVING($--brand-red-2, 1.77688rem, 5rem, 31rem, 4rem, 1.77688rem, 0.45rem);
     }
   }
 
