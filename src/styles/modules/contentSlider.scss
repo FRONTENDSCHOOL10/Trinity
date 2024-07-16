@@ -66,8 +66,9 @@ $--color-sub-info-text: $--gray-500;
   width: calc(100% - $gap);
 }
 
-@import '/src/styles/modules/contentSlider/must.scss';
-@import '/src/styles/modules/contentSlider/quick.scss';
-@import '/src/styles/modules/contentSlider/popular.scss';
-@import '/src/styles/modules/contentSlider/live.scss';
-@import '/src/styles/modules/contentSlider/only.scss';
+@import '/src/styles/modules/contentSlider/must';
+@import '/src/styles/modules/contentSlider/quick';
+@import '/src/styles/modules/contentSlider/popular';
+@import '/src/styles/modules/contentSlider/live';
+@import '/src/styles/modules/contentSlider/only';
+@import '/src/styles/modules/contentSlider/watching';

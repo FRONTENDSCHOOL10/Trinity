@@ -1,31 +1,55 @@
 import getPbImageURL from '@/api/getPbImageURL';
 import pb from '@/api/pocketbase';
-import { insertLast } from 'kind-tiger';
+import { insertLast, insertAfter, getStorage } from 'kind-tiger';
+
+// import '/src/pages/main/main';
 
 // const app = document.getElementById('app');
 
-async function renderMustContentSlider() {
-  const mustContentSliderTemplate = `
-  <section class="must-lists">
-    <h3>티빙에서 꼭 봐야하는 콘텐츠</h3>
-    <div class="must-lists__slider">
-      <div class="swiper slider-vertical">
-        <div class="swiper-wrapper">
+async function renderWatchingContentSlider() {
+  const auth = await getStorage('auth');
+  const selectedProfileIndex = await getStorage('selectedProfileIndex');
+  const userInfo = auth.user;
+  let ChosenProfileName;
+  let ChosenProfileWatchingDataID;
+
+  for (const key in userInfo) {
+    if (key.includes(`profileName${selectedProfileIndex}`)) {
+      ChosenProfileName = userInfo[key];
+    } else if (key.includes(`profileWatching${selectedProfileIndex}`)) {
+      ChosenProfileWatchingDataID = userInfo[key];
+    }
+  }
+
+  const watchingContentSliderTemplate = `
+    <section class="watching-lists">
+      <h3>${ChosenProfileName}님이 시청하는 콘텐츠</h3>
+      <div class="watching-lists__slider">
+        <div class="swiper slider-vertical">
+          <div class="swiper-wrapper">
+          </div>
+          <div class="swiper-pagination"></div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
         </div>
-        <div class="swiper-pagination"></div>
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-button-next"></div>
       </div>
-    </div>
-  </section>
+    </section>
   `;
 
-  insertLast(app, mustContentSliderTemplate);
+  insertAfter('.must-lists', watchingContentSliderTemplate);
 
-  const mustContent = await pb.collection('mustVod').getFullList(); // SDK
+  // 현재 시청 중 데이터 받아오기
+  const ChosenProfileWatchingData = await pb.collection('userWatching').getOne(ChosenProfileWatchingDataID);
+  let currentWatching = [];
 
-  mustContent.forEach((item) => {
-    if (!item.isRanked || item.isMust) {
+  for (const key in ChosenProfileWatchingData.currentWatching) {
+    currentWatching.push(key);
+  }
+
+  const watchingContent = await pb.collection('allVod').getFullList(); // SDK
+
+  watchingContent.forEach((item) => {
+    if (currentWatching.includes(item.contentName)) {
       let template;
       if (item.isAdultOnly && item.isPlatformOnly) {
         template = `
@@ -69,11 +93,11 @@ async function renderMustContentSlider() {
         `;
       }
 
-      insertLast('.must-lists__slider > .slider-vertical > .swiper-wrapper', template);
+      insertLast('.watching-lists__slider > .slider-vertical > .swiper-wrapper', template);
     }
   });
 
-  const mustSwiper = new Swiper('.slider-vertical', {
+  const watchingSwiper = new Swiper('.slider-vertical', {
     slidesPerView: 3,
     slidesPerGroup: 3,
     centeredSlides: false,
@@ -102,7 +126,8 @@ async function renderMustContentSlider() {
     },
   });
 
-  // return mustContent;
+  // return watchingContent;
 }
 
-export default renderMustContentSlider;
+// renderWatchingContentSlider();
+export default renderWatchingContentSlider;

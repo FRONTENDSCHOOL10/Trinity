@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>TAING | 프로필 선택</title>
+    <link rel="icon" type="image/svg+xml" href="/public/icon/taing.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="module" src="/src/pages/profileSelect/profileSelect.js"></script>
+    <link rel="stylesheet" href="/src/styles/profile.scss" />
+  </head>
+  <body>
+    <article class="profile__wrap">
+      <div class="profile__wrap__container">
+        <div class="head__form">
+          <h2 class="tit">프로필 선택</h2>
+          <p class="desc">시청할 프로필을 선택해주세요.</p>
+        </div>
+
+        <ul class="profile__form profileSelect"></ul>
+
+        <a aria-label="프로필 편집하기" type="button" class="button--gray-sm btnProfile btnSelect" href="/src/pages/profileEdit/index.html">프로필 편집 </a>
+      </div>
+    </article>
+  </body>
+</html>

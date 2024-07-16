@@ -1,4 +1,4 @@
-.popular-lists {
+.watching-lists {
   @include flexColumnNowrap;
   padding: 0 $--space-xs $--space-m $--space-xs;
   gap: $--space-xs;
@@ -10,7 +10,7 @@
     @include text($--font-size-s, 150%, 600);
   }
 
-  .popular-lists__slider {
+  .watching-lists__slider {
     .swiper {
       width: 100%;
       height: 100%;
@@ -48,21 +48,10 @@
           display: block;
           width: 100%;
           border-radius: $--poster-border-radius;
-          margin-bottom: $--space-xxs;
         }
-
-        .rank {
-          position: absolute;
-          font-family: 'Noto Sans KR', sans-serif;
-          font-style: italic;
-          @include text($--font-size-xxl, 160%, 700);
-          color: $--white;
-          bottom: -$--space-xs;
-        }
-
+      
         .title {
-          @include text($--font-size-s, 160%);
-          margin-left: $--font-size-xxl;
+          display: none;
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;
@@ -126,7 +115,7 @@
       @include text($--font-size-m, 140%, 700);
     }
   
-    & .popular-lists__slider {
+    & .watching-lists__slider {
         .swiper {
       }
     
@@ -143,14 +132,9 @@
             margin-bottom: $--space-xxs;
           }
       
-          .rank {
-            @include text($--font-size-xxxl, 160%, 700);
-            bottom: -$--space-s;
-          }
-  
           .title {
+            display: block;
             @include text($--font-size-s, 160%);
-            margin-left: $--font-size-xxxl;
           }
 
           .adult-only {
@@ -211,7 +195,7 @@
       @include text($--font-size-xl, 140%, 700);
     }
   
-    .popular-lists__slider {
+    .watching-lists__slider {
       .swiper {
       }
     
@@ -227,15 +211,10 @@
           a img {
             margin-bottom: $--space-xs;
           }
-
-          .rank {
-            @include text($--font-size-xxxxl, 160%, 700);
-            bottom: -$--space-lg;
-          }
-  
+      
           .title {
-            @include text($--font-size-lg, 160%, 700);
-            margin-left: $--font-size-xxxxl;
+            display: block;
+            @include text($--font-size-lg, 150%);
           }
 
           .adult-only {
