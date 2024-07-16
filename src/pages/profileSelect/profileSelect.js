@@ -5,7 +5,7 @@ import pb from '@/api/pocketbase';
 
 setDocumentTitle('TAING / 프로필 선택');
 
-async function renderProfile() {
+async function renderProfileSelect() {
     const users = await pb.collection('users').getFullList();
     console.log(users);
 
@@ -51,4 +51,4 @@ async function renderProfile() {
     });
 }
 
-renderProfile();
+renderProfileSelect();

@@ -5,7 +5,7 @@ import pb from '@/api/pocketbase';
 
 setDocumentTitle('TAING / 프로필 편집');
 
-async function renderProfile() {
+async function renderProfileEdit() {
     const users = await pb.collection('users').getFullList();
     console.log(users)
 
@@ -36,5 +36,5 @@ async function renderProfile() {
     });
 }
 
-renderProfile();
+renderProfileEdit();
 
