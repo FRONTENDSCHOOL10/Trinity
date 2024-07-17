@@ -278,7 +278,7 @@ async function handleSignUp(e) {
     newUser.append('emailVisibility', true);
     newUser.append('password', userPw);
     newUser.append('passwordConfirm', confirmPassword);
-    newUser.append('profileName1', '프로필1');
+    newUser.append('profileName1', userId);
     newUser.append('profileImg1', imgBlob, 'profileImg1.jpg');
     newUser.append('isActive1', true);
     newUser.append('isLocked1', false);
