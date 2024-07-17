@@ -32,7 +32,7 @@ async function renderProfileSelect() {
                                     <figcaption class="sr-only">${item.username}의 프로필</figcaption>
                                 </figure>
                                 <span class="bg"></span>
-                                <span class="icon"><img src="/icon/profile/iconLockedProfile.svg" alt="편집 아이콘"></span>
+                                <span class="icon"><img src="/icon/profile/iconLockedProfile.svg" alt="잠금 아이콘"></span>
                             </a>
                             <p class="name profileName">${item[`profileName${i + 1}`]}</p>
                         </li>
