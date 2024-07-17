@@ -11,6 +11,31 @@ async function renderPopularContentSlider() {
       <div class="popular-lists__slider">
         <div class="swiper slider-vertical">
           <div class="swiper-wrapper">
+            <!-- Skeleton UI -->
+            <div class="swiper-slide skeleton-popular">
+              <div class="skeleton-overlay-popular"></div>
+            </div>
+            <div class="swiper-slide skeleton-popular">
+              <div class="skeleton-overlay-popular"></div>
+            </div>
+            <div class="swiper-slide skeleton-popular">
+              <div class="skeleton-overlay-popular"></div>
+            </div>
+            <div class="swiper-slide skeleton-popular">
+              <div class="skeleton-overlay-popular"></div>
+            </div>
+            <div class="swiper-slide skeleton-popular">
+              <div class="skeleton-overlay-popular"></div>
+            </div>
+            <div class="swiper-slide skeleton-popular">
+              <div class="skeleton-overlay-popular"></div>
+            </div>
+            <div class="swiper-slide skeleton-popular">
+              <div class="skeleton-overlay-popular"></div>
+            </div>
+            <div class="swiper-slide skeleton-popular">
+              <div class="skeleton-overlay-popular"></div>
+            </div>
           </div>
           <div class="swiper-pagination"></div>
           <div class="swiper-button-prev"></div>
@@ -25,7 +50,10 @@ async function renderPopularContentSlider() {
   const popularContent = await pb.collection('popularVod').getFullList({
     sort: 'rank',
   }); // SDK
-  // const popularContent = await vodContent;
+
+  document.querySelectorAll('.skeleton-popular').forEach((skeletonSlide) => {
+    skeletonSlide.parentNode.removeChild(skeletonSlide);
+  });
 
   popularContent.forEach((item) => {
     if (item.isRanked && !!item.rank) {
@@ -84,7 +112,6 @@ async function renderPopularContentSlider() {
     slidesPerView: 3,
     slidesPerGroup: 3,
     centeredSlides: false,
-    // slidesPerGroupSkip: 0,
     grabCursor: true,
     keyboard: {
       enabled: true,
