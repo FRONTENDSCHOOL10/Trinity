@@ -10,6 +10,19 @@ async function renderMainVisualSlider() {
         <h2 class="sr-only">메인 배너 드라마 슬라이드</h2>
         <div class="main-banner-container swiper-container">
             <div class="swiper-wrapper">
+                <!-- Skeleton UI -->
+                <div class="main-banner-slide swiper-slide skeleton-main-visual">
+                  <div class="skeleton-img-main-visual"></div>
+                  <div class="skeleton-overlay"></div>
+                </div>
+                <div class="main-banner-slide swiper-slide skeleton-main-visual">
+                  <div class="skeleton-img-main-visual"></div>
+                  <div class="skeleton-overlay"></div>
+                </div>
+                <div class="main-banner-slide swiper-slide skeleton-main-visual">
+                  <div class="skeleton-img-main-visual"></div>
+                  <div class="skeleton-overlay"></div>
+                </div>
             </div>
         </div>
     </section>
@@ -18,6 +31,10 @@ async function renderMainVisualSlider() {
   insertLast(app, mainVisualSlideTemplate);
 
   const mainVisual = await pb.collection('mainVisual').getFullList(); // SDK
+
+  document.querySelectorAll('.skeleton-main-visual').forEach((skeletonSlide) => {
+    skeletonSlide.parentNode.removeChild(skeletonSlide);
+  });
 
   mainVisual.forEach((item) => {
     const template = `

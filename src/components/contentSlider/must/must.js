@@ -11,6 +11,39 @@ async function renderMustContentSlider() {
     <div class="must-lists__slider">
       <div class="swiper slider-vertical">
         <div class="swiper-wrapper">
+          <!-- Skeleton UI -->
+          <div class="swiper-slide skeleton-must">
+            <div class="skeleton-img-must"></div>
+            <div class="skeleton-overlay-must"></div>
+          </div>
+          <div class="swiper-slide skeleton-must">
+            <div class="skeleton-img-must"></div>
+            <div class="skeleton-overlay-must"></div>
+          </div>
+          <div class="swiper-slide skeleton-must">
+            <div class="skeleton-img-must"></div>
+            <div class="skeleton-overlay-must"></div>
+          </div>
+          <div class="swiper-slide skeleton-must">
+            <div class="skeleton-img-must"></div>
+            <div class="skeleton-overlay-must"></div>
+          </div>
+          <div class="swiper-slide skeleton-must">
+            <div class="skeleton-img-must"></div>
+            <div class="skeleton-overlay-must"></div>
+          </div>
+          <div class="swiper-slide skeleton-must">
+            <div class="skeleton-img-must"></div>
+            <div class="skeleton-overlay-must"></div>
+          </div>
+          <div class="swiper-slide skeleton-must">
+            <div class="skeleton-img-must"></div>
+            <div class="skeleton-overlay-must"></div>
+          </div>
+          <div class="swiper-slide skeleton-must">
+            <div class="skeleton-img-must"></div>
+            <div class="skeleton-overlay-must"></div>
+          </div>
         </div>
         <div class="swiper-pagination"></div>
         <div class="swiper-button-prev"></div>
@@ -22,7 +55,12 @@ async function renderMustContentSlider() {
 
   insertLast(app, mustContentSliderTemplate);
 
+
   const mustContent = await pb.collection('mustVod').getFullList(); // SDK
+
+  document.querySelectorAll('.skeleton-must').forEach((skeletonSlide) => {
+    skeletonSlide.parentNode.removeChild(skeletonSlide);
+  });
 
   mustContent.forEach((item) => {
     if (!item.isRanked || item.isMust) {
@@ -77,7 +115,6 @@ async function renderMustContentSlider() {
     slidesPerView: 3,
     slidesPerGroup: 3,
     centeredSlides: false,
-    // slidesPerGroupSkip: 0,
     grabCursor: true,
     keyboard: {
       enabled: true,
