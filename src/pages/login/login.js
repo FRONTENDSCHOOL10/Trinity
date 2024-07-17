@@ -1,7 +1,19 @@
-import { getNode, isString, getStorage, setStorage, insertLast } from 'kind-tiger';
+import { getNode, isString, getStorage, setStorage, insertLast, setDocumentTitle } from 'kind-tiger';
 import pb from '@/api/pocketbase';
 import { headerScript } from '@/layout/header/header';
 import { renderFooter, footerScript } from '@/layout/footer/footer';
+import defaultAuthData from '@/api/defaultAuthData';
+
+setDocumentTitle('TAING / 로그인');
+
+// 로그인 정보가 로컬에 없으면 기본 로그인 정보 객체를 로컬 스토리지에 저장
+if (!localStorage.getItem('auth')) {
+  setStorage('auth', defaultAuthData);
+}
+
+if (!localStorage.getItem('selectedProfileIndex')) {
+  setStorage('selectedProfileIndex', null);
+}
 
 const findButton = getNode('.button--login');
 const loginRemember = getNode('.login__remember');
@@ -45,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function loadSpinner() {
       spinnerWrapper.style.display = 'flex'; // 로딩 시작
       // 2초 후에 로딩 완료
-      window.setTimeout(function() {
+      window.setTimeout(function () {
         spinner.style.display = 'none'; // 로딩 완료 후에 스피너 숨기기
         const template = `
             <img src="/icon/loadSpinner/loadSpinnerFinish.svg" alt="완료 아이콘" style="width: 40px; height: 40px;"/>
@@ -54,9 +66,9 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
         insertLast('.finish__form', template);
         // 2초 후에 템플릿 숨기기
-        window.setTimeout(function() {
-            spinnerWrapper.style.display = 'none';
-            location.reload();
+        window.setTimeout(function () {
+          spinnerWrapper.style.display = 'none';
+          location.reload();
         }, 2000);
       }, 2000);
     }
@@ -134,19 +146,19 @@ async function handleLogin(e) {
   //2.1 해당 입력이 ID 면, ID로 pb에 요청
 
   if (!validateString(userID) && !emailReg(userID)) {
-    spinnerWrapper.style.display = 'flex'; 
+    spinnerWrapper.style.display = 'flex';
     spinner.style.display = 'none';
-        const template = `
+    const template = `
             <img src="/icon/loadSpinner/loadSpinnerError.svg" alt="오류 아이콘" style="width: 40px; height: 40px;"/>
             <p class="tit">올바른 형식의 아이디나 이메일을 입력하세요.</p>
             <p class="desc"></p>
         `;
-        insertLast('.finish__form', template);
-        // 2초 후에 템플릿 숨기기
-        window.setTimeout(function() {
-          spinnerWrapper.style.display = 'none';
-          location.reload();
-      }, 2000);
+    insertLast('.finish__form', template);
+    // 2초 후에 템플릿 숨기기
+    window.setTimeout(function () {
+      spinnerWrapper.style.display = 'none';
+      location.reload();
+    }, 2000);
     return;
   }
 
@@ -161,43 +173,43 @@ async function handleLogin(e) {
     function loadSpinner() {
       spinnerWrapper.style.display = 'flex'; // 로딩 시작
       // 2초 후에 로딩 완료
-      window.setTimeout(function() {
+      window.setTimeout(function () {
         spinner.style.display = 'none'; // 로딩 완료 후에 스피너 숨기기
         const template = `
             <img src="/icon/loadSpinner/loadSpinnerFinish.svg" alt="완료 아이콘" style="width: 40px; height: 40px;"/>
             <p class="tit">로그인 완료!</p>
-            <p class="desc">지금 바로 이용권을 구독하고 티빙 오리지널과<br/>
+            <p class="desc">지금 바로 이용권을 구독하고 타잉 오리지널과<br/>
             최신 인기 TV프로그램, 영화를 무제한으로 만나보세요!</p>
         `;
         insertLast('.finish__form', template);
         // 2초 후에 템플릿 숨기기
-        window.setTimeout(function() {
-            spinnerWrapper.style.display = 'none';
-            location.reload();
+        window.setTimeout(function () {
+          spinnerWrapper.style.display = 'none';
+          location.reload();
         }, 2000);
       }, 2000);
     }
     loadSpinner();
   } catch (error) {
     function loadSpinner() {
-    spinnerWrapper.style.display = 'flex'; // 로딩 시작
-    // 2초 후에 로딩 완료
-    window.setTimeout(function() {
-      spinner.style.display = 'none'; // 로딩 완료 후에 스피너 숨기기
-      const template = `
+      spinnerWrapper.style.display = 'flex'; // 로딩 시작
+      // 2초 후에 로딩 완료
+      window.setTimeout(function () {
+        spinner.style.display = 'none'; // 로딩 완료 후에 스피너 숨기기
+        const template = `
           <img src="/icon/loadSpinner/loadSpinnerError.svg" alt="오류 아이콘" style="width: 40px; height: 40px;"/>
           <p class="tit">인증된 사용자가 아닙니다.</p>
           <p class="desc">다시 입력해 주세요.</p>
       `;
-      insertLast('.finish__form', template);
-      // 2초 후에 템플릿 숨기기
-      window.setTimeout(function() {
+        insertLast('.finish__form', template);
+        // 2초 후에 템플릿 숨기기
+        window.setTimeout(function () {
           spinnerWrapper.style.display = 'none';
           location.reload();
+        }, 2000);
       }, 2000);
-    }, 2000);
-  }
-  loadSpinner();
+    }
+    loadSpinner();
   }
 }
 

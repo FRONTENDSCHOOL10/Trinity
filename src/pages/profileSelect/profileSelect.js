@@ -2,8 +2,36 @@ import '/src/styles/main.scss';
 import getPbImageURL from '/src/api/getPbImageURL';
 import { setDocumentTitle, insertLast, getStorage, setStorage, getNode } from 'kind-tiger';
 import pb from '@/api/pocketbase';
+import { headerScript } from '@/layout/header/header';
+import { renderFooter, footerScript } from '@/layout/footer/footer';
+import defaultAuthData from '@/api/defaultAuthData';
 
 setDocumentTitle('TAING / 프로필 선택');
+
+// 로그인 정보가 로컬에 없으면 기본 로그인 정보 객체를 로컬 스토리지에 저장
+if (!localStorage.getItem('auth')) {
+  setStorage('auth', defaultAuthData);
+}
+
+async function checkIsAuth() {
+  const auth = await getStorage('auth');
+
+  // 로그인 되어있지 않으면 랜딩 페이지로 보내는 코드
+  if (!auth.isAuth) {
+    location.replace('/src/pages/landing/index.html');
+  }
+}
+
+if (!localStorage.getItem('selectedProfileIndex')) {
+  setStorage('selectedProfileIndex', '1');
+}
+
+checkIsAuth();
+
+// 헤더와 푸터 스크립트 실행
+headerScript();
+renderFooter();
+footerScript();
 
 async function renderProfileSelect() {
   const users = await pb.collection('users').getFullList();

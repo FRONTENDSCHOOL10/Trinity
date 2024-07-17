@@ -1,8 +1,24 @@
 import '/src/styles/main.scss';
 import { setDocumentTitle, setStorage, insertLast, getNode } from 'kind-tiger';
 import pb from '@/api/pocketbase';
+import { headerScript } from '@/layout/header/header';
+import { renderFooter, footerScript } from '@/layout/footer/footer';
+import defaultAuthData from '@/api/defaultAuthData';
 
 setDocumentTitle('TAING / 비밀번호 찾기');
+
+if (!localStorage.getItem('auth')) {
+  setStorage('auth', defaultAuthData);
+}
+
+if (!localStorage.getItem('selectedProfileIndex')) {
+  setStorage('selectedProfileIndex', null);
+}
+
+// 헤더와 푸터 스크립트 실행
+headerScript();
+renderFooter();
+footerScript();
 
 const find_pwBtn = getNode('.find-pw');
 const findUserId = getNode('#findUserId');

@@ -146,7 +146,7 @@ async function renderFooter() {
       </ul>
       <!-- 저작권 표기 -->
       <div class="footer__copyright">
-        <small class="footer__copyrigtInfo"> Copyright © 주식회사 티빙 All right reserved. </small>
+        <small class="footer__copyrigtInfo"> Copyright © 주식회사 타잉 All right reserved. </small>
       </div>
     </div>
   `;

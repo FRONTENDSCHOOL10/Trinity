@@ -9,8 +9,6 @@ async function renderSearchModal() {
   });
   const records = resultList.items;
 
-  console.log(records);
-
   const popularSearchItems = records
     .map(
       (record) => `

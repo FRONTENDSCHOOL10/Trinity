@@ -1,8 +1,25 @@
 import '/src/styles/main.scss';
 import { setDocumentTitle, setStorage, insertLast, getNode } from 'kind-tiger';
 import pb from '@/api/pocketbase';
+import { headerScript } from '@/layout/header/header';
+import { renderFooter, footerScript } from '@/layout/footer/footer';
+import defaultAuthData from '@/api/defaultAuthData';
 
 setDocumentTitle('TAING / 아이디 찾기');
+
+// 로그인 정보가 로컬에 없으면 기본 로그인 정보 객체를 로컬 스토리지에 저장
+if (!localStorage.getItem('auth')) {
+  setStorage('auth', defaultAuthData);
+}
+
+if (!localStorage.getItem('selectedProfileIndex')) {
+  setStorage('selectedProfileIndex', null);
+}
+
+// 헤더와 푸터 스크립트 실행
+headerScript();
+renderFooter();
+footerScript();
 
 const find_idBtn = getNode('.find-id');
 const findUseremail = getNode('#findUserEmail');

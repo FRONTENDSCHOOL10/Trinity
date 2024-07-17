@@ -2,13 +2,19 @@
 <html lang="ko-KR">
   <head>
     <meta charset="UTF-8" />
-    <title>TAING | 프로필 선택</title>
+    <title>TAING</title>
     <link rel="icon" type="image/svg+xml" href="/icon/taing.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script type="module" src="/src/pages/profileSelect/profileSelect.js"></script>
     <link rel="stylesheet" href="/src/styles/profile.scss" />
   </head>
   <body>
+    <!-- 헤더 -->
+    <header class="header">
+      <h1 class="sr-only">TAING</h1>
+      <a href="/" class="header__logo"></a>
+    </header>
+
     <article class="profile__wrap">
       <div class="profile__wrap__container">
         <div class="head__form">
@@ -21,5 +27,8 @@
         <a aria-label="프로필 편집하기" type="button" class="button--gray-sm btnProfile btnSelect" href="/src/pages/profileEdit/index.html">프로필 편집 </a>
       </div>
     </article>
+
+    <!-- 푸터 -->
+    <footer class="footer"></footer>
   </body>
 </html>

@@ -115,6 +115,7 @@ function logout() {
 
   function handelLogout() {
     setStorage('auth', defaultAuthData);
+    setStorage('selectedProfileIndex', null);
     location.replace('/src/pages/landing/index.html');
   }
 

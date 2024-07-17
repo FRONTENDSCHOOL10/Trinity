@@ -7,7 +7,7 @@ import { insertLast } from 'kind-tiger';
 async function renderMustContentSlider() {
   const mustContentSliderTemplate = `
   <section class="must-lists">
-    <h3>티빙에서 꼭 봐야하는 콘텐츠</h3>
+    <h3>타잉에서 꼭 봐야하는 콘텐츠</h3>
     <div class="must-lists__slider">
       <div class="swiper slider-vertical">
         <div class="swiper-wrapper">
@@ -46,7 +46,6 @@ async function renderMustContentSlider() {
   `;
 
   insertLast(app, mustContentSliderTemplate);
-
 
   const mustContent = await pb.collection('mustVod').getFullList(); // SDK
 

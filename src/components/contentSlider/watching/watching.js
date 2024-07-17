@@ -17,7 +17,13 @@ async function renderWatchingContentSlider() {
     }
   }
 
-  const ChosenProfileWatchingData = await pb.collection('userWatching').getOne(ChosenProfileWatchingDataID);
+  let ChosenProfileWatchingData;
+
+  try {
+    ChosenProfileWatchingData = await pb.collection('userWatching').getOne(ChosenProfileWatchingDataID);
+  } catch (e) {
+    return;
+  }
 
   if (!ChosenProfileWatchingData.currentWatching) {
     return;

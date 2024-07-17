@@ -2,22 +2,29 @@
 <html lang="ko-KR">
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" type="image/svg+xml" href="/icon/taing.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>회원가입 페이지</title>
+    <title>TAING</title>
     <script src="/src/pages/signUp/signUp.js" type="module"></script>
     <link rel="stylesheet" href="/src/styles/loadSpinner.scss" />
     <link rel="stylesheet" href="/src/styles/find.scss">
     <link rel="stylesheet" href="/src/styles/signUp.scss">
 </head>
 <body>
+  <!-- 헤더 -->
+  <header class="header">
+    <h1 class="sr-only">TAING</h1>
+    <a href="/" class="header__logo"></a>
+  </header>
+
     <!-- 로딩 스피너 -->
     <div id="spinner-wrapper" class="spinner__wrapper">
       <div id="spinner" class="spinner"></div>
       <div class="finish__form"></div>
     </div>
     <div class="sign-up-container">
-        <h1 class="tving-sign-up-title">티빙 회원가입</h1>
-        <h3 class="tving-sign-up-subtitle">아이디와 이메일로 간편하게 티빙을 시작하세요!</h3>
+        <h1 class="tving-sign-up-title">타잉 회원가입</h1>
+        <h3 class="tving-sign-up-subtitle">아이디와 이메일로 간편하게 타잉을 시작하세요!</h3>
           <form action="#" method="post">
               <label for="user-id" class="sr-only">아이디</label>
               <input type="text" id="user-id" name="user-id" placeholder="아이디 " required autocomplete='off'>
@@ -86,6 +93,7 @@
               </div>
           </form>
       </div>
-      <footer class="footer"></footer>
+      <!-- 푸터 -->
+    <footer class="footer"></footer>
 </body>
 </html>

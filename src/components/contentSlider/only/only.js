@@ -7,7 +7,7 @@ import { insertLast } from 'kind-tiger';
 async function renderOnlyContentSlider() {
   const onlyVodSliderTemplate = `
     <section class="only-lists">
-      <h3>오직 티빙에만 있어요</h3>
+      <h3>오직 타잉에만 있어요</h3>
       <div class="only-lists__slider">
         <div class="swiper slider-only">
           <div class="swiper-wrapper">
