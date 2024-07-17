@@ -61,7 +61,7 @@ const initializeSwiper = () => {
     },
     // centeredSlides: true,
     autoplay: {
-      delay: 0,
+      delay: 1000,
       disableOnInteraction: false,
     },
     loop: true,
@@ -94,7 +94,7 @@ const initializeSwiper = () => {
     },
     initialSlide: 2,
     autoplay: {
-      delay: 0,
+      delay: 1000,
       disableOnInteraction: false,
     },
     loop: true,
