@@ -1,6 +1,6 @@
 import getPbImageURL from '@/api/getPbImageURL';
 import pb from '@/api/pocketbase';
-import { insertLast } from 'kind-tiger';
+import { insertLast, getStorage, getNode } from 'kind-tiger';
 
 function headerScript() {
   document.addEventListener('DOMContentLoaded', () => {
@@ -56,6 +56,16 @@ async function renderHeader() {
   `;
 
   insertLast('.header', headerTemplate);
+
+  // template 삽입 후 이미지 변경
+
+  const profileIndex = await getStorage('selectedProfileIndex');
+  const authData = await getStorage('auth');
+  const profileImage = `profileImg${profileIndex}`;
+  const profileImagePath = getPbImageURL(authData.user, profileImage);
+  let profileMenu = getNode('.header__aside__button--profile');
+
+  profileMenu.style.backgroundImage = `url(${profileImagePath})`;
 
   // const event = await pb.collection('event').getFullList(); // SDK
 

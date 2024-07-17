@@ -56,11 +56,11 @@ $--brand-dark-bg-2: #212121;
     cursor: pointer;
 }
 
-// Inputs style
 @mixin loginputStyle($w, $h, $bgcolor, $f-size, $border, $indent){
     font-family: 'Pretendard Variable', Pretendard, sans-serif;
     width: 70%;
     min-width: $w;
+    max-width: $w;
     height: $h;
     background-color: $bgcolor;
     font-size: $f-size;
@@ -186,16 +186,17 @@ input[type="email"] {
     }
 }
 
-// input 아래 설명
 .input-subtext {
     font-size: 0.75rem;
     color: $--gray-500; 
     margin-top: 0.25rem;
     text-align: left;
+    max-width: 17.5rem;
     @media (min-width: $--desktop){
         font-size: 1.3rem;
         position: relative;
         top: -0.5rem;
+        max-width: 43rem;
     }
 }
 
@@ -204,7 +205,7 @@ input[type="email"] {
   }
   
 .visible {
-    display: inline-block; /* 또는 다른 적절한 display 값 */
+    display: inline-block; 
   }
   
 .error {
@@ -249,7 +250,6 @@ input[type="email"] {
     }
 }
 
-// 회원가입 버튼 스타일링
 button.sign-up {
     @include logbtnStyle(18rem, 2.63rem, $--gray-700, 0.75019rem, $--gray-400, 0.25rem);
     @media (min-width: $--tablet) {
@@ -260,13 +260,13 @@ button.sign-up {
         font-size: 1.3rem;
         height: 5.38rem;
     }
-    &:hover{
+
+    &.submitPossible {
         background-color: $--brand-red-1;
         color: $--white;
     }
 }
 
-// 체크박스 숨기기
 input[type="checkbox"] {
     position: absolute;
     width: 1px;
@@ -280,16 +280,15 @@ input[type="checkbox"] {
     border-width: 0;
   }
 
-// 전체 동의 체크박스 아이콘 
   $unchecked-all-icon: url('/public/icon/signUp/iconCheckAll.svg');
   $checked-all-icon: url('/public/icon/signUp/iconCheckedAll.svg');
   
-// 필수, 선택 동의 체크박스 아이콘
+
   $unchecked-icon: url('/public/icon/signUp/iconCheck.svg');
   $checked-icon: url('/public/icon/signUp/iconChecked.svg');
 
 
-// 전체 동의 체크박스 스타일
+
 @mixin custom-checkbox-all($id) {
     #{$id} + label::before {
       content: $unchecked-all-icon;
@@ -304,11 +303,11 @@ input[type="checkbox"] {
   
     //추가
     #{$id}:focus + label::before {
-      outline: 1px solid $--gray-100; // 포커스 시 적용할 스타일
+      outline: 1px solid $--gray-100;
       border-radius: 0.3rem;
     }
   }
-  // 필수, 선택 동의 체크박스 스타일
+
   @mixin custom-checkbox($id) {
     #{$id} + label::before {
       content: $unchecked-icon;
@@ -337,6 +336,11 @@ input[type="checkbox"] {
     padding-bottom: 0.5rem;
     cursor: pointer;
     display: inline-block;
+    & span {
+        &:hover {
+            color: $--white;
+        }
+    }
     @media (min-width: $--tablet){
         padding-left: 1.75rem;
     }
@@ -365,7 +369,6 @@ input[type="checkbox"] {
     }
   }
   
-  // 모든 체크박스에 커스터마이징된 체크박스 적용
   @include custom-checkbox-all('#agree-all');
   @include custom-checkbox('#age-check');
   @include custom-checkbox('#privacy-check');
@@ -374,4 +377,104 @@ input[type="checkbox"] {
   @include custom-checkbox('#service-check');
   @include custom-checkbox('#marketing-sms-check');
   @include custom-checkbox('#marketing-email-check');
+  
+.signup-modal {
+    display: none; /* 기본적으로 모달을 숨김 */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+    padding-top: 60px;
+  }
+  
+  .signup-modal-content {
+    font-size: 0.75rem;
+    background-color: $--gray-800;
+    margin: 10% auto;
+    padding: 1.25rem;
+    border: 0;
+    width: 12rem;
+    min-width: 12rem;
+    min-height: 15rem;
+    max-height: 20rem;
+    overflow-y: auto;
+    overflow-x: hidden;
+    border-radius: 4px;
+    word-break: keep-all;
+    & h1 {
+        font-size: 1rem;
+        font-weight: 600;
+        line-height: 120%;
+    }
+    & p {
+        margin-top: 0.75rem;
+        line-height: 150%;
+    }
+    & table {
+        position: relative;
+        left: -0.5rem;
+        margin-top: 0.75rem;
+        width: 70%;
+    }
+    & th, td {
+        border: 1px solid $--gray-400;
+        padding: 8px;
+    }
+    @media (min-width: $--tablet){
+        padding: 1.25rem;
+        width: 25rem;
+        min-height: 30rem;
+        max-height: 32rem;
+        & h1 {
+            font-size: 1.33rem;
+            font-weight: 600;
+            line-height: 120%;
+        }
+        & table {
+            position: relative;
+            left: -0.5rem;
+            margin-top: 0.75rem;
+            width: 24rem;
+        }
+        & p {
+            margin-top: 1rem;
+            line-height: 150%;
+        }
+    }
+    @media (min-width: $--desktop){
+        padding: 1.25rem;
+        width: 30rem;
+        & h1 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            line-height: 120%;
+        }
+        & table {
+            position: relative;
+            left: 0.5rem;
+            width: 23rem;
+            margin-top: 0.75rem;
+        }
+    }
+  }
+
+  .signup-close-btn {
+    position: relative;
+    top: -0.5rem;
+    right: -0.2rem;
+    color: $--gray-100;
+    float: right;
+    font-size: 1.5rem;
+    &:hover {
+        color: $--white;
+        text-decoration: none;
+        cursor: pointer;
+    }
+  }
+
   

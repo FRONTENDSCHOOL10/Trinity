@@ -1,4 +1,9 @@
-.popular-lists {
+$--title-background-color: #212121;
+$--default-title-color: #a6a6a6;
+$--title-border-radius: 0.1rem;
+$--progress-bar-color: #FF153C;
+
+.watching-lists {
   @include flexColumnNowrap;
   padding: 0 $--space-xs $--space-m $--space-xs;
   gap: $--space-xs;
@@ -10,7 +15,7 @@
     @include text($--font-size-s, 150%, 600);
   }
 
-  .popular-lists__slider {
+  .watching-lists__slider {
     .swiper {
       width: 100%;
       height: 100%;
@@ -43,43 +48,69 @@
             transform: translateY($--translate--value);
           }
         }
-      
-        a img {
+
+        .poster {
           display: block;
           width: 100%;
-          border-radius: $--poster-border-radius;
-          margin-bottom: $--space-xxs;
+          border-radius: $--poster-border-radius $--poster-border-radius 0 0;
         }
-
-        .rank {
-          position: absolute;
-          font-family: 'Noto Sans KR', sans-serif;
-          font-style: italic;
-          @include text($--font-size-xxl, 160%, 700);
-          color: $--white;
-          bottom: -$--space-xs;
-        }
-
+      
         .title {
+          display: block;
+          position: relative;
           @include text($--font-size-s, 160%);
-          margin-left: $--font-size-xxl;
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;
+          padding-left: 5%;
+          line-height: 2rem;
+          color: $--default-title-color;
+          background-color: $--title-background-color;
+          border-radius: 0 0 $--title-border-radius $--title-border-radius;
+          padding-right: 2rem;
+        }
+
+        .more {
+          position: absolute;
+          background-color: transparent;
+          border: none;
+          background-image: url('/icon/main/iconMore.svg');
+          width: 2rem;
+          aspect-ratio: 1;
+          right: 0;
+          cursor: pointer;
         }
 
         .adult-only {
-          background-image:url('/public/icon/main/adultOnly.svg');
+          background-image:url('/icon/main/adultOnly.svg');
           background-repeat: no-repeat;
           background-position: center center;
           background-size: contain;
         }
 
         .original {
-          background-image:url('/public/icon/main/original.svg');
+          background-image:url('/icon/main/original.svg');
           background-repeat: no-repeat;
           background-position: center center;
           background-size: contain;
+        }
+
+        .line {
+          position: absolute;
+          background-color: $--progress-bar-color;
+          height: 3px;
+          bottom: 2rem;
+          // z-index: 100;
+        }
+
+        .replay {
+          position: absolute;
+          // z-index: 1;
+          top: 50%;
+          transform: translate(0, -50%);
+          padding-bottom: 2rem;
+          width: 100%;
+          height: 30%;
         }
       }
     }
@@ -126,7 +157,7 @@
       @include text($--font-size-m, 140%, 700);
     }
   
-    & .popular-lists__slider {
+    & .watching-lists__slider {
         .swiper {
       }
     
@@ -139,18 +170,17 @@
             }
           }
       
-          a img {
-            margin-bottom: $--space-xxs;
+          .poster {
           }
       
-          .rank {
-            @include text($--font-size-xxxl, 160%, 700);
-            bottom: -$--space-s;
-          }
-  
           .title {
             @include text($--font-size-s, 160%);
-            margin-left: $--font-size-xxxl;
+            padding-left: 8%;
+            line-height: 2.5rem;
+          }
+  
+          .more {
+            width: 2.5rem;
           }
 
           .adult-only {
@@ -165,7 +195,16 @@
             position: absolute;
             width: 100%;
             height: 6%;
-            bottom: 15%;
+            bottom: 5rem;
+          }
+
+          .line {
+            height: 4px;
+            bottom: 2.5rem;
+          }
+  
+          .replay {
+            padding-bottom: 2.5rem;
           }
         }
       }
@@ -188,12 +227,12 @@
   
         .swiper-button-prev {
           left: -($--space-xxl);
-          @include swiperPrevButtonBackground('/public/icon/main/slidePrev.svg');
+          @include swiperPrevButtonBackground('/icon/main/slidePrev.svg');
         }
   
         .swiper-button-next {
           right: -($--space-xxl);
-          @include swiperNextButtonBackground('/public/icon/main/slideNext.svg');
+          @include swiperNextButtonBackground('/icon/main/slideNext.svg');
         }
   
         .swiper-button-disabled {
@@ -211,7 +250,7 @@
       @include text($--font-size-xl, 140%, 700);
     }
   
-    .popular-lists__slider {
+    .watching-lists__slider {
       .swiper {
       }
     
@@ -224,19 +263,19 @@
             }
           }
       
-          a img {
-            margin-bottom: $--space-xs;
+          .poster {
           }
-
-          .rank {
-            @include text($--font-size-xxxxl, 160%, 700);
-            bottom: -$--space-lg;
+      
+          .title {
+            @include text($--font-size-lg, 150%);
+            padding-left: 8%;
+            line-height: 3rem;
           }
   
-          .title {
-            @include text($--font-size-lg, 160%, 700);
-            margin-left: $--font-size-xxxxl;
+          .more {
+            width: 3rem;
           }
+
 
           .adult-only {
             position: absolute;
@@ -251,6 +290,15 @@
             width: 100%;
             height: 6%;
             bottom: 18%;
+          }
+
+          .line {
+            height: 4px;
+            bottom: 3rem;
+          }
+  
+          .replay {
+            padding-bottom: 3rem;
           }
         }
       }
@@ -273,12 +321,12 @@
     
         .swiper-button-prev {
           left: -($--space-xxxl);
-          @include swiperPrevButtonBackground('/public/icon/main/slidePrev.svg');
+          @include swiperPrevButtonBackground('/icon/main/slidePrev.svg');
         }
     
         .swiper-button-next {
           right: -($--space-xxxl);
-          @include swiperNextButtonBackground('/public/icon/main/slideNext.svg');
+          @include swiperNextButtonBackground('/icon/main/slideNext.svg');
         }
     
         .swiper-button-disabled {

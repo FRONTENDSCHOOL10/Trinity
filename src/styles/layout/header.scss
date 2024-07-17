@@ -92,7 +92,7 @@ $--desktop-icon-size: 2.5rem;
   z-index: 9999;
 
   &__logo {
-    @include background-image(url('/public/icon/header/iconTaingLogo.svg'));
+    @include background-image(url('/icon/header/iconTaingLogo.svg'));
     min-width: 2.875rem;
     min-height: 0.9375rem;
     margin-right: 1.75rem;
@@ -136,10 +136,10 @@ $--desktop-icon-size: 2.5rem;
         &--paramount {
           &__img {
             @include size(4.0625rem, 1.25rem);
-            @include background-image(url('/public/icon/header/iconParamountDefault.svg'));
+            @include background-image(url('/icon/header/iconParamountDefault.svg'));
 
             &:hover {
-              @include background-image(url('/public/icon/header/iconParamountHover.svg'));
+              @include background-image(url('/icon/header/iconParamountHover.svg'));
             }
           }
         }
@@ -162,27 +162,27 @@ $--desktop-icon-size: 2.5rem;
 
       &--search {
         @include size($--mobile-icon-size, $--mobile-icon-size);
-        @include background-image(url('/public/icon/header/iconSearchDefault.svg'));
+        @include background-image(url('/icon/header/iconSearchDefault.svg'));
 
         &:hover {
-          @include background-image(url('/public/icon/header/iconSearchHover.svg'));
+          @include background-image(url('/icon/header/iconSearchHover.svg'));
           cursor: pointer;
         }
       }
 
       &--search-close {
         @include size($--mobile-icon-size, $--mobile-icon-size);
-        @include background-image(url('/public/icon/header/iconCloseDefault.svg'));
+        @include background-image(url('/icon/header/iconCloseDefault.svg'));
 
         &:hover {
-          @include background-image(url('/public/icon/header/iconCloseHover.svg'));
+          @include background-image(url('/icon/header/iconCloseHover.svg'));
           cursor: pointer;
         }
       }
 
       &--profile {
-        @include size(1.125rem, 1.125rem);
-        @include background-image(url('/public/imgTemporary.png'));
+        @include size($--mobile-icon-size, $--mobile-icon-size);
+        @include background-image(url('/imgTemporary.png'));
         cursor: pointer;
       }
     }
@@ -203,7 +203,7 @@ $--desktop-icon-size: 2.5rem;
 
 .header__nav__program__item--live__img {
   @include size(1.25rem, 1.25rem);
-  @include background-image(url('/public/icon/header/iconLiveDefault.svg'));
+  @include background-image(url('/icon/header/iconLiveDefault.svg'));
   margin-right: 0.25rem;
 }
 
@@ -211,7 +211,7 @@ $--desktop-icon-size: 2.5rem;
   color: $--white;
 
   .header__nav__program__item--live__img {
-    @include background-image(url('/public/icon/header/iconLiveHover.svg'));
+    @include background-image(url('/icon/header/iconLiveHover.svg'));
   }
 }
 
@@ -300,7 +300,6 @@ $--desktop-icon-size: 2.5rem;
         &--search-close {
           @include size($--desktop-icon-size, $--desktop-icon-size);
         }
-
 
         &--profile {
           @include size($--desktop-icon-size, $--desktop-icon-size);

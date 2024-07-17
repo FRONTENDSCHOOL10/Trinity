@@ -4,10 +4,11 @@ import { getNode, getStorage, insertLast, insertAfter, setDocumentTitle, setStor
 import defaultAuthData from '@/api/defaultAuthData';
 import { renderHeader } from '@/layout/header/header';
 import { renderSearchModal, searchModal } from '@/components/searchModal/searchModal';
-import { renderProfileMenu, renderLogoutModal, toggleLogoutModal, logout } from '@/components/profileMenu/profileMenu';
+import renderProfileMenu from '@/components/profileMenu/profileMenu';
 import { renderMainAd, openMainAdModal } from '@/components/mainAd/mainAd';
 import renderMainVisualSlider from '@/components/mainVisual/mainVisual';
 import renderMustContentSlider from '@/components/contentSlider/must/must';
+import renderWatchingContentSlider from '@/components/contentSlider/watching/watching';
 import renderQuickVodContentSlider from '@/components/contentSlider/quick/quick';
 import renderPopularContentSlider from '@/components/contentSlider/popular/popular';
 import renderLiveContentSlider from '@/components/contentSlider/live/live';
@@ -21,6 +22,10 @@ setDocumentTitle('TAING');
 // 로그인 정보가 로컬에 없으면 기본 로그인 정보 객체를 로컬 스토리지에 저장
 if (!localStorage.getItem('auth')) {
   setStorage('auth', defaultAuthData);
+}
+
+if (!localStorage.getItem('selectedProfileIndex')) {
+  setStorage('selectedProfileIndex', 1);
 }
 
 async function checkIsAuth() {
@@ -42,9 +47,6 @@ renderHeader();
 renderSearchModal();
 searchModal();
 renderProfileMenu();
-renderLogoutModal();
-toggleLogoutModal();
-logout();
 
 renderMainAd();
 openMainAdModal();
@@ -63,6 +65,9 @@ renderMainVisualSlider();
 // 꼭 봐야하는 콘텐츠
 renderMustContentSlider();
 // const vodContent = renderMustContentSlider();
+
+// 현재 시청 중 콘텐츠
+renderWatchingContentSlider();
 
 // quickVOD
 renderQuickVodContentSlider();

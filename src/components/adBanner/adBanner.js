@@ -17,11 +17,7 @@ async function renderAdBanner() {
   adBanner.forEach((item) => {
     const template = `
       <a href="/">
-        <picture>
-          <source srcset="${getPbImageURL(item, 'img')}" media="(max-width:768px)">
-          <source srcset="${getPbImageURL(item, 'img2x')}" media="(max-width:1920px)">
-          <img src="${getPbImageURL(item, 'img3x')}" alt="${item.imgAlt}">
-        </picture>
+        <img src="${getPbImageURL(item, 'img')}" alt="${item.alt}">
       </a>
     `;
 

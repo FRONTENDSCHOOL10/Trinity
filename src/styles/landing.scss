@@ -11,6 +11,36 @@
 //변수
 
 //mixin
+@mixin buttonTVING($bg-color, $font-size, $height, $min-width, $logo-width, $padding-right, $logo-margin-bottom) {
+  padding: 0 1rem 0 0.5rem;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  background-color: $bg-color;
+  gap: 0.5rem;
+  min-width: $min-width;
+  height: $height;
+
+  &-logo {
+    width: $logo-width;
+    padding: 0;
+    margin-bottom: $logo-margin-bottom;
+    img {
+      width: 100%;
+    }
+  }
+
+  &-content {
+    text-decoration: none;
+    font-size: $font-size;
+    color: $--white;
+    font-weight: 600;
+    padding-right: $padding-right;
+    line-height: 150%;
+  }
+}
 
 //임시 body 설정
 .landing {
@@ -43,89 +73,105 @@
 }
 
 .onboarding {
+  position: relative;
+
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
   justify-content: center;
   overflow: hidden;
   width: 100%;
-  // height: 85%;
 
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 1) 90%, rgba(0, 0, 0, 1) 100%), url('/image/landing/background-img-M.png');
-  background-size: cover;
-  background-position-y: -5rem;
   padding-top: 4rem;
   margin-top: -4rem;
-  background-repeat: no-repeat;
 
-  // animation: scaleUp 5s ease forwards;
-  // @keyframes scaleUp {
-  //   from {
-  //     transform: scale(1);
-  //   }
-  //   to {
-  //     transform: scale(1.1);
-  //   }
-  // }
+  &__background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 1) 90%, rgba(0, 0, 0, 1) 100%), url('/image/landing/background-img-M.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: -1;
+  }
 
   &__phrase {
     gap: 1rem;
+    margin-bottom: 1rem;
 
     &__title {
+      font-size: 1rem;
       font-weight: 700;
       line-height: 140%;
       text-align: center;
     }
 
     &__sub {
+      font-size: 0.75rem;
       color: $--gray-400;
+      font-weight: 400;
       line-height: 160%;
     }
   }
 
   &__button {
-    margin-top: 1rem;
+    cursor: pointer;
+    @include buttonTVING($--brand-red-2, 0.75rem, 2.125rem, 11.75rem, 1.625rem, 1rem, 0.3rem);
 
-    display: inline-flex;
-    flex-flow: row nowrap;
-    align-items: center;
-    justify-content: center;
-    border-radius: 4px;
-    background-color: $--brand-red-2;
-    gap: 0.5rem;
-    width: 16rem;
-    // height: 3rem;
-    aspect-ratio: 16/3;
-
-    &-logo {
-      width: 1.625rem;
-      padding-left: 0.5rem;
-      padding-bottom: 0.5rem;
-      img {
-        height: 100%;
-      }
+    @include tabletW() {
+      @include buttonTVING($--brand-red-2, 1rem, 3rem, 17.6875rem, 2.25rem, 1rem, 0.5rem);
     }
 
-    &-content {
-      text-decoration: none;
-      font: 12px;
-      color: $--white;
-      font-weight: 600;
-      padding-right: 1rem;
+    @include desktopW() {
+      @include buttonTVING($--brand-red-2, 1.77688rem, 5rem, 31rem, 4rem, 1.77688rem, 0.45rem);
     }
   }
 
   @include tabletW() {
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 1) 100%), url('/image/landing/background-img-T.png');
-    background-size: cover;
-    // background-position: center;
-    background-repeat: no-repeat;
+    &__background {
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 1) 90%, rgba(0, 0, 0, 1) 100%), url('/image/landing/background-img-M.png');
+      background-size: cover;
+    }
+
+    &__phrase {
+      gap: 1rem;
+      margin-bottom: 1.75rem;
+
+      &__title {
+        font-size: 1.33rem;
+        font-weight: 700;
+        line-height: 140%;
+        text-align: center;
+        margin-bottom: 0.5rem;
+      }
+
+      &__sub {
+        font-size: 1rem;
+      }
+    }
   }
   @include desktopW() {
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 1) 100%), url('/image/landing/background-img-D.png');
-    background-size: cover;
-    // background-position: center;
-    background-repeat: no-repeat;
+    &__background {
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 1) 90%, rgba(0, 0, 0, 1) 100%), url('/image/landing/background-img-D.png');
+      background-size: cover;
+    }
+
+    &__phrase {
+      gap: 1rem;
+      margin-bottom: 3.75rem;
+
+      &__title {
+        font-size: 3.15731rem;
+        text-align: center;
+        margin-bottom: 0.5rem;
+      }
+
+      &__sub {
+        font-size: 1.77688rem;
+      }
+    }
   }
 }
 
@@ -219,7 +265,8 @@
 
 .scroll-section-2 {
   margin-top: 3rem;
-  height: 80vh;
+  height: 60vh;
+  overflow: hidden;
 }
 
 .customized {
@@ -229,6 +276,41 @@
   align-items: center;
   text-align: center;
   margin-top: 10rem;
+
+  &__container {
+    // height: auto;
+    .swiper-container {
+      width: 30%;
+      height: 100%;
+      .swiper-slide {
+        text-align: center;
+        margin-right: 20px;
+        img {
+          width: 100%;
+          height: auto;
+          object-fit: cover;
+        }
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+
+      @include tabletW() {
+        width: 12%;
+      }
+
+      @include desktopW() {
+        width: 25%;
+      }
+    }
+
+    .customized-swiper-top {
+      margin-bottom: 2rem;
+    }
+    .customized-swiper-bottom {
+      margin-bottom: 2rem;
+    }
+  }
 
   &__info {
     display: flex;
@@ -323,6 +405,7 @@
 
 .enroll {
   width: 100%;
+  padding-top: 2rem;
 
   &__wrapper {
     display: flex;
@@ -357,34 +440,15 @@
   }
 
   &__button {
-    padding: 0.5 1 0.5 0.5;
-    display: inline-flex;
-    flex-flow: row nowrap;
-    align-items: center;
-    justify-content: center;
-    border-radius: 4px;
-    background-color: $--brand-red-2;
-    gap: 0.5rem;
-    width: 16rem;
-    // height: 3rem;
-    aspect-ratio: 16/3;
+    cursor: pointer;
+    @include buttonTVING($--brand-red-2, 0.75rem, 2.125rem, 11.75rem, 1.625rem, 1rem, 0.3rem);
 
-    &-logo {
-      width: 1.625rem;
-      padding-left: 0.5rem;
-      padding-bottom: 0.5rem;
-      img {
-        width: 100%;
-      }
+    @include tabletW() {
+      @include buttonTVING($--brand-red-2, 1rem, 3rem, 17.6875rem, 2.25rem, 1rem, 0.5rem);
     }
 
-    &-content {
-      text-decoration: none;
-      font: 0.75rem;
-      color: $--white;
-      font-weight: 600;
-      padding-right: 1rem;
-      line-height: 150%;
+    @include desktopW() {
+      @include buttonTVING($--brand-red-2, 1.77688rem, 5rem, 31rem, 4rem, 1.77688rem, 0.45rem);
     }
   }
 
@@ -398,34 +462,6 @@
       font-weight: 700;
       line-height: 140%;
     }
-
-    &__button {
-      padding: 0.5 1 0.5 0.5;
-      display: inline-flex;
-      flex-flow: row nowrap;
-      align-items: center;
-      justify-content: center;
-      border-radius: 4px;
-      background-color: $--brand-red-2;
-      gap: 0.5rem;
-      width: 17.6875rem;
-
-      &-logo {
-        width: 2.25rem;
-        padding: 0 1rem 0.5rem 0.5rem;
-        img {
-          width: 100%;
-        }
-      }
-
-      &-content {
-        text-decoration: none;
-        font-size: 1rem;
-        color: $--white;
-        font-weight: 600;
-        padding-right: 1rem;
-      }
-    }
   }
   @include desktopW() {
     &__logo {
@@ -435,38 +471,6 @@
       font-size: 3.125rem;
       font-weight: 700;
       line-height: 140%;
-    }
-
-    &__button {
-      padding: 0.5rem 1rem 0.5rem 0.5rem;
-      display: inline-flex;
-      flex-flow: row nowrap;
-      align-items: center;
-      justify-content: center;
-      border-radius: 4px;
-      background-color: $--brand-red-2;
-      gap: 0.5rem;
-      width: 31.625rem;
-      height: 5rem;
-
-      &-logo {
-        border: 1px solid blue;
-        width: 4rem;
-        padding: 0 1.5rem 0.5rem 0.5rem;
-
-        img {
-          width: 100%;
-        }
-      }
-
-      &-content {
-        text-decoration: none;
-        font-size: 1.77688rem;
-        color: $--white;
-        font-weight: 600;
-        padding-right: 1rem;
-        line-height: 150%;
-      }
     }
   }
 }
@@ -500,51 +504,4 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
-
-// carousel 구간
-
-.carousel-container {
-  width: 100%;
-  overflow: hidden;
-  margin-bottom: 20px; /* 캐러셀 사이의 간격 조정 */
-}
-.carousel-wrapper {
-  display: flex;
-  width: calc(200%);
-}
-.carousel-wrapper-1 {
-  animation: scroll1 45s linear infinite;
-}
-.carousel-wrapper-2 {
-  animation: scroll2 60s linear infinite;
-}
-.carousel-slide {
-  flex: 0 0 auto;
-  width: 13%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: auto;
-  margin: 0 2px; /* 슬라이드 간격 조정 */
-}
-.carousel-slide img {
-  width: 100%;
-  height: auto; /* 이미지의 원본 비율을 유지하면서 높이를 자동 조정 */
-}
-@keyframes scroll1 {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-@keyframes scroll2 {
-  0% {
-    transform: translateX(-25%);
-  }
-  100% {
-    transform: translateX(-75%);
-  }
 }

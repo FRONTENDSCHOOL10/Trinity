@@ -2,35 +2,45 @@
 <html lang="ko-KR">
   <head>
     <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/icon/taing.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Landing</title>
+    <title>TAING</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 
     <link rel="stylesheet" href="/src/styles/landing.scss" />
     <script type="module" src="/src/pages/landing/landing.js"></script>
   </head>
+  <!-- 바디 -->
   <body class="landing">
+    <!-- 헤더 -->
     <header class="header">
       <h1 class="sr-only">TAING</h1>
       <a href="/" class="header__logo"></a>
     </header>
 
+    <!-- 첫번째 섹션: 시작 -->
     <section class="scroll-section-0 onboarding">
+      <!-- 움직이는 배경 이미지 추가 -->
+      <div class="onboarding__background"></div>
       <h2 class="onboarding__title sr-only" aria-hidden="true">타잉 오리지널 콘텐츠</h2>
-      <p class="onboarding__phrase__title">
-        타잉 오리지널 콘텐츠,<br />
-        방송, 영화, 해외시리즈까지!<br />
-        재미를 플레이해보세요.
-      </p>
-      <p class="onboarding__phrase__sub">간편하게 가입하고, 원하실 때 해지할 수 있어요.</p>
+      <div class="onboarding__phrase">
+        <p class="onboarding__phrase__title">
+          타잉 오리지널 콘텐츠,<br />
+          방송, 영화, 해외시리즈까지!<br />
+          재미를 플레이해보세요.
+        </p>
+        <p class="onboarding__phrase__sub">간편하게 가입하고, 원하실 때 해지할 수 있어요.</p>
+      </div>
       <div class="onboarding__button">
         <img src="/image/landing/iconTAING.svg" class="onboarding__button-logo" alt="TAINGimg" />
         <a href="/src/pages/login/index.html" class="onboarding__button-content">새로워진 타잉을 만나보세요!</a>
       </div>
     </section>
 
+    <!-- 두번째 섹션: 타잉 오리지널 -->
     <section class="scroll-section-1 original">
       <h2 class="original__title sr-only">타잉 오리지널</h2>
       <div class="original__title">
@@ -196,6 +206,7 @@
       </div>
     </section>
 
+    <!-- 세번쨰 섹션: carousel 효과 -->
     <section class="scroll-section-2 customized">
       <h2 class="customized__title sr-only">개인맞춤 콘텐츠</h2>
       <div class="customized__info">
@@ -204,189 +215,391 @@
         <p class="customized__phrase__sub__02">최신, 인기 TV프로그램, 영화, 해외시리즈, 파라마운트+, 오리지널 및 독점</p>
       </div>
 
+      <!-- carousel 윗부분 -->
       <div class="customized__container">
-        <div class="customized__wrap">
-          <div class="carousel-container">
-            <div class="carousel-wrapper carousel-wrapper-1">
-              <a href="" class="carousel-slide">
-                <picture>
-                  <source srcset="/image/landing/letmein.png" media="(max-width: 1920px)" />
-                  <source srcset="/image/landing/letmein-D.png" media="(min-width: 1921px)" />
-                  <img src="/image/landing/letmein.png" loading="lazy" alt="letmein" />
-                </picture>
-              </a>
-              <a href="" class="carousel-slide">
-                <picture>
-                  <source srcset="/image/landing/shurup.png" media="(max-width: 1920px)" />
-                  <source srcset="/image/landing/shurup-D.png" media="(min-width: 1921px)" />
-                  <img src="/image/landing/shurup.png" loading="lazy" alt="shurup" />
-                </picture>
-              </a>
-              <a href="" class="carousel-slide">
-                <picture>
-                  <source srcset="/image/landing/celebritymanager.png" media="(max-width: 1920px)" />
-                  <source srcset="/image/landing/celebritymanager-D.png" media="(min-width: 1921px)" />
-                  <img src="/image/landing/celebritymanager.png" loading="lazy" alt="celebritymanager" />
-                </picture>
-              </a>
-              <a href="" class="carousel-slide">
-                <picture>
-                  <source srcset="/image/landing/youquiz.png" media="(max-width: 1920px)" />
-                  <source srcset="/image/landing/youquiz-D.png" media="(min-width: 1921px)" />
-                  <img src="/image/landing/youquiz.png" loading="lazy" alt="youquiz" />
-                </picture>
-              </a>
-              <a href="" class="carousel-slide">
-                <picture>
-                  <source srcset="/image/landing/letmein.png" media="(max-width: 1920px)" />
-                  <source srcset="/image/landing/letmein-D.png" media="(min-width: 1921px)" />
-                  <img src="/image/landing/letmein.png" loading="lazy" alt="letmein" />
-                </picture>
-              </a>
-              <a href="" class="carousel-slide">
-                <picture>
-                  <source srcset="/image/landing/shurup.png" media="(max-width: 1920px)" />
-                  <source srcset="/image/landing/shurup-D.png" media="(min-width: 1921px)" />
-                  <img src="/image/landing/shurup.png" loading="lazy" alt="shurup" />
-                </picture>
-              </a>
-              <a href="" class="carousel-slide">
-                <picture>
-                  <source srcset="/image/landing/celebritymanager.png" media="(max-width: 1920px)" />
-                  <source srcset="/image/landing/celebritymanager-D.png" media="(min-width: 1921px)" />
-                  <img src="/image/landing/celebritymanager.png" loading="lazy" alt="celebritymanager" />
-                </picture>
-              </a>
-              <a href="" class="carousel-slide">
-                <picture>
-                  <source srcset="/image/landing/youquiz.png" media="(max-width: 1920px)" />
-                  <source srcset="/image/landing/youquiz-D.png" media="(min-width: 1921px)" />
-                  <img src="/image/landing/youquiz.png" loading="lazy" alt="youquiz" />
-                </picture>
-              </a>
+        <div class="swiper-container customized-swiper-top">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <picture>
+                <source srcset="/image/landing/letmein.png" media="(max-width: 1920px)" />
+                <source srcset="/image/landing/letmein-D.png" media="(min-width: 1921px)" />
+                <img src="/image/landing/letmein.png" loading="lazy" alt="letmein" />
+              </picture>
+            </div>
+            <div class="swiper-slide">
+              <picture>
+                <source srcset="/image/landing/shurup.png" media="(max-width: 1920px)" />
+                <source srcset="/image/landing/shurup-D.png" media="(min-width: 1921px)" />
+                <img src="/image/landing/shurup.png" loading="lazy" alt="shurup" />
+              </picture>
+            </div>
+            <div class="swiper-slide">
+              <picture>
+                <source srcset="/image/landing/celebritymanager.png" media="(max-width: 1920px)" />
+                <source srcset="/image/landing/celebritymanager-D.png" media="(min-width: 1921px)" />
+                <img src="/image/landing/celebritymanager.png" loading="lazy" alt="celebritymanager" />
+              </picture>
+            </div>
+            <div class="swiper-slide">
+              <picture>
+                <source srcset="/image/landing/youquiz.png" media="(max-width: 1920px)" />
+                <source srcset="/image/landing/youquiz-D.png" media="(min-width: 1921px)" />
+                <img src="/image/landing/youquiz.png" loading="lazy" alt="youquiz" />
+              </picture>
+            </div>
+            <!-- 추가 슬라이드 -->
+            <div class="swiper-slide">
+              <picture>
+                <source srcset="/image/landing/letmein.png" media="(max-width: 1920px)" />
+                <source srcset="/image/landing/letmein-D.png" media="(min-width: 1921px)" />
+                <img src="/image/landing/letmein.png" loading="lazy" alt="letmein" />
+              </picture>
+            </div>
+            <div class="swiper-slide">
+              <picture>
+                <source srcset="/image/landing/shurup.png" media="(max-width: 1920px)" />
+                <source srcset="/image/landing/shurup-D.png" media="(min-width: 1921px)" />
+                <img src="/image/landing/shurup.png" loading="lazy" alt="shurup" />
+              </picture>
+            </div>
+            <div class="swiper-slide">
+              <picture>
+                <source srcset="/image/landing/celebritymanager.png" media="(max-width: 1920px)" />
+                <source srcset="/image/landing/celebritymanager-D.png" media="(min-width: 1921px)" />
+                <img src="/image/landing/celebritymanager.png" loading="lazy" alt="celebritymanager" />
+              </picture>
+            </div>
+            <div class="swiper-slide">
+              <picture>
+                <source srcset="/image/landing/youquiz.png" media="(max-width: 1920px)" />
+                <source srcset="/image/landing/youquiz-D.png" media="(min-width: 1921px)" />
+                <img src="/image/landing/youquiz.png" loading="lazy" alt="youquiz" />
+              </picture>
+            </div>
+            <div class="swiper-slide">
+              <picture>
+                <source srcset="/image/landing/letmein.png" media="(max-width: 1920px)" />
+                <source srcset="/image/landing/letmein-D.png" media="(min-width: 1921px)" />
+                <img src="/image/landing/letmein.png" loading="lazy" alt="letmein" />
+              </picture>
+            </div>
+            <div class="swiper-slide">
+              <picture>
+                <source srcset="/image/landing/shurup.png" media="(max-width: 1920px)" />
+                <source srcset="/image/landing/shurup-D.png" media="(min-width: 1921px)" />
+                <img src="/image/landing/shurup.png" loading="lazy" alt="shurup" />
+              </picture>
+            </div>
+            <div class="swiper-slide">
+              <picture>
+                <source srcset="/image/landing/celebritymanager.png" media="(max-width: 1920px)" />
+                <source srcset="/image/landing/celebritymanager-D.png" media="(min-width: 1921px)" />
+                <img src="/image/landing/celebritymanager.png" loading="lazy" alt="celebritymanager" />
+              </picture>
+            </div>
+            <div class="swiper-slide">
+              <picture>
+                <source srcset="/image/landing/youquiz.png" media="(max-width: 1920px)" />
+                <source srcset="/image/landing/youquiz-D.png" media="(min-width: 1921px)" />
+                <img src="/image/landing/youquiz.png" loading="lazy" alt="youquiz" />
+              </picture>
+            </div>
+            <div class="swiper-slide">
+              <picture>
+                <source srcset="/image/landing/letmein.png" media="(max-width: 1920px)" />
+                <source srcset="/image/landing/letmein-D.png" media="(min-width: 1921px)" />
+                <img src="/image/landing/letmein.png" loading="lazy" alt="letmein" />
+              </picture>
+            </div>
+            <div class="swiper-slide">
+              <picture>
+                <source srcset="/image/landing/shurup.png" media="(max-width: 1920px)" />
+                <source srcset="/image/landing/shurup-D.png" media="(min-width: 1921px)" />
+                <img src="/image/landing/shurup.png" loading="lazy" alt="shurup" />
+              </picture>
+            </div>
+            <div class="swiper-slide">
+              <picture>
+                <source srcset="/image/landing/celebritymanager.png" media="(max-width: 1920px)" />
+                <source srcset="/image/landing/celebritymanager-D.png" media="(min-width: 1921px)" />
+                <img src="/image/landing/celebritymanager.png" loading="lazy" alt="celebritymanager" />
+              </picture>
+            </div>
+            <div class="swiper-slide">
+              <picture>
+                <source srcset="/image/landing/youquiz.png" media="(max-width: 1920px)" />
+                <source srcset="/image/landing/youquiz-D.png" media="(min-width: 1921px)" />
+                <img src="/image/landing/youquiz.png" loading="lazy" alt="youquiz" />
+              </picture>
+            </div>
+            <div class="swiper-slide">
+              <picture>
+                <source srcset="/image/landing/letmein.png" media="(max-width: 1920px)" />
+                <source srcset="/image/landing/letmein-D.png" media="(min-width: 1921px)" />
+                <img src="/image/landing/letmein.png" loading="lazy" alt="letmein" />
+              </picture>
+            </div>
+            <div class="swiper-slide">
+              <picture>
+                <source srcset="/image/landing/shurup.png" media="(max-width: 1920px)" />
+                <source srcset="/image/landing/shurup-D.png" media="(min-width: 1921px)" />
+                <img src="/image/landing/shurup.png" loading="lazy" alt="shurup" />
+              </picture>
+            </div>
+            <div class="swiper-slide">
+              <picture>
+                <source srcset="/image/landing/celebritymanager.png" media="(max-width: 1920px)" />
+                <source srcset="/image/landing/celebritymanager-D.png" media="(min-width: 1921px)" />
+                <img src="/image/landing/celebritymanager.png" loading="lazy" alt="celebritymanager" />
+              </picture>
+            </div>
+            <div class="swiper-slide">
+              <picture>
+                <source srcset="/image/landing/youquiz.png" media="(max-width: 1920px)" />
+                <source srcset="/image/landing/youquiz-D.png" media="(min-width: 1921px)" />
+                <img src="/image/landing/youquiz.png" loading="lazy" alt="youquiz" />
+              </picture>
             </div>
           </div>
+        </div>
+      </div>
 
-          <div class="carousel-container">
-            <div class="carousel-wrapper carousel-wrapper-2">
-              <a href="" class="carousel-slide">
-                <picture>
-                  <source srcset="/image/landing/letmein.png" media="(max-width: 1920px)" />
-                  <source srcset="/image/landing/letmein-D.png" media="(min-width: 1921px)" />
-                  <img src="/image/landing/letmein.png" loading="lazy" alt="letmein" />
-                </picture>
-              </a>
-              <a href="" class="carousel-slide">
-                <picture>
-                  <source srcset="/image/landing/shurup.png" media="(max-width: 1920px)" />
-                  <source srcset="/image/landing/shurup-D.png" media="(min-width: 1921px)" />
-                  <img src="/image/landing/shurup.png" loading="lazy" alt="shurup" />
-                </picture>
-              </a>
-              <a href="" class="carousel-slide">
-                <picture>
-                  <source srcset="/image/landing/celebritymanager.png" media="(max-width: 1920px)" />
-                  <source srcset="/image/landing/celebritymanager-D.png" media="(min-width: 1921px)" />
-                  <img src="/image/landing/celebritymanager.png" loading="lazy" alt="celebritymanager" />
-                </picture>
-              </a>
-              <a href="" class="carousel-slide">
-                <picture>
-                  <source srcset="/image/landing/youquiz.png" media="(max-width: 1920px)" />
-                  <source srcset="/image/landing/youquiz-D.png" media="(min-width: 1921px)" />
-                  <img src="/image/landing/youquiz.png" loading="lazy" alt="youquiz" />
-                </picture>
-              </a>
-              <a href="" class="carousel-slide">
-                <picture>
-                  <source srcset="/image/landing/letmein.png" media="(max-width: 1920px)" />
-                  <source srcset="/image/landing/letmein-D.png" media="(min-width: 1921px)" />
-                  <img src="/image/landing/letmein.png" loading="lazy" alt="letmein" />
-                </picture>
-              </a>
-              <a href="" class="carousel-slide">
-                <picture>
-                  <source srcset="/image/landing/shurup.png" media="(max-width: 1920px)" />
-                  <source srcset="/image/landing/shurup-D.png" media="(min-width: 1921px)" />
-                  <img src="/image/landing/shurup.png" loading="lazy" alt="shurup" />
-                </picture>
-              </a>
-              <a href="" class="carousel-slide">
-                <picture>
-                  <source srcset="/image/landing/celebritymanager.png" media="(max-width: 1920px)" />
-                  <source srcset="/image/landing/celebritymanager-D.png" media="(min-width: 1921px)" />
-                  <img src="/image/landing/celebritymanager.png" loading="lazy" alt="celebritymanager" />
-                </picture>
-              </a>
-              <a href="" class="carousel-slide">
-                <picture>
-                  <source srcset="/image/landing/youquiz.png" media="(max-width: 1920px)" />
-                  <source srcset="/image/landing/youquiz-D.png" media="(min-width: 1921px)" />
-                  <img src="/image/landing/youquiz.png" loading="lazy" alt="youquiz" />
-                </picture>
-              </a>
-              <a href="" class="carousel-slide">
-                <picture>
-                  <source srcset="/image/landing/letmein.png" media="(max-width: 1920px)" />
-                  <source srcset="/image/landing/letmein-D.png" media="(min-width: 1921px)" />
-                  <img src="/image/landing/letmein.png" loading="lazy" alt="letmein" />
-                </picture>
-              </a>
-              <a href="" class="carousel-slide">
-                <picture>
-                  <source srcset="/image/landing/shurup.png" media="(max-width: 1920px)" />
-                  <source srcset="/image/landing/shurup-D.png" media="(min-width: 1921px)" />
-                  <img src="/image/landing/shurup.png" loading="lazy" alt="shurup" />
-                </picture>
-              </a>
-              <a href="" class="carousel-slide">
-                <picture>
-                  <source srcset="/image/landing/celebritymanager.png" media="(max-width: 1920px)" />
-                  <source srcset="/image/landing/celebritymanager-D.png" media="(min-width: 1921px)" />
-                  <img src="/image/landing/celebritymanager.png" loading="lazy" alt="celebritymanager" />
-                </picture>
-              </a>
-              <a href="" class="carousel-slide">
-                <picture>
-                  <source srcset="/image/landing/youquiz.png" media="(max-width: 1920px)" />
-                  <source srcset="/image/landing/youquiz-D.png" media="(min-width: 1921px)" />
-                  <img src="/image/landing/youquiz.png" loading="lazy" alt="youquiz" />
-                </picture>
-              </a>
-              <a href="" class="carousel-slide">
-                <picture>
-                  <source srcset="/image/landing/letmein.png" media="(max-width: 1920px)" />
-                  <source srcset="/image/landing/letmein-D.png" media="(min-width: 1921px)" />
-                  <img src="/image/landing/letmein.png" loading="lazy" alt="letmein" />
-                </picture>
-              </a>
-              <a href="" class="carousel-slide">
-                <picture>
-                  <source srcset="/image/landing/shurup.png" media="(max-width: 1920px)" />
-                  <source srcset="/image/landing/shurup-D.png" media="(min-width: 1921px)" />
-                  <img src="/image/landing/shurup.png" loading="lazy" alt="shurup" />
-                </picture>
-              </a>
-              <a href="" class="carousel-slide">
-                <picture>
-                  <source srcset="/image/landing/celebritymanager.png" media="(max-width: 1920px)" />
-                  <source srcset="/image/landing/celebritymanager-D.png" media="(min-width: 1921px)" />
-                  <img src="/image/landing/celebritymanager.png" loading="lazy" alt="celebritymanager" />
-                </picture>
-              </a>
-              <a href="" class="carousel-slide">
-                <picture>
-                  <source srcset="/image/landing/youquiz.png" media="(max-width: 1920px)" />
-                  <source srcset="/image/landing/youquiz-D.png" media="(min-width: 1921px)" />
-                  <img src="/image/landing/youquiz.png" loading="lazy" alt="youquiz" />
-                </picture>
-              </a>
+      <!-- carousel 아랫부분 -->
+      <div class="customized__container">
+        <div class="swiper-container customized-swiper-bottom">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <picture>
+                <source srcset="/image/landing/letmein.png" media="(max-width: 1920px)" />
+                <source srcset="/image/landing/letmein-D.png" media="(min-width: 1921px)" />
+                <img src="/image/landing/letmein.png" loading="lazy" alt="letmein" />
+              </picture>
+            </div>
+            <div class="swiper-slide">
+              <picture>
+                <source srcset="/image/landing/shurup.png" media="(max-width: 1920px)" />
+                <source srcset="/image/landing/shurup-D.png" media="(min-width: 1921px)" />
+                <img src="/image/landing/shurup.png" loading="lazy" alt="shurup" />
+              </picture>
+            </div>
+            <div class="swiper-slide">
+              <picture>
+                <source srcset="/image/landing/celebritymanager.png" media="(max-width: 1920px)" />
+                <source srcset="/image/landing/celebritymanager-D.png" media="(min-width: 1921px)" />
+                <img src="/image/landing/celebritymanager.png" loading="lazy" alt="celebritymanager" />
+              </picture>
+            </div>
+            <div class="swiper-slide">
+              <picture>
+                <source srcset="/image/landing/youquiz.png" media="(max-width: 1920px)" />
+                <source srcset="/image/landing/youquiz-D.png" media="(min-width: 1921px)" />
+                <img src="/image/landing/youquiz.png" loading="lazy" alt="youquiz" />
+              </picture>
+            </div>
+            <!-- 추가 슬라이드 -->
+
+            <div class="swiper-slide">
+              <picture>
+                <source srcset="/image/landing/letmein.png" media="(max-width: 1920px)" />
+                <source srcset="/image/landing/letmein-D.png" media="(min-width: 1921px)" />
+                <img src="/image/landing/letmein.png" loading="lazy" alt="letmein" />
+              </picture>
+            </div>
+            <div class="swiper-slide">
+              <picture>
+                <source srcset="/image/landing/shurup.png" media="(max-width: 1920px)" />
+                <source srcset="/image/landing/shurup-D.png" media="(min-width: 1921px)" />
+                <img src="/image/landing/shurup.png" loading="lazy" alt="shurup" />
+              </picture>
+            </div>
+            <div class="swiper-slide">
+              <picture>
+                <source srcset="/image/landing/celebritymanager.png" media="(max-width: 1920px)" />
+                <source srcset="/image/landing/celebritymanager-D.png" media="(min-width: 1921px)" />
+                <img src="/image/landing/celebritymanager.png" loading="lazy" alt="celebritymanager" />
+              </picture>
+            </div>
+            <div class="swiper-slide">
+              <picture>
+                <source srcset="/image/landing/youquiz.png" media="(max-width: 1920px)" />
+                <source srcset="/image/landing/youquiz-D.png" media="(min-width: 1921px)" />
+                <img src="/image/landing/youquiz.png" loading="lazy" alt="youquiz" />
+              </picture>
+            </div>
+            <div class="swiper-slide">
+              <picture>
+                <source srcset="/image/landing/letmein.png" media="(max-width: 1920px)" />
+                <source srcset="/image/landing/letmein-D.png" media="(min-width: 1921px)" />
+                <img src="/image/landing/letmein.png" loading="lazy" alt="letmein" />
+              </picture>
+            </div>
+            <div class="swiper-slide">
+              <picture>
+                <source srcset="/image/landing/shurup.png" media="(max-width: 1920px)" />
+                <source srcset="/image/landing/shurup-D.png" media="(min-width: 1921px)" />
+                <img src="/image/landing/shurup.png" loading="lazy" alt="shurup" />
+              </picture>
+            </div>
+            <div class="swiper-slide">
+              <picture>
+                <source srcset="/image/landing/celebritymanager.png" media="(max-width: 1920px)" />
+                <source srcset="/image/landing/celebritymanager-D.png" media="(min-width: 1921px)" />
+                <img src="/image/landing/celebritymanager.png" loading="lazy" alt="celebritymanager" />
+              </picture>
+            </div>
+            <div class="swiper-slide">
+              <picture>
+                <source srcset="/image/landing/youquiz.png" media="(max-width: 1920px)" />
+                <source srcset="/image/landing/youquiz-D.png" media="(min-width: 1921px)" />
+                <img src="/image/landing/youquiz.png" loading="lazy" alt="youquiz" />
+              </picture>
+            </div>
+            <div class="swiper-slide">
+              <picture>
+                <source srcset="/image/landing/letmein.png" media="(max-width: 1920px)" />
+                <source srcset="/image/landing/letmein-D.png" media="(min-width: 1921px)" />
+                <img src="/image/landing/letmein.png" loading="lazy" alt="letmein" />
+              </picture>
+            </div>
+            <div class="swiper-slide">
+              <picture>
+                <source srcset="/image/landing/shurup.png" media="(max-width: 1920px)" />
+                <source srcset="/image/landing/shurup-D.png" media="(min-width: 1921px)" />
+                <img src="/image/landing/shurup.png" loading="lazy" alt="shurup" />
+              </picture>
+            </div>
+            <div class="swiper-slide">
+              <picture>
+                <source srcset="/image/landing/celebritymanager.png" media="(max-width: 1920px)" />
+                <source srcset="/image/landing/celebritymanager-D.png" media="(min-width: 1921px)" />
+                <img src="/image/landing/celebritymanager.png" loading="lazy" alt="celebritymanager" />
+              </picture>
+            </div>
+            <div class="swiper-slide">
+              <picture>
+                <source srcset="/image/landing/youquiz.png" media="(max-width: 1920px)" />
+                <source srcset="/image/landing/youquiz-D.png" media="(min-width: 1921px)" />
+                <img src="/image/landing/youquiz.png" loading="lazy" alt="youquiz" />
+              </picture>
+            </div>
+            <div class="swiper-slide">
+              <picture>
+                <source srcset="/image/landing/letmein.png" media="(max-width: 1920px)" />
+                <source srcset="/image/landing/letmein-D.png" media="(min-width: 1921px)" />
+                <img src="/image/landing/letmein.png" loading="lazy" alt="letmein" />
+              </picture>
+            </div>
+            <div class="swiper-slide">
+              <picture>
+                <source srcset="/image/landing/shurup.png" media="(max-width: 1920px)" />
+                <source srcset="/image/landing/shurup-D.png" media="(min-width: 1921px)" />
+                <img src="/image/landing/shurup.png" loading="lazy" alt="shurup" />
+              </picture>
+            </div>
+            <div class="swiper-slide">
+              <picture>
+                <source srcset="/image/landing/celebritymanager.png" media="(max-width: 1920px)" />
+                <source srcset="/image/landing/celebritymanager-D.png" media="(min-width: 1921px)" />
+                <img src="/image/landing/celebritymanager.png" loading="lazy" alt="celebritymanager" />
+              </picture>
+            </div>
+            <div class="swiper-slide">
+              <picture>
+                <source srcset="/image/landing/youquiz.png" media="(max-width: 1920px)" />
+                <source srcset="/image/landing/youquiz-D.png" media="(min-width: 1921px)" />
+                <img src="/image/landing/youquiz.png" loading="lazy" alt="youquiz" />
+              </picture>
+            </div>
+            <div class="swiper-slide">
+              <picture>
+                <source srcset="/image/landing/letmein.png" media="(max-width: 1920px)" />
+                <source srcset="/image/landing/letmein-D.png" media="(min-width: 1921px)" />
+                <img src="/image/landing/letmein.png" loading="lazy" alt="letmein" />
+              </picture>
+            </div>
+            <div class="swiper-slide">
+              <picture>
+                <source srcset="/image/landing/shurup.png" media="(max-width: 1920px)" />
+                <source srcset="/image/landing/shurup-D.png" media="(min-width: 1921px)" />
+                <img src="/image/landing/shurup.png" loading="lazy" alt="shurup" />
+              </picture>
+            </div>
+            <div class="swiper-slide">
+              <picture>
+                <source srcset="/image/landing/celebritymanager.png" media="(max-width: 1920px)" />
+                <source srcset="/image/landing/celebritymanager-D.png" media="(min-width: 1921px)" />
+                <img src="/image/landing/celebritymanager.png" loading="lazy" alt="celebritymanager" />
+              </picture>
+            </div>
+            <div class="swiper-slide">
+              <picture>
+                <source srcset="/image/landing/youquiz.png" media="(max-width: 1920px)" />
+                <source srcset="/image/landing/youquiz-D.png" media="(min-width: 1921px)" />
+                <img src="/image/landing/youquiz.png" loading="lazy" alt="youquiz" />
+              </picture>
+            </div>
+            <div class="swiper-slide">
+              <picture>
+                <source srcset="/image/landing/letmein.png" media="(max-width: 1920px)" />
+                <source srcset="/image/landing/letmein-D.png" media="(min-width: 1921px)" />
+                <img src="/image/landing/letmein.png" loading="lazy" alt="letmein" />
+              </picture>
+            </div>
+            <div class="swiper-slide">
+              <picture>
+                <source srcset="/image/landing/shurup.png" media="(max-width: 1920px)" />
+                <source srcset="/image/landing/shurup-D.png" media="(min-width: 1921px)" />
+                <img src="/image/landing/shurup.png" loading="lazy" alt="shurup" />
+              </picture>
+            </div>
+            <div class="swiper-slide">
+              <picture>
+                <source srcset="/image/landing/celebritymanager.png" media="(max-width: 1920px)" />
+                <source srcset="/image/landing/celebritymanager-D.png" media="(min-width: 1921px)" />
+                <img src="/image/landing/celebritymanager.png" loading="lazy" alt="celebritymanager" />
+              </picture>
+            </div>
+            <div class="swiper-slide">
+              <picture>
+                <source srcset="/image/landing/youquiz.png" media="(max-width: 1920px)" />
+                <source srcset="/image/landing/youquiz-D.png" media="(min-width: 1921px)" />
+                <img src="/image/landing/youquiz.png" loading="lazy" alt="youquiz" />
+              </picture>
+            </div>
+            <div class="swiper-slide">
+              <picture>
+                <source srcset="/image/landing/letmein.png" media="(max-width: 1920px)" />
+                <source srcset="/image/landing/letmein-D.png" media="(min-width: 1921px)" />
+                <img src="/image/landing/letmein.png" loading="lazy" alt="letmein" />
+              </picture>
+            </div>
+            <div class="swiper-slide">
+              <picture>
+                <source srcset="/image/landing/shurup.png" media="(max-width: 1920px)" />
+                <source srcset="/image/landing/shurup-D.png" media="(min-width: 1921px)" />
+                <img src="/image/landing/shurup.png" loading="lazy" alt="shurup" />
+              </picture>
+            </div>
+            <div class="swiper-slide">
+              <picture>
+                <source srcset="/image/landing/celebritymanager.png" media="(max-width: 1920px)" />
+                <source srcset="/image/landing/celebritymanager-D.png" media="(min-width: 1921px)" />
+                <img src="/image/landing/celebritymanager.png" loading="lazy" alt="celebritymanager" />
+              </picture>
+            </div>
+            <div class="swiper-slide">
+              <picture>
+                <source srcset="/image/landing/youquiz.png" media="(max-width: 1920px)" />
+                <source srcset="/image/landing/youquiz-D.png" media="(min-width: 1921px)" />
+                <img src="/image/landing/youquiz.png" loading="lazy" alt="youquiz" />
+              </picture>
             </div>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- 네번째 섹션: 시작 및 가입 -->
     <section class="scroll-section-3 enroll">
       <h2 class="enroll__title sr-only">티빙 시작하기</h2>
       <div class="enroll__info">
@@ -395,24 +608,13 @@
         </div>
         <p class="enroll__title">지금 시작해보세요</p>
         <div class="enroll__button">
-          <img src="/image/landing/iconTAING.svg" class="onboarding__button-logo" alt="TAINGimg" />
-          <a href="/src/pages/login/index.html" class="onboarding__button-content">새로워진 타잉을 만나보세요!</a>
+          <img src="/image/landing/iconTAING.svg" class="enroll__button-logo" alt="TAINGimg" />
+          <a href="/src/pages/login/index.html" class="enroll__button-content">새로워진 타잉을 만나보세요!</a>
         </div>
       </div>
     </section>
 
-    <!-- 
-
-
-      <section class="new">
-        <h2 class="new__title sr-only" aria-hidden="true">시작하기</h2>
-        <div class="new__info">
-          <div class="new__img"><img src="./../images/logo_onboading.png" alt="타잉 로고" /></div>
-          <p class="new__contentTitle">지금 시작해보세요</p>
-          <a href="/" class="new__btn">새로워진 티빙을 만나보세요!</a>
-        </div>
-      </section> -->
-
+    <!-- 푸터 -->
     <footer class="footer"></footer>
   </body>
 </html>
