@@ -1,5 +1,7 @@
-import { getNode } from 'kind-tiger';
+import { getNode, getNodes, getPbImageURL } from 'kind-tiger';
 import PocketBase from 'pocketbase';
+import downloadImage from './downloadImage';
+// import '../../pages/main/main'; footer 불러온거.. 경로 수정 해야함
 
 const pb = new PocketBase('https://plainyogurt.pockethost.io/');
 
@@ -9,6 +11,10 @@ const emailInput = getNode('#email');
 const passwordInput = getNode('#user-pw');
 const confirmPasswordInput = getNode('#confirm-password');
 const submitButton = getNode('#submit-btn');
+
+const defaultImage = await pb.collection('profileImg').getOne('x8am0klvvuoss6i');
+console.log(defaultImage)
+const defaultAvatarUrl = getPbImageURL(defaultImage, 'field');
 
 document.addEventListener('DOMContentLoaded', function () {
   const agreeAllCheckbox = getNode('#agree-all');
@@ -225,8 +231,8 @@ document.querySelectorAll('.comfirm-pw-visible').forEach(icon => {
   });
 });
 
-async function handleSignUp(event) {
-  event.preventDefault();
+async function handleSignUp(e) {
+  e.preventDefault();
 
   const userId = getNode('#user-id').value;
   const userPw = getNode('#user-pw').value;
@@ -263,23 +269,50 @@ async function handleSignUp(event) {
 
   try {
     const newUser = await pb.collection('users').create({
-      username: userId,
-      email: email,
-      password: userPw,
-      passwordConfirm: confirmPassword,
+      "username": userId,
+      "email": email,
+      "emailVisibility": true,
+      "password": userPw,
+      "passwordConfirm": confirmPassword,
+      // "isActive1": true,
+      // "isLocked1": false,
+      // "profileName1": "test",
+      // "isActive2": false,
+      // "isLocked2": false,
+      // "profileName2": "test",
+      // "isActive3": false,
+      // "isLocked3": false,
+      // "profileName3": "test",
+      // "isActive4": false,
+      // "isLocked4": false,
+      // "profileName4": "test",
     });
+
+
+
+    const imgBlob = await downloadImage(defaultAvatarUrl);
+  
+    // const formData = new FormData();
+
+    // newUser.append('username', userId);
+    // newUser.append('email', email);
+    // newUser.append('password', userPw);
+    // newUser.append('passwordConfirm', confirmPassword);
+    newUser.append('profileImg1', imgBlob, 'profileImg1.jpg');
+
+    // const response = await pb.collection('users').create(newUser);
 
     alert('회원가입이 완료되었습니다.');
     location.href = '/src/pages/login/index.html';
+
   } catch (error) {
     if (error.message.includes('already exists')) {
       alert('이미 가입된 계정입니다.');
-    } else if (error.message.includes('username validation failed')) {
-      displayError(userIdInput, '아이디는 영문 또는 영문, 숫자 조합 6~12자리로 구성되어야 합니다.');
     } else {
       alert('회원가입 중 오류가 발생했습니다. 다시 시도해 주세요.');
     }
   }
+
 }
 
 function idReg(text) {
