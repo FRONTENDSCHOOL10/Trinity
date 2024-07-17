@@ -311,7 +311,7 @@ async function handleSignUp(e) {
       window.setTimeout(function() {
         spinner.style.display = 'none'; // 로딩 완료 후에 스피너 숨기기
         const template = `
-            <img src="/public/icon/loadSpinner/loadSpinnerFinish.svg" alt="완료 아이콘" style="width: 40px; height: 40px;"/>
+            <img src="/icon/loadSpinner/loadSpinnerFinish.svg" alt="완료 아이콘" style="width: 40px; height: 40px;"/>
             <p class="tit">회원가입 완료!</p>
             <p class="desc">지금 바로 이용권을 구독하고 티빙 오리지널과<br/>
             최신 인기 TV프로그램, 영화를 무제한으로 만나보세요!</p>
@@ -333,7 +333,7 @@ async function handleSignUp(e) {
         window.setTimeout(function() {
           spinner.style.display = 'none'; // 로딩 완료 후에 스피너 숨기기
           const template = `
-              <img src="/public/icon/loadSpinner/loadSpinnerError.svg" alt="오류 아이콘" style="width: 40px; height: 40px;"/>
+              <img src="/icon/loadSpinner/loadSpinnerError.svg" alt="오류 아이콘" style="width: 40px; height: 40px;"/>
               <p class="tit">이미 가입된 계정입니다.</p>
               <p class="desc"></p>
           `;
@@ -353,7 +353,7 @@ async function handleSignUp(e) {
         window.setTimeout(function() {
           spinner.style.display = 'none'; // 로딩 완료 후에 스피너 숨기기
           const template = `
-              <img src="/public/icon/loadSpinner/loadSpinnerError.svg" alt="오류 아이콘" style="width: 40px; height: 40px;"/>
+              <img src="/icon/loadSpinner/loadSpinnerError.svg" alt="오류 아이콘" style="width: 40px; height: 40px;"/>
               <p class="tit">회원가입 중 오류가 발생했습니다.</p>
               <p class="desc"></p>
           `;
