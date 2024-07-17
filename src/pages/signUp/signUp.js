@@ -306,8 +306,19 @@ async function handleSignUp(e) {
     alert('회원가입이 완료되었습니다.');
     location.href = '/src/pages/login/index.html';
   } catch (error) {
-    if (error.message.includes('already exists')) {
-      alert('이미 가입된 계정입니다.');
+    const serverUser = await pb.collection('users').getFullList();
+    let existEmail = [];
+    let existId = [];
+
+    for (const userdata of serverUser) {
+      existEmail.push(userdata.email);
+      existId.push(userdata.username);
+    }
+
+    if (existEmail.includes(email)) {
+      alert('이미 가입된 이메일입니다.');
+    } else if (existId.includes(userId)) {
+      alert('이미 사용중인 아이디입니다.');
     } else {
       alert('회원가입 중 오류가 발생했습니다. 다시 시도해 주세요.');
     }
