@@ -3,7 +3,7 @@ import pb from '@/api/pocketbase';
 import { getNode, getStorage, insertLast, insertAfter, setDocumentTitle, setStorage } from 'kind-tiger';
 import defaultAuthData from '@/api/defaultAuthData';
 import { renderHeader } from '@/layout/header/header';
-import { renderSearchModal, searchModal } from '@/components/searchModal/searchModal';
+import renderSearchModal from '@/components/searchModal/searchModal';
 import renderProfileMenu from '@/components/profileMenu/profileMenu';
 import { renderMainAd, openMainAdModal } from '@/components/mainAd/mainAd';
 import renderMainVisualSlider from '@/components/mainVisual/mainVisual';
@@ -45,7 +45,6 @@ checkIsAuth();
 
 renderHeader();
 renderSearchModal();
-searchModal();
 renderProfileMenu();
 
 renderMainAd();

@@ -2,6 +2,7 @@ import { getNode, getNodes, getPbImageURL, setStorage, insertLast } from 'kind-t
 import PocketBase from 'pocketbase';
 import defaultAuthData from '@/api/defaultAuthData';
 import pb from '@/api/pocketbase';
+import downloadImage from '@/api/downloadImage';
 // import '../../pages/main/main'; footer 불러온거.. 경로 수정 해야함
 
 const form = getNode('form');
@@ -228,12 +229,6 @@ document.querySelectorAll('.comfirm-pw-visible').forEach((icon) => {
     toggleConfirmPasswordVisibility(this);
   });
 });
-
-async function downloadImage(url) {
-  const response = await fetch(url);
-  const blob = await response.blob();
-  return blob;
-}
 
 async function handleSignUp(e) {
   e.preventDefault();
