@@ -1,4 +1,4 @@
-import { getNode, isString, getStorage, setStorage } from 'kind-tiger';
+import { getNode, isString, getStorage, setStorage, insertLast } from 'kind-tiger';
 import pb from '@/api/pocketbase';
 import { headerScript } from '@/layout/header/header';
 import { renderFooter, footerScript } from '@/layout/footer/footer';
@@ -16,6 +16,9 @@ const pwAlert = getNode('.alerting__pw');
 const SECRET_KEY = 'your-secret-key'; // 비밀 키는 환경 변수나 안전한 곳에 저장하세요.
 
 let saveLoginInfo = false;
+
+const spinnerWrapper = document.querySelector('#spinner-wrapper');
+const spinner = document.querySelector('#spinner');
 
 /* -------------------------------------------------------------------------- */
 /*                                  헤더 렌더링 코드                           */
@@ -39,7 +42,25 @@ document.addEventListener('DOMContentLoaded', () => {
     loginIcon.classList.add('active');
     const decryptedToken = getDecryptedToken(auth.token);
     pb.authStore.save(decryptedToken, auth.user);
-    alert('자동 로그인되었습니다.');
+    function loadSpinner() {
+      spinnerWrapper.style.display = 'flex'; // 로딩 시작
+      // 2초 후에 로딩 완료
+      window.setTimeout(function() {
+        spinner.style.display = 'none'; // 로딩 완료 후에 스피너 숨기기
+        const template = `
+            <img src="/public/icon/loadSpinner/loadSpinnerError.svg" alt="오류 아이콘" style="width: 40px; height: 40px;"/>
+            <p class="tit">자동 로그인되었습니다,</p>
+            <p class="desc"></p>
+        `;
+        insertLast('.finish__form', template);
+        // 2초 후에 템플릿 숨기기
+        window.setTimeout(function() {
+            spinnerWrapper.style.display = 'none';
+            location.reload();
+        }, 2000);
+      }, 2000);
+    }
+    loadSpinner();
     location.href = '/src/pages/profileSelect/index.html'; // 로그인 후 이동할 페이지
   }
 
@@ -113,7 +134,19 @@ async function handleLogin(e) {
   //2.1 해당 입력이 ID 면, ID로 pb에 요청
 
   if (!validateString(userID) && !emailReg(userID)) {
-    alert('올바른 형식의 아이디나 이메일을 입력하세요.');
+    spinnerWrapper.style.display = 'flex'; 
+    spinner.style.display = 'none';
+        const template = `
+            <img src="/public/icon/loadSpinner/loadSpinnerError.svg" alt="오류 아이콘" style="width: 40px; height: 40px;"/>
+            <p class="tit">올바른 형식의 아이디나 이메일을 입력하세요.</p>
+            <p class="desc"></p>
+        `;
+        insertLast('.finish__form', template);
+        // 2초 후에 템플릿 숨기기
+        window.setTimeout(function() {
+          spinnerWrapper.style.display = 'none';
+          location.reload();
+      }, 2000);
     return;
   }
 
@@ -125,11 +158,46 @@ async function handleLogin(e) {
   try {
     const { record, token } = await pb.collection('users').authWithPassword(userID, userPW);
     saveAuthData(record, token);
-
-    alert('환영합니다.');
-    location.href = '/src/pages/profileSelect/index.html'; // 로그인 후 이동할 페이지
+    function loadSpinner() {
+      spinnerWrapper.style.display = 'flex'; // 로딩 시작
+      // 2초 후에 로딩 완료
+      window.setTimeout(function() {
+        spinner.style.display = 'none'; // 로딩 완료 후에 스피너 숨기기
+        const template = `
+            <img src="/public/icon/loadSpinner/loadSpinnerFinish.svg" alt="완료 아이콘" style="width: 40px; height: 40px;"/>
+            <p class="tit">로그인 완료!</p>
+            <p class="desc">지금 바로 이용권을 구독하고 티빙 오리지널과<br/>
+            최신 인기 TV프로그램, 영화를 무제한으로 만나보세요!</p>
+        `;
+        insertLast('.finish__form', template);
+        // 2초 후에 템플릿 숨기기
+        window.setTimeout(function() {
+            spinnerWrapper.style.display = 'none';
+            location.reload();
+        }, 2000);
+      }, 2000);
+    }
+    loadSpinner();
   } catch (error) {
-    alert('인증된 사용자가 아닙니다.');
+    function loadSpinner() {
+    spinnerWrapper.style.display = 'flex'; // 로딩 시작
+    // 2초 후에 로딩 완료
+    window.setTimeout(function() {
+      spinner.style.display = 'none'; // 로딩 완료 후에 스피너 숨기기
+      const template = `
+          <img src="/public/icon/loadSpinner/loadSpinnerError.svg" alt="오류 아이콘" style="width: 40px; height: 40px;"/>
+          <p class="tit">인증된 사용자가 아닙니다.</p>
+          <p class="desc">다시 입력해 주세요.</p>
+      `;
+      insertLast('.finish__form', template);
+      // 2초 후에 템플릿 숨기기
+      window.setTimeout(function() {
+          spinnerWrapper.style.display = 'none';
+          location.reload();
+      }, 2000);
+    }, 2000);
+  }
+  loadSpinner();
   }
 }
 
