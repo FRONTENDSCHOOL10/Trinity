@@ -195,5 +195,14 @@ $--desk-btnProfile-h: 5.375rem;
                 outline: 3px solid white;
             } 
         }
+        .btnUserbreak {
+            background-color: transparent;
+            border: 0;
+            color: $--gray-600;
+            margin: 1.125rem auto 0px;
+            &:hover {
+                color: $--gray-300;
+            }
+        }
     }
 }
