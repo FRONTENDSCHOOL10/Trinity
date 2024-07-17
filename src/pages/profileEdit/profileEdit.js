@@ -19,6 +19,7 @@ async function renderProfileEdit() {
     users.forEach((item) => {
       if (item.username === authUsername) {
         let isAddable = false;
+        let addableIndex = null;
 
         for (let i = 0; i < 4; i++) {
           const isActive = item[`isActive${i + 1}`];
@@ -27,7 +28,7 @@ async function renderProfileEdit() {
           // isActive는 정렬되어있음.(중간에 isActive가 갑자기 False로 나오지 않음)
           if (isActive == true) {
             const template = `
-                        <li class="profile__form--item profileItem">
+                        <li class="profile__form--item profileItem" data-index="${i + 1}">
                             <a class="item__form" href="/src/pages/profileEditing/index.html" role="button">
                                 <figure class="user-profile">
                                     <img src="${getPbImageURL(item, `profileImg${i + 1}`)}" alt="프로필">
@@ -40,18 +41,17 @@ async function renderProfileEdit() {
                         </li>
                     `;
             insertLast('.profile__form', template);
-            //
           }
 
           if (isActive == false && !isAddable) {
             isAddable = true;
-            setStorage('selectedProfileIndex', `${i + 1}`);
+            addableIndex = i + 1;
           }
         }
 
         if (isAddable == true) {
           const template = `
-                        <li class="profile__form--item profileItem">
+                        <li class="profile__form--item profileItem" data-index="${addableIndex}">
                             <a class="item__form" href="/src/pages/profileEditing/index.html" role="button">
                                 <figure class="user-profile">
                                     <span className="addable" aria-hidden="true"></span>
@@ -67,12 +67,28 @@ async function renderProfileEdit() {
         }
       }
     });
+
+    document.querySelectorAll('.profile__form--item').forEach((i) => {
+      i.addEventListener('click', handleProfileSelect);
+    });
+  }
+}
+
+async function handleProfileSelect(e) {
+  const profileItem = e.currentTarget;
+  if (profileItem) {
+    const profileIndex = profileItem.getAttribute('data-index');
+
+    if (profileIndex) {
+      await setStorage('selectedProfileIndex', profileIndex);
+      console.log(`선택된 프로필 인덱스: ${profileIndex}`);
+    } else {
+      console.error('프로필 인덱스를 찾을 수 없음.');
+    }
   }
 }
 
 renderProfileEdit();
-
-const pressedProfile = document.querySelector('profile__form');
 
 const btnUserbreak = document.querySelector('.btnUserbreak');
 
@@ -108,7 +124,7 @@ async function handleDeleteAccount() {
                 // 인증 정보 클리어
                 pb.authStore.clear();
                 localStorage.removeItem('auth'); // 인증 정보 삭제
-                setStorage('auth', defaultAuthData);
+                await setStorage('auth', defaultAuthData);
 
                 alert('회원 탈퇴가 완료되었습니다.');
 

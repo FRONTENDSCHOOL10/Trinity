@@ -165,12 +165,7 @@ $--desk-btnProfile-h: 5.375rem;
             @include squareSize(100%);
             background: rgba($color: $--black, $alpha: 0.7);
           }
-          & .addable {
-            @include flexbox(row, nowrap, center, center);
-            @include position(absolute);
-            @include squareSize(100%);
-            background: rgba($color: $--gray-600, $alpha: 0.7);
-          }
+
           & .icon {
             transition: all 0.3s ease 0s;
             @include flexbox(row, nowrap, center, center);
