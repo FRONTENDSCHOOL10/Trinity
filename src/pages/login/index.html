@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TVING | 로그인</title>
     <script type="module" src="/src/pages/login/login.js"></script>
+    <link rel="stylesheet" href="/src/styles/loadSpinner.scss" />
+    <link rel="stylesheet" href="/src/styles/find.scss">
     <link rel="stylesheet" href="/src/styles/login.scss" />
   </head>
 
@@ -14,6 +16,11 @@
   </header>
 
   <body>
+    <!-- 로딩 스피너 -->
+    <div id="spinner-wrapper" class="spinner__wrapper">
+      <div id="spinner" class="spinner"></div>
+      <div class="finish__form"></div>
+    </div>
     <main class="main-login">
       <section class="login">
         <div class="login__wrapper">

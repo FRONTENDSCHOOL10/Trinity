@@ -1,4 +1,4 @@
-import { getNode, getNodes, getPbImageURL, setStorage } from 'kind-tiger';
+import { getNode, getNodes, getPbImageURL, setStorage, insertLast } from 'kind-tiger';
 import PocketBase from 'pocketbase';
 import defaultAuthData from '@/api/defaultAuthData';
 import pb from '@/api/pocketbase';
@@ -11,6 +11,8 @@ const emailInput = getNode('#email');
 const passwordInput = getNode('#user-pw');
 const confirmPasswordInput = getNode('#confirm-password');
 const submitButton = getNode('#submit-btn');
+const spinnerWrapper = document.querySelector('#spinner-wrapper');
+const spinner = document.querySelector('#spinner');
 
 document.addEventListener('DOMContentLoaded', function () {
   const agreeAllCheckbox = getNode('#agree-all');
@@ -298,9 +300,28 @@ async function handleSignUp(e) {
     setStorage('auth', defaultAuthData);
     window.localStorage.removeItem('selectedProfileIndex');
 
-    alert('회원가입이 완료되었습니다.');
-    location.href = '/src/pages/login/index.html';
+    function loadSpinner() {
+      spinnerWrapper.style.display = 'flex'; // 로딩 시작
+      // 2초 후에 로딩 완료
+      window.setTimeout(function () {
+        spinner.style.display = 'none'; // 로딩 완료 후에 스피너 숨기기
+        const template = `
+            <img src="/icon/loadSpinner/loadSpinnerFinish.svg" alt="완료 아이콘" style="width: 40px; height: 40px;"/>
+            <p class="tit">회원가입 완료!</p>
+            <p class="desc">지금 바로 이용권을 구독하고 티빙 오리지널과<br/>
+            최신 인기 TV프로그램, 영화를 무제한으로 만나보세요!</p>
+        `;
+        insertLast('.finish__form', template);
+        // 2초 후에 템플릿 숨기기
+        window.setTimeout(function () {
+          spinnerWrapper.style.display = 'none';
+          location.href = '/src/pages/login/index.html'; // 로그인 페이지로 이동
+        }, 2000);
+      }, 2000);
+    }
+    loadSpinner();
   } catch (error) {
+    spinnerWrapper.style.display = 'flex';
     const serverUser = await pb.collection('users').getFullList();
     let existEmail = [];
     let existId = [];
@@ -311,11 +332,65 @@ async function handleSignUp(e) {
     }
 
     if (existEmail.includes(email)) {
-      alert('이미 가입된 이메일입니다.');
+      function loadSpinner() {
+        // spinnerWrapper.style.display = 'flex'; // 로딩 시작
+        // 2초 후에 로딩 완료
+        window.setTimeout(function () {
+          spinner.style.display = 'none'; // 로딩 완료 후에 스피너 숨기기
+          const template = `
+              <img src="/icon/loadSpinner/loadSpinnerError.svg" alt="오류 아이콘" style="width: 40px; height: 40px;"/>
+              <p class="tit">이미 가입된 이메일입니다.</p>
+              <p class="desc"></p>
+          `;
+          insertLast('.finish__form', template);
+          // 2초 후에 템플릿 숨기기
+          window.setTimeout(function () {
+            spinnerWrapper.style.display = 'none';
+            location.reload();
+          }, 2000);
+        }, 2000);
+      }
+      loadSpinner();
     } else if (existId.includes(userId)) {
-      alert('이미 사용중인 아이디입니다.');
+      function loadSpinner() {
+        // spinnerWrapper.style.display = 'flex'; // 로딩 시작
+        // 2초 후에 로딩 완료
+        window.setTimeout(function () {
+          spinner.style.display = 'none'; // 로딩 완료 후에 스피너 숨기기
+          const template = `
+              <img src="/icon/loadSpinner/loadSpinnerError.svg" alt="오류 아이콘" style="width: 40px; height: 40px;"/>
+              <p class="tit">이미 가입된 아이디입니다.</p>
+              <p class="desc"></p>
+          `;
+          insertLast('.finish__form', template);
+          // 2초 후에 템플릿 숨기기
+          window.setTimeout(function () {
+            spinnerWrapper.style.display = 'none';
+            location.reload();
+          }, 2000);
+        }, 2000);
+      }
+      loadSpinner();
     } else {
-      alert('회원가입 중 오류가 발생했습니다. 다시 시도해 주세요.');
+      function loadSpinner() {
+        // spinnerWrapper.style.display = 'flex'; // 로딩 시작
+        // 2초 후에 로딩 완료
+        window.setTimeout(function () {
+          spinner.style.display = 'none'; // 로딩 완료 후에 스피너 숨기기
+          const template = `
+              <img src="/icon/loadSpinner/loadSpinnerError.svg" alt="오류 아이콘" style="width: 40px; height: 40px;"/>
+              <p class="tit">회원가입 중 오류가 발생했습니다.</p>
+              <p class="desc"></p>
+          `;
+          insertLast('.finish__form', template);
+          // 2초 후에 템플릿 숨기기
+          window.setTimeout(function () {
+            spinnerWrapper.style.display = 'none';
+            location.reload();
+          }, 2000);
+        }, 2000);
+      }
+      loadSpinner();
     }
   }
 }
