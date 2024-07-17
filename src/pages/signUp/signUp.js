@@ -1,6 +1,5 @@
 import { getNode, getNodes, getPbImageURL, setStorage } from 'kind-tiger';
 import PocketBase from 'pocketbase';
-import downloadImage from '@/pages/signUp/downloadImage';
 import defaultAuthData from '@/api/defaultAuthData';
 import pb from '@/api/pocketbase';
 // import '../../pages/main/main'; footer 불러온거.. 경로 수정 해야함
@@ -229,6 +228,12 @@ document.querySelectorAll('.comfirm-pw-visible').forEach((icon) => {
     toggleConfirmPasswordVisibility(this);
   });
 });
+
+async function downloadImage(url) {
+  const response = await fetch(url);
+  const blob = await response.blob();
+  return blob;
+}
 
 async function handleSignUp(e) {
   e.preventDefault();
