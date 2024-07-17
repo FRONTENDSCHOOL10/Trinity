@@ -1,13 +1,13 @@
 import { insertLast, getNode } from 'kind-tiger';
-import PocketBase from 'pocketbase';
-
-const pb = new PocketBase('https://plainyogurt.pockethost.io');
+import pb from '@/api/pocketbase';
 
 // 검색 모달 렌더링 함수
 async function renderSearchModal() {
-  const records = await pb.collection('allVod').getFullList({
+  // records를 getList를 사용하여 10개의 아이템만 가져오기
+  const resultList = await pb.collection('allVod').getList(1, 10, {
     sort: '-totalSearchNum, contentName',
   });
+  const records = resultList.items;
 
   console.log(records);
 
@@ -81,6 +81,9 @@ async function renderSearchModal() {
         link.textContent = search;
         link.onclick = function (event) {
           event.preventDefault();
+
+          // searchInput에 검색어 채우기
+          searchInput.value = search;
         };
         listItem.appendChild(link);
 
@@ -165,9 +168,10 @@ async function renderSearchModal() {
       body.classList.add('stop-scrolling');
 
       // records 다시 가져오기
-      const records = await pb.collection('allVod').getFullList({
+      const resultList = await pb.collection('allVod').getList(1, 10, {
         sort: '-totalSearchNum, contentName',
       });
+      const records = resultList.items;
 
       const popularSearchItems = records
         .map(
@@ -179,6 +183,15 @@ async function renderSearchModal() {
 
       // popular-searches-list 내용 업데이트
       popularSearchesList.innerHTML = popularSearchItems;
+
+      // 인기 검색어 아이템 클릭 이벤트 핸들러 추가
+      const popularSearchItemsNodes = popularSearchesList.querySelectorAll('.popular-searches-item a');
+      popularSearchItemsNodes.forEach((node) => {
+        node.onclick = function (event) {
+          event.preventDefault();
+          searchInput.value = node.textContent;
+        };
+      });
 
       loadSearchHistory();
       updatePopularSearchesDate();
