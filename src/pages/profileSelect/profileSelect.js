@@ -72,7 +72,7 @@ async function renderProfileSelect() {
           const profileIndex = item.getAttribute('data-profile-index');
           console.log(`profileIndex:${profileIndex}`);
           localStorage.setItem('selectedProfileIndex', profileIndex);
-          window.location.href = '/src/pages/main/index.html';
+          window.location.href = '/';
         }
       });
     });
