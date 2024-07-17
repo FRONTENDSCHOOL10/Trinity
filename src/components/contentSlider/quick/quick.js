@@ -6,23 +6,46 @@ import { insertLast } from 'kind-tiger';
 
 async function renderQuickVodContentSlider() {
   const quickVodSliderTemplate = `
-  <section class="quick-lists">
-    <h3>Quick VOD</h3>
-    <div class="quick-lists__slider">
-      <div class="swiper slider-horizontal">
-        <div class="swiper-wrapper">
+    <section class="quick-lists">
+      <h3>Quick VOD</h3>
+      <div class="quick-lists__slider">
+        <div class="swiper slider-horizontal">
+          <div class="swiper-wrapper">
+            <!-- Skeleton UI -->
+            <div class="swiper-slide skeleton-quick">
+              <div class="skeleton-overlay-quick"></div>
+            </div>
+            <div class="swiper-slide skeleton-quick">
+              <div class="skeleton-overlay-quick"></div>
+            </div>
+            <div class="swiper-slide skeleton-quick">
+              <div class="skeleton-overlay-quick"></div>
+            </div>
+            <div class="swiper-slide skeleton-quick">
+              <div class="skeleton-overlay-quick"></div>
+            </div>
+            <div class="swiper-slide skeleton-quick">
+              <div class="skeleton-overlay-quick"></div>
+            </div>
+            <div class="swiper-slide skeleton-quick">
+              <div class="skeleton-overlay-quick"></div>
+            </div>
+          </div>
+          <div class="swiper-pagination"></div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
         </div>
-        <div class="swiper-pagination"></div>
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-button-next"></div>
       </div>
-    </div>
-  </section>
+    </section>
   `;
 
   insertLast(app, quickVodSliderTemplate);
 
   const quickContent = await pb.collection('quickVod').getFullList(); // SDK
+
+  document.querySelectorAll('.skeleton-quick').forEach((skeletonSlide) => {
+    skeletonSlide.parentNode.removeChild(skeletonSlide);
+  });
 
   quickContent.forEach((item) => {
     const template = `
@@ -43,7 +66,6 @@ async function renderQuickVodContentSlider() {
     slidesPerView: 2,
     slidesPerGroup: 2,
     centeredSlides: false,
-    // slidesPerGroupSkip: 0,
     grabCursor: true,
     keyboard: {
       enabled: true,
@@ -68,4 +90,5 @@ async function renderQuickVodContentSlider() {
     },
   });
 }
+
 export default renderQuickVodContentSlider;

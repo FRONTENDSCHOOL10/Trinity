@@ -2,10 +2,6 @@ import getPbImageURL from '@/api/getPbImageURL';
 import pb from '@/api/pocketbase';
 import { insertLast, insertAfter, getStorage } from 'kind-tiger';
 
-// import '/src/pages/main/main';
-
-// const app = document.getElementById('app');
-
 async function renderWatchingContentSlider() {
   const auth = await getStorage('auth');
   const selectedProfileIndex = await getStorage('selectedProfileIndex');
@@ -21,7 +17,6 @@ async function renderWatchingContentSlider() {
     }
   }
 
-  // 현재 시청중인 콘텐츠가 있는지 평가
   const ChosenProfileWatchingData = await pb.collection('userWatching').getOne(ChosenProfileWatchingDataID);
 
   if (!ChosenProfileWatchingData.currentWatching) {
@@ -34,6 +29,31 @@ async function renderWatchingContentSlider() {
       <div class="watching-lists__slider">
         <div class="swiper slider-vertical">
           <div class="swiper-wrapper">
+            <!-- Skeleton UI -->
+            <div class="swiper-slide skeleton-watching">
+              <div class="skeleton-overlay-watching"></div>
+            </div>
+            <div class="swiper-slide skeleton-watching">
+              <div class="skeleton-overlay-watching"></div>
+            </div>
+            <div class="swiper-slide skeleton-watching">
+              <div class="skeleton-overlay-watching"></div>
+            </div>
+            <div class="swiper-slide skeleton-watching">
+              <div class="skeleton-overlay-watching"></div>
+            </div>
+            <div class="swiper-slide skeleton-watching">
+              <div class="skeleton-overlay-watching"></div>
+            </div>
+            <div class="swiper-slide skeleton-watching">
+              <div class="skeleton-overlay-watching"></div>
+            </div>
+            <div class="swiper-slide skeleton-watching">
+              <div class="skeleton-overlay-watching"></div>
+            </div>
+            <div class="swiper-slide skeleton-watching">
+              <div class="skeleton-overlay-watching"></div>
+            </div>
           </div>
           <div class="swiper-pagination"></div>
           <div class="swiper-button-prev"></div>
@@ -45,19 +65,20 @@ async function renderWatchingContentSlider() {
 
   insertAfter('.must-lists', watchingContentSliderTemplate);
 
-  // 현재 시청 중 데이터 받아오기
-  // const ChosenProfileWatchingData = await pb.collection('userWatching').getOne(ChosenProfileWatchingDataID);
   let currentWatching = [];
 
   for (const key in ChosenProfileWatchingData.currentWatching) {
     currentWatching.push(key);
   }
 
-  const watchingContent = await pb.collection('allVod').getFullList(); // SDK
+  const watchingContent = await pb.collection('allVod').getFullList();
+
+  document.querySelectorAll('.skeleton-watching').forEach((skeletonSlide) => {
+    skeletonSlide.parentNode.removeChild(skeletonSlide);
+  });
 
   watchingContent.forEach((item) => {
     if (currentWatching.includes(item.contentName)) {
-      console.log(ChosenProfileWatchingData.currentWatching[item.contentName][1]);
       let template;
       if (item.isAdultOnly && item.isPlatformOnly) {
         template = `
@@ -116,7 +137,6 @@ async function renderWatchingContentSlider() {
     slidesPerView: 3,
     slidesPerGroup: 3,
     centeredSlides: false,
-    // slidesPerGroupSkip: 0,
     grabCursor: true,
     keyboard: {
       enabled: true,
@@ -140,9 +160,6 @@ async function renderWatchingContentSlider() {
       clickable: true,
     },
   });
-
-  // return watchingContent;
 }
 
-// renderWatchingContentSlider();
 export default renderWatchingContentSlider;

@@ -13,35 +13,27 @@ async function renderMustContentSlider() {
         <div class="swiper-wrapper">
           <!-- Skeleton UI -->
           <div class="swiper-slide skeleton-must">
-            <div class="skeleton-img-must"></div>
             <div class="skeleton-overlay-must"></div>
           </div>
           <div class="swiper-slide skeleton-must">
-            <div class="skeleton-img-must"></div>
             <div class="skeleton-overlay-must"></div>
           </div>
           <div class="swiper-slide skeleton-must">
-            <div class="skeleton-img-must"></div>
             <div class="skeleton-overlay-must"></div>
           </div>
           <div class="swiper-slide skeleton-must">
-            <div class="skeleton-img-must"></div>
             <div class="skeleton-overlay-must"></div>
           </div>
           <div class="swiper-slide skeleton-must">
-            <div class="skeleton-img-must"></div>
             <div class="skeleton-overlay-must"></div>
           </div>
           <div class="swiper-slide skeleton-must">
-            <div class="skeleton-img-must"></div>
             <div class="skeleton-overlay-must"></div>
           </div>
           <div class="swiper-slide skeleton-must">
-            <div class="skeleton-img-must"></div>
             <div class="skeleton-overlay-must"></div>
           </div>
           <div class="swiper-slide skeleton-must">
-            <div class="skeleton-img-must"></div>
             <div class="skeleton-overlay-must"></div>
           </div>
         </div>

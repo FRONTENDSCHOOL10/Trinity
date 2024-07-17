@@ -12,16 +12,8 @@ async function renderMainVisualSlider() {
             <div class="swiper-wrapper">
                 <!-- Skeleton UI -->
                 <div class="main-banner-slide swiper-slide skeleton-main-visual">
-                  <div class="skeleton-img-main-visual"></div>
                   <div class="skeleton-overlay"></div>
                 </div>
-                <div class="main-banner-slide swiper-slide skeleton-main-visual">
-                  <div class="skeleton-img-main-visual"></div>
-                  <div class="skeleton-overlay"></div>
-                </div>
-                <div class="main-banner-slide swiper-slide skeleton-main-visual">
-                  <div class="skeleton-img-main-visual"></div>
-                  <div class="skeleton-overlay"></div>
                 </div>
             </div>
         </div>
