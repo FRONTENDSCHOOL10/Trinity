@@ -131,12 +131,12 @@
   
         .swiper-button-prev {
           left: -($--space-xxl);
-          @include swiperPrevButtonBackground('/public/icon/main/slidePrev.svg');
+          @include swiperPrevButtonBackground('/icon/main/slidePrev.svg');
         }
   
         .swiper-button-next {
           right: -($--space-xxl);
-          @include swiperNextButtonBackground('/public/icon/main/slideNext.svg');
+          @include swiperNextButtonBackground('/icon/main/slideNext.svg');
         }
   
         .swiper-button-disabled {
@@ -191,12 +191,12 @@
     
         .swiper-button-prev {
           left: -($--space-xxxl);
-          @include swiperPrevButtonBackground('/public/icon/main/slidePrev.svg');
+          @include swiperPrevButtonBackground('/icon/main/slidePrev.svg');
         }
     
         .swiper-button-next {
           right: -($--space-xxxl);
-          @include swiperNextButtonBackground('/public/icon/main/slideNext.svg');
+          @include swiperNextButtonBackground('/icon/main/slideNext.svg');
         }
     
         .swiper-button-disabled {

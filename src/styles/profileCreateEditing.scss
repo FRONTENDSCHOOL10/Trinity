@@ -481,7 +481,7 @@ $--desk-btnProfile-h: 5.375rem;
       cursor: pointer;
       color: $--default-text-color;
       background-color: transparent;
-      background-image: url('/public/icon/header/iconCloseDefault.svg');
+      background-image: url('/icon/header/iconCloseDefault.svg');
       background-repeat: no-repeat;
       background-size: cover;
       right: 2%;
@@ -499,7 +499,7 @@ $--desk-btnProfile-h: 5.375rem;
 
       &:hover {
         color: $--white;
-        background-image: url('/public/icon/header/iconCloseHover.svg');
+        background-image: url('/icon/header/iconCloseHover.svg');
       }
     }
 

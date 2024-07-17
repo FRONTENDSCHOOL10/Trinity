@@ -144,14 +144,14 @@ body {
         }
 
         .adult-only {
-          background-image:url('/public/icon/main/adultOnly.svg');
+          background-image:url('/icon/main/adultOnly.svg');
           background-repeat: no-repeat;
           background-position: center center;
           background-size: contain;
         }
 
         .original {
-          background-image:url('/public/icon/main/original.svg');
+          background-image:url('/icon/main/original.svg');
           background-repeat: no-repeat;
           background-position: center center;
           background-size: contain;
@@ -263,12 +263,12 @@ body {
   
         .swiper-button-prev {
           left: -($--space-xxl);
-          @include swiperPrevButtonBackground('/public/icon/main/icon_slide_left.svg');
+          @include swiperPrevButtonBackground('/icon/main/icon_slide_left.svg');
         }
   
         .swiper-button-next {
           right: -($--space-xxl);
-          @include swiperNextButtonBackground('/public/icon/main/icon_slide_right.svg');
+          @include swiperNextButtonBackground('/icon/main/icon_slide_right.svg');
         }
   
         .swiper-button-disabled {
@@ -348,12 +348,12 @@ body {
     
         .swiper-button-prev {
           left: -($--space-xxxl);
-          @include swiperPrevButtonBackground('/public/icon/main/icon_slide_left.svg');
+          @include swiperPrevButtonBackground('/icon/main/icon_slide_left.svg');
         }
     
         .swiper-button-next {
           right: -($--space-xxxl);
-          @include swiperNextButtonBackground('/public/icon/main/icon_slide_right.svg');
+          @include swiperNextButtonBackground('/icon/main/icon_slide_right.svg');
         }
     
         .swiper-button-disabled {

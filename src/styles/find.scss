@@ -365,7 +365,7 @@ $--desktop-log-btn-h: 5.375rem;
                       opacity: 1;
                   }
                   @include position(absolute, 0.875rem 1.25rem null null);
-                  @include background-image(url("/public/icon/find/btnClear.svg"));
+                  @include background-image(url("/icon/find/btnClear.svg"));
                   @include size(1.25rem, 1.25rem);
                   border: none;
                   @media (min-width: $--desktop){

@@ -68,7 +68,7 @@ async function renderProfileCreate() {
                       <figcaption class="sr-only"></figcaption>
                   </figure>
                   <span class="bg"></span>
-                  <span class="icon"><img src="/public/icon/profile/iconEditProfile.svg" alt="편집 아이콘"></span>
+                  <span class="icon"><img src="/icon/profile/iconEditProfile.svg" alt="편집 아이콘"></span>
               </button>
               <p class="name profileName"></p>
           </li>
