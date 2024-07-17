@@ -50,13 +50,13 @@ const initializeSwiper = () => {
         spaceBetween: 10,
       },
       768: {
-        spaceBetween: 20,
+        spaceBetween: 15,
       },
       1024: {
-        spaceBetween: 20,
+        spaceBetween: 15,
       },
       1920: {
-        spaceBetween: 30,
+        spaceBetween: 20,
       },
     },
     // centeredSlides: true,
