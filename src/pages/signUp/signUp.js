@@ -303,7 +303,7 @@ async function handleSignUp(e) {
     function loadSpinner() {
       spinnerWrapper.style.display = 'flex'; // 로딩 시작
       // 2초 후에 로딩 완료
-      window.setTimeout(function() {
+      window.setTimeout(function () {
         spinner.style.display = 'none'; // 로딩 완료 후에 스피너 숨기기
         const template = `
             <img src="/icon/loadSpinner/loadSpinnerFinish.svg" alt="완료 아이콘" style="width: 40px; height: 40px;"/>
@@ -313,39 +313,69 @@ async function handleSignUp(e) {
         `;
         insertLast('.finish__form', template);
         // 2초 후에 템플릿 숨기기
-        window.setTimeout(function() {
-            spinnerWrapper.style.display = 'none';
-            location.href = '/src/pages/login/index.html'; // 로그인 페이지로 이동
+        window.setTimeout(function () {
+          spinnerWrapper.style.display = 'none';
+          location.href = '/src/pages/login/index.html'; // 로그인 페이지로 이동
         }, 2000);
       }, 2000);
     }
     loadSpinner();
   } catch (error) {
-    if (error.message.includes('already exists')) {
+    spinnerWrapper.style.display = 'flex';
+    const serverUser = await pb.collection('users').getFullList();
+    let existEmail = [];
+    let existId = [];
+
+    for (const userdata of serverUser) {
+      existEmail.push(userdata.email);
+      existId.push(userdata.username);
+    }
+
+    if (existEmail.includes(email)) {
       function loadSpinner() {
-        spinnerWrapper.style.display = 'flex'; // 로딩 시작
+        // spinnerWrapper.style.display = 'flex'; // 로딩 시작
         // 2초 후에 로딩 완료
-        window.setTimeout(function() {
+        window.setTimeout(function () {
           spinner.style.display = 'none'; // 로딩 완료 후에 스피너 숨기기
           const template = `
               <img src="/icon/loadSpinner/loadSpinnerError.svg" alt="오류 아이콘" style="width: 40px; height: 40px;"/>
-              <p class="tit">이미 가입된 계정입니다.</p>
+              <p class="tit">이미 가입된 이메일입니다.</p>
               <p class="desc"></p>
           `;
           insertLast('.finish__form', template);
           // 2초 후에 템플릿 숨기기
-          window.setTimeout(function() {
-              spinnerWrapper.style.display = 'none';
-              location.reload();
+          window.setTimeout(function () {
+            spinnerWrapper.style.display = 'none';
+            location.reload();
+          }, 2000);
+        }, 2000);
+      }
+      loadSpinner();
+    } else if (existId.includes(userId)) {
+      function loadSpinner() {
+        // spinnerWrapper.style.display = 'flex'; // 로딩 시작
+        // 2초 후에 로딩 완료
+        window.setTimeout(function () {
+          spinner.style.display = 'none'; // 로딩 완료 후에 스피너 숨기기
+          const template = `
+              <img src="/icon/loadSpinner/loadSpinnerError.svg" alt="오류 아이콘" style="width: 40px; height: 40px;"/>
+              <p class="tit">이미 가입된 아이디입니다.</p>
+              <p class="desc"></p>
+          `;
+          insertLast('.finish__form', template);
+          // 2초 후에 템플릿 숨기기
+          window.setTimeout(function () {
+            spinnerWrapper.style.display = 'none';
+            location.reload();
           }, 2000);
         }, 2000);
       }
       loadSpinner();
     } else {
       function loadSpinner() {
-        spinnerWrapper.style.display = 'flex'; // 로딩 시작
+        // spinnerWrapper.style.display = 'flex'; // 로딩 시작
         // 2초 후에 로딩 완료
-        window.setTimeout(function() {
+        window.setTimeout(function () {
           spinner.style.display = 'none'; // 로딩 완료 후에 스피너 숨기기
           const template = `
               <img src="/icon/loadSpinner/loadSpinnerError.svg" alt="오류 아이콘" style="width: 40px; height: 40px;"/>
@@ -354,9 +384,9 @@ async function handleSignUp(e) {
           `;
           insertLast('.finish__form', template);
           // 2초 후에 템플릿 숨기기
-          window.setTimeout(function() {
-              spinnerWrapper.style.display = 'none';
-              location.reload();
+          window.setTimeout(function () {
+            spinnerWrapper.style.display = 'none';
+            location.reload();
           }, 2000);
         }, 2000);
       }
