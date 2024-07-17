@@ -5,9 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>회원가입 페이지</title>
     <script src="/src/pages/signUp/signUp.js" type="module"></script>
+    <link rel="stylesheet" href="/src/styles/loadSpinner.scss" />
+    <link rel="stylesheet" href="/src/styles/find.scss">
     <link rel="stylesheet" href="/src/styles/signUp.scss">
 </head>
 <body>
+    <!-- 로딩 스피너 -->
+    <div id="spinner-wrapper" class="spinner__wrapper">
+      <div id="spinner" class="spinner"></div>
+      <div class="finish__form"></div>
+    </div>
     <div class="sign-up-container">
         <h1 class="tving-sign-up-title">티빙 회원가입</h1>
         <h3 class="tving-sign-up-subtitle">아이디와 이메일로 간편하게 티빙을 시작하세요!</h3>
