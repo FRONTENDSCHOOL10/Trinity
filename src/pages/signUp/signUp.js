@@ -2,6 +2,7 @@ import { getNode, getNodes, getPbImageURL, setStorage, insertLast } from 'kind-t
 import PocketBase from 'pocketbase';
 import defaultAuthData from '@/api/defaultAuthData';
 import pb from '@/api/pocketbase';
+import downloadImage from '@/api/downloadImage';
 // import '../../pages/main/main'; footer 불러온거.. 경로 수정 해야함
 
 const form = getNode('form');
@@ -229,12 +230,6 @@ document.querySelectorAll('.comfirm-pw-visible').forEach((icon) => {
   });
 });
 
-async function downloadImage(url) {
-  const response = await fetch(url);
-  const blob = await response.blob();
-  return blob;
-}
-
 async function handleSignUp(e) {
   e.preventDefault();
 
@@ -333,7 +328,7 @@ async function handleSignUp(e) {
         window.setTimeout(function() {
           spinner.style.display = 'none'; // 로딩 완료 후에 스피너 숨기기
           const template = `
-              <img src="/public/icon/loadSpinner/loadSpinnerError.svg" alt="오류 아이콘" style="width: 40px; height: 40px;"/>
+              <img src="/icon/loadSpinner/loadSpinnerError.svg" alt="오류 아이콘" style="width: 40px; height: 40px;"/>
               <p class="tit">이미 가입된 계정입니다.</p>
               <p class="desc"></p>
           `;
@@ -353,7 +348,7 @@ async function handleSignUp(e) {
         window.setTimeout(function() {
           spinner.style.display = 'none'; // 로딩 완료 후에 스피너 숨기기
           const template = `
-              <img src="/public/icon/loadSpinner/loadSpinnerError.svg" alt="오류 아이콘" style="width: 40px; height: 40px;"/>
+              <img src="/icon/loadSpinner/loadSpinnerError.svg" alt="오류 아이콘" style="width: 40px; height: 40px;"/>
               <p class="tit">회원가입 중 오류가 발생했습니다.</p>
               <p class="desc"></p>
           `;
