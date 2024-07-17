@@ -24,24 +24,6 @@ if (!localStorage.getItem('selectedProfileIndex')) {
 }
 
 /* -------------------------------------------------------------------------- */
-/*                                회원가입으로 옮길 코드                        */
-/* -------------------------------------------------------------------------- */
-// const defaultUserInfo = {
-//   isActive1: true,
-//   isLocked1: false,
-//   profileName1: '프로필1',
-//   profileImg1:
-// };
-
-// const data = {
-//     isActive: true,
-//     isLocked: true,
-//     profileName: 'test',
-//   };
-
-// const record = await pb.collection('users').update('RECORD_ID', data);
-
-/* -------------------------------------------------------------------------- */
 /*                                  헤더 렌더링 코드                           */
 /* -------------------------------------------------------------------------- */
 headerScript();
@@ -240,9 +222,7 @@ function selectImg() {
 }
 
 async function createProfile() {
-  console.log('생성');
   profileImage = await downloadImage(profileImageUrl);
-  console.log(profileImage);
 
   const modiUser = new FormData();
 

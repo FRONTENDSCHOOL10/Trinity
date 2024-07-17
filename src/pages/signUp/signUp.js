@@ -282,15 +282,15 @@ async function handleSignUp(e) {
     newUser.append('profileImg1', imgBlob, 'profileImg1.jpg');
     newUser.append('isActive1', true);
     newUser.append('isLocked1', false);
-    newUser.append('profileName2', '프로필2');
+    newUser.append('profileName2', '새로운 프로필');
     newUser.append('profileImg2', imgBlob, 'profileImg2.jpg');
     newUser.append('isActive2', false);
     newUser.append('isLocked2', false);
-    newUser.append('profileName3', '프로필3');
+    newUser.append('profileName3', '새로운 프로필');
     newUser.append('profileImg3', imgBlob, 'profileImg3.jpg');
     newUser.append('isActive3', false);
     newUser.append('isLocked3', false);
-    newUser.append('profileName4', '프로필4');
+    newUser.append('profileName4', '새로운 프로필');
     newUser.append('profileImg4', imgBlob, 'profileImg4.jpg');
     newUser.append('isActive4', false);
     newUser.append('isLocked4', false);

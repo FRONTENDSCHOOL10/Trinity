@@ -122,13 +122,15 @@ $--desk-btnProfile-h: 5.375rem;
 //profile
 .profile-create__wrap {
     // font-size: .75rem;
-    height: 70vh;
+    height: 65vh;
     @include flexbox(column, nowrap, center, center);
     user-select:none;
     @media (min-width:$--tablet) and (max-width:($--desktop - 1)){
+        height: 80vh;
         font-size: 1rem;
     }
     @media (min-width: $--desktop){
+        height: 100vh;
         font-size: 1.75rem;
     }
     &__container {
@@ -351,7 +353,24 @@ $--desk-btnProfile-h: 5.375rem;
                     height: 100px;
                 }
             }
+
+            //editing 버튼 스타일
+            
         }
+    }
+}
+
+.btnCreateEdit, .btnCancleEdit, .btnDeleteEdit {
+    width: 85px;
+    height: 40px;
+    @media (min-width:$--tablet) and (max-width:($--desktop - 1)){
+        font-size: $--font-size-m;
+        width: 128px;
+        height: 60px;
+    }
+    @media (min-width: $--desktop){
+        width: 235px;
+        height: 100px;
     }
 }
 
