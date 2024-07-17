@@ -1,13 +1,13 @@
 import { insertLast, getNode } from 'kind-tiger';
-import PocketBase from 'pocketbase';
-
-const pb = new PocketBase('https://plainyogurt.pockethost.io');
+import pb from '@/api/pocketbase';
 
 // 검색 모달 렌더링 함수
 async function renderSearchModal() {
-  const records = await pb.collection('allVod').getFullList({
-    sort: '-views, contentName',
+  // records를 getList를 사용하여 10개의 아이템만 가져오기
+  const resultList = await pb.collection('allVod').getList(1, 10, {
+    sort: '-totalSearchNum, contentName',
   });
+  const records = resultList.items;
 
   console.log(records);
 
@@ -54,6 +54,7 @@ async function renderSearchModal() {
   const searchSubmitBtn = getNode('#searchSubmitBtn');
   const searchHistoryList = getNode('.search-history-list');
   const popularSearchesDate = getNode('.popular-searches-date');
+  const popularSearchesList = getNode('.popular-searches-list');
 
   // 인기 검색어 날짜 업데이트 함수
   function updatePopularSearchesDate() {
@@ -80,6 +81,9 @@ async function renderSearchModal() {
         link.textContent = search;
         link.onclick = function (event) {
           event.preventDefault();
+
+          // searchInput에 검색어 채우기
+          searchInput.value = search;
         };
         listItem.appendChild(link);
 
@@ -151,7 +155,7 @@ async function renderSearchModal() {
   const header = document.querySelector('.header');
 
   // 검색 버튼 클릭 이벤트 핸들러
-  searchBtn.onclick = function () {
+  searchBtn.onclick = async function () {
     if (searchModal.style.display === 'block') {
       searchModal.style.display = 'none';
       body.classList.remove('stop-scrolling');
@@ -162,6 +166,33 @@ async function renderSearchModal() {
     } else {
       searchModal.style.display = 'block';
       body.classList.add('stop-scrolling');
+
+      // records 다시 가져오기
+      const resultList = await pb.collection('allVod').getList(1, 10, {
+        sort: '-totalSearchNum, contentName',
+      });
+      const records = resultList.items;
+
+      const popularSearchItems = records
+        .map(
+          (record) => `
+        <li class="popular-searches-item"><a href="#">${record.contentName}</a></li>
+        `
+        )
+        .join('');
+
+      // popular-searches-list 내용 업데이트
+      popularSearchesList.innerHTML = popularSearchItems;
+
+      // 인기 검색어 아이템 클릭 이벤트 핸들러 추가
+      const popularSearchItemsNodes = popularSearchesList.querySelectorAll('.popular-searches-item a');
+      popularSearchItemsNodes.forEach((node) => {
+        node.onclick = function (event) {
+          event.preventDefault();
+          searchInput.value = node.textContent;
+        };
+      });
+
       loadSearchHistory();
       updatePopularSearchesDate();
       header.style.background = '#000000';
