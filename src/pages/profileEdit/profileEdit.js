@@ -52,7 +52,7 @@ async function renderProfileEdit() {
         if (isAddable == true) {
           const template = `
                         <li class="profile__form--item profileItem" data-index="${addableIndex}">
-                            <a class="item__form" href="/src/pages/profileEditing/index.html" role="button">
+                            <a class="item__form" href="/src/pages/profileCreate/index.html" role="button">
                                 <figure class="user-profile">
                                     <span className="addable" aria-hidden="true"></span>
                                     <figcaption class="sr-only">프로필 추가 가능</figcaption>
