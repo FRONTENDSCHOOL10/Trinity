@@ -59,16 +59,16 @@ const initializeSwiper = () => {
         spaceBetween: 30,
       },
     },
-    centeredSlides: true,
+    // centeredSlides: true,
     autoplay: {
       delay: 0,
       disableOnInteraction: false,
     },
     loop: true,
+    loopAdditionalSlides: 4,
     slidesPerView: 'auto',
     speed: 50000,
     allowTouchMove: false,
-    loopedSlides: 5,
     slidesPerGroup: 4,
     freeMode: {
       enabled: true,
@@ -92,22 +92,22 @@ const initializeSwiper = () => {
         spaceBetween: 20,
       },
     },
-    initialSlide: 2, // Adjust this to set different starting point
-    centeredSlides: true,
+    initialSlide: 2,
     autoplay: {
       delay: 0,
       disableOnInteraction: false,
     },
     loop: true,
+    loopAdditionalSlides: 4,
     slidesPerView: 'auto',
     speed: 30000,
     allowTouchMove: false,
-    loopedSlides: 5,
     slidesPerGroup: 4,
     freeMode: {
       enabled: true,
       momentum: false,
     },
+    loopFillGroupWithBlank: true, // 추가된 옵션
   });
 };
 
@@ -152,15 +152,15 @@ const initializeAnimations = () => {
       {
         y: 50,
         opacity: 0,
-        duration: 2,
+        duration: 1,
         ease: 'power2.out',
       },
-      '-=1.5'
+      '-=1'
     )
     .from('.onboarding__button', {
       y: 50,
       opacity: 0,
-      duration: 2,
+      duration: 1,
       ease: 'power2.out',
     });
 
@@ -192,7 +192,7 @@ const initializeAnimations = () => {
       {
         y: 50,
         opacity: 0,
-        duration: 2,
+        duration: 1,
         ease: 'power2.out',
       },
       '-=1.5'
@@ -200,7 +200,7 @@ const initializeAnimations = () => {
     .from('.original__contents', {
       y: 50,
       opacity: 0,
-      duration: 2,
+      duration: 1,
       ease: 'power2.out',
     });
 
@@ -244,25 +244,21 @@ const initializeAnimations = () => {
     .from('.enroll__logo', {
       y: 50,
       opacity: 0,
-      duration: 2,
+      duration: 1,
       ease: 'power2.out',
     })
     .from('.enroll__title', {
       y: 50,
       opacity: 0,
-      duration: 2,
+      duration: 1,
       ease: 'power2.out',
     })
-    .from(
-      '.enroll__button',
-      {
-        y: 50,
-        opacity: 0,
-        duration: 2,
-        ease: 'power2.out',
-      },
-      '-=1.5'
-    );
+    .from('.enroll__button', {
+      y: 50,
+      opacity: 0,
+      duration: 0.5,
+      ease: 'power2.out',
+    });
 };
 
 // DOMContentLoaded 이벤트가 발생하면 실행

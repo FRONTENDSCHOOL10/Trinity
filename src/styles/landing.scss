@@ -265,7 +265,8 @@
 
 .scroll-section-2 {
   margin-top: 3rem;
-  height: 50vh;
+  height: 60vh;
+  overflow: hidden;
 }
 
 .customized {
@@ -277,6 +278,7 @@
   margin-top: 10rem;
 
   &__container {
+    // height: auto;
     .swiper-container {
       width: 30%;
       height: 100%;
@@ -460,24 +462,6 @@
       font-weight: 700;
       line-height: 140%;
     }
-
-    // &__button {
-    //   min-width: 17.6875rem;
-    //   height: 3rem;
-    //   &-logo {
-    //     width: 2.25rem;
-    //     padding: 0 0.25rem;
-    //     margin-bottom: 0.5rem;
-    //     img {
-    //       width: 100%;
-    //     }
-    //   }
-
-    //   &-content {
-    //     font-size: 1rem;
-    //     padding-right: 1rem;
-    //   }
-    // }
   }
   @include desktopW() {
     &__logo {
