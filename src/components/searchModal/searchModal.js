@@ -6,7 +6,7 @@ const pb = new PocketBase('https://plainyogurt.pockethost.io');
 // 검색 모달 렌더링 함수
 async function renderSearchModal() {
   const records = await pb.collection('allVod').getFullList({
-    sort: '-views, contentName',
+    sort: '-totalSearchNum, contentName',
   });
 
   console.log(records);
@@ -54,6 +54,7 @@ async function renderSearchModal() {
   const searchSubmitBtn = getNode('#searchSubmitBtn');
   const searchHistoryList = getNode('.search-history-list');
   const popularSearchesDate = getNode('.popular-searches-date');
+  const popularSearchesList = getNode('.popular-searches-list');
 
   // 인기 검색어 날짜 업데이트 함수
   function updatePopularSearchesDate() {
@@ -151,7 +152,7 @@ async function renderSearchModal() {
   const header = document.querySelector('.header');
 
   // 검색 버튼 클릭 이벤트 핸들러
-  searchBtn.onclick = function () {
+  searchBtn.onclick = async function () {
     if (searchModal.style.display === 'block') {
       searchModal.style.display = 'none';
       body.classList.remove('stop-scrolling');
@@ -162,6 +163,23 @@ async function renderSearchModal() {
     } else {
       searchModal.style.display = 'block';
       body.classList.add('stop-scrolling');
+
+      // records 다시 가져오기
+      const records = await pb.collection('allVod').getFullList({
+        sort: '-totalSearchNum, contentName',
+      });
+
+      const popularSearchItems = records
+        .map(
+          (record) => `
+        <li class="popular-searches-item"><a href="#">${record.contentName}</a></li>
+        `
+        )
+        .join('');
+
+      // popular-searches-list 내용 업데이트
+      popularSearchesList.innerHTML = popularSearchItems;
+
       loadSearchHistory();
       updatePopularSearchesDate();
       header.style.background = '#000000';
