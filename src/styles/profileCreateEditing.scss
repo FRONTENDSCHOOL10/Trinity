@@ -1,0 +1,552 @@
+@import '/src/styles/utils/_reset';
+@import '/src/styles/utils/_global';
+@import '/src/styles/layout/header';
+@import '/src/styles/layout/footer';
+@import '/src/styles/find'; // find의 일부사용 중
+
+$--space-xxs: 0.25rem;
+$--space-xs: 0.5rem;
+$--space-s: 0.75rem;
+$--space-m: 1rem;
+$--space-lg: 1.75rem;
+$--space-xl: 2.25rem;
+$--space-xxl: 2.5rem;
+$--space-xxxl: 4.375rem;
+$--font-size-s: 0.75rem;
+$--font-size-m: 1rem;
+$--font-size-lg:1.33rem; 
+$--font-size-xl: 1.78rem;
+$--font-size-xxl: 2.125rem;
+$--font-size-xxxl: 2.875rem;
+$--font-size-xxxxl: 4.375rem;
+$--mobile-icon-size: 1.125rem;
+$--tablet-icon-size: 1.5rem;
+$--desktop-icon-size: 2.5rem;
+$--modal-width-mobile: 200px;
+$--modal-width-tablet: 280px;
+$--modal-width-desktop: 300px;
+$--modal-padding-mobile: 1rem;
+$--modal-padding-tablet: 1.25rem;
+$--modal-padding-desktop: 2rem;
+$--modal-background-color: #212121;
+$--modal-border-color: #4d4d4d;
+$--modal-line-color: #2e2e2e;
+$--modal-focus-color: #2e2e2e;
+$--imglist-modal-line-color: #a6a6a6;
+$--default-text-color: #a6a6a6;
+
+// Profile Size
+$--mo-proImg: 7.125rem;
+$--tablet-proImg: 8.25rem;
+$--desk-proImg: 14.625rem;
+
+// Button Size
+$--mo-btnProfile-w: 8.4375rem;
+$--mo-btnProfile-h: 2.625rem;
+$--tablet-btnProfile-w: 9.75rem;
+$--tablet-btnProfile-h: 3.125rem;
+$--desk-btnProfile-w: 17rem;
+$--desk-btnProfile-h: 5.375rem;
+
+@mixin text($size, $lineHeight, $weight:400) {
+  font-size: $size;
+  line-height: $lineHeight;
+  font-weight: $weight;
+}
+
+// Buttons style
+@mixin profileBtn($w, $h, $f-size, $m-top, $bg){
+    font-family: 'Pretendard Variable', Pretendard, sans-serif;
+    width: $w;
+    height: $h;
+    font-size: $f-size;
+    border-radius: .25rem;
+    margin: $m-top auto 0 auto;
+    background-color: $bg;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+// Size (width, inline-size, height, block-size)
+@mixin squareSize($size){
+    @include inline-size($size);
+    @include block-size($size);
+}
+
+// 버튼 컴포넌트
+.button--gray-sm {
+    @include profileBtn($--mo-btnProfile-w, $--mo-btnProfile-h, .75rem, 2rem, transparent);
+    @media (min-width:$--tablet) and (max-width:($--desktop - 1)){
+        @include profileBtn($--tablet-btnProfile-w, $--tablet-btnProfile-h, 1rem, 2.75rem, transparent);
+    }
+    @media (min-width: $--desktop){
+        @include profileBtn($--desk-btnProfile-w, $--desk-btnProfile-h, 1.75rem, 4.125rem, transparent);
+    }
+    color: $--gray-300;
+    border: .0625rem solid $--gray-600;
+    transition: .3s;
+    &:hover {
+        border:solid $--white;
+        color: $--white;
+    }
+    &:active {
+        border:solid $--white;
+        color: $--white;
+    }
+}
+
+.button--white-sm {
+    @include profileBtn($--mo-btnProfile-w, $--mo-btnProfile-h, .75rem, 2rem, $--gray-100);
+    @media (min-width:$--tablet) and (max-width:($--desktop - 1)){
+        @include profileBtn($--tablet-btnProfile-w, $--tablet-btnProfile-h, 1rem, 2.75rem, $--gray-100);
+    }
+    @media (min-width: $--desktop){
+        @include profileBtn($--desk-btnProfile-w, $--desk-btnProfile-h, 1.75rem, 4.125rem, $--gray-100);
+    }
+    color: $--black;
+    border: 0px;
+    transition: .3s;
+    &:hover {
+        background-color: $--white;
+    }
+    &:active {
+        background-color: $--white;
+    }
+}
+
+//profile
+.profile-create__wrap {
+    // font-size: .75rem;
+    height: 65vh;
+    @include flexbox(column, nowrap, center, center);
+    user-select:none;
+    @media (min-width:$--tablet) and (max-width:($--desktop - 1)){
+        height: 80vh;
+        font-size: 1rem;
+    }
+    @media (min-width: $--desktop){
+        height: 100vh;
+        font-size: 1.75rem;
+    }
+    &__container {
+        @include flexbox(column, nowrap, center, center);
+        position: relative;
+        align-content: center;
+        padding: 0 2.125rem;
+        margin: 0 auto;
+        color: $--white;
+        font-size: $--label-small;
+        & .head__form {
+            text-align: center;
+            @include headTit($--heading-medium, 2rem);
+            & .desc {
+                font-size: $--paragraph-small;
+                color: $--gray-400;
+                padding-top: 1rem;
+                font-weight: 400;
+            }
+            @media (min-width:$--tablet) and (max-width:($--desktop - 1)){
+                @include headTit($--heading-x-l, 1.75rem);
+                & .desc {
+                    font-size: $--label-medium;
+                }
+            }
+            @media (min-width: $--desktop){
+                @include headTit($--heading-x-x-x-l, 2.75rem);
+                & .desc {
+                    font-size: $--label-x-l;
+                }
+            }
+        }
+        & .profile-create__form {
+            @include flexbox(column, wrap, center, center, 1rem);
+            @media (min-width:$--tablet) and (max-width:($--desktop - 1)){
+                gap: 2rem;
+            }
+            @media (min-width: $--desktop){
+                gap: 3.25rem;
+            }
+            &--item {
+                text-align: center;
+                & .item__form:hover {
+                    // li 전체를 hover시 item__form만 적용되도록
+                    transform: translateY(-5%);
+                }
+                & .item__form {
+                    transition: all 0.3s ease 0s;
+                    @include squareSize($--mo-proImg);
+                    border-radius: .25rem;
+                    overflow: hidden;
+                    display: block;
+                    position: relative;
+                    margin-bottom: 1.5rem;
+                    border: none;
+                    cursor: pointer;
+                    @media (min-width:$--tablet) and (max-width:($--desktop - 1)){
+                        @include squareSize($--tablet-proImg);
+                    }
+                    @media (min-width: $--desktop){
+                        @include squareSize($--desk-proImg);
+                        margin-bottom: 1rem;
+                    }
+                    & .user-profile {
+                        @include flexbox(row, nowrap, center, center);
+                        @include position(absolute);
+                        @include squareSize(100%);
+                        & img {
+                            @include squareSize(110%);
+                        }
+                    }
+                    & .bg {
+                        @include flexbox(row, nowrap, center, center);
+                        @include position(absolute);
+                        @include squareSize(100%);
+                        background: rgba($color: $--black, $alpha: .7);
+                    }
+                    & .icon {
+                        transition: all 0.3s ease 0s;
+                        @include flexbox(row, nowrap, center, center);
+                        @include position(absolute);
+                        @include squareSize(100%);
+                        & img {
+                            @include squareSize(3.125rem);
+                            @media (min-width: $--desktop){
+                                @include squareSize(3.75rem);
+                            }
+                            cursor: pointer;
+                        }
+                    }
+                }
+                & .name {
+                    color: $--gray-300;
+                    font-size: $--label-small;
+                    @media (min-width:$--tablet) and (max-width:($--desktop - 1)){
+                        font-size: $--label-medium;
+                    }
+                    @media (min-width: $--desktop){
+                        font-size: $--label-x-l;
+                    }
+                }
+            }
+
+            &--name {
+                @include flexbox(column, wrap, center, start, 0.5rem);
+                input {
+                    border-width: 0;
+                    outline: none;
+                    position: relative;
+                    @include loginputStyle($--mobile-log-input-w, $--mobile-log-input-h, $--brand-dark-bg-1, .75rem, .25rem, 1rem);
+                    @media (min-width:$--tablet) and (max-width:($--desktop - 1)){
+                        @include loginputStyle($--tablet-log-input-w, $--tablet-log-input-h, $--brand-dark-bg-1, 1rem, .25rem, 1rem);
+                    }
+                    @media (min-width: $--desktop){
+                        @include loginputStyle($--desktop-log-input-w, $--desktop-log-input-h, $--brand-dark-bg-1, 1.5rem, .25rem, 1.5rem);
+                    }
+                }
+
+                p {
+                    color: $--gray-400;
+                    font-size: $--font-size-s;
+                    margin-bottom: 0.5rem;
+                    @media (min-width:$--tablet) and (max-width:($--desktop - 1)){
+                        font-size: $--font-size-m;
+                    }
+                    @media (min-width: $--desktop){
+                        font-size: $--font-size-lg;
+                    }
+                }
+            }
+
+            &--lock {
+                width: 100%;
+                @include flexbox(row, wrap, space-between, center);
+                p {
+                    font-size: $--font-size-s;
+                    color: $--gray-200;
+                    @media (min-width:$--tablet) and (max-width:($--desktop - 1)){
+                        font-size: $--font-size-m;
+                    }
+                    @media (min-width: $--desktop){
+                        font-size: $--font-size-xl;
+                    }
+                }
+
+                label {
+                    cursor: pointer;
+                    display: block;
+                    position: relative;
+                    width: 28px;
+                    height: 16px;
+                    background: $--gray-400;
+                    border-radius: 60px;
+                    transition: background 0.4s;
+                    @media (min-width:$--tablet) and (max-width:($--desktop - 1)){
+                        width: 35px;
+                        height: 22px;
+                    }
+                    @media (min-width: $--desktop){
+                        width: 60px;
+                        height: 34px;
+                    }
+                }
+
+                label::after {
+                    content: "";
+                    position: absolute;
+                    left: 2.5px;
+                    top: 50%;
+                    width: 12px;
+                    height: 12px;
+                    border-radius: 100%;
+                    background-color: #fff;
+                    transform: translateY(-50%);
+                    box-shadow: 1px 3px 4px rgba(0,0,0,0.1);
+                    transition: all 0.4s;
+                    @media (min-width:$--tablet) and (max-width:($--desktop - 1)){
+                        width: 18px;
+                        height: 18px;
+                    }
+                    @media (min-width: $--desktop){
+                        width: 28px;
+                        height: 28px;
+                    }
+                }
+
+                #handleLock:checked + label {
+                    background:#008FE7;
+                }
+
+                #handleLock:checked + label::after {
+                    left: calc(100% - 14px);
+                    @media (min-width:$--tablet) and (max-width:($--desktop - 1)){
+                        left: calc(100% - 20px);
+                    }
+                    @media (min-width: $--desktop){
+                        left: calc(100% - 30px);
+                    }
+                }
+
+            }
+
+            &--line {
+                background-color: $--gray-900;
+                width: 100%;
+                height: 1px;
+            }
+        }
+
+        .button-wrapper {
+            @include flexbox(row, wrap, center, center, 1rem);
+            .btnCreate, .btnCancle {
+                @media (min-width:$--tablet) and (max-width:($--desktop - 1)){
+                    font-size: $--font-size-m;
+                    width: 200px;
+                    height: 60px;
+                }
+                @media (min-width: $--desktop){
+                    width: 360px;
+                    height: 100px;
+                }
+            }
+
+            //editing 버튼 스타일
+            
+        }
+    }
+}
+
+.btnCreateEdit, .btnCancleEdit, .btnDeleteEdit {
+    width: 85px;
+    height: 40px;
+    @media (min-width:$--tablet) and (max-width:($--desktop - 1)){
+        font-size: $--font-size-m;
+        width: 128px;
+        height: 60px;
+    }
+    @media (min-width: $--desktop){
+        width: 235px;
+        height: 100px;
+    }
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                imglist style                                */
+/* -------------------------------------------------------------------------- */
+
+.imglist-modal-wrapper {  
+  display: none;
+  user-select:none;
+}
+
+.imglist-modal-dimm {
+  position:fixed;
+  inset: 0;
+  display: flex;
+  margin: auto;
+  background-color: rgba(0,0,0, .9);
+}
+
+.imglist-modal {
+    position: relative;
+    display: flex;
+    flex-flow: column nowrap;  
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    width: 300px;
+    height: 300px;
+    margin: auto;
+    padding: 1rem 2rem 2rem 2rem;
+    background-color: $--modal-background-color;
+    border-radius: 0.25rem;
+
+  @media (min-width: $--tablet) and (max-width: ($--desktop - 1)) {
+    width: 700px;
+    height: 700px;
+    padding: 1.5rem 2.5rem 2.5rem 2.5rem;
+  }
+
+  @media (min-width: $--desktop) {
+    width: 850px;
+    height: 850px;
+    padding: 1rem 2rem 2rem 2rem;
+  }
+
+  p {
+    color: $--white;
+    @include text($--font-size-s, 160%, 600);
+    // margin-top: 1.2rem;
+    @media (min-width: $--tablet) and (max-width: ($--desktop - 1)) {
+      @include text($--font-size-lg, 160%, 600);
+    }
+    @media (min-width: $--desktop) {
+      @include text($--font-size-xl, 160%, 600);
+    }
+  }
+
+  &__contents {
+    overflow: auto;
+    width: 100%;
+
+    &::-webkit-scrollbar {
+        width: 5px;
+        @media (min-width: $--tablet) and (max-width: ($--desktop - 1)) {
+            width: 8px;
+        }
+        @media (min-width: $--desktop) {
+            width: 10px;
+        }
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: $--gray-600; /* 스크롤바 막대 색상 */
+        border-radius: 12px 12px 12px 12px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background-color: transparent; /* 스크롤바 뒷 배경 색상 */
+        border-radius: 12px 12px 12px 12px;
+    }
+
+    &::-webkit-scrollbar-button {
+        display: none;
+    }
+
+    &::-webkit-scrollbar-button {
+        
+    }
+
+    p {
+        @include text($--font-size-s, 160%, 400);
+        @media (min-width: $--tablet) and (max-width: ($--desktop - 1)) {
+            @include text($--font-size-lg, 160%, 400);
+          }
+        
+          @media (min-width: $--desktop) {
+            @include text($--font-size-lg, 160%, 400);
+          }
+    }
+  }
+  
+  &__close-button {
+    position: absolute;
+    width: 2rem;
+      height: 2rem;
+      border: none;
+      cursor: pointer;
+      color: $--default-text-color;
+      background-color: transparent;
+      background-image: url('/public/icon/header/iconCloseDefault.svg');
+      background-repeat: no-repeat;
+      background-size: cover;
+      right: 2%;
+      top: 2%;
+
+      @media (min-width: $--tablet) and (max-width: ($--desktop - 1)) {
+        width: 3rem;
+          height: 3rem;
+      }
+    
+      @media (min-width: $--desktop) {
+        width: 4rem;
+          height: 4rem;
+      }
+
+      &:hover {
+        color: $--white;
+        background-image: url('/public/icon/header/iconCloseHover.svg');
+      }
+    }
+
+}
+
+/* ------------------------------ slider style ------------------------------ */
+.profileImgSwiper {
+    width: 95%;
+    height: 30%;
+    cursor: grab;
+    @media (min-width: $--tablet) and (max-width: ($--desktop - 1)) {
+        height: 20%;
+    }
+    @media (min-width: $--desktop) {
+        height: 20%;
+    }
+
+    .swiper-wrapper {
+        width: 100%;
+    }
+
+    .swiper-slide {
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: transparent;
+
+        .img-button {
+            height: 100%;
+            border: none;
+            background-color: transparent;
+
+            img {
+                cursor: pointer;
+                display: block;
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+            }
+        }
+    }
+    
+
+    .swiper-button-prev, .swiper-button-next {
+        color: #FF002E;
+    }
+
+}
+
