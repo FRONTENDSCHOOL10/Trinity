@@ -42,9 +42,28 @@ async function renderProfileMenu() {
 
   // const users = await pb.collection('mustVod').getFullList();
   // console.log(users);
+  toggleProfileMenu();
   renderLogoutModal();
   toggleLogoutModal();
   logout();
+}
+
+function toggleProfileMenu() {
+  const profileBtn = getNode('.header__aside__button--profile');
+  const profileModal = getNode('.profile-modal-wrapper');
+
+  profileBtn.addEventListener('keydown', (e) => {
+    //Enter 입력 시
+    if (e.keyCode === 13) {
+      profileModal.style.display = 'block';
+    }
+  });
+
+  profileBtn.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      profileModal.style.display = 'none';
+    }
+  });
 }
 
 function renderLogoutModal() {
