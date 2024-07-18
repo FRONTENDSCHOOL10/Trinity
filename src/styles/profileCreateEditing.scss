@@ -261,6 +261,10 @@ $--desk-btnProfile-h: 5.375rem;
             font-size: $--font-size-lg;
           }
         }
+
+        .error {
+          color: red;
+        }
       }
 
       &--lock {

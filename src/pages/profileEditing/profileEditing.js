@@ -232,7 +232,30 @@ function selectImg() {
   body.classList.remove('stop-scrolling');
 }
 
+function validateProfileName(name) {
+  // 한글, 영문, 숫자로만 이루어진 2자 이상 10자 이내의 문자열인지 검사하는 정규표현식
+  const re = /^[가-힣a-zA-Z0-9]{2,10}$/;
+  return re.test(name);
+}
+
+function displayError(input) {
+  const errorElement = input.nextSibling.nextSibling.nextSibling;
+  errorElement.classList.add('error');
+}
+
+function removeError(input) {
+  const errorElement = input.nextSibling.nextSibling.nextSibling;
+  errorElement.classList.remove('error');
+}
+
 async function createProfile() {
+  if (!validateProfileName(profileNameInput.value)) {
+    displayError(profileNameInput);
+    return;
+  } else {
+    removeError(profileNameInput);
+  }
+
   profileImage = await downloadImage(profileImageUrl);
 
   const modiUser = new FormData();
