@@ -29,9 +29,10 @@ document.addEventListener('DOMContentLoaded', function() {
         ];
   
         searchResultList.innerHTML = searchResults.map(result => `
+        <h1>검색 결과</h1>
           <li class="search-result__item">
             <a href="${result.link}">
-              <img src="${result.thumbnail}" alt="컨텐츠 썸네일" class="search-result__thumbnail"/>
+              <img src="/public/image/landing/image1.png" alt="컨텐츠 썸네일" class="search-result__thumbnail"/>
               <span class="search-result__name">${result.name}</span>
             </a>
           </li>
