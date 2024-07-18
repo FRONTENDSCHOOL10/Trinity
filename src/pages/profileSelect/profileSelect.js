@@ -93,7 +93,7 @@ async function renderProfileSelect() {
 
           if (isAddable == true) {
             const template = `
-                          <li class="profile__form--item profileItem" data-profile-index="${i + 1}">
+                          <li class="profile__form--item profileItem" data-profile-index="${i + 1}" data-profile-select="true">
                               <a class="item__form" href="/src/pages/profileCreate/index.html" role="button">
                                   <figure class="user-profile">
                                       <span className="addable" aria-hidden="true"></span>
@@ -122,14 +122,18 @@ async function renderProfileSelect() {
           alert('닫혀있는 프로필입니다.');
         } else {
           const profileIndex = item.getAttribute('data-profile-index');
-          if (!profileIndex) {
+          const profileCreate = item.getAttribute('data-profile-select');
+
+          // 프로필 추가 선택시
+          if (profileCreate) {
             localStorage.setItem('selectedProfileIndex', profileIndex);
             window.location.href = '/src/pages/profileCreate/index.html';
+          } else {
+            // 열려있는 프로필
+            console.log(`profileIndex:${profileIndex}`);
+            localStorage.setItem('selectedProfileIndex', profileIndex);
+            window.location.href = '/';
           }
-          // 열려있는 프로필
-          console.log(`profileIndex:${profileIndex}`);
-          localStorage.setItem('selectedProfileIndex', profileIndex);
-          window.location.href = '/';
         }
       });
     });
