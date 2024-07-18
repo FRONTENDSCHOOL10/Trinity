@@ -6,6 +6,7 @@
     align-items: center;
     text-align: center;
     word-break: keep-all;
+    overflow-x: hidden;
 
     @media (min-width: $--tablet) {
         margin-top: 5rem;
@@ -21,9 +22,9 @@
     // background-color: #f9f9f9;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+    justify-content: flex-start;
+    align-items: flex-start;
+    text-align: left;
     padding: 1rem;
     & h1 {
         font-size: 1rem;
@@ -43,9 +44,13 @@
     }
     &__list {
       list-style: none;
-      padding: 0;
-      margin: 0;
-  
+      margin-left: 3rem;
+      @media(min-width: $--tablet) {
+        margin-left: 8rem;
+    }
+      @media(min-width: $--desktop) {
+        margin-left: 14rem;
+        }
       .search-result__item {
         margin-bottom: 16px;
   
@@ -58,21 +63,41 @@
           align-items: center;
           text-decoration: none;
           color: inherit;
-  
+          margin-right: 1rem;
+          transition: transform 0.3s ease;
           &:hover {
-            background-color: #f9f9f9;
+            transform: translateY(-0.5rem);
           }
-  
+          
           .search-result__thumbnail {
-            width: 60px;
-            height: 60px;
-            border-radius: 4px;
+            width: 70px;
+            aspect-ratio: 1/1.44;
+            border-radius: 0.25rem;
             object-fit: cover;
             margin-right: 16px;
+
+            @media(min-width: $--tablet) {
+                width: 130px;
+            }
+            @media(min-width: $--desktop) {
+                width: 200px;
+            }
           }
   
           .search-result__name {
-            font-size: 1.1em;
+            font-size: 0.7rem;
+            position: relative;
+            top: 4.4rem;
+            right: 5.6rem;
+            @media(min-width: $--tablet) {
+                font-size: 1rem;
+                top: 7rem;
+                right: 9rem;
+            }
+            @media(min-width: $--desktop) {
+                top: 10.7rem;
+                right: 13.2rem;
+            }
           }
         }
       }
@@ -108,7 +133,18 @@
         }
     }
     & img {
-        
+        width: 3rem;
+        height: 3rem;
+        margin-bottom: 1rem;
+        @media(min-width: $--tablet) {
+            width: 4.5rem;
+            height: 4.5rem;
+            margin-bottom: 2rem;
+        }
+        @media(min-width: $--desktop) {
+            width: 6rem;
+            height: 6rem;
+        }
     }
     // .popular-subtitle {
     //     font-size: 1rem;
@@ -117,9 +153,6 @@
         & a {
             text-decoration: none;
             color: $--gray-300;
-            &:hover {
-                color: white;
-              }
         }
     }
   }

@@ -23,17 +23,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
       // Pocketbase에 검색 요청 보내기
       try {
-        const encodedSearchTerm = encodeURIComponent(searchTerm);
-        const response = await pb.collection('allVod').getList(1, 30, {
-          filter: `name ~ "${encodedSearchTerm}"`,
+        // const encodedSearchTerm = encodeURIComponent(searchTerm);
+        // console.log(encodedSearchTerm);
+        const response = await pb.collection('allVod').getFullList({
+          filter: `contentName ~ "${searchTerm}"`,
         });
 
-        console.log(response);
+        console.log(`response:${response}`);
 
         const searchResults = response.items.map((item) => ({
           img: getPbImageURL(item, 'img'),
-          name: item.name,
-          link: `/details/${item.id}`,
+          contentName: item.name,
         }));
 
         const searchResultHtml = `
