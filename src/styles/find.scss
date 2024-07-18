@@ -233,15 +233,13 @@ $--desktop-log-btn-h: 5.375rem;
 // find-id
 .find__wrap {
   font-size: .75rem;
-  height: 60vh;
+  height: 90vh;
   @include flexbox(center);
   @media (min-width:$--tablet) and (max-width:($--desktop - 1)){
       font-size: 1rem;
-      height: 80vh;
   }
   @media (min-width: $--desktop){
       font-size: 1.75rem;
-      height: 60vh;
   }
   &__container {
       position: relative;
@@ -257,6 +255,7 @@ $--desktop-log-btn-h: 5.375rem;
           padding: 4.375rem 37.125rem 0 37.125rem;
       }
       & #find__next {
+          word-break: keep-all;
           position: absolute;
           display: flex;
           width: 100%;
