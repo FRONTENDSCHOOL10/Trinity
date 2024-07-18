@@ -8,8 +8,6 @@ async function renderSearchModal() {
   });
   const records = resultList.items;
 
-  console.log(records);
-
   const popularSearchItems = records
     .map(
       (record) => `
@@ -130,12 +128,12 @@ async function renderSearchModal() {
     if (record) {
       // 레코드를 다시 가져와서 최신 값을 반영하여 업데이트
       const latestRecord = await pb.collection('allVod').getOne(record.id);
-      console.log(`현재 totalSearchNum: ${latestRecord.totalSearchNum}`);
+
       const updatedData = {
         totalSearchNum: (latestRecord.totalSearchNum || 0) + 1,
       };
+
       await pb.collection('allVod').update(record.id, updatedData);
-      console.log(`업데이트 후 totalSearchNum: ${updatedData.totalSearchNum}`);
     }
   }
 
