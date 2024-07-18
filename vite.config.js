@@ -26,6 +26,7 @@ export default defineConfig({
         profileCreate: resolve(__dirname, 'src/pages/profileCreate/index.html'),
         profileEditing: resolve(__dirname, 'src/pages/profileEditing/index.html'),
         signUp: resolve(__dirname, 'src/pages/signUp/index.html'),
+        searchResult: resolve(__dirname, 'src/pages/searchResult/index.html'),
       },
     },
   },
