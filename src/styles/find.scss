@@ -233,13 +233,15 @@ $--desktop-log-btn-h: 5.375rem;
 // find-id
 .find__wrap {
   font-size: .75rem;
-  height: 100vh;
+  height: 60vh;
   @include flexbox(center);
   @media (min-width:$--tablet) and (max-width:($--desktop - 1)){
-      font-size: 16px;
+      font-size: 1rem;
+      height: 80vh;
   }
   @media (min-width: $--desktop){
       font-size: 1.75rem;
+      height: 60vh;
   }
   &__container {
       position: relative;
@@ -319,12 +321,12 @@ $--desktop-log-btn-h: 5.375rem;
 
       & .head__form {
           &__tit {
-              @include head($--heading-medium, 1.75rem);
+              @include head(1.5rem, 1.75rem);
               @media (min-width:$--tablet) and (max-width:($--desktop - 1)){
-                  @include head($--heading-x-l, 24px);
+                  @include head(1.75rem, 1.5rem);
               }
               @media (min-width: $--desktop){
-                  @include head($--heading-x-x-l, 3.75rem);
+                  @include head(2.375rem, 3.75rem);
               }
           }
       }
