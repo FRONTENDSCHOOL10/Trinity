@@ -46,6 +46,8 @@ async function renderProfileSelect() {
     // 현재 로그인한 유저의 프로필 목록을 출력하는 함수 부분
     users.forEach((item) => {
       if (item.username === authUsername) {
+        let isAddable = false;
+
         for (let i = 0; i < 4; i++) {
           const isActive = item[`isActive${i + 1}`];
           const isLocked = item[`isLocked${i + 1}`];
@@ -83,6 +85,29 @@ async function renderProfileSelect() {
                 `;
             insertLast('.profile__form', template);
           }
+
+          // 마지막 프로필이 없다면(4개 미만) 마지막 프로필엔 프로필 추가 화면에 출력
+          if (isActive == false && isAddable == false) {
+            isAddable = !isAddable;
+          }
+
+          if (isAddable == true) {
+            const template = `
+                          <li class="profile__form--item profileItem" data-profile-index="${i + 1}" data-profile-select="true">
+                              <a class="item__form" href="/src/pages/profileCreate/index.html" role="button">
+                                  <figure class="user-profile">
+                                      <span className="addable" aria-hidden="true"></span>
+                                      <figcaption class="sr-only">프로필 추가 가능</figcaption>
+                                  </figure>
+                                  <span class="addable"></span>
+                                  <span class="icon"><img src="/icon/profile/iconPlus.png" alt="추가 아이콘"></span>
+                              </a>
+                              <p class="name profileName">프로필 추가</p>
+                          </li>
+                      `;
+            insertLast('.profile__form', template);
+            break;
+          }
         }
       }
     });
@@ -96,11 +121,19 @@ async function renderProfileSelect() {
         if (isProfileLocked) {
           alert('닫혀있는 프로필입니다.');
         } else {
-          // 열려있는 프로필
           const profileIndex = item.getAttribute('data-profile-index');
-          console.log(`profileIndex:${profileIndex}`);
-          localStorage.setItem('selectedProfileIndex', profileIndex);
-          window.location.href = '/';
+          const profileCreate = item.getAttribute('data-profile-select');
+
+          // 프로필 추가 선택시
+          if (profileCreate) {
+            localStorage.setItem('selectedProfileIndex', profileIndex);
+            window.location.href = '/src/pages/profileCreate/index.html';
+          } else {
+            // 열려있는 프로필
+            console.log(`profileIndex:${profileIndex}`);
+            localStorage.setItem('selectedProfileIndex', profileIndex);
+            window.location.href = '/';
+          }
         }
       });
     });
