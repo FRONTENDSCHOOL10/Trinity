@@ -66,8 +66,8 @@ document.addEventListener('DOMContentLoaded', function () {
                     <li class="search-result__item">
                       <a href="#">
                         <img src="${result.img}" alt="${result.imgAlt}" class="search-result__thumbnail"/>
-                        <span class="search-result__name">${result.contentName}</span>
-                      </a>
+                        </a>
+                      <span class="search-result__name">${result.contentName}</span>
                     </li>
                   `
                   )
@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', function () {
           const popularSearchItems = records
             .map(
               (record) => `
-              <li class="popular-searches-item"><a href="#">${record.contentName}</a></li>
+              <li class="popular-searches-item"><a href="#"># ${record.contentName}</a></li>
               `
             )
             .join('');
@@ -101,7 +101,9 @@ document.addEventListener('DOMContentLoaded', function () {
               <p class="no-result-text">TAING은 더 많은 정보를 제공하고자 노력했습니다...</p>
               <ul class="popular-result">
                 <p class="popular-subtitle">요즘 인기 검색어를 추천해 드릴게요.</p>
-                ${popularSearchItems}
+                  <ul class="popular-result-inside">
+                    ${popularSearchItems}
+                  </ul>
               </ul>
             </div>
           `;
