@@ -73,7 +73,7 @@ async function renderProfileEdit() {
           // 열려있는 프로필을 화면에 출력
           if (isActive == true && isLocked == false) {
             const template = `
-                          <li class="profile__form--item profileItem" data-index="${i + 1}">
+                          <li class="profile__form--item profileItem" data-profile-index="${i + 1}">
                               <a class="item__form" href="/src/pages/profileEditing/index.html" role="button">
                                   <figure class="user-profile">
                                       <img src="${getPbImageURL(item, `profileImg${i + 1}`)}" alt="프로필">
@@ -124,7 +124,7 @@ async function handleProfileSelect(e) {
   const profileItem = e.currentTarget;
   console.log(profileItem);
   if (profileItem) {
-    const profileIndex = profileItem.getAttribute('data-index');
+    const profileIndex = profileItem.getAttribute('data-profile-index');
     const profileLocked = profileItem.getAttribute('data-locked');
     console.log(profileLocked);
 
