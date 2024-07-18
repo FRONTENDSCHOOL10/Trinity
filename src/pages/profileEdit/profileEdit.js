@@ -1,7 +1,7 @@
 import '/src/styles/main.scss';
 import defaultAuthData from '@/api/defaultAuthData';
 import getPbImageURL from '/src/api/getPbImageURL';
-import { setDocumentTitle, insertLast, setStorage } from 'kind-tiger';
+import { setDocumentTitle, insertLast, setStorage, getStorage } from 'kind-tiger';
 import pb from '@/api/pocketbase';
 import { headerScript } from '@/layout/header/header';
 import { renderFooter, footerScript } from '@/layout/footer/footer';
@@ -50,47 +50,66 @@ async function renderProfileEdit() {
 
         for (let i = 0; i < 4; i++) {
           const isActive = item[`isActive${i + 1}`];
+          const isLocked = item[`isLocked${i + 1}`];
 
-          // 열려있는 프로필을 화면에 출력
-          // isActive는 정렬되어있음.(중간에 isActive가 갑자기 False로 나오지 않음)
-          if (isActive == true) {
+          // 잠금처리 되어있는 프로필을 화면에 출력
+          if (isActive == true && isLocked == true) {
             const template = `
-                        <li class="profile__form--item profileItem" data-index="${i + 1}">
-                            <a class="item__form" href="/src/pages/profileEditing/index.html" role="button">
-                                <figure class="user-profile">
-                                    <img src="${getPbImageURL(item, `profileImg${i + 1}`)}" alt="프로필">
-                                    <figcaption class="sr-only">${item.username}의 프로필</figcaption>
-                                </figure>
-                                <span class="bg"></span>
-                                <span class="icon"><img src="/icon/profile/iconEditProfile.svg" alt="편집 아이콘"></span>
-                            </a>
-                            <p class="name profileName">${item[`profileName${i + 1}`]}</p>
-                        </li>
-                    `;
+                          <li class="profile__form--item profileItem" data-locked="true" data-profile-index="${i + 1}">
+                              <a class="item__form" href="#" role="button">
+                                  <figure class="user-profile">
+                                      <img src="${getPbImageURL(item, `profileImg${i + 1}`)}" alt="프로필">
+                                      <figcaption class="sr-only">${item.username}의 프로필</figcaption>
+                                  </figure>
+                                  <span class="bg"></span>
+                                  <span class="icon"><img src="/icon/profile/iconLockedProfile.svg" alt="잠금 아이콘"></span>
+                              </a>
+                              <p class="name profileName">${item[`profileName${i + 1}`]}</p>
+                          </li>
+                      `;
             insertLast('.profile__form', template);
           }
 
-          if (isActive == false && !isAddable) {
-            isAddable = true;
-            addableIndex = i + 1;
+          // 열려있는 프로필을 화면에 출력
+          if (isActive == true && isLocked == false) {
+            const template = `
+                          <li class="profile__form--item profileItem" data-index="${i + 1}">
+                              <a class="item__form" href="/src/pages/profileEditing/index.html" role="button">
+                                  <figure class="user-profile">
+                                      <img src="${getPbImageURL(item, `profileImg${i + 1}`)}" alt="프로필">
+                                      <figcaption class="sr-only">${item.username}의 프로필</figcaption>
+                                  </figure>
+                                  <span class="bg"></span>
+                                  <span class="icon"><img src="/icon/profile/iconEditProfile.svg" alt="편집 아이콘"></span>
+                              </a>
+                              <p class="name profileName">${item[`profileName${i + 1}`]}</p>
+                          </li>
+                      `;
+            insertLast('.profile__form', template);
           }
-        }
 
-        if (isAddable == true) {
-          const template = `
-                        <li class="profile__form--item profileItem" data-index="${addableIndex}">
-                            <a class="item__form" href="/src/pages/profileCreate/index.html" role="button">
-                                <figure class="user-profile">
-                                    <span className="addable" aria-hidden="true"></span>
-                                    <figcaption class="sr-only">프로필 추가 가능</figcaption>
-                                </figure>
-                                <span class="addable"></span>
-                                <span class="icon"><img src="/icon/profile/iconPlus.png" alt="추가 아이콘"></span>
-                            </a>
-                            <p class="name profileName">프로필 추가</p>
-                        </li>
-                    `;
-          insertLast('.profile__form', template);
+          // 마지막 프로필이 없다면(4개 미만) 마지막 프로필엔 프로필 추가 화면에 출력
+          if (isActive == false && isAddable == false) {
+            isAddable = !isAddable;
+          }
+
+          if (isAddable == true) {
+            const template = `
+                            <li class="profile__form--item profileItem" data-profile-index="${i + 1}" data-profile-select="true">
+                                <a class="item__form" href="/src/pages/profileCreate/index.html" role="button">
+                                    <figure class="user-profile">
+                                        <span className="addable" aria-hidden="true"></span>
+                                        <figcaption class="sr-only">프로필 추가 가능</figcaption>
+                                    </figure>
+                                    <span class="addable"></span>
+                                    <span class="icon"><img src="/icon/profile/iconPlus.png" alt="추가 아이콘"></span>
+                                </a>
+                                <p class="name profileName">프로필 추가</p>
+                            </li>
+                        `;
+            insertLast('.profile__form', template);
+            break;
+          }
         }
       }
     });
@@ -103,8 +122,17 @@ async function renderProfileEdit() {
 
 async function handleProfileSelect(e) {
   const profileItem = e.currentTarget;
+  console.log(profileItem);
   if (profileItem) {
     const profileIndex = profileItem.getAttribute('data-index');
+    const profileLocked = profileItem.getAttribute('data-locked');
+    console.log(profileLocked);
+
+    if (profileLocked) {
+      alert('잠금된 프로필입니다.');
+    } else {
+      console.error('');
+    }
 
     if (profileIndex) {
       await setStorage('selectedProfileIndex', profileIndex);
