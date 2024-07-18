@@ -112,7 +112,14 @@ $--font-family: 'Pretendard Variable', Pretendard, sans-serif;
   color: $--white;
   @include flex-center;
   width: calc(100% - 7.776rem);
+  height: 60vh;
   margin: 0 3.888rem;
+  @media (min-width:$--tablet) and (max-width:($--desktop - 1)){
+    height: 80vh;
+  }
+  @media (min-width: $--desktop){
+      height: 60vh;
+  }
 }
 
 //로그인 서식 시작
