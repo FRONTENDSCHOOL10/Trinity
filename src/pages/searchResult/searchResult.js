@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
           const noResultHtml = `
             <div class="no-result">
-              <img src="/public/icon/loadSpinner/loadSpinnerError.svg" alt="검색 결과 없음 에러" />
+              <img src="/icon/loadSpinner/loadSpinnerError.svg" alt="검색 결과 없음 에러" />
               <h1>검색 결과가 없습니다.</h1>
               <p class="no-result-text">TAING은 더 많은 정보를 제공하고자 노력했습니다...</p>
               <ul class="popular-result">
@@ -122,16 +122,14 @@ document.addEventListener('DOMContentLoaded', function () {
         }
       } catch (error) {
         console.error('Error fetching search results:', error);
-        insertAfter(
-          searchInputWrapper,
-          `
+        const errorMessageHtml = `
           <div class="no-result">
-            <img src="/public/icon/loadSpinner/loadSpinnerError.svg" alt="검색 결과 없음 에러" />
+            <img src="/icon/loadSpinner/loadSpinnerError.svg" alt="검색 결과 없음 에러" />
             <h1>검색 결과를 가져오는 중 오류가 발생했습니다.</h1>
             <p class="no-result-text">잠시 후 다시 시도해 주세요.</p>
           </div>
-        `
-        );
+        `;
+        insertAfter(searchInputWrapper, errorMessageHtml);
       }
     }
   }
