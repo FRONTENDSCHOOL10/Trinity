@@ -3,11 +3,12 @@ import pb from '@/api/pocketbase';
 
 // 검색 모달 렌더링 함수
 async function renderSearchModal() {
-  // records를 getList를 사용하여 10개의 아이템만 가져오기
   const resultList = await pb.collection('allVod').getList(1, 10, {
     sort: '-totalSearchNum, contentName',
   });
   const records = resultList.items;
+
+  console.log(records);
 
   const popularSearchItems = records
     .map(
@@ -22,7 +23,7 @@ async function renderSearchModal() {
         <div class="modal-content">
             <div class="search-input-wrapper">
                 <label for="searchInput" class="sr-only">컨텐츠 검색창</label>
-                <input type="text" id="searchInput" placeholder="검색" autocomplte="off">
+                <input type="text" id="searchInput" placeholder="검색" autocomplete="off">
                 <button id="searchSubmitBtn" type="submit"></button>
             </div>
             <div class="section-wrapper">
@@ -127,11 +128,14 @@ async function renderSearchModal() {
     // 검색어가 records의 contentName과 일치하는지 확인하고, 일치하면 totalSearchNum을 1 증가
     const record = records.find((record) => record.contentName === term);
     if (record) {
+      // 레코드를 다시 가져와서 최신 값을 반영하여 업데이트
+      const latestRecord = await pb.collection('allVod').getOne(record.id);
+      console.log(`현재 totalSearchNum: ${latestRecord.totalSearchNum}`);
       const updatedData = {
-        ...record,
-        totalSearchNum: (record.totalSearchNum || 0) + 1,
+        totalSearchNum: (latestRecord.totalSearchNum || 0) + 1,
       };
       await pb.collection('allVod').update(record.id, updatedData);
+      console.log(`업데이트 후 totalSearchNum: ${updatedData.totalSearchNum}`);
     }
   }
 
@@ -231,6 +235,9 @@ async function renderSearchModal() {
       saveSearch(searchTerm);
       searchInput.value = '';
       loadSearchHistory();
+
+      // 검색어를 쿼리 파라미터로 전달하여 searchResult 페이지로 이동
+      window.location.href = `/src/pages/searchResult/index.html?search=${encodeURIComponent(searchTerm)}`;
     }
   }
 
