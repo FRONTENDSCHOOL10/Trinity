@@ -2,6 +2,27 @@ import { getNode, insertAfter } from 'kind-tiger';
 import pb from '@/api/pocketbase';
 import getPbImageURL from '@/api/getPbImageURL';
 
+import { renderHeader } from '@/layout/header/header';
+import renderSearchModal from '@/components/searchModal/searchModal';
+import renderProfileMenu from '@/components/profileMenu/profileMenu';
+import { renderFooter, footerScript } from '@/layout/footer/footer';
+
+/* -------------------------------------------------------------------------- */
+/*                                    헤더 코드                                */
+/* -------------------------------------------------------------------------- */
+renderHeader();
+renderSearchModal();
+renderProfileMenu();
+
+/* -------------------------------------------------------------------------- */
+/*                                  푸터 렌더링 코드                           */
+/* -------------------------------------------------------------------------- */
+renderFooter();
+footerScript();
+
+/* -------------------------------------------------------------------------- */
+/*                                  검색결과창 코드                            */
+/* -------------------------------------------------------------------------- */
 document.addEventListener('DOMContentLoaded', function () {
   const searchInput = getNode('#searchInput');
   const searchSubmitBtn = getNode('#searchSubmitBtn');
@@ -23,17 +44,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
       // Pocketbase에 검색 요청 보내기
       try {
-        // const encodedSearchTerm = encodeURIComponent(searchTerm);
-        // console.log(encodedSearchTerm);
         const response = await pb.collection('allVod').getFullList({
           filter: `contentName ~ "${searchTerm}"`,
         });
 
-        console.log(`response:${response}`);
+        console.log(response);
 
-        const searchResults = response.items.map((item) => ({
+        const searchResults = response.map((item) => ({
           img: getPbImageURL(item, 'img'),
-          contentName: item.name,
+          contentName: item.contentName,
+          imgAlt: item.imgAlt,
         }));
 
         const searchResultHtml = `
@@ -44,9 +64,9 @@ document.addEventListener('DOMContentLoaded', function () {
                   .map(
                     (result) => `
                     <li class="search-result__item">
-                      <a href="${result.link}">
-                        <img src="${result.img}" alt="컨텐츠 썸네일" class="search-result__thumbnail"/>
-                        <span class="search-result__name">${result.name}</span>
+                      <a href="#">
+                        <img src="${result.img}" alt="${result.imgAlt}" class="search-result__thumbnail"/>
+                        <span class="search-result__name">${result.contentName}</span>
                       </a>
                     </li>
                   `
@@ -87,6 +107,16 @@ document.addEventListener('DOMContentLoaded', function () {
           `;
 
           insertAfter(searchInputWrapper, noResultHtml);
+
+          // 인기 검색어 항목에 클릭 이벤트 추가
+          const popularItems = document.querySelectorAll('.popular-searches-item a');
+          popularItems.forEach((item) => {
+            item.addEventListener('click', (event) => {
+              event.preventDefault();
+              const searchTerm = item.textContent;
+              searchInput.value = searchTerm;
+            });
+          });
         }
       } catch (error) {
         console.error('Error fetching search results:', error);
@@ -104,11 +134,18 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-  searchSubmitBtn.addEventListener('click', () => handleSearch(searchInput.value.trim()));
+  function performSearch() {
+    const searchTerm = searchInput.value.trim();
+    if (searchTerm) {
+      window.location.replace(`/src/pages/searchResult/index.html?search=${searchTerm}`);
+    }
+  }
+
+  searchSubmitBtn.addEventListener('click', performSearch);
 
   searchInput.addEventListener('keydown', function (event) {
     if (event.key === 'Enter') {
-      handleSearch(searchInput.value.trim());
+      performSearch();
     }
   });
 });
