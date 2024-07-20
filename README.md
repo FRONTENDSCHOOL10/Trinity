@@ -1,6 +1,8 @@
-
+<div align="center">
+  
 ![header](https://capsule-render.vercel.app/api?type=waving&height=300&color=gradient&text=트포를%20뽑기%20위한%203위일체의%20처절한%20사투기&fontSize=40&fontAlignY=32&animation=blink&desc=Techit%20FES%2010기%20Vanilla%20project%203조의%20프로젝트%20과정을%20정리한%20wiki%20문서입니다.&textBg=false)
 
+</div>
 ---
 
 <h1 align="center">✨ <img src ="https://github.com/user-attachments/assets/8bd40f8d-edba-4fdb-bdaa-21ec35653f2f"/> Team Trinity ✨</h1>
