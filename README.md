@@ -40,7 +40,7 @@
 <h2 align="justify"><img src="https://github.com/user-attachments/assets/b4c8e18e-1bde-4fcd-90df-7dd2f24c9a3b"/>   Project - TAING</h2>
 <br/>
 
-<div align="center"><img src = "https://github.com/user-attachments/assets/4db712a0-fe45-463e-b9b1-4868571da80d"/></div>
+<div align="center"><a href="https://trinitytaing.netlify.app/"><img src = "https://github.com/user-attachments/assets/4db712a0-fe45-463e-b9b1-4868571da80d"/></a></div>
 <br/>
 
 <table align="center">
